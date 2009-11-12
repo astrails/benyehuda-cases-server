@@ -17,3 +17,4 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 config.gem 'inaction_mailer', :lib => 'inaction_mailer/force_load', :source => 'http://gemcutter.org'
 config.gem 'ffmike-query_trace', :lib => 'query_trace', :source => 'http://gems.github.com'
+require 'ruby-debug'
