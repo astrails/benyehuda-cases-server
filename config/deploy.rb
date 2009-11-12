@@ -7,6 +7,6 @@
 # require "vladify/whenever"
 # require "vladify/workling"
 
-set :application, "benyehuda.com"
-set :repository, "git@astrails.com:benyehuda"
+set :application, "benyehuda.astrails.com"
+set :repository, "git@alpha:benyehuda/cases_server"
 set :domain, "astrails@astrails.com"
