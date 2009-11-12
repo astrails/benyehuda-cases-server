@@ -20,6 +20,13 @@ vendor/plugins/hoptoad_notifier:
   revision: 6a373ee8f14f93a975f523d0b91d282929c66c60
   branch: master
   remote: braid/vendor/plugins/hoptoad-notifier
+vendor/plugins/high_voltage: 
+  squashed: true
+  url: git://github.com/thoughtbot/high_voltage.git
+  type: git
+  revision: 13bb9c75611938f3f1a6636ddcd1e270ee8fc1fd
+  branch: master
+  remote: braid/vendor/plugins/high-voltage
 vendor/plugins/jrails_in_place_editing: 
   squashed: true
   url: git://github.com/rakuto/jrails_in_place_editing
