@@ -27,6 +27,13 @@ vendor/plugins/hoptoad_notifier:
   revision: 6a373ee8f14f93a975f523d0b91d282929c66c60
   branch: master
   remote: braid/vendor/plugins/hoptoad-notifier
+vendor/plugins/inherited_resources: 
+  squashed: true
+  url: git://github.com/josevalim/inherited_resources.git
+  type: git
+  revision: 6284ba802d935de936542edafcd960951d5fb604
+  branch: master
+  remote: braid/vendor/plugins/inherited-resources
 vendor/plugins/log_buddy: 
   squashed: true
   url: git://github.com/relevance/log_buddy.git
