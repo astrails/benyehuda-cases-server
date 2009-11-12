@@ -9,7 +9,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.gem 'authlogic', :version => '2.1.1'
   config.gem 'ruby-debug', :library => false
-  rpas = (GlobalPreference.get(:rack_bug_password) || 'by123') rescue 'by123'
+  rpass = (GlobalPreference.get(:rack_bug_password) || 'by123') rescue 'by123'
   config.middleware.use 'Rack::Bug', :password => rpass
   config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
   config.gem 'will_paginate', :source => 'http://gemcutter.org'
