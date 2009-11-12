@@ -1,4 +1,11 @@
 --- 
+vendor/plugins/jrails: 
+  squashed: true
+  url: git://github.com/aaronchi/jrails.git
+  type: git
+  revision: 712ccd1245d2871c7018a1c095f27db243209c46
+  branch: master
+  remote: braid/vendor/plugins/jrails
 vendor/plugins/hoptoad_notifier: 
   squashed: true
   url: git://github.com/thoughtbot/hoptoad_notifier.git
