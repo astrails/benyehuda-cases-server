@@ -1,0 +1,17 @@
+defaults: &defaults
+  adapter: mysql
+  username: astrails
+  password:
+  encoding: utf8
+
+production:
+  database: benyehuda
+  <<: *defaults
+
+development:
+  database: benyehuda
+  <<: *defaults
+
+test:
+  database: benyehuda_test
+  <<: *defaults
