@@ -69,6 +69,13 @@ vendor/plugins/jrails_in_place_editing:
   revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
   branch: master
   remote: braid/vendor/plugins/jrails-in-place-editing
+vendor/plugins/let_my_controller_go: 
+  squashed: true
+  url: git://github.com/astrails/let_my_controller_go.git
+  type: git
+  revision: e51c299748e54d4602adc6610653e82178238525
+  branch: master
+  remote: braid/vendor/plugins/let-my-controller-go
 vendor/plugins/trusted-params: 
   squashed: true
   url: git://github.com/ryanb/trusted-params.git
