@@ -48,6 +48,13 @@ vendor/plugins/high_voltage:
   revision: 13bb9c75611938f3f1a6636ddcd1e270ee8fc1fd
   branch: master
   remote: braid/vendor/plugins/high-voltage
+vendor/plugins/paperclip: 
+  squashed: true
+  url: git://github.com/thoughtbot/paperclip.git
+  type: git
+  revision: c64223c60dd7b0c4c4bc218de906061a6563a5a8
+  branch: master
+  remote: braid/vendor/plugins/paperclip
 vendor/plugins/jrails_in_place_editing: 
   squashed: true
   url: git://github.com/rakuto/jrails_in_place_editing
