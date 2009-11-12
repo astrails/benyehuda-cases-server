@@ -48,6 +48,13 @@ vendor/plugins/high_voltage:
   revision: 13bb9c75611938f3f1a6636ddcd1e270ee8fc1fd
   branch: master
   remote: braid/vendor/plugins/high-voltage
+vendor/plugins/restart_controller: 
+  squashed: true
+  url: git://github.com/astrails/restart_controller.git
+  type: git
+  revision: 43e48faf45246e38292c95e7245a975bdef3f6b8
+  branch: master
+  remote: braid/vendor/plugins/restart-controller
 vendor/plugins/paperclip: 
   squashed: true
   url: git://github.com/thoughtbot/paperclip.git

@@ -1,0 +1,3 @@
+This is a very simple plugin. It implements a RestartController.
+The purpose is to create/touch the "tmp/restart.txt" file which will cause Passenger servers to restart
+The controller has only one action 'POST "/restart"' which is protected with :require_admin filter
