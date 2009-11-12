@@ -1,4 +1,11 @@
 --- 
+vendor/plugins/rack-bug: 
+  squashed: true
+  url: git://github.com/brynary/rack-bug.git
+  type: git
+  revision: 3a0933f50d5fc8f65bf9594f8ca526702d309d37
+  branch: master
+  remote: braid/vendor/plugins/rack-bug
 vendor/plugins/vladify: 
   squashed: true
   url: git://github.com/astrails/vladify.git
