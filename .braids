@@ -20,3 +20,10 @@ vendor/plugins/jrails_in_place_editing:
   revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
   branch: master
   remote: braid/vendor/plugins/jrails-in-place-editing
+vendor/plugins/live-validations: 
+  squashed: true
+  url: git://github.com/augustl/live-validations.git
+  type: git
+  revision: e6904d149977c991898d416cfd7b5c29f4ada0ba
+  branch: master
+  remote: braid/vendor/plugins/live-validations
