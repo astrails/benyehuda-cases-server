@@ -7,6 +7,7 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+  config.gem 'authlogic', :version => '2.1.1'
   config.gem 'ruby-debug', :library => false
   config.middleware.use 'Rack::Bug', :password => 'bar'
   config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
