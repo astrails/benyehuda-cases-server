@@ -27,3 +27,10 @@ vendor/plugins/live-validations:
   revision: e6904d149977c991898d416cfd7b5c29f4ada0ba
   branch: master
   remote: braid/vendor/plugins/live-validations
+vendor/plugins/validation_reflection: 
+  squashed: true
+  url: git://github.com/redinger/validation_reflection.git
+  type: git
+  revision: a2bcc8c836a45af8a7784b51b4d586ed8924f01f
+  branch: master
+  remote: braid/vendor/plugins/validation-reflection
