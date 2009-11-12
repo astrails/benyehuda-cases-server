@@ -1,4 +1,11 @@
 --- 
+vendor/plugins/vladify: 
+  squashed: true
+  url: git://github.com/astrails/vladify.git
+  type: git
+  revision: f0274b9b6834966719c6cbb1cdaa0582f9ed33d6
+  branch: master
+  remote: braid/vendor/plugins/vladify
 vendor/plugins/jrails: 
   squashed: true
   url: git://github.com/aaronchi/jrails.git
