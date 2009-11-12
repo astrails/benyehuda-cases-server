@@ -62,6 +62,13 @@ vendor/plugins/jrails_in_place_editing:
   revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
   branch: master
   remote: braid/vendor/plugins/jrails-in-place-editing
+vendor/plugins/trusted-params: 
+  squashed: true
+  url: git://github.com/ryanb/trusted-params.git
+  type: git
+  revision: da34c4aa2188226eaddc2e3c9cb4bea585d0568e
+  branch: master
+  remote: braid/vendor/plugins/trusted-params
 vendor/plugins/global_preferences: 
   squashed: true
   url: git://github.com/astrails/global_preferences
