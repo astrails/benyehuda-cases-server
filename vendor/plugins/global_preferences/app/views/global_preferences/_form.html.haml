@@ -1,0 +1,9 @@
+- form_for(@global_preference) do |f|
+
+  != f.error_messages
+
+  != f.text_field :name
+  != f.text_field :value
+  != f.text_field :ttl
+
+  != f.submit

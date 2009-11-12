@@ -1,0 +1,7 @@
+= global_preferences
+
+Simple plugin to manage global site preferences in a database.
+
+== Copyright
+
+Copyright (c) 2009 Vitaly Kushner. See LICENSE for details.

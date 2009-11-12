@@ -20,6 +20,13 @@ vendor/plugins/jrails_in_place_editing:
   revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
   branch: master
   remote: braid/vendor/plugins/jrails-in-place-editing
+vendor/plugins/global_preferences: 
+  squashed: true
+  url: git://github.com/astrails/global_preferences
+  type: git
+  revision: bd1d770756462039152ab968245e9cf5847a3914
+  branch: master
+  remote: braid/vendor/plugins/global-preferences
 vendor/plugins/live-validations: 
   squashed: true
   url: git://github.com/augustl/live-validations.git
