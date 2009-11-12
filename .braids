@@ -13,3 +13,10 @@ vendor/plugins/hoptoad_notifier:
   revision: 6a373ee8f14f93a975f523d0b91d282929c66c60
   branch: master
   remote: braid/vendor/plugins/hoptoad-notifier
+vendor/plugins/jrails_in_place_editing: 
+  squashed: true
+  url: git://github.com/rakuto/jrails_in_place_editing
+  type: git
+  revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
+  branch: master
+  remote: braid/vendor/plugins/jrails-in-place-editing
