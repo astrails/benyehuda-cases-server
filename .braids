@@ -27,6 +27,13 @@ vendor/plugins/hoptoad_notifier:
   revision: 6a373ee8f14f93a975f523d0b91d282929c66c60
   branch: master
   remote: braid/vendor/plugins/hoptoad-notifier
+vendor/plugins/log_buddy: 
+  squashed: true
+  url: git://github.com/relevance/log_buddy.git
+  type: git
+  revision: 3769a4b010250d65b174740e47367319f809ae70
+  branch: master
+  remote: braid/vendor/plugins/log-buddy
 vendor/plugins/high_voltage: 
   squashed: true
   url: git://github.com/thoughtbot/high_voltage.git
