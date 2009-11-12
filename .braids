@@ -34,3 +34,10 @@ vendor/plugins/validation_reflection:
   revision: a2bcc8c836a45af8a7784b51b4d586ed8924f01f
   branch: master
   remote: braid/vendor/plugins/validation-reflection
+vendor/plugins/delayed_job: 
+  squashed: true
+  url: git://github.com/collectiveidea/delayed_job.git
+  type: git
+  revision: 0a42461db81cba96d0f267b99304e6725f8ca993
+  branch: master
+  remote: braid/vendor/plugins/delayed-job
