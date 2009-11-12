@@ -1,0 +1,6 @@
+%h1= page_title password_edit_title
+
+- semantic_form_for(@user, :url => password_path(@user.perishable_token), :method => :put, :live_validations => true) do |f|
+  != f.input :password
+  != f.input :password_confirmation
+  != f.submit password_edit_submit

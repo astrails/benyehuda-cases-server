@@ -1,0 +1,12 @@
+%p
+  %strong Name:
+  =h @user.name
+%p
+  %strong Email:
+  =h @user.email
+
+%p
+  != link_to "edit", edit_profile_path
+
+%p
+  != link_to "change password", password_edit_path

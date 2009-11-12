@@ -1,0 +1,7 @@
+= astrails-user-auth
+
+internal
+
+== Copyright
+
+Copyright (c) 2009 Michael Mazyar. See LICENSE for details.

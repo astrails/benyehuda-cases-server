@@ -69,6 +69,13 @@ vendor/plugins/jrails_in_place_editing:
   revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
   branch: master
   remote: braid/vendor/plugins/jrails-in-place-editing
+vendor/plugins/astrails-user-auth: 
+  squashed: true
+  url: git://github.com/astrails/astrails-user-auth
+  type: git
+  revision: d351c66326f9c0d2a0cf5d84bae320a109187718
+  branch: master
+  remote: braid/vendor/plugins/astrails-user-auth
 vendor/plugins/let_my_controller_go: 
   squashed: true
   url: git://github.com/astrails/let_my_controller_go.git
