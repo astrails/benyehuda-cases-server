@@ -1,0 +1,6 @@
+%tr{:class => cycle("odd", "even")}
+  %td!= link_to(h(user.name), user_path(user))
+  %td= user.email
+  %td= user.is_admin
+  %td.edit!= link_to "Edit", edit_user_path(user)
+  %td.delete!= link_to "Delete", user, :method => "delete"

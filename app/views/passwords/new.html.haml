@@ -1,0 +1,7 @@
+%h1= page_title "Password Reset"
+
+- semantic_form_for(@user, :url => passwords_path) do |f|
+  != f.input :email
+  != f.submit "Send Password Reset instructions"
+
+!= link_to "login", login_path, :class => "login"

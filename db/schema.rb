@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091112103809) do
+ActiveRecord::Schema.define(:version => 20091112103835) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -33,5 +33,30 @@ ActiveRecord::Schema.define(:version => 20091112103809) do
   end
 
   add_index "global_preferences", ["name"], :name => "index_global_preferences_on_name", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "name",                :limit => 48
+    t.string   "email",               :limit => 100, :null => false
+    t.string   "crypted_password",    :limit => 128
+    t.string   "password_salt",       :limit => 20
+    t.string   "persistence_token",   :limit => 128
+    t.string   "single_access_token", :limit => 20
+    t.string   "perishable_token",    :limit => 20
+    t.integer  "login_count"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.datetime "activated_at"
+    t.string   "current_login_ip",    :limit => 15
+    t.string   "last_login_ip",       :limit => 15
+    t.boolean  "is_admin"
+    t.boolean  "pending"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+  add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token"
 
 end

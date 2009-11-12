@@ -1,0 +1,7 @@
+%h1 Account Settings
+
+- semantic_form_for(@user, :live_validations => true) do |f|
+  != render :partial => "form", :locals => { :f => f }
+  != f.submit "Update"
+
+!= link_to "change password", password_edit_path
