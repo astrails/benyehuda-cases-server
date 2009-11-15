@@ -10,7 +10,7 @@ class UsersController < InheritedResources::Base
     if user.save_without_session_maintenance
       user.deliver_activation_instructions!
       flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
-      redirect_to login_path
+      redirect_to "/"
     else
       render :action => :new
     end

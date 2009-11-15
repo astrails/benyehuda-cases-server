@@ -36,7 +36,7 @@ describe UsersController do
           eval_request
           flash[:notice].should_not be_nil
         end
-        it_should_redirect_to "/login"
+        it_should_redirect_to "/"
 
         it "should create admin if no other users" do
           User.should_receive(:count).and_return(0)
