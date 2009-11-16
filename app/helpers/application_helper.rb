@@ -10,4 +10,8 @@ module ApplicationHelper
   def body_class
     "#{controller.controller_name} #{controller.controller_name}-#{controller.action_name}"
   end
+
+  def hebrew_layout?
+    false
+  end
 end

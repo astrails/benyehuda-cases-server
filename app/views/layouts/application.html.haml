@@ -2,20 +2,27 @@
   %head
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-type" }
     %title!= @page_title || h(controller.action_name)
-    != stylesheet_link_tag 'formtastic', 'formtastic_changes', 'application', :media => 'all'
-    != javascript_include_tag "jquery.min.js", "jquery-ui.min.js", "jquery.validate.min.js", "application"
+    != render(:partial => "layouts/html_head")
     != yield :head
   %body
-    .header
-      - if logged_in?
-        Hello
-        != link_to h(current_user.name), edit_user_path(current_user)
-        [
-        != link_to "logout", user_session_path, :method => :delete
-        ]
-      - else
-        != link_to "login", login_path
-        != link_to "register", signup_path
-    .container
-      != render :partial => 'layouts/flashes'
-      != yield
+    #content.span-24
+      #header.span-24.last
+        .span-15
+          %h1 Ben Yehuda Project
+        .span-9.last
+          - if logged_in?
+            Hello
+            != link_to h(current_user.name), edit_user_path(current_user)
+            [
+            != link_to "logout", user_session_path, :method => :delete
+            ]
+          - else
+            != link_to "login", login_path
+            != link_to "register", signup_path
+      #main.span-20
+        != render :partial => 'layouts/flashes'
+        != yield
+      #sidebar.span-4.last
+        %h4 Sidebar
+      #footer.span-24.last
+        %h4 Footer
