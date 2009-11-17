@@ -1,10 +1,14 @@
-%h1 Listing users
+- page_title("Users")
 
-%table
-  %tr
+%h3 Users
+
+%table.list
+  %tr.title
     %th Name
     %th Email
-    %th Admin?
-    %th
-    %th
+    %th Volunteer
+    %th Editor
+    %th Admin
+    %th &nbsp;
+    %th &nbsp;
   != render :partial => @users

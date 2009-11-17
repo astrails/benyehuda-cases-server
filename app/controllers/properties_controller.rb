@@ -3,6 +3,7 @@ class PropertiesController < InheritedResources::Base
 
   # index
   # new
+  # destory
 
   def create
     super do |format|
@@ -13,17 +14,6 @@ class PropertiesController < InheritedResources::Base
   def update
     super do |format|
       format.html {redirect_to properties_path}
-    end
-  end
-
-  def destroy
-    super do |format|
-      format.js do
-        flash.delete :notice
-        render(:update) do |page|
-          page << "jQuery('##{dom_id(@property)}').remove();"
-        end
-      end
     end
   end
 
