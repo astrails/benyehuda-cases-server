@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091112103835) do
+ActiveRecord::Schema.define(:version => 20091117124854) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20091112103835) do
 
   create_table "users", :force => true do |t|
     t.string   "name",                :limit => 48
-    t.string   "email",               :limit => 100, :null => false
+    t.string   "email",               :limit => 100,                    :null => false
     t.string   "crypted_password",    :limit => 128
     t.string   "password_salt",       :limit => 20
     t.string   "persistence_token",   :limit => 128
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20091112103835) do
     t.boolean  "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_volunteer",                       :default => false
+    t.boolean  "is_editor",                          :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

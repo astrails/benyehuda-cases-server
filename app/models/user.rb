@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
   include Astrails::Auth::Model
   attr_accessible :name, :password, :password_confirmation
   validates_presence_of :name
+
+  named_scope :volunteers, {:conditions => {:is_volunteer => true}}
+  named_scope :all_volunteers, {:conditions => "users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1"}
+
+  named_scope :editors, {:conditions => {:is_editor => true}}
+  named_scope :all_editors, {:conditions => "is_editor = 1 OR is_admin = 1"}
+
+  named_scope :admins, {:conditions => {:is_admin => true}}
 end
