@@ -1,4 +1,5 @@
-%tr
+%tr[property]
   %td= property.parent_type
-  %td= property.title
+  %td!= link_to h(property.title), edit_property_path(property)
   %td= property.property_type
+  %td!= link_to_remote "Delete", :url => property_path(property), :method => :delete, :confirm => "Are you sure?"
