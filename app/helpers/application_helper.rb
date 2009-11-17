@@ -14,4 +14,12 @@ module ApplicationHelper
   def hebrew_layout?
     false
   end
+
+  def tabs_for_current_user
+    @tabs_for_current_user ||= if logged_in?
+      true
+    else
+      false
+    end
+  end
 end

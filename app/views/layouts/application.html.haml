@@ -20,7 +20,9 @@
             - else
               != link_to "login", login_path
               != link_to "register", signup_path
-      #content.span-24
+      #tabs.span-24.last
+        != render :partial => 'layouts/tabs'
+      #content.span-24.last
         #main.span-19.colborder
           != render :partial => 'layouts/flashes'
           != yield

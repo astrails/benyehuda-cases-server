@@ -1,3 +1,11 @@
 #header, #content, #footer {
 	border:1px solid #eee;
 }
+
+#tabs {
+	padding-top:1em;
+}
+
+#tabs ul.tabs {
+	height:auto;
+}
