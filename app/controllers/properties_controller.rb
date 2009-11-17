@@ -1,9 +1,11 @@
 class PropertiesController < InheritedResources::Base
   before_filter :require_admin
+  actions :index, :new, :destroy, :create, :update, :edit
 
   # index
   # new
   # destory
+  # edit
 
   def create
     super do |format|

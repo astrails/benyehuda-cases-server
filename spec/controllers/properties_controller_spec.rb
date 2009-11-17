@@ -1,10 +1,55 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe PropertiesController do
+  setup :activate_authlogic
 
-  #Delete this example and add some real ones
-  it "should use PropertiesController" do
-    controller.should be_an_instance_of(PropertiesController)
+  describe "not admin" do
+    before(:each) do
+      @user = Factory.create(:user)
+      UserSession.create(@user)
+    end
+
+    [:edit, :destroy, :create].each do |a|
+      describe_action(a) do
+        before(:each) do
+          @params = {:id => 1}
+        end
+        it_should_require_login
+      end
+    end
+    describe_action(:new) { it_should_require_login }
+    describe_action(:index) { it_should_require_login }
   end
 
+  describe "admin" do
+    integrate_views
+
+    before(:each) do
+      @admin = Factory.create(:admin)
+      UserSession.create(@admin)
+      @property = Factory.create(:property)
+      Property.stub!(:paginate).and_return[@property, @property]
+    end
+
+    describe_action(:new) { it_should_render_template :new }
+    describe_action(:index) { it_should_render_template :index }
+
+    it "should render edit" do
+      get :edit, :id => @property.id
+      response.should be_success
+    end
+
+    it "should destroy property" do
+      delete :destroy, :id => @property.id
+      response.should redirect_to(properties_path)
+    end
+
+    it "should update"
+    it "should create"
+    #  do
+    #   put :update, :id => @property.id, :property => {:title => "new one"}
+    #   response.should redirect_to(properties_path)
+    #   @propery.title.should == "new one"
+    # end
+  end
 end

@@ -1,7 +1,8 @@
 - page_title("Object Properties")
 
-%h3 Editew project property
+%h3 Edit project property
 
+- # no live validations, scoped uniquness fails
 - semantic_form_for(@property) do |f|
   = f.object.errors.on(:base)
   != render :partial => "form", :locals => { :f => f }

@@ -12,3 +12,7 @@ end
 Factory.define :active_user, :parent => :user do |user|
   user.activated_at 1.month.ago.utc
 end
+
+Factory.define :admin, :parent => :active_user do |user|
+  user.is_admin true
+end
