@@ -20,4 +20,12 @@ describe User do
 
     end
   end
+
+  describe "protection" do
+    [:is_admin, :is_volunteer, :is_editor].each do |role|
+      it "should protect from assigning #{role}" do
+        proc{User.new({role => true})}.should raise_error(ActiveRecord::UnavailableAttributeAssignmentError)
+      end
+    end
+  end
 end
