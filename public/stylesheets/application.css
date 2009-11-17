@@ -9,3 +9,15 @@
 #tabs ul.tabs {
 	height:auto;
 }
+
+table.list {
+	width:100%;
+}
+
+table.list tr.title {
+	background:#eee;
+}
+
+table.list td,  table.list th{
+	border:1px solid #ddd;
+}

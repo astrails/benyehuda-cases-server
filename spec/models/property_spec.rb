@@ -16,6 +16,18 @@ describe Property do
       @property = Property.new
     end
 
+    describe "uniquness" do
+      it "should not allow creating same properties per parent kind" do
+        Property.create!(@valid_attributes)
+        lambda { Property.create!(@valid_attributes) }.should raise_error(ActiveRecord::RecordInvalid, /already been taken/)
+      end
+
+      it "should allow creating same property for other parent" do
+        Property.create!(@valid_attributes)
+        Property.create!(@valid_attributes.merge(:parent_type => "Task"))
+      end
+    end
+
     describe "presence" do
       [:title, :parent_type, :property_type].each do |p|
         it "should validate presence of #{p}" do
@@ -30,7 +42,7 @@ describe Property do
         it "should not allow wrong inclusions" do
           @property.send("#{p}=", "junk")
           @property.should_not be_valid
-          @property.errors.on(p).should =~ /is not included in the list/
+          @property.errors.on(p).should =~ /not included in the list/
         end
       end
     end

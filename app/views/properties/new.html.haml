@@ -1,0 +1,9 @@
+- page_title("Object Properties")
+
+%h3 New project property
+
+- semantic_form_for(@property, :live_validations => true) do |f|
+  = f.object.errors.on(:base)
+  != render :partial => "form", :locals => { :f => f }
+  != f.submit "Save"
+  != link_to "Cancel", properties_path

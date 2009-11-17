@@ -1,0 +1,15 @@
+- page_title("Object Properties")
+
+%h3 Object Properties
+
+!= link_to "New", new_property_path
+
+- unless @properties.blank?
+  %table.list
+    %tr.title
+      %th Parent
+      %th Name
+      %th Type
+    != render(:partial => @properties)
+
+  != will_paginate(@properties)

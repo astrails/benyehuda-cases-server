@@ -17,7 +17,9 @@ module ApplicationHelper
 
   def tabs_for_current_user
     @tabs_for_current_user ||= if logged_in?
-      true
+      returning([]) do |res|
+        res << {:title => "Object Properties", :path => properties_path}
+      end
     else
       false
     end
