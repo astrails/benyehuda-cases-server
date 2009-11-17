@@ -8,3 +8,10 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+task :cruise_control do
+  system "cp ../database.yml config/database.yml"
+  Rake::Task['db:migrate'].invoke
+  Rake::Task['default'].invoke
+end
+
