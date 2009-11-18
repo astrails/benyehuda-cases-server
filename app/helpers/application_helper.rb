@@ -22,6 +22,7 @@ module ApplicationHelper
           res << {:title => "Users", :path => users_path}
           res << {:title => "Object Properties", :path => properties_path}
         end
+        res << {:title => "Profile", :path => profile_path}
       end
     else
       false
