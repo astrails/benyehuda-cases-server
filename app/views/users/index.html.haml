@@ -1,6 +1,12 @@
 - page_title("Users")
 
-%h3 Users
+%h3
+  = params[:all] == "true" ? "All Users" : "Users"
+
+%p
+  != link_to "All", users_path(:all => true)
+  \|
+  != link_to "Enabled", users_path
 
 %table.list
   %tr.title

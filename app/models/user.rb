@@ -19,4 +19,10 @@ class User < ActiveRecord::Base
   named_scope :all_editors, {:conditions => "is_editor = 1 OR is_admin = 1"}
 
   named_scope :admins, {:conditions => {:is_admin => true}}
+
+  named_scope :enabled, {:conditions => "users.disabled_at IS NULL"}
+
+  def disabled?
+    !disabled_at.blank?
+  end
 end
