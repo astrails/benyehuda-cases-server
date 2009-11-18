@@ -16,3 +16,7 @@ end
 Factory.define :admin, :parent => :active_user do |user|
   user.is_admin true
 end
+
+Factory.define :editor, :parent => :active_user do |user|
+  user.is_editor true
+end

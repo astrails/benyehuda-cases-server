@@ -54,6 +54,30 @@ describe UsersController do
     end
   end
 
+  describe "editor" do
+    integrate_views
+
+    before(:each) do
+      @user = Factory.create(:editor)
+      UserSession.create(@user)
+      @property = Factory.create(:property)
+    end
+
+    describe "profile" do
+      it "should render edit profile with custom properties" do
+        get :edit, :id => @user.id
+        response.should be_success
+        response.body.should =~ /user_editor_properties_#{@property.id}__custom_value/
+      end
+
+      it "should update" do
+        put :update, :id => @user.id, :user => {:editor_properties => {@property.id => {:custom_value => "edit-edit"}}}
+        response.should redirect_to(user_path(@user))
+        @user.reload.editor_properties.first.custom_value.should == "edit-edit"
+      end
+    end
+  end
+
   # describe "regular user" do
   #   stub_current_user
   #

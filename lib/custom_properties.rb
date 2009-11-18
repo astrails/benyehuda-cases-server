@@ -16,6 +16,8 @@ module CustomProperties
         end
       end
 
+      attr_accessible association_name
+
       define_method "#{association_name}=" do |opts|
         opts.each do |property_id, attrs|
           cp = self.send(association_name).detect {|up| up.property_id == property_id.to_i}

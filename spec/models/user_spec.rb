@@ -28,4 +28,17 @@ describe User do
       end
     end
   end
+
+  it "should have custom properties" do
+    user = Factory.create(:user)
+    p = Property.create(:title => "some", :parent_type => "User", :property_type => "string")
+    
+    CustomProperty.count.should == 0
+    user.user_properties = {p.id => {:custom_value => "some some"}}
+    user.save
+    CustomProperty.count.should == 1
+
+    cp = user.reload.user_properties.first
+    cp.custom_value.should == "some some"
+  end
 end
