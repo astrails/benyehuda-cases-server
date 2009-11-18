@@ -3,6 +3,7 @@
 %h3 Edit Profile
 
 - semantic_form_for(@user, :live_validations => true) do |f|
+  = f.object.errors.on(:base)
   != render :partial => "form", :locals => { :f => f }
   %br
   != f.submit "Update"
