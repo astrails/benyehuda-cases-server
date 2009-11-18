@@ -5,8 +5,12 @@
   %strong Email:
   =h @user.email
 
-%p
-  != link_to "edit", edit_profile_path
+- when_admin do
+  %p
+    != link_to "edit user's profile", edit_user_path(@user)
 
-%p
-  != link_to "change password", password_edit_path
+- when_current_user do
+  %p
+    != link_to "edit my profile", edit_profile_path
+  %p
+    != link_to "change my password", password_edit_path

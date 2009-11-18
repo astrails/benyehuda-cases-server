@@ -4,4 +4,5 @@
   != render :partial => "form", :locals => { :f => f }
   != f.submit "Update"
 
-!= link_to "change password", password_edit_path
+- when_current_user do
+  != link_to "change password", password_edit_path

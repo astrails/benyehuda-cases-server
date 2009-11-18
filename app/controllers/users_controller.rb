@@ -16,6 +16,17 @@ class UsersController < InheritedResources::Base
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    # manual update protected attributes
+    if current_user.is_admin?
+      @user.is_admin = params[:user].delete(:is_admin)
+      @user.is_volunteer = params[:user].delete(:is_volunteer)
+      @user.is_editor = params[:user].delete(:is_editor)
+    end
+    update!
+  end
+
   def destroy
     @user = User.enabled.find(params[:id])
     if @user.id == current_user.id
