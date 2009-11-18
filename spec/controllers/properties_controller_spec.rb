@@ -28,6 +28,7 @@ describe PropertiesController do
       @admin = Factory.create(:admin)
       UserSession.create(@admin)
       @property = Factory.create(:property)
+      Property.stub(:find).with(@property.id.to_s).and_return(@property)
       Property.stub!(:paginate).and_return[@property, @property]
     end
 
@@ -44,12 +45,16 @@ describe PropertiesController do
       response.should redirect_to(properties_path)
     end
 
-    it "should update"
-    it "should create"
-    #  do
-    #   put :update, :id => @property.id, :property => {:title => "new one"}
-    #   response.should redirect_to(properties_path)
-    #   @propery.title.should == "new one"
-    # end
+    it "should update" do
+      put :update, :id => @property.id, :property => {:title => "new one"}
+      response.should redirect_to(properties_path)
+      @property.title.should == "new one"
+    end
+
+    it "should create" do
+      post :create, :property => {:title => "new one", :parent_type => "Editor", :property_type => "string"}
+      assigns[:property].should_not be_blank
+      response.should redirect_to(properties_path)
+    end
   end
 end
