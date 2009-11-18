@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091118133751) do
+ActiveRecord::Schema.define(:version => 20091118141745) do
+
+  create_table "custom_properties", :force => true do |t|
+    t.integer  "property_id"
+    t.integer  "proprietary_id"
+    t.string   "proprietary_type", :limit => 32
+    t.string   "custom_value",     :limit => 8192
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "custom_properties", ["proprietary_id", "proprietary_type"], :name => "proprietary"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

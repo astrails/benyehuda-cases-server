@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
   def disabled?
     !disabled_at.blank?
   end
+
+  has_many :user_properties, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = 'User'"
+  has_many :volunteer_properties, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = 'Volunteer'"
+  has_many :editor_properties, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = 'Editor'"
 end

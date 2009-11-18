@@ -1,6 +1,6 @@
 class Property < ActiveRecord::Base
 
-  PARENTS = %w(Volunteer Editor Task)
+  PARENTS = %w(User Volunteer Editor Task)
   TYPES = %w(string text boolean)
 
   validates_presence_of :title
@@ -15,4 +15,10 @@ class Property < ActiveRecord::Base
 
   named_scope :by_parent_type, {:order => "properties.parent_type DESC"}
   named_scope :by_title, {:order => "properties.title DESC"}
+
+  PARENTS.each do |parent|
+    named_scope "available_for_#{parent.downcase}".to_sym, {:conditions => ["properties.parent_type  = ?", parent]}
+  end
+
+  has_many :custom_properties
 end
