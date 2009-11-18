@@ -1,12 +1,11 @@
-%h4 Account Settings
+- f.inputs :name => "User Settings" do
+  != f.input :name
+  != f.input :email, :input_html => {:disabled => !f.object.new_record?}, :required => f.object.new_record?
 
-!= f.input :name
-!= f.input :email, :input_html => {:disabled => !f.object.new_record?}, :required => f.object.new_record?
-
-- when_admin do
-  != f.input :is_admin
-  != f.input :is_editor
-  != f.input :is_volunteer
+  - when_admin do
+    != f.input :is_admin
+    != f.input :is_editor
+    != f.input :is_volunteer
 
 != render(:partial => "users/user_form", :locals => {:f => f})
 
