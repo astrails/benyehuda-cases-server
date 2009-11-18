@@ -4,5 +4,6 @@
   %td= user.is_volunteer
   %td= user.is_editor
   %td= user.is_admin
+  %td= user.activated_at.to_s(:db)
   %td.edit!= link_to "Edit", edit_user_path(user)
   %td.delete!= link_to "Disable", user, :method => "delete", :confirm => "Are you sure?"
