@@ -18,6 +18,7 @@ class UsersController < InheritedResources::Base
 
   def update
     @user = User.find(params[:id])
+    debugger
     # manual update protected attributes
     if current_user.is_admin?
       @user.is_admin = params[:user].delete(:is_admin)

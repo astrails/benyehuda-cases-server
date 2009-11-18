@@ -7,4 +7,6 @@ class CustomProperty < ActiveRecord::Base
   validates_presence_of :proprietary_type
 
   validates_uniqueness_of :property_id, :scope => [:proprietary_id, :proprietary_type]
+  
+  attr_accessible :property_id, :custom_value
 end

@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
     c.perishable_token_valid_for = 2.weeks
   end
   include Astrails::Auth::Model
-  attr_accessible :name, :password, :password_confirmation
+  attr_accessible :name, :password, :password_confirmation, 
+    :user_properties
+
   validates_presence_of :name
 
   named_scope :volunteers, {:conditions => {:is_volunteer => true}}
@@ -26,7 +28,23 @@ class User < ActiveRecord::Base
     !disabled_at.blank?
   end
 
-  has_many :user_properties, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = 'User'"
-  has_many :volunteer_properties, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = 'Volunteer'"
-  has_many :editor_properties, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = 'Editor'"
+  [:user, :volunteer, :editor].each do |role|
+    has_many "#{role}_properties".to_sym, :class_name => "CustomProperty", :as => :proprietary, :include => :property, :conditions => "properties.parent_type = '#{role.to_s.capitalize}'" do
+      def indexed_by_id
+        @indexed_by_id ||= index_by(&:property_id)
+      end
+    end
+    define_method "#{role}_properties=" do |opts|
+      opts.each do |property_id, attrs|
+        cp = self.send("#{role}_properties").find_by_property_id(property_id) || self.send("#{role}_properties").build(:property_id => property_id)
+        cp.attributes = attrs
+      end
+    end
+    define_method "save_#{role}_properties" do
+      self.send("#{role}_properties").each do |rp|
+        rp.save if rp.changed?
+      end
+    end
+    after_save "save_#{role}_properties".to_sym
+  end
 end
