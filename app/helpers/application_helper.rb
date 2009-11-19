@@ -28,4 +28,8 @@ module ApplicationHelper
       false
     end
   end
+
+  def boolean_property(value)
+    value ? "true" : ""
+  end
 end

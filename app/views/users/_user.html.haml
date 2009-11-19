@@ -1,9 +1,9 @@
 %tr{:class => cycle("odd", "even")}
   %td!= link_to(h(user.name), user_path(user))
   %td= user.email
-  %td= user.is_volunteer
-  %td= user.is_editor
-  %td= user.is_admin
+  %td= boolean_property(user.is_volunteer)
+  %td= boolean_property(user.is_editor)
+  %td= boolean_property(user.is_admin)
   %td= user.activated_at
   - if user.activated_at
     %td.edit!= link_to "Edit", edit_user_path(user)
