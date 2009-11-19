@@ -1,2 +1,2 @@
 - f.fields_for("#{association_name}[#{property.id}]") do |upf|
-  != upf.input :custom_value, :input_html => {:value => f.object.send(association_name).indexed_by_id[property.id].try(:custom_value)}, :label => h(property.title), :required => false, :as => property.property_type.to_sym
+  != upf.input :custom_value, property_input_opts(property, association_name, f)
