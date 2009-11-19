@@ -60,20 +60,57 @@ describe UsersController do
     before(:each) do
       @user = Factory.create(:editor)
       UserSession.create(@user)
-      @property = Factory.create(:property)
+      @string_property = Factory.create(:property)
+      @bool_property = Factory.create(:bool_property)
+      @text_property = Factory.create(:text_property)
     end
 
     describe "profile" do
       it "should render edit profile with custom properties" do
         get :edit, :id => @user.id
         response.should be_success
-        response.body.should =~ /user_editor_properties_#{@property.id}__custom_value/
+        response.body.should =~ /user_editor_properties_#{@string_property.id}__custom_value/
+        response.body.should =~ /user_editor_properties_#{@bool_property.id}__custom_value/
+        response.body.should =~ /user_editor_properties_#{@text_property.id}__custom_value/
       end
 
       it "should update" do
-        put :update, :id => @user.id, :user => {:editor_properties => {@property.id => {:custom_value => "edit-edit"}}}
+        put :update, :id => @user.id, :user => {:editor_properties => {
+            @string_property.id => {:custom_value => "s"},
+            @bool_property.id => {:custom_value => "1"},
+            @text_property.id => {:custom_value => "t"}
+            }
+          }
         response.should redirect_to(user_path(@user))
-        @user.reload.editor_properties.first.custom_value.should == "edit-edit"
+        @user.reload
+        @user.editor_properties.find_by_property_id(@string_property.id).custom_value.should == "s"
+        @user.editor_properties.find_by_property_id(@text_property.id).custom_value.should == "t"
+        @user.editor_properties.find_by_property_id(@bool_property.id).custom_value.should == "1"
+      end
+    end
+
+    describe "profile properties" do
+      it "should render editable properties - not empty" do
+        @user.update_attribute(:editor_properties, {
+          @string_property.id => {:custom_value => "string"},
+          @bool_property.id => {:custom_value => "1"},
+          @text_property.id => {:custom_value => "text"},
+        })
+        get :edit, :id => @user.id
+        response.should be_success
+
+        response.should have_tag("input[type=text][name=?][value=?]", "user[editor_properties[#{@string_property.id}]][custom_value]", "string")
+        response.should have_tag("input[type=checkbox][name=?][checked=checked]", "user[editor_properties[#{@bool_property.id}]][custom_value]")
+        response.should have_tag("textarea[name=?]", "user[editor_properties[#{@text_property.id}]][custom_value]", /text/)
+      end
+
+      it "should render empty properties" do
+        get :edit, :id => @user.id
+        response.should be_success
+
+        response.should have_tag("input[type=text][name=?]", "user[editor_properties[#{@string_property.id}]][custom_value]")
+        response.should have_tag("input[type=checkbox][name=?]", "user[editor_properties[#{@bool_property.id}]][custom_value]", "")
+        response.should have_tag("textarea[name=?]", "user[editor_properties[#{@text_property.id}]][custom_value]", "")
       end
     end
   end
