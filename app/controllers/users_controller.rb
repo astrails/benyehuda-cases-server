@@ -18,6 +18,11 @@ class UsersController < InheritedResources::Base
 
   def update
     @user = User.find(params[:id])
+    unless @user.activated_at
+      flash[:error] = "You cannot edit unactivated users"
+      redirect_to users_path
+      return
+    end
     # manual update protected attributes
     if current_user.is_admin?
       @user.is_admin = params[:user].delete(:is_admin)
