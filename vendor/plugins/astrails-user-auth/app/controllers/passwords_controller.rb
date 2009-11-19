@@ -5,7 +5,6 @@ class PasswordsController < InheritedResources::Base
   actions :new, :update, :edit
 
   before_filter :require_no_user, :except => [:edit, :update]
-  before_filter :load_user_using_perishable_token, :only => [:edit, :update]
 
   # new! + new.html.haml
 
@@ -26,9 +25,14 @@ class PasswordsController < InheritedResources::Base
     end
   end
 
-  #edit! + edit.html.haml
+  def edit
+    return unless load_user_using_perishable_token(true)
+    edit!
+  end
 
   def update
+    return unless load_user_using_perishable_token
+
     unless resource.activated_at
       resource.activated_at = Time.now
       @activated = true
@@ -56,7 +60,16 @@ class PasswordsController < InheritedResources::Base
     @user ||= params[:id] ? User.find_using_perishable_token(params[:id]) : current_user
   end
 
-  def load_user_using_perishable_token
+  def load_user_using_perishable_token(with_activation_check = false)
+    resource
+
+    if with_activation_check
+      if current_user && !@user.activated_at
+        flash[:error] = "Please log out to activate new account"
+        redirect_to profile_path
+        return false
+      end
+    end
     unless resource
       flash[:error] = <<-END
         We're sorry, but we could not locate your account.
@@ -65,7 +78,9 @@ class PasswordsController < InheritedResources::Base
         reset password process.
       END
       redirect_to new_password_path
+      return false
     end
+    true
   end
 
 end
