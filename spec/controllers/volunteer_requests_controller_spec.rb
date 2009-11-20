@@ -14,6 +14,31 @@ describe VolunteerRequestsController do
     end
   end
 
+  describe "admin actions" do
+
+    integrate_views
+
+    before(:each) do
+      @volunteer_request = Factory.create(:volunteer_request)
+      @confirmed_volunteer_request = Factory.create(:confirmed_volunteer_request)
+      @user = Factory.create(:admin)
+      UserSession.create(@user)
+    end
+
+    it "should render index" do
+      get :index
+      response.should be_success
+      response.should render_template(:index)
+      assigns[:volunteer_requests].length.should == 1
+    end
+
+    it "should render show" do
+      get :show, :id => @volunteer_request.id
+      response.should be_success
+      response.should render_template(:show)
+    end
+  end
+
   describe "logged in user" do
     before(:each) do
       @user = Factory.create(:active_user)
@@ -30,6 +55,7 @@ describe VolunteerRequestsController do
         end
       end
     end
+
 
     describe "user with volunteer request" do
 
