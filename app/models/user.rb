@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
 
   named_scope :enabled, {:conditions => "users.disabled_at IS NULL"}
 
+  has_one :volunteer_request
+  has_many :confirmed_volunteer_requests, :class_name => "VolunteerRequest", :foreign_key => :approver_id
+  # has_many :volunteers_approved, :through => :volunteer_confirmations, :source => :user
+
   include CustomProperties
   has_many_custom_properties :user # user_properties
   has_many_custom_properties :volunteer # volunteer_properties

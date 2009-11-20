@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091118141745) do
+ActiveRecord::Schema.define(:version => 20091120134822) do
 
   create_table "custom_properties", :force => true do |t|
     t.integer  "property_id"
@@ -80,5 +80,16 @@ ActiveRecord::Schema.define(:version => 20091118141745) do
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
   add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token"
+
+  create_table "volunteer_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "reason",      :limit => 4096
+    t.datetime "approved_at"
+    t.integer  "approver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "volunteer_requests", ["user_id"], :name => "index_volunteer_requests_on_user_id"
 
 end
