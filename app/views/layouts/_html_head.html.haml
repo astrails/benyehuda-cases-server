@@ -10,9 +10,5 @@
 
 != stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', :media => 'all', :cache => "main"
 
-%script{:type => "text/javascript", :src => "http://www.google.com/jsapi"}
-:javascript
-  google.load("jquery", "1.3.2");
-  google.load("jqueryui", "1.7.1");
-
+!= render(:partial => "layouts/javascripts")
 != javascript_include_tag "jrails", "jquery.validate.min.js", "application", :cache => "main"
