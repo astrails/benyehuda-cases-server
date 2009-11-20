@@ -12,4 +12,5 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :pages, :controller => 'pages', :only => [:show]
   map.resources :properties
+  map.resource :dashboard
 end

@@ -134,7 +134,7 @@ describe PasswordsController do
 
     [:new, :create].each do |action|
       describe_action(action) do
-        it_should_redirect_to("/")
+        it_should_redirect_to("/dashboard")
       end
     end
 

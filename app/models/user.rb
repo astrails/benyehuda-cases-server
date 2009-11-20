@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   def disabled?
     !disabled_at.blank?
   end
+
+  def might_become_volunteer?
+    !is_volunteer? && !is_editor? && !is_admin?
+  end
 end

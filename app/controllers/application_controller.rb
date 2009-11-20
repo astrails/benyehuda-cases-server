@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
-    include Astrails::Auth::Controller
-  def home_path
-    # this is where users is redirected after login
-    "/"
-  end
+  include Astrails::Auth::Controller
+
+  def home_path; dashboard_path end
   helper_method :home_path
 
   helper :all
