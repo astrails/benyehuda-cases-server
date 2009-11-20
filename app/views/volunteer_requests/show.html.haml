@@ -1,0 +1,16 @@
+- page_title("Volunteer Requests")
+
+%h3
+  Volunteer Request from
+  != link_to h(@volunteer_request.user.name), user_path(@volunteer_request.user)
+
+%p
+  Requested at
+  = @volunteer_request.created_at.to_s(:db)
+
+%h4 Reason
+%p= @volunteer_request.reason
+
+%p
+  != confirm_button(@volunteer_request)
+  != link_to "Back to Volunteer Requestes", volunteer_requests_path

@@ -1,0 +1,13 @@
+- page_title("Volunteer Requests")
+
+%h3 Volunteer Requests
+
+%table.list
+  %tr.title
+    %th From
+    %th When
+    %th Reason
+    %th &nbsp;
+  != render(:partial => @volunteer_requests)
+
+!= will_paginate(@volunteer_requests)

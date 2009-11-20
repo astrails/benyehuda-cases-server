@@ -7,5 +7,7 @@ class VolunteerRequest < ActiveRecord::Base
 
   attr_accessible :reason
 
-  named_scope :pending, :conditions => "volunteer.requests.approved_at is NULL"
+  named_scope :pending, :conditions => "volunteer_requests.approved_at is NULL"
+  named_scope :by_request_time, :order => "volunteer_requests.created_at"
+  named_scope :with_user, :include => :user
 end

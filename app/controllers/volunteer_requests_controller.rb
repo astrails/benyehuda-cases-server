@@ -21,7 +21,11 @@ class VolunteerRequestsController < InheritedResources::Base
 
 protected
   def collection
-    @volunteers_requests ||= end_of_association_chain.pending.paginate(:page => params[:page], :per_page => params[:per_page])
+    @volunteer_requests ||= end_of_association_chain.
+      pending.
+      by_request_time.
+      with_user.
+      paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   def check_volunteer_request
