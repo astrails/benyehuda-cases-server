@@ -37,6 +37,6 @@ class User < ActiveRecord::Base
   end
 
   def might_become_volunteer?
-    !is_volunteer? && !is_editor? && !is_admin?
+    !is_volunteer? && !is_editor? && !is_admin? && volunteer_request.blank?
   end
 end

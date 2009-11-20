@@ -3,4 +3,4 @@
 %h3 Dashboard
 
 - if current_user.might_become_volunteer?
-    != button_to_function "Become Volunteer", ""
+    != button_to "Become Volunteer", new_volunteer_request_path, :method => :get

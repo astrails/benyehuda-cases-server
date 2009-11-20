@@ -6,4 +6,6 @@ class VolunteerRequest < ActiveRecord::Base
   validates_length_of :reason, :within => 8..4096
 
   attr_accessible :reason
+
+  named_scope :pending, :conditions => "volunteer.requests.approved_at is NULL"
 end

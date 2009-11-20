@@ -1,0 +1,8 @@
+%h3 New volunteer request
+
+- semantic_form_for(@volunteer_request, :live_validations => true) do |f|
+  - f.inputs do
+    = f.object.errors.on(:base)
+    != f.input :reason, :as => :text
+    != f.submit "Request"
+    != link_to "Cancel", properties_path
