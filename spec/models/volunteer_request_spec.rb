@@ -9,6 +9,22 @@ describe VolunteerRequest do
     @volunteer_request.should_not be_new_record
   end
 
+  describe "approval" do
+    before(:each) do
+      @volunteer_request = Factory.create(:volunteer_request)
+      @admin = Factory.create(:admin)
+      @volunteer_request.approve!(@admin)
+    end
+
+    it "should set approved_at" do
+      @volunteer_request.approved_at.should_not be_blank
+    end
+
+    it "should set appover" do
+      @volunteer_request.approver_id.should == @admin.id
+    end
+  end
+
   describe "validations" do
     before(:each) do
       @volunteer_request = VolunteerRequest.new

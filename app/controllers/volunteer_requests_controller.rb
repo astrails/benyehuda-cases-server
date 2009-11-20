@@ -19,6 +19,13 @@ class VolunteerRequestsController < InheritedResources::Base
 
   # index
 
+  def update
+    @volunteer_requests = VolunteerRequest.pending.find(params[:id])
+    @volunteer_requests.approve!(current_user)
+    flash[:notice] = "Volunteer request approved!"
+    redirect_to volunteer_requests_path
+  end
+
 protected
   def collection
     @volunteer_requests ||= end_of_association_chain.

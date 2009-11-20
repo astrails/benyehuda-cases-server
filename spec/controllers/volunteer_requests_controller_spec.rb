@@ -33,9 +33,21 @@ describe VolunteerRequestsController do
     end
 
     it "should render show" do
+      VolunteerRequest.should_receive(:find).with(@volunteer_request.id.to_s).and_return(@volunteer_request)
       get :show, :id => @volunteer_request.id
       response.should be_success
       response.should render_template(:show)
+    end
+
+    it "should approve" do
+      @volunteer_request.approved_at.should be_blank
+      put :update, :id => @volunteer_request.id
+      response.should redirect_to(volunteer_requests_path)
+      @volunteer_request.reload.approved_at.should_not be_blank
+    end
+
+    it "should not reapprove" do
+      lambda {put :update, :id => @confirmed_volunteer_request.id}.should raise_error(ActiveRecord::RecordNotFound)
     end
   end
 

@@ -10,4 +10,12 @@ class VolunteerRequest < ActiveRecord::Base
   named_scope :pending, :conditions => "volunteer_requests.approved_at is NULL"
   named_scope :by_request_time, :order => "volunteer_requests.created_at"
   named_scope :with_user, :include => :user
+
+  def approve!(approver_user)
+    self.approver = approver_user
+    self.approved_at = Time.now.utc
+    save!
+    self.user.is_volunteer = true
+    self.user.save!
+  end
 end
