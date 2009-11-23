@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
   has_many_custom_properties :volunteer # volunteer_properties
   has_many_custom_properties :editor #editor_properties
 
+  has_many :created_tasks, :class_name => "Task", :foreign_key => "creator_id"
+  has_many :editing_tasks, :class_name => "Task", :foreign_key => "editor_id"
+  has_many :assigned_tasks, :class_name => "Task", :foreign_key => "assignee_id"
+
   def disabled?
     !disabled_at.blank?
   end

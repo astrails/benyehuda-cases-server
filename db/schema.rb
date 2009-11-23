@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091120134822) do
+ActiveRecord::Schema.define(:version => 20091123163927) do
 
   create_table "custom_properties", :force => true do |t|
     t.integer  "property_id"
@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(:version => 20091120134822) do
     t.string   "title"
     t.string   "parent_type",   :limit => 32
     t.string   "property_type", :limit => 32
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "creator_id"
+    t.integer  "editor_id"
+    t.integer  "assignee_id"
+    t.string   "name"
+    t.string   "state",       :limit => 16
+    t.string   "kind"
+    t.string   "difficulty",  :limit => 16
+    t.boolean  "full_nikkud",               :default => false
+    t.integer  "parent_id"
+    t.integer  "child_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
