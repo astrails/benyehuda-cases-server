@@ -23,5 +23,5 @@ class Task < ActiveRecord::Base
   validates_presence_of :difficulty
   validates_inclusion_of :difficulty, :in => DIFFICULTIES, :message => "not included in the list"
 
-  attr_accessible :name, :difficulty, :full_nikkud
+  attr_accessible :name, :kind, :difficulty, :full_nikkud
 end
