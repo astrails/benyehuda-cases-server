@@ -20,3 +20,7 @@ end
 Factory.define :editor, :parent => :active_user do |user|
   user.is_editor true
 end
+
+Factory.define :volunteer, :parent => :active_user do |user|
+  user.is_volunteer true
+end
