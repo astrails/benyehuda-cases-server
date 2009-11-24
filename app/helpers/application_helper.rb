@@ -23,6 +23,7 @@ module ApplicationHelper
           res << {:title => "Volunteer Requests", :path => volunteer_requests_path}
         end
         if current_user.is_admin?
+          res << {:title => "All Tasks", :path => tasks_path}
           res << {:title => "Users", :path => users_path}
           res << {:title => "Object Properties", :path => properties_path}
         end

@@ -1,0 +1,20 @@
+- page_title("All Tasks")
+
+%h3 All Tasks
+
+!= link_to "All", tasks_path
+&nbsp;
+- Task.aasm_states.collect(&:name).each do |name|
+  != link_to textify_state(name.to_s), tasks_path(name => true)
+  &nbsp;
+
+%table.list
+  %tr
+    %th Creater
+    %th Last Updated
+    %th Name
+    %th Editor
+    %th Assignee
+    %th State
+!= render(:partial => @tasks)
+!= will_paginate(@tasks)

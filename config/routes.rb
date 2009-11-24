@@ -14,4 +14,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :properties
   map.resource :dashboard
   map.resources :volunteer_requests
+  map.resources :tasks
 end

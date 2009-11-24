@@ -24,4 +24,6 @@ class Task < ActiveRecord::Base
   validates_inclusion_of :difficulty, :in => DIFFICULTIES, :message => "not included in the list"
 
   attr_accessible :name, :kind, :difficulty, :full_nikkud
+
+  named_scope :by_updated_at, :order => "tasks.updated_at"
 end

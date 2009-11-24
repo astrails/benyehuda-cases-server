@@ -1,0 +1,7 @@
+%tr
+  %td!= link_to h(task.creator.name), user_path(task.creator)
+  %th= task.updated_at.to_s(:db)
+  %th= task.name.utf_snippet(70)
+  %th!= link_to h(task.editor.name), user_path(task.editor) if task.editor
+  %th!= link_to h(task.assignee.name), user_path(task.assignee) if task.assignee
+  %th= textify_state(task.state)
