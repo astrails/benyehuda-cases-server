@@ -1,6 +1,6 @@
 class TasksController < InheritedResources::Base
   before_filter :require_admin
-  actions :index, :new, :create
+  actions :index, :new, :create, :edit, :update
 
   Task.aasm_states.collect(&:name).each do |name|
     has_scope name, :boolean => true, :only => :index
@@ -12,6 +12,13 @@ class TasksController < InheritedResources::Base
       format.html {redirect_to tasks_path}
     end
   end
+
+  def update
+    super do |format|
+      format.html {redirect_to tasks_path}
+    end
+  end
+
 
 protected
   def collection
