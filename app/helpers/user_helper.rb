@@ -1,4 +1,12 @@
 module UserHelper
+
+  # TODO: gettext
+  ROLES = {
+    "editor" => "Editor",
+    "volunteer" => "Volunteer",
+    "admin" => "Admin"
+  }
+
   def when_volunteer
     yield if current_user.is_volunteer?
   end
@@ -13,5 +21,10 @@ module UserHelper
 
   def when_user_editor
     yield if @user.is_editor?
+  end
+
+  def user_roles(roles)
+    return "No roles defined" if roles.blank?
+    roles.map{ |r| ROLES[r]}.join(", ")
   end
 end

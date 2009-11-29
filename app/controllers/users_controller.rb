@@ -1,7 +1,8 @@
 class UsersController < InheritedResources::Base
   before_filter :require_admin, :only => [:index, :destroy]
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_owner, :except => [:new, :create, :index]
+  before_filter :require_owner, :only => [:edit, :update]
+  before_filter :require_owner_or_public_profile, :only => :show
   before_filter :set_default_domain, :only => :create
 
   def create
@@ -45,6 +46,26 @@ class UsersController < InheritedResources::Base
   end
 
   protected
+
+  def public_profile?
+    true == params[:public_profile]
+  end
+  helper_method :public_profile?
+
+  def require_owner_or_public_profile
+    return require_owner unless public_profile?
+
+    return false unless require_user
+    return true unless resource # let it fail
+     # allow colunteers to see public profiles of admins and editors
+    return true if current_user.is_volunteer? && (resource.is_admin? || resource.is_editor?)
+    # allow editors and admins to see public profile of volunteers
+    return true if resource.is_volunteer? && (current_user.is_admin? || current_user.is_editor?)
+
+    flash[:error] = "Only registered activists allowed to access this page"
+    redirect_to "/"
+    return false
+  end
 
   def require_owner
     return false unless require_user

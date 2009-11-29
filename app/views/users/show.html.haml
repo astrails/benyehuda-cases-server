@@ -1,21 +1,4 @@
-- page_title("Profile")
+- page_title("Profile") if @user.id == current_user.id
 
-%h3 Profile
-
-%p
-  %strong Name:
-  =h @user.name
-%p
-  %strong Email:
-  =h @user.email
-
-- if @user.activated_at
-  - when_admin do
-    %p
-      != link_to "edit user's profile", edit_user_path(@user)
-
-  - when_current_user do
-    %p
-      != link_to "edit my profile", edit_profile_path
-    %p
-      != link_to "change my password", password_edit_path
+!= render(:partial => "users/public_profile")
+!= render(:partial => "users/show") unless public_profile?

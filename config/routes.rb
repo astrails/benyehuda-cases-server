@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup "/signup", :controller => "users", :action => "new"
   map.resources :users
   map.resource :profile, :controller => "users"
+  map.profiles '/profiles/:id', :controller => "users", :action => "show", :public_profile => true
   map.root :controller => :pages, :action => :show, :id => :home
 
   map.resources :pages, :controller => 'pages', :only => [:show]

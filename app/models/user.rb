@@ -43,4 +43,12 @@ class User < ActiveRecord::Base
   def might_become_volunteer?
     !is_volunteer? && !is_editor? && !is_admin? && volunteer_request.blank?
   end
+
+  def public_roles
+    @public_roles ||= returning([]) do |res|
+      res << "admin" if is_admin?
+      res << "editor" if is_editor?
+      res << "volunteer" if is_volunteer?
+    end
+  end
 end
