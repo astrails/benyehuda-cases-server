@@ -30,4 +30,6 @@ class Task < ActiveRecord::Base
   include DefaultAttributes
   default_attribute :kind, "typing"
   default_attribute :difficulty, "normal"
+
+  has_many :documents, :dependent => :destroy
 end
