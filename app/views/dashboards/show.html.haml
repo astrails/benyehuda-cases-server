@@ -4,3 +4,6 @@
 
 - if current_user.might_become_volunteer?
   != button_to "Become Volunteer", new_volunteer_request_path, :method => :get
+
+- if current_user.is_admin?
+  != link_to "New Task", new_admin_task_path
