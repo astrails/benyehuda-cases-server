@@ -62,7 +62,7 @@ describe Admin::TasksController do
 
     it "should create a task" do
       post :create, :task => {:name => "oops"}
-      response.should redirect_to("/admin/tasks")
+      response.should redirect_to("/tasks/#{Task.last.id}")
       Task.last.name.should == "oops"
       Task.last.creator_id.should == @user.id
     end

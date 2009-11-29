@@ -9,7 +9,7 @@ class Admin::TasksController < InheritedResources::Base
   def create
     @task = current_user.created_tasks.create(params[:task])
     create! do |format|
-      format.html {redirect_to admin_tasks_path}
+      format.html {redirect_to task_path(@task)}
     end
   end
 
