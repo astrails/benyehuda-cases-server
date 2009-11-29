@@ -26,4 +26,8 @@ class Task < ActiveRecord::Base
   attr_accessible :name, :kind, :difficulty, :full_nikkud
 
   named_scope :by_updated_at, :order => "tasks.updated_at"
+
+  include DefaultAttributes
+  default_attribute :kind, "typing"
+  default_attribute :difficulty, "normal"
 end
