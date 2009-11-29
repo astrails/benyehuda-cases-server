@@ -18,4 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :tasks
   end
+  map.resources :tasks do |tasks|
+    tasks.resources :documents
+  end
 end

@@ -31,5 +31,9 @@ class Task < ActiveRecord::Base
   default_attribute :kind, "typing"
   default_attribute :difficulty, "normal"
 
-  has_many :documents, :dependent => :destroy
+  has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
+
+  def participant?(user)
+    [:creator, :editor, :assignee].map{|v| send(v)}.any?{|v| v && v.try(:id) == user.id}
+  end
 end

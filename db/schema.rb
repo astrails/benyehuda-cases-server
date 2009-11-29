@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091129151346) do
+ActiveRecord::Schema.define(:version => 20091129180721) do
 
   create_table "custom_properties", :force => true do |t|
     t.integer  "property_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20091129151346) do
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "global_preferences", :force => true do |t|

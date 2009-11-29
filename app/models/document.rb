@@ -16,4 +16,6 @@ class Document < ActiveRecord::Base
   validates_attachment_size :file, :less_than => 10.megabytes
 
   validates_presence_of :user_id, :task_id
+
+  # named_scope :active, :conditions => {:deleted_at => nil}
 end
