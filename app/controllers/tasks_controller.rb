@@ -6,6 +6,13 @@ class TasksController < InheritedResources::Base
     has_scope name, :boolean => true, :only => :index
   end
 
+  def create
+    @task = current_user.created_tasks.create(params[:task])
+    create! do |format|
+      format.html {redirect_to tasks_path}
+    end
+  end
+
 protected
   def collection
     @tasks ||= end_of_association_chain.by_updated_at.paginate(:page => params[:page], :per_page => params[:per_page])

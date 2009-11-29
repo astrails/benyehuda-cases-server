@@ -1,7 +1,8 @@
-- page_title("All Tasks")
+- page_title("Tasks")
 
 %h3 All Tasks
 
+!= link_to "New", new_task_path
 != link_to "All", tasks_path
 &nbsp;
 - Task.aasm_states.collect(&:name).each do |name|
@@ -16,5 +17,5 @@
     %th Editor
     %th Assignee
     %th State
-!= render(:partial => @tasks)
+  != render(:partial => @tasks)
 != will_paginate(@tasks)
