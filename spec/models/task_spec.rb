@@ -11,10 +11,14 @@ describe Task do
       @task.should_not be_valid
     end
 
-    [:name, :kind, :difficulty].each do |a|
-      it "should validate #{a}" do
-        @task.errors.on(a).should_not be_blank
-      end
+    it "should validate name" do
+      @task.errors.on(:name).should_not be_blank
+    end
+  end
+
+  [:kind, :difficulty].each do |a|
+    it "should have default values for #{a}" do
+      Task.new.send(a).should_not be_blank
     end
   end
 
