@@ -1,12 +1,12 @@
-- page_title("Tasks")
+- page_title("Tasks Admin")
 
 %h3 New Task
 
-- semantic_form_for(@task, :live_validations => true) do |f|
+- semantic_form_for(@task, :live_validations => true, :url => admin_tasks_path) do |f|
   - f.inputs do
     = f.object.errors.on(:base)
   != render(:partial => "form", :locals => {:f => f})
   - f.inputs do
     != f.submit "Save"
-    != link_to "Cancel", tasks_path
+    != link_to "Cancel", admin_tasks_path
 

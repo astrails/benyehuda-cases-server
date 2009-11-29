@@ -1,12 +1,12 @@
-- page_title("Tasks")
+- page_title("Tasks Admin")
 
 %h3 All Tasks
 
-!= link_to "New", new_task_path
-!= link_to "All", tasks_path
+!= link_to "New", new_admin_task_path
+!= link_to "All", admin_tasks_path
 &nbsp;
 - Task.aasm_states.collect(&:name).each do |name|
-  != link_to textify_state(name.to_s), tasks_path(name => true)
+  != link_to textify_state(name.to_s), admin_tasks_path(name => true)
   &nbsp;
 
 %table.list

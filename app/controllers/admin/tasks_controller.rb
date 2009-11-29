@@ -1,4 +1,4 @@
-class TasksController < InheritedResources::Base
+class Admin::TasksController < InheritedResources::Base
   before_filter :require_admin
   actions :index, :new, :create, :edit, :update
 
@@ -9,13 +9,13 @@ class TasksController < InheritedResources::Base
   def create
     @task = current_user.created_tasks.create(params[:task])
     create! do |format|
-      format.html {redirect_to tasks_path}
+      format.html {redirect_to admin_tasks_path}
     end
   end
 
   def update
     super do |format|
-      format.html {redirect_to tasks_path}
+      format.html {redirect_to admin_tasks_path}
     end
   end
 
