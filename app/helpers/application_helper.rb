@@ -26,6 +26,7 @@ module ApplicationHelper
           res << {:title => "Tasks Admin", :path => admin_tasks_path}
           res << {:title => "Users", :path => users_path}
           res << {:title => "Object Properties", :path => properties_path}
+          res << {:title => "Global Preferences", :path => global_preferences_path}
         end
         res << {:title => "Profile", :path => profile_path}
       end
