@@ -19,5 +19,5 @@ namespace :remote do
 end
 
 namespace :deploy do
-  task :restart => %w/remote:dj:stop remote:dj:start/
+  task :restart => %w/remote:dj:restart/
 end
