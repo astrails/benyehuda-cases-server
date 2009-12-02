@@ -24,3 +24,7 @@ end
 Factory.define :volunteer, :parent => :active_user do |user|
   user.is_volunteer true
 end
+
+Factory.define :another_volunteer, :parent => :active_user do |user|
+  user.is_volunteer true
+end

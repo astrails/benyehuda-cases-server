@@ -3,17 +3,12 @@ class TasksController < InheritedResources::Base
   actions :show
 
   # show
-  def show
-    @task = Task.find(params[:id], :include => :documents)
-    show!
-  end
-
 protected
   def require_task_participant
     return false unless require_user
     return true if current_user.try(:is_admin?)
     return true if current_user.try(:is_editor?)
-    return true if @task.participant?(current_user) # participant
+    return true if resource.participant?(current_user) # participant
 
     flash[:error] = "Only participant can see this page"
     redirect_to "/"
