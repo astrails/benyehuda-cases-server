@@ -23,6 +23,8 @@ Rails::Initializer.run do |config|
   config.gem 'rspec', :lib => false, :version => '1.2.6'
   config.gem 'mocha', :version => '0.9.8', :library => false
   config.gem "aasm", :version => "2.1.3", :library => false
+  config.gem 'mime-types', :lib => 'mime/types', :version => "1.16"
+  # config.middleware.use Rack::NoIE
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -54,4 +56,7 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  %w(middleware).each do |dir|
+    config.load_paths << "#{RAILS_ROOT}/app/#{dir}" 
+  end
 end

@@ -12,13 +12,21 @@ class DocumentsController < InheritedResources::Base
     @document = @task.documents.build(params[:document])
     @document.user_id = current_user.id
     create! do |success, failure|
+      success.js do
+        render(:update) do |page|
+          page[:documents].append render(:partial => "documents/document", :object => @document)
+        end
+      end
       success.html {redirect_to task_path(@task)}
+      failure.js do
+        render :status => :unprocessable_entity
+      end
     end
   end
 
   def destroy
     document = @task.documents.find(params[:id])
-    document.delete_at = Time.now.utc
+    document.deleted_at = Time.now.utc
     document.save!
     flash[:notice] = "Document deleted"
     redirect_to task_path(@task)

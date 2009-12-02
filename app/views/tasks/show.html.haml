@@ -4,8 +4,6 @@
 %h4 Description:
 %p= @task.name
 
-- unless @task.documents.blank?
-  %h4 Attached documents
-  != render(:partial => "documents/document", :collection => @task.documents, :as => :document)
+!= render(:partial => "documents", :locals => {:documents => @task.documents})
 
 != render(:partial => "new_document")

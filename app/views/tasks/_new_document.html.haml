@@ -1,2 +1,14 @@
+!= upload_javascripts
+!= javascript_include_tag "jquery.uploadify.v2.1.0.min"
+!= stylesheet_link_tag "upload"
+
 %h3 Attach new document
-- # multi docs upload goes here
+#no_flash_player{:style => "display:none"}
+  It looks like you don't have
+  %a{:href => "http://www.adobe.com/go/getflashplayer", :target => "_blank"} Flash Media Player
+  installed or enabled.
+  %a{:href => "http://www.adobe.com/go/getflashplayer", :target => "_blank"} Get Flash Media Player!
+
+%input#upload_documents{:type => "file", :name => "upload_documents"}
+
+#fileQueue
