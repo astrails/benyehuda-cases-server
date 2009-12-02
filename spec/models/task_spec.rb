@@ -55,4 +55,22 @@ describe Task do
 
     it "should have test for build_chained_task"
   end
+
+  describe "participant" do
+    before(:each) do
+      @task = Factory.create(:task)
+    end
+    [:creator, :assignee, :editor].each do |u|
+      it "#{u} should be a participant" do
+        @task.participant?(@task.send(u)).should be_true
+      end
+    end
+
+    [:user, :another_volunteer, :active_user].each do |u|
+      it "#{u} should not be a participant" do
+        user = Factory.create(u)
+        @task.participant?(user).should_not be_true
+      end
+    end
+  end
 end

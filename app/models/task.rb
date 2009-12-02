@@ -34,6 +34,7 @@ class Task < ActiveRecord::Base
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
 
   def participant?(user)
-    [:creator, :editor, :assignee].map{|v| send(v)}.any?{|v| v && v.try(:id) == user.id}
+    return false unless user
+    [creator_id, editor_id, assignee_id].member?(user.id)
   end
 end
