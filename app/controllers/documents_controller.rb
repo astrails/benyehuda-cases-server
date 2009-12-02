@@ -5,7 +5,7 @@ class DocumentsController < InheritedResources::Base
   before_filter :require_owner, :only => :destroy
   actions :new, :create, :destroy
 
-  # new
+  # new - shouldn't be used
 
   # create
   def create
@@ -49,8 +49,8 @@ protected
 
   def require_owner
     return false unless require_user
-    return true unless resource # let it fail
     return true if current_user.try(:is_admin?)
+    return true unless resource # let it fail
     return true if resource.user_id == current_user.id # owner
 
     flash[:error] = "Only the owner can see this page"
