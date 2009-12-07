@@ -8,14 +8,16 @@ class PropertiesController < InheritedResources::Base
   # edit
 
   def create
-    super do |format|
-      format.html {redirect_to properties_path}
+    super do |success, failure|
+      success.html {redirect_to properties_path}
+      failure.html {render :action => "new"}
     end
   end
 
   def update
-    super do |format|
-      format.html {redirect_to properties_path}
+    super do |success, failure|
+      success.html {redirect_to properties_path}
+      failure.html {render :action => "edit"}
     end
   end
 
