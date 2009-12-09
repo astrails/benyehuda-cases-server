@@ -12,6 +12,6 @@ Factory.define :assigned_task, :parent => :task do |t|
 end
 
 Factory.define :waits_for_editor_approve_task, :parent => :task do |t|
-  t.state "waits_for_editor_approve"
+  t.state "waits_for_editor"
 end
 
