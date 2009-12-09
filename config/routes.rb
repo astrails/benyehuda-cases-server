@@ -20,5 +20,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :tasks do |tasks|
     tasks.resources :documents
+    tasks.resource  :assignment
   end
 end

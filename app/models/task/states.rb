@@ -91,10 +91,19 @@ module Task::States
     !unassigned?
   end
 
-  def assign!(new_editor = nil, new_assignee = nil)
-    self.editor = new_editor      if new_editor
-    self.assignee = new_assignee  if new_assignee
+  def assign_editor(new_editor)
+    self.editor = new_editor
     _assign
+  end
+
+  def assign_assignee(new_assignee)
+    self.assignee = new_assignee
+    _assign
+  end
+
+  def assign!(new_editor = nil, new_assignee = nil)
+    assign_editor(new_editor)
+    assign_assignee(new_assignee)
     save!
   end
 

@@ -27,4 +27,8 @@ module UserHelper
     return "No roles defined" if roles.blank?
     roles.map{ |r| ROLES[r]}.join(", ")
   end
+
+  def when_editor_or_admin
+    yield if current_user.is_editor? || current_user.is_admin?
+  end
 end

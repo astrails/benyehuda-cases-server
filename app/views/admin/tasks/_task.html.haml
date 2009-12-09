@@ -7,3 +7,4 @@
   %td= textify_state(task.state)
   %td= task.documents.count
   %td!= link_to "Edit", edit_admin_task_path(task)
+  %td!= link_to "Assignments", edit_task_assignment_path(task)

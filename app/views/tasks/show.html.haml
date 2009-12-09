@@ -1,8 +1,4 @@
-%h3 Task:
-%strong= textify_state(@task.state)
-
-%h4 Description:
-%p= @task.name
+!= render(:partial => "description")
 
 != render(:partial => "documents", :locals => {:documents => @task.documents})
 
