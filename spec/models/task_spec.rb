@@ -88,4 +88,68 @@ describe Task do
       end
     end
   end
+
+  describe "events availability" do
+    [:admin, :another_volunteer].each do |u|
+      describe "#{u}" do
+        before(:each) do
+          @task = Factory.create(:task)
+          @user = Factory.create(u)
+        end
+        [Task.aasm_events.collect(&:first).collect(&:task_event_cleanup)].each do |e|
+          it "should not be allowed" do
+            @task.allow_event_for?(e, @user).should be_false
+          end
+        end
+        ["destroy", "update", "junk", "foobar"].each do |e|
+          it "should not be allowed" do
+            @task.allow_event_for?(e, @user).should be_false
+          end
+        end
+      end
+    end
+
+    describe "editor - participant" do
+      before(:each) do
+        @task = Factory.create(:task)
+        @user = @task.editor
+      end
+
+      { "reject" => true,
+        "abandon" => false,
+        "complete" => true,
+        "finish" => false,
+        "help_required" => false,
+        "create_other_task" => true,
+        "finish_partially" => false,
+        "approve" => true
+      }.each do |key, value|
+        it "should #{value ? "allow" : "disallow"} #{key}" do
+          @task.allow_event_for?(key, @user).should == value
+        end
+      end
+    end
+
+    describe "volunteer - participant" do
+      before(:each) do
+        @task = Factory.create(:task)
+        @user = @task.assignee
+      end
+
+      { "reject" => false,
+        "abandon" => true,
+        "complete" => false,
+        "finish" => true,
+        "help_required" => true,
+        "create_other_task" => false,
+        "finish_partially" => true,
+        "approve" => false
+      }.each do |key, value|
+        it "should #{value ? "allow" : "disallow"} #{key}" do
+          @task.allow_event_for?(key, @user).should == value
+        end
+      end
+    end
+
+  end
 end

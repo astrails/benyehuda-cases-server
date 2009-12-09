@@ -132,4 +132,34 @@ module Task::States
     # TODO: move all attachments to new task
     new_task
   end
+
+  def next_assignee_events
+    aasm_events_for_current_state.collect(&:task_event_cleanup) & ["abandon", "help_required", "finish", "finish_partialy"]
+  end
+
+  def simple_editor_events
+    aasm_events_for_current_state.collect(&:task_event_cleanup) & ["approve", "complete"]
+  end
+
+  def can_be_rejected?
+    aasm_events_for_current_state.member?(:_reject)
+  end
+
+  def can_create_new_task?
+    aasm_events_for_current_state.member?(:create_other_task)
+  end
+
+  EDITOR_EVENTS = [:reject, :complete, :create_other_task, :approve]
+  ASSIGNEE_EVENTS = [:abandon, :finish, :help_required, :finish_partially]
+
+  def allow_event_for?(event, user)
+    return false if event.blank?
+    return false unless user.is_admin? || participant?(user)
+    return false unless Task.aasm_events.collect(&:first).collect(&:task_event_cleanup).member?(event.to_s)
+
+    return true if assignee?(user) && ASSIGNEE_EVENTS.member?(event.to_sym)
+    return true if editor?(user) && EDITOR_EVENTS.member?(event.to_sym)
+
+    false
+  end
 end

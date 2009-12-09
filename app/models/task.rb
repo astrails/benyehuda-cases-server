@@ -37,4 +37,12 @@ class Task < ActiveRecord::Base
     return false unless user
     [creator_id, editor_id, assignee_id].member?(user.id)
   end
+
+  def assignee?(user)
+    return assignee && user && user.id == assignee.id
+  end
+
+  def editor?(user)
+    return editor && user && user.id == editor.id
+  end
 end
