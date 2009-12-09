@@ -1,0 +1,4 @@
+!= render(:partial => "tasks/current", :locals => {:tasks => current_user.editing_tasks.visible_in_my_tasks, :title => "My Editing Tasks"})
+
+%h4 Other
+!= link_to_function "Unassigned tasks (#{Task.unassigned.count})", "alert('todo')"

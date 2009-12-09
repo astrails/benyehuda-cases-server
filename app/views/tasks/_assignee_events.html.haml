@@ -1,0 +1,2 @@
+- @task.next_assignee_events.each do |e|
+  != link_to textify_event(e), task_path(@task, :event => e), :method => :put, :confirm => "Are you sure?"

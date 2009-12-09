@@ -20,4 +20,11 @@ module PropertiesHelper
 
     std_opts
   end
+
+  def property_value(p)
+    if "boolean" == p.property.property_type
+      return p.custom_value.to_s == "1" ? "true" : "false"
+    end
+    p.custom_value
+  end
 end

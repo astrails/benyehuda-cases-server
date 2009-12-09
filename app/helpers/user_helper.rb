@@ -31,4 +31,10 @@ module UserHelper
   def when_editor_or_admin
     yield if current_user.is_editor? || current_user.is_admin?
   end
+
+  def person_link(user)
+    return "" unless user
+    return "me" if user.id == current_user.id
+    link_to(h(user.name), profiles_path(user))
+  end
 end

@@ -19,7 +19,7 @@ module Task::States
       aasm_state          :partial
 
       # assignee complete the work
-      aasm_state          :waits_for_editor_approve
+      aasm_state          :waits_for_editor
 
       # editor rejects the task, assignee should fix whatever is done wrong
       aasm_state          :rejected, :enter => :update_rejection
@@ -38,13 +38,13 @@ module Task::States
 
       # assign a task to new assignee
       aasm_event :_assign do
-        transitions :from => [:unassigned, :assigned, :stuck, :partial, :waits_for_editor_approve, :rejected, :confirmed], :to => :assigned
+        transitions :from => [:unassigned, :assigned, :stuck, :partial, :waits_for_editor, :rejected, :confirmed], :to => :assigned
       end
       protected :_assign, :_assign!
 
       # reject assignment
       aasm_event :_abandon do
-        transitions :from => [:assigned, :stuck, :partial, :waits_for_editor_approve, :rejected, :confirmed], :to => :unassigned
+        transitions :from => [:assigned, :stuck, :partial, :waits_for_editor, :rejected, :confirmed], :to => :unassigned
       end
       protected :_abandon, :_abandon!
 
@@ -60,17 +60,17 @@ module Task::States
 
       # assignee finished the work
       aasm_event :finish do
-        transitions :from => [:assigned, :stuck, :partial, :rejected], :to => :waits_for_editor_approve
+        transitions :from => [:assigned, :stuck, :partial, :rejected], :to => :waits_for_editor
       end
 
       # editor approves the work
       aasm_event :approve do
-        transitions :from => :waits_for_editor_approve, :to => :approved
+        transitions :from => :waits_for_editor, :to => :approved
       end
 
       # editor rejects the work
       aasm_event :_reject do
-        transitions :from => :waits_for_editor_approve, :to => :rejected
+        transitions :from => :waits_for_editor, :to => :rejected
       end
       protected :_reject, :_reject!
       attr_accessor   :rejection_reason
@@ -84,6 +84,8 @@ module Task::States
       aasm_event :create_other_task do
         transitions :from => [:approved, :ready_to_publish], :to => :other_task_created
       end
+
+      named_scope :visible_in_my_tasks, {:conditions => "tasks.state NOT IN ('ready_to_publish', 'other_task_created')"}
     end
   end
 

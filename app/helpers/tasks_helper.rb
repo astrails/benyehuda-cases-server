@@ -4,17 +4,35 @@ module TasksHelper
     "assigned" => "Assigned/Work in Progress",
     "stuck" => "Editors Help Required",
     "partial" => "Partialy Ready",
-    "waits_for_editor_approve" => "Waits for Editor's approvement",
+    "waits_for_editor" => "Waits for Editor's approvement",
     "rejected" => "Rejected by Editor", 
     "approved" => "Approved by Editor",
     "ready_to_publish" => "Ready to Publish",
     "other_task_created" => "Another Task Created"
   }
 
+  TASK_EVENTS = {
+    # editor
+    "approve" => "Approve",
+    "reject" => "Reject", 
+    "complete" => "Mark as Completed", 
+    "create_other_task" => "Create Other Task",
+    # assignee
+    "finish" => "Finish",
+    "abandon" => "Abandon", 
+    "help_required" => "Need Editor's Help", 
+    "finish_partially" => "Mark as Finished Partly"
+  }
+
   def textify_state(state)
+    # TODO: gettext here
     TASK_STATES[state]
   end
 
+  def textify_event(event)
+    # TODO: gettext here
+    TASK_EVENTS[event]
+  end
 
   def upload_javascripts
     javascript_tag <<-EOJS

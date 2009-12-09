@@ -1,6 +1,6 @@
 class Document < ActiveRecord::Base
   belongs_to :user
-  belongs_to :task
+  belongs_to :task , :touch => true
 
   has_attached_file :file,
     :storage        => :s3,

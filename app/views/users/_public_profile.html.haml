@@ -20,18 +20,18 @@
 - @user.user_properties.each do |p|
   %p
     %strong= "#{p.property.title}:"
-    = p.custom_value
+    = property_value(p)
 
 - when_user_volunteer do
   %h4 Volunteer Properties:
   - @user.volunteer_properties.each do |p|
     %p
       %strong= "#{p.property.title}:"
-      = p.custom_value
+      = property_value(p)
 
 - when_user_editor do
   %h4 Editor Properties:
   - @user.editor_properties.each do |p|
     %p
       %strong= "#{p.property.title}:"
-      = p.custom_value
+      = property_value(p)

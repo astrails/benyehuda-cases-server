@@ -7,3 +7,8 @@
 
 - if current_user.is_admin?
   != link_to "New Task", new_admin_task_path
+
+!= render(:partial => "tasks/current", :locals => {:tasks => current_user.assigned_tasks.visible_in_my_tasks, :title => "My Tasks"})
+
+- when_editor do
+  != render(:partial => "editor_dashboard")
