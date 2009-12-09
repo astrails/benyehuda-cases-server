@@ -34,7 +34,7 @@ module Task::States
       aasm_state          :other_task_created
 
       validates_presence_of :state
-      validates_presence_of :assignee, :editor, :if => :should_have_assigned_peers?
+      validates_presence_of :assignee, :editor, :if => :should_have_assigned_peers?, :on => :update
 
       # assign a task to new assignee
       aasm_event :_assign do
@@ -94,7 +94,12 @@ module Task::States
   def assign!(new_editor = nil, new_assignee = nil)
     self.editor = new_editor      if new_editor
     self.assignee = new_assignee  if new_assignee
-    _assign!
+    _assign
+    save!
+  end
+
+  def assign_by_user_ids!(new_editor_id, new_assignee_id)
+    assign!(User.all_editors.find_by_id(new_editor_id.to_i), User.all_volunteers.find_by_id(new_assignee_id.to_i))
   end
 
   def abandon!

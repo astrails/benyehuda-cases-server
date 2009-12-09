@@ -38,6 +38,21 @@ describe Task do
       task.assignee_id.should == volunteer.id
     end
 
+    it "should validate assignees" do
+      task = @user.created_tasks.create!(:name => "some name", :kind => "typing", :difficulty => "normal", :full_nikkud => true)
+      task.assignee.should be_nil
+      task.editor.should be_nil
+
+      task.should be_unassigned
+
+      proc {task.assign!(nil, nil)}.should raise_error(ActiveRecord::RecordInvalid)
+      task.reload.assignee.should be_nil
+      task.editor.should be_nil
+      task.should be_unassigned
+      task.errors.on(:editor).should_not be_blank
+      task.errors.on(:assignee).should_not be_blank
+    end
+
     it "should cleanup assignee" do
       task = Factory.create(:assigned_task)
       task.abandon!
