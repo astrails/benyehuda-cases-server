@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091129180721) do
+ActiveRecord::Schema.define(:version => 20091211152047) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.string   "message",    :limit => 4096
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["task_id", "created_at"], :name => "task_created"
 
   create_table "custom_properties", :force => true do |t|
     t.integer  "property_id"

@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
   has_many :editing_tasks, :class_name => "Task", :foreign_key => "editor_id", :order => "tasks.updated_at"
   has_many :assigned_tasks, :class_name => "Task", :foreign_key => "assignee_id", :order => "tasks.updated_at"
 
+  has_many :comments
+
   def disabled?
     !disabled_at.blank?
   end

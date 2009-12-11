@@ -27,6 +27,8 @@ class Task < ActiveRecord::Base
 
   named_scope :by_updated_at, :order => "tasks.updated_at"
 
+  has_many :comments, :order => "comments.task_id, comments.created_at"
+
   include DefaultAttributes
   default_attribute :kind, "typing"
   default_attribute :difficulty, "normal"
