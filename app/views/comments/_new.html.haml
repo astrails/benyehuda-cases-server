@@ -1,0 +1,5 @@
+- semantic_form_remote_for(@comment ||= Comment.new, :live_validations => false, :url => task_comments_path(@task)) do |f|
+  - f.inputs do
+    != f.input :message, :as => :text, :input_html => {:class => "#{!@comment.errors.blank? && 'active activated'}"}
+  != f.submit "Publish"
+  != link_to_function "Cancel", "if (confirm('Are you sure?')) {jQuery('#comment_message').val('').removeClass('active').css({height:'30px'});}"

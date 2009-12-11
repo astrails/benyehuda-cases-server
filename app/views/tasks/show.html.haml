@@ -20,4 +20,4 @@
 
 != render(:partial => "new_document")
 
-%h3 Comments
+!= render(:partial => "comments/index", :locals => {:comments => @task.comments})

@@ -21,5 +21,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tasks do |tasks|
     tasks.resources :documents
     tasks.resource  :assignment
+    tasks.resources :comments
   end
 end

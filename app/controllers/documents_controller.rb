@@ -33,20 +33,6 @@ class DocumentsController < InheritedResources::Base
   end
 
 protected
-  def set_task
-    @task = Task.find(params[:task_id])
-  end
-
-  def require_task_participant
-    return false unless require_user
-    return true if current_user.try(:is_admin?)
-    return true if @task.participant?(current_user) # participant
-
-    flash[:error] = "Only participant can see this page"
-    redirect_to task_path(@task)
-    return false
-  end
-
   def require_owner
     return false unless require_user
     return true if current_user.try(:is_admin?)

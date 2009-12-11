@@ -1,8 +1,11 @@
 class TasksController < InheritedResources::Base
-  before_filter :require_task_participant
+  before_filter :require_task_participant_or_editor
   actions :show, :update
 
-  # show
+  def show
+    @task = Task.find(params[:id], :include => {:documents => :user, :comments => :user})
+    show!
+  end
 
   def update
     unless resource.allow_event_for?(params[:event], current_user)
@@ -22,7 +25,7 @@ class TasksController < InheritedResources::Base
   end
 
 protected
-  def require_task_participant
+  def require_task_participant_or_editor
     return false unless require_user
     return true if current_user.try(:is_admin?)
     return true if current_user.try(:is_editor?)
