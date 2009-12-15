@@ -1,4 +1,4 @@
-%div[comment]
+%div[comment]{:class => comment.editor_eyes_only? ? "editor_eyes_only" : ""}
   By
   != link_to h(comment.user.name), profiles_path(comment.user)
   = "#{time_ago_in_words(comment.created_at)} ago"

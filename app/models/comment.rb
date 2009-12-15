@@ -5,5 +5,8 @@ class Comment < ActiveRecord::Base
   validates_length_of :message, :in => 2..4096, :allow_nil => false, :allow_blank => false
   validates_presence_of :task, :user
 
-  attr_accessible :message
+  attr_accessible :message, :editor_eyes_only
+
+  named_scope :public, :conditions => {:editor_eyes_only => true}
+  named_scope :with_user, :include => :user
 end
