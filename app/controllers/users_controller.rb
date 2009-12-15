@@ -58,9 +58,9 @@ class UsersController < InheritedResources::Base
     return false unless require_user
     return true unless resource # let it fail
      # allow colunteers to see public profiles of admins and editors
-    return true if current_user.is_volunteer? && (resource.is_admin? || resource.is_editor?)
+    return true if current_user.is_volunteer? && resource.admin_or_editor?
     # allow editors and admins to see public profile of volunteers
-    return true if resource.is_volunteer? && (current_user.is_admin? || current_user.is_editor?)
+    return true if resource.is_volunteer? && current_user.admin_or_editor?
 
     flash[:error] = "Only registered activists allowed to access this page"
     redirect_to "/"

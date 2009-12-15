@@ -27,8 +27,7 @@ class TasksController < InheritedResources::Base
 protected
   def require_task_participant_or_editor
     return false unless require_user
-    return true if current_user.try(:is_admin?)
-    return true if current_user.try(:is_editor?)
+    return true if current_user.admin_or_editor?
     return true if resource.participant?(current_user) # participant
 
     flash[:error] = "Only participant can see this page"

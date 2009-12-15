@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def might_become_volunteer?
-    !is_volunteer? && !is_editor? && !is_admin? && volunteer_request.blank?
+    !is_volunteer? && !admin_or_editor? && volunteer_request.blank?
   end
 
   def public_roles
@@ -52,5 +52,9 @@ class User < ActiveRecord::Base
       res << "editor" if is_editor?
       res << "volunteer" if is_volunteer?
     end
+  end
+
+  def admin_or_editor?
+    try(:is_admin?) || try(:is_editor?)
   end
 end

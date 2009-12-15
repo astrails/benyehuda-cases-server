@@ -11,7 +11,7 @@ protected
 
   def require_editor_or_admin
     return false if false == require_user
-    return true if current_user.is_editor? || current_user.is_admin?
+    return true if current_user.admin_or_editor?
 
     flash[:error] = "You must be an admin or editor to access this page"
     redirect_to home_path

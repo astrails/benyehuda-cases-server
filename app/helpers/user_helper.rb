@@ -29,7 +29,7 @@ module UserHelper
   end
 
   def when_editor_or_admin
-    yield if current_user.is_editor? || current_user.is_admin?
+    yield if current_user.admin_or_editor?
   end
 
   def person_link(user)
