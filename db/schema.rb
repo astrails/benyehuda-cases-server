@@ -9,15 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215181606) do
+ActiveRecord::Schema.define(:version => 20091216090629) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "task_id"
-    t.string   "message",          :limit => 4096
+    t.string   "message",             :limit => 4096
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "editor_eyes_only",                 :default => false
+    t.boolean  "editor_eyes_only",                    :default => false
+    t.boolean  "is_rejection_reason",                 :default => false
   end
 
   add_index "comments", ["task_id", "created_at", "editor_eyes_only"], :name => "task_created_eyes"

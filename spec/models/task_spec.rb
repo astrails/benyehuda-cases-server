@@ -62,10 +62,11 @@ describe Task do
 
     it "should reject" do
       task = Factory.create(:waits_for_editor_approve_task)
-      task.should_receive :update_rejection
-      task.reject!("reason")
+      task.reject_with_comment("reason")
       task.should be_rejected
-      task.rejection_reason.should == "reason"
+      task.rejection_comment.message.should == "reason"
+      task.rejection_comment.is_rejection_reason.should be_true
+      task.rejection_comment.user_id.should == task.editor_id
     end
 
     it "should have test for build_chained_task"

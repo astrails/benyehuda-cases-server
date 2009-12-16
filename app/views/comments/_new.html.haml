@@ -1,6 +1,6 @@
 - semantic_form_remote_for(@comment ||= Comment.new, :live_validations => false, :url => task_comments_path(@task)) do |f|
   - f.inputs do
-    != f.input :message, :as => :text, :input_html => {:class => "#{!@comment.errors.blank? && 'active activated'}"}
+    != f.input :message, :as => :text, :input_html => {:class => "comment_message #{!@comment.errors.blank? && 'active activated'}"}
     - when_editor_or_admin do
       != f.input :editor_eyes_only
   != f.submit "Publish"

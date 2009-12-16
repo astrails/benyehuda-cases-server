@@ -72,4 +72,8 @@ module TasksHelper
     });
     EOJS
   end
+
+  def has_rejection_errors?
+    @task.rejection_comment && !@task.rejection_comment.errors.blank?
+  end
 end

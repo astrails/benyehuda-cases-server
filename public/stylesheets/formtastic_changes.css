@@ -9,10 +9,12 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 
 --------------------------------------------------------------------------------------------------*/
 
-#comment_message {
+.comment_message {
 	height:30px;
+	display:block;
 }
 
-#comment_message.activated {
+.comment_message.activated {
 	height:120px;
+	display:block;
 }

@@ -2,11 +2,8 @@
   != link_to textify_event(e), task_path(@task, :event => e), :method => :put, :confirm => "Are you sure?"
 
 - if @task.can_be_rejected?
-  - toggle_js = "jQuery('#reject_link, #reject_container').toggle();"
-  != link_to_function "Reject", toggle_js, :id => "reject_link"
-  #reject_container
-    TODO: Rejection form goes here
-    != link_to_function "cancel", toggle_js
+  #reject_task
+    != render(:partial => "reject")
 
 - if @task.can_create_new_task?
   - toggle_js = "jQuery('#new_task_link, #new_task_container').toggle();"

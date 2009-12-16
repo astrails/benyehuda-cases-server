@@ -22,7 +22,7 @@ module Task::States
       aasm_state          :waits_for_editor
 
       # editor rejects the task, assignee should fix whatever is done wrong
-      aasm_state          :rejected, :enter => :update_rejection
+      aasm_state          :rejected
 
       # editor confirms that task is completed by assignee
       aasm_state          :approved
@@ -44,7 +44,7 @@ module Task::States
 
       # reject assignment
       aasm_event :_abandon do
-        transitions :from => [:assigned, :stuck, :partial, :waits_for_editor, :rejected, :confirmed], :to => :unassigned
+        transitions :from => [:assigned, :stuck, :partial, :rejected, :confirmed], :to => :unassigned
       end
       protected :_abandon, :_abandon!
 
@@ -73,8 +73,6 @@ module Task::States
         transitions :from => :waits_for_editor, :to => :rejected
       end
       protected :_reject, :_reject!
-      attr_accessor   :rejection_reason
-      attr_accessible :rejection_reason
 
       # edtior, admin marks as ready to publish
       aasm_event :complete do
@@ -118,12 +116,13 @@ module Task::States
     _abandon!
   end
 
-  def reject!(reason)
-    self.rejection_reason = reason
-    _reject!
-  end
-  def update_rejection
-    # TODO: create a comment with rejection reason
+  attr_accessor :rejection_comment
+  def reject_with_comment(reason)
+    _reject
+    self.rejection_comment = self.comments.build(:message => reason)
+    rejection_comment.user_id = editor_id
+    rejection_comment.is_rejection_reason = true
+    rejection_comment.save
   end
 
   def build_chained_task(opts) # opts -> name, kind, difficulty, full_nikkud

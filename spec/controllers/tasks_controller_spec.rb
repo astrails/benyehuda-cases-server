@@ -4,15 +4,36 @@ describe TasksController do
   setup :activate_authlogic
   integrate_views
 
-  before(:each) do
-    @task = Factory.create(:task)
-    @comments = mock("comments")
-    @comments.stub(:with_user).and_return(@comments)
-    @task.stub!(:comments).and_return(@comments)
-    Task.stub(:find).and_return(@task)
+  describe "reject" do
+    it "should render invalid comment" do
+      @task = Factory.create(:waits_for_editor_approve_task)
+      @user = @task.send(:editor)
+      UserSession.create(@user)
+      put :update, :id => @task.id, :event => "reject", :task => {:comment => {}}
+      response.should be_success
+      response.should render_template("tasks/reject")
+    end
+
+    it "should redirect with ajax" do
+      @task = Factory.create(:waits_for_editor_approve_task)
+      @user = @task.send(:editor)
+      UserSession.create(@user)
+      put :update, :id => @task.id, :event => "reject", :task => {:comment => {:message => "some comment"}}
+      response.should be_success
+      response.body =~ /window\.location\.href/
+    end
   end
 
+
   describe "access" do
+    before(:each) do
+      @task = Factory.create(:task)
+      @comments = mock("comments")
+      @comments.stub(:with_user).and_return(@comments)
+      @task.stub!(:comments).and_return(@comments)
+      Task.stub(:find).and_return(@task)
+    end
+
     it "should not allow access to anyone" do
       get :show, :id => @task.id
       response.should redirect_to("/login")

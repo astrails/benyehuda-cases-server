@@ -15,11 +15,13 @@ class TasksController < InheritedResources::Base
       return false
     end
 
-    resource.send(params[:event]) # all security verifications in verify_event
-    resource.save
+    # all security verifications passed in allow_event_for?
 
-    # TODO: handle rejects with empty reason creating
+    return _reject_task if "reject" == params[:event]
     # TODO: handle new tasks (based on this one) creating
+
+    resource.send(params[:event])
+    resource.save
 
     flash[:notice] = "Task updated"
     redirect_to task_path(resource)
@@ -34,5 +36,20 @@ protected
     flash[:error] = "Only participant can see this page"
     redirect_to "/"
     return false
+  end
+
+  def _reject_task
+    unless resource.reject_with_comment(params[:task][:comment][:message])
+      render(:update) do |page|
+        page[:reject_task].html render(:partial => "tasks/reject")
+      end
+      return
+    end
+
+    resource.save
+    flash[:notice] = "Task updated"
+    render(:update) do |page|
+      page.redirect_to task_path(resource)
+    end
   end
 end
