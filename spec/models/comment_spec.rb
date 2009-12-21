@@ -13,4 +13,14 @@ describe Comment do
       end
     end
   end
+
+  describe "named scopes" do
+    it "should have public" do
+      Comment.public.proxy_options.should == {:conditions => {:editor_eyes_only => false}}
+    end
+
+    it "should have with_user" do
+      Comment.with_user.proxy_options.should == {:include => :user}
+    end
+  end
 end

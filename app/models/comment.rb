@@ -7,6 +7,6 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :message, :editor_eyes_only
 
-  named_scope :public, :conditions => {:editor_eyes_only => true}
+  named_scope :public, :conditions => {:editor_eyes_only => false}
   named_scope :with_user, :include => :user
 end
