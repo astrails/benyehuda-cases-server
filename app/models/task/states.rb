@@ -111,9 +111,9 @@ module Task::States
     assign!(User.all_editors.find_by_id(new_editor_id.to_i), User.all_volunteers.find_by_id(new_assignee_id.to_i))
   end
 
-  def abandon!
+  def abandon
     self.assignee = nil
-    _abandon!
+    _abandon
   end
 
   attr_accessor :rejection_comment

@@ -24,6 +24,18 @@ describe TasksController do
     end
   end
 
+  describe "abandon" do
+    before(:each) do
+      @task = Factory.create(:assigned_task)
+      UserSession.create(@task.assignee)
+    end
+
+    it "assignee should be able to abandon task" do
+      put :update, :id => @task.id, :event => "abandon"
+      response.should redirect_to("/dashboard")
+      @task.reload.should be_unassigned
+    end
+  end
 
   describe "access" do
     before(:each) do

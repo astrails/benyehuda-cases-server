@@ -55,7 +55,7 @@ describe Task do
 
     it "should cleanup assignee" do
       task = Factory.create(:assigned_task)
-      task.abandon!
+      task.abandon
       task.assignee_id.should be_blank
       task.should be_unassigned
     end

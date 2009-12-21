@@ -24,7 +24,12 @@ class TasksController < InheritedResources::Base
     resource.save
 
     flash[:notice] = "Task updated"
-    redirect_to task_path(resource)
+
+    if resource.participant?(current_user)
+      redirect_to task_path(resource)
+    else
+      redirect_to dashboard_path
+    end
   end
 
 protected
