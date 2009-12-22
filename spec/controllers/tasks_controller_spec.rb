@@ -5,19 +5,20 @@ describe TasksController do
   integrate_views
 
   describe "reject" do
-    it "should render invalid comment" do
+    before(:each) do
       @task = Factory.create(:waits_for_editor_approve_task)
       @user = @task.send(:editor)
       UserSession.create(@user)
+    end
+
+    it "should render invalid comment" do
       put :update, :id => @task.id, :event => "reject", :task => {:comment => {}}
       response.should be_success
+      assigns[:task].rejection_comment.errors.on(:message).should_not be_blank
       response.should render_template("tasks/reject")
     end
 
     it "should redirect with ajax" do
-      @task = Factory.create(:waits_for_editor_approve_task)
-      @user = @task.send(:editor)
-      UserSession.create(@user)
       put :update, :id => @task.id, :event => "reject", :task => {:comment => {:message => "some comment"}}
       response.should be_success
       response.body =~ /window\.location\.href/
@@ -30,10 +31,17 @@ describe TasksController do
       UserSession.create(@task.assignee)
     end
 
-    it "assignee should be able to abandon task" do
-      put :update, :id => @task.id, :event => "abandon"
-      response.should redirect_to("/dashboard")
-      @task.reload.should be_unassigned
+    it "should render comment errors" do
+      put :update, :id => @task.id, :event => "abandon", :task => {:comment => {}}
+      response.should be_success
+      response.should render_template("tasks/abandon")
+      assigns[:task].abandoning_comment.errors.on(:message).should_not be_blank
+    end
+
+    it "should redirect with ajax" do
+      put :update, :id => @task.id, :event => "abandon", :task => {:comment => {:message => "comment"}}
+      response.body =~ /window\.location\.href/
+      response.body =~ /dashboard/
     end
   end
 

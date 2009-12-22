@@ -2,6 +2,8 @@ class TasksController < InheritedResources::Base
   before_filter :require_task_participant_or_editor
   actions :show, :update
 
+  EVENTS_WITH_COMMENTS = {"reject" => "Task rejected", "abandon" => "Task abandoned"}
+
   def show
     @task = Task.find(params[:id], :include => {:documents => :user})
     @comments = @task.comments.with_user.send(current_user.admin_or_editor? ? :all : :public)
@@ -16,8 +18,8 @@ class TasksController < InheritedResources::Base
     end
 
     # all security verifications passed in allow_event_for?
+    return _event_with_comment(params[:event]) if EVENTS_WITH_COMMENTS.member?(params[:event])
 
-    return _reject_task if "reject" == params[:event]
     # TODO: handle new tasks (based on this one) creating
 
     resource.send(params[:event])
@@ -43,18 +45,18 @@ protected
     return false
   end
 
-  def _reject_task
-    unless resource.reject_with_comment(params[:task][:comment][:message])
+  def _event_with_comment(event)
+    unless resource.send("#{event}_with_comment", params[:task][:comment][:message])
       render(:update) do |page|
-        page[:reject_task].html render(:partial => "tasks/reject")
+        page[:abandon_task].html render(:partial => "tasks/#{event}")
       end
       return
     end
 
     resource.save
-    flash[:notice] = "Task updated"
+    flash[:notice] = EVENTS_WITH_COMMENTS[event]
     render(:update) do |page|
-      page.redirect_to task_path(resource)
-    end
+      page.redirect_to(resource.participant?(current_user) ? task_path(resource) : dashboard_path)
+    end    
   end
 end

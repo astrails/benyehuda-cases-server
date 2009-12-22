@@ -69,6 +69,17 @@ describe Task do
       task.rejection_comment.user_id.should == task.editor_id
     end
 
+    it "should abandon" do
+      task = Factory.create(:assigned_task)
+      a_id = task.assignee_id
+      task.abandon_with_comment("reason")
+      task.should be_unassigned
+      task.abandoning_comment.message.should == "reason"
+      task.abandoning_comment.is_abandoning_reason.should be_true
+      task.abandoning_comment.user_id.should == a_id
+      task.assignee_id.should be_nil
+    end
+
     it "should have test for build_chained_task"
   end
 

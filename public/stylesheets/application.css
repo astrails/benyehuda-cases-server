@@ -29,3 +29,7 @@ div.editor_eyes_only {
 div.rejection_reason {
 	border:1px solid red;
 }
+
+div.abandoning_reason {
+	border:1px solid blue;
+}

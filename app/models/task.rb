@@ -10,6 +10,7 @@ class Task < ActiveRecord::Base
   include CustomProperties
   has_many_custom_properties :task # task_properties
 
+  include CommentWithReason
   include Task::States
 
   validates_presence_of :creator_id

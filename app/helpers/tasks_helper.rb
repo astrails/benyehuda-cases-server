@@ -76,4 +76,8 @@ module TasksHelper
   def has_rejection_errors?
     @task.rejection_comment && !@task.rejection_comment.errors.blank?
   end
+
+  def has_abandoning_errors?
+    @task.abandoning_comment && !@task.abandoning_comment.errors.blank?
+  end
 end

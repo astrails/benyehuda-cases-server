@@ -1,0 +1,11 @@
+- toggle_js = "jQuery('#abandon_link, #abandon_container').toggle();"
+
+!= link_to_function textify_event("abandon"), "#{toggle_js}$('abandon_comment_message').show().focus()", :id => "abandon_link", :style => has_rejection_errors? ? "display:none" : ""
+
+#abandon_container{:style => has_abandoning_errors? ? "" : "display:none"}
+  - semantic_form_remote_for(@task, :live_validations => false, :url => task_path(@task, :event => "abandon")) do |f|
+    - f.inputs do
+      - f.fields_for :comment, @task.abandoning_comment  do |comment_fields|
+        != comment_fields.input :message, :as => :text, :input_html => {:id => "abandon_comment_message", :class => "comment_message #{has_abandoning_errors? && 'active activated'}"}, :label => "Abandoning Reason"
+    != f.submit "Abandon"
+    != link_to_function "cancel", toggle_js

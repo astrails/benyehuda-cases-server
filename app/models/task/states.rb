@@ -84,6 +84,11 @@ module Task::States
       end
 
       named_scope :visible_in_my_tasks, {:conditions => "tasks.state NOT IN ('ready_to_publish', 'other_task_created')"}
+
+      has_reason_comment :_reject, :rejection, :editor
+      has_reason_comment(:_abandon, :abandoning, :assignee) do |task|
+        task.assignee = nil
+      end
     end
   end
 
@@ -116,15 +121,6 @@ module Task::States
     _abandon
   end
 
-  attr_accessor :rejection_comment
-  def reject_with_comment(reason)
-    _reject
-    self.rejection_comment = self.comments.build(:message => reason)
-    rejection_comment.user_id = editor_id
-    rejection_comment.is_rejection_reason = true
-    rejection_comment.save
-  end
-
   def build_chained_task(opts) # opts -> name, kind, difficulty, full_nikkud
     new_task = self.build_child(opts)
     new_task.creator = actor
@@ -134,8 +130,8 @@ module Task::States
     new_task
   end
 
-  def next_assignee_events
-    aasm_events_for_current_state.collect(&:task_event_cleanup) & ["abandon", "help_required", "finish", "finish_partialy"]
+  def simple_assignee_events
+    aasm_events_for_current_state.collect(&:task_event_cleanup) & ["help_required", "finish", "finish_partialy"]
   end
 
   def simple_editor_events
@@ -144,6 +140,10 @@ module Task::States
 
   def can_be_rejected?
     aasm_events_for_current_state.member?(:_reject)
+  end
+
+  def can_be_abandoned?
+    aasm_events_for_current_state.member?(:_abandon)
   end
 
   def can_create_new_task?

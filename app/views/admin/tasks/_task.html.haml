@@ -1,4 +1,5 @@
 %tr{:class => cycle("odd", "even")}
+  %td= task.id
   %td!= link_to h(task.creator.name), user_path(task.creator)
   %td= task.updated_at.to_s(:db)
   %td!= link_to h(task.name.utf_snippet(30)), task_path(task)
