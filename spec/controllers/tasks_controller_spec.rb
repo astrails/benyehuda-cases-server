@@ -4,6 +4,26 @@ describe TasksController do
   setup :activate_authlogic
   integrate_views
 
+  describe "unassigned tasks" do
+    it "should not allow access to volunteer" do
+      @user = Factory.create(:volunteer)
+      UserSession.create(@user)
+      get :index
+      response.should redirect_to("/dashboard")
+    end
+
+    [:editor, :admin].each do |u|
+      it "should render unassigned tasks for #{u}" do
+        Factory.create(:task)
+        @user = Factory.create(u)
+        UserSession.create(@user)
+        get :index
+        response.should be_success
+        response.body.should =~ /Unassigned/
+      end
+    end
+  end
+
   describe "reject" do
     before(:each) do
       @task = Factory.create(:waits_for_editor_approve_task)

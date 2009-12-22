@@ -1,8 +1,13 @@
 class TasksController < InheritedResources::Base
-  before_filter :require_task_participant_or_editor
-  actions :show, :update
+  before_filter :require_task_participant_or_editor, :only => [:show, :update]
+  before_filter :require_editor_or_admin, :only => :index
+  actions :index, :show, :update
 
   EVENTS_WITH_COMMENTS = {"reject" => "Task rejected", "abandon" => "Task abandoned"}
+
+  def index
+    @tasks = Task.unassigned.paginate(:page => params[:page], :per_page => params[:per_page])
+  end
 
   def show
     @task = Task.find(params[:id], :include => {:documents => :user})
