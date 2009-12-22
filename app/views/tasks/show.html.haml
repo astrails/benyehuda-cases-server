@@ -10,7 +10,7 @@
 - if @task.assignee?(current_user)
   != render(:partial => "assignee_events")
   
-- @task.task_properties.each do |p|
+- @task.task_properties.visible_for(current_user).each do |p|
   %p
     %strong= "#{p.property.title}:"
     = property_value(p)

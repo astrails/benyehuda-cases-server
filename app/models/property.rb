@@ -11,13 +11,19 @@ class Property < ActiveRecord::Base
 
   validates_uniqueness_of :title, :scope => [:parent_type]
 
-  attr_accessible :title, :parent_type, :property_type
+  attr_accessible :title, :parent_type, :property_type, :is_public
 
   named_scope :by_parent_type, {:order => "properties.parent_type DESC"}
   named_scope :by_title, {:order => "properties.title DESC"}
 
   PARENTS.each do |parent|
-    named_scope "available_for_#{parent.downcase}".to_sym, {:conditions => ["properties.parent_type  = ?", parent]}
+    named_scope "available_for_#{parent.downcase}".to_sym, lambda {|user|
+      conditions = ["properties.parent_type  = ?", parent]
+
+      conditions.first << " AND properties.is_public = 1" unless user.admin_or_editor?
+
+      {:conditions => conditions}
+    }
   end
 
   has_many :custom_properties

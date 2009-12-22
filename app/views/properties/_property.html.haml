@@ -2,4 +2,5 @@
   %td= property.parent_type
   %td!= link_to h(property.title), edit_property_path(property)
   %td= property.property_type
+  %td= "true" if property.is_public?
   %td!= link_to "Delete", property_path(property), :method => :delete, :confirm => "Are you sure?"

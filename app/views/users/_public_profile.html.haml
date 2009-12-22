@@ -17,21 +17,21 @@
 
 
 %h4 User Properties:
-- @user.user_properties.each do |p|
+- @user.user_properties.visible_for(current_user).each do |p|
   %p
     %strong= "#{p.property.title}:"
     = property_value(p)
 
 - when_user_volunteer do
   %h4 Volunteer Properties:
-  - @user.volunteer_properties.each do |p|
+  - @user.volunteer_properties.visible_for(current_user).each do |p|
     %p
       %strong= "#{p.property.title}:"
       = property_value(p)
 
 - when_user_editor do
   %h4 Editor Properties:
-  - @user.editor_properties.each do |p|
+  - @user.editor_properties.visible_for(current_user).each do |p|
     %p
       %strong= "#{p.property.title}:"
       = property_value(p)

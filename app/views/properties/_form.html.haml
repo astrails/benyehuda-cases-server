@@ -1,3 +1,4 @@
 != f.input :parent_type, :as => :select, :collection => Property::PARENTS
 != f.input :title
 != f.input :property_type, :as => :select, :collection => Property::TYPES
+!= f.input :is_public, :as => :boolean, :label => "Public"
