@@ -1,4 +1,11 @@
 --- 
+vendor/plugins/gettext_i18n_rails: 
+  squashed: true
+  url: git://github.com/grosser/gettext_i18n_rails.git
+  type: git
+  revision: 7446498bc216857be218b79464d49b4cac995ac1
+  branch: master
+  remote: braid/vendor/plugins/gettext-i18n-rails
 vendor/plugins/rack-bug: 
   squashed: true
   url: git://github.com/brynary/rack-bug.git
