@@ -5,7 +5,7 @@ task :sync_po_to_db => :environment do
   gem 'grosser-pomo', '>=0.5.1'
   require 'pomo'
   require 'pathname'
-  
+
   #find all files we want to read
   po_files = []
   Pathname.new(folder).find do |p|
@@ -30,7 +30,7 @@ task :sync_po_to_db => :environment do
       next if key.translations.detect{|text| text.locale == locale}
 
       #store translations
-      puts "Creating text #{locale}:#{t.msgstr}"
+      puts "Creating text #{locale}:#{t.msgid} = #{t.msgstr}"
       key.translations.create!(:locale=>locale, :text=>t.msgstr)
     end
   end
