@@ -8,7 +8,7 @@ namespace :gettext do
   task :find => :load_array_find_index
 
   desc "sync .po files to db"
-  task :sync do
+  task :sync => :environment do
     folder = ENV['FOLDER']||'locale'
 
     gem 'grosser-pomo', '>=0.5.1'
@@ -30,7 +30,6 @@ namespace :gettext do
       puts "Reading #{p.to_s}"
       translations = Pomo::PoFile.parse(p.read)
 
-      debugger
       #add all non-fuzzy translations to the database
       translations.reject(&:fuzzy?).each do |t|
         next if t.msgid.blank? #atm do not insert metadata
