@@ -2,7 +2,7 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require(File.join(File.dirname(__FILE__), 'config', 'boot'))
-
+require 'ruby-debug'
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'

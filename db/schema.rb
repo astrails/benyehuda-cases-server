@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20091223191615) do
     t.datetime "updated_at"
   end
 
+  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key", :unique => true
+
   create_table "translation_texts", :force => true do |t|
     t.text     "text"
     t.string   "locale",             :limit => 16
@@ -66,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20091223191615) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "translation_texts", ["translation_key_id", "locale"], :name => "index_translation_texts_on_translation_key_id_and_locale", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "name",                :limit => 48

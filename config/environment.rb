@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'mocha', :version => '0.9.8', :library => false
   config.gem 'fast_gettext', :version => '0.4.17'
   config.gem "gettext", :lib => false, :version => '2.1.0'
-  config.gem "grosser-pomo", :lib => false, :source=>"http://gems.github.com/"
+  config.gem "grosser-pomo", :lib => false, :source=>"http://gems.github.com/", :version => '>=0.5.1'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

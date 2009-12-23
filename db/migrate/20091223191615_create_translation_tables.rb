@@ -3,16 +3,16 @@ class CreateTranslationTables < ActiveRecord::Migration
     create_table :translation_keys do |t|
       t.string :key, :null => false
       t.timestamps
-      t.index :key, :unique => true
     end
+    add_index :translation_keys, :key, :unique => true
 
     create_table :translation_texts do |t|
       t.text :text
       t.string :locale, :limit => 16
       t.references :translation_key, :null => false
-      t.index [:translation_key_id, :locale]
       t.timestamps
     end
+    add_index :translation_texts, [:translation_key_id, :locale], :unique => true
   end
 
   def self.down

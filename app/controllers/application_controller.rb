@@ -18,4 +18,11 @@ protected
     return false
   end
 
+
+  def set_locale
+    # FastGettext.available_locales = ['de','en',...]
+    # FastGettext.text_domain = 'app'
+    # session[:locale] = I18n.locale = FastGettext.set_locale(params[:locale] || session[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'] || 'en')
+  end
+
 end
