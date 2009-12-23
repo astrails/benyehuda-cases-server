@@ -55,6 +55,13 @@ vendor/plugins/log_buddy:
   revision: 3769a4b010250d65b174740e47367319f809ae70
   branch: master
   remote: braid/vendor/plugins/log-buddy
+vendor/gems/fast_gettext-0.4.17: 
+  squashed: true
+  url: git://github.com/astrails/fast_gettext.git
+  type: git
+  revision: 25bf50aade2f2d9edd042b2000253f5226964e7d
+  branch: master
+  remote: braid/vendor/gems/fast-gettext
 vendor/plugins/high_voltage: 
   squashed: true
   url: git://github.com/thoughtbot/high_voltage.git
