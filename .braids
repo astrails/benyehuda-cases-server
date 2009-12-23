@@ -6,6 +6,13 @@ vendor/plugins/gettext_i18n_rails:
   revision: 7446498bc216857be218b79464d49b4cac995ac1
   branch: master
   remote: braid/vendor/plugins/gettext-i18n-rails
+vendor/plugins/translation_db_engine: 
+  squashed: true
+  url: git://github.com/grosser/translation_db_engine.git
+  type: git
+  revision: a12af29626d5081c009a1d28f7d83bff0bb9639e
+  branch: master
+  remote: braid/vendor/plugins/translation-db-engine
 vendor/plugins/rack-bug: 
   squashed: true
   url: git://github.com/brynary/rack-bug.git
