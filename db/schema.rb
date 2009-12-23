@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091120134822) do
+ActiveRecord::Schema.define(:version => 20091223191615) do
 
   create_table "custom_properties", :force => true do |t|
     t.integer  "property_id"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(:version => 20091120134822) do
     t.string   "title"
     t.string   "parent_type",   :limit => 32
     t.string   "property_type", :limit => 32
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "translation_keys", :force => true do |t|
+    t.string   "key",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "translation_texts", :force => true do |t|
+    t.text     "text"
+    t.string   "locale",             :limit => 16
+    t.integer  "translation_key_id",               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
