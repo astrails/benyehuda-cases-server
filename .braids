@@ -1,14 +1,14 @@
 --- 
 vendor/plugins/gettext_i18n_rails: 
   squashed: true
-  url: git://github.com/grosser/gettext_i18n_rails.git
+  url: git://github.com/astrails/gettext_i18n_rails.git
   type: git
   revision: 7446498bc216857be218b79464d49b4cac995ac1
   branch: master
   remote: braid/vendor/plugins/gettext-i18n-rails
 vendor/plugins/translation_db_engine: 
   squashed: true
-  url: git://github.com/grosser/translation_db_engine.git
+  url: git://github.com/astrails/translation_db_engine.git
   type: git
   revision: a12af29626d5081c009a1d28f7d83bff0bb9639e
   branch: master
