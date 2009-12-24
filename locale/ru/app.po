@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2009-12-24 10:48+0200\n"
+"POT-Creation-Date: 2009-12-24 19:42+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: app/views/properties/_property.html.haml:5
+#: app/views/properties/_property.html.haml:6
 #: app/views/users/_user.html.haml:10
 msgid "Are you sure?"
 msgstr ""
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: app/views/properties/_property.html.haml:5
+#: app/views/properties/_property.html.haml:6
 msgid "Delete"
 msgstr ""
 
@@ -68,10 +68,6 @@ msgstr ""
 
 #: app/views/users/_editor_form.html.haml:2
 msgid "Editor Settings"
-msgstr ""
-
-#: app/views/users/show.html.haml:9
-msgid "Email:"
 msgstr ""
 
 #: app/views/users/index.html.haml:9
@@ -94,10 +90,6 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: app/views/users/show.html.haml:6
-msgid "Name:"
-msgstr ""
-
 #: app/views/properties/index.html.haml:5
 msgid "New"
 msgstr ""
@@ -106,7 +98,7 @@ msgstr ""
 msgid "New project property"
 msgstr ""
 
-#: app/helpers/application_helper.rb:27 app/views/properties/edit.html.haml:1
+#: app/views/properties/edit.html.haml:1
 #: app/views/properties/index.html.haml:1
 #: app/views/properties/index.html.haml:3 app/views/properties/new.html.haml:1
 msgid "Object Properties"
@@ -120,9 +112,12 @@ msgstr ""
 msgid "Password Reset"
 msgstr ""
 
-#: app/helpers/application_helper.rb:29 app/views/users/edit.html.haml:1
-#: app/views/users/show.html.haml:3
+#: app/helpers/application_helper.rb:31 app/views/users/edit.html.haml:1
 msgid "Profile"
+msgstr ""
+
+#: app/views/properties/index.html.haml:13
+msgid "Public"
 msgstr ""
 
 #: app/views/volunteer_requests/show.html.haml:11
@@ -165,15 +160,10 @@ msgstr ""
 msgid "User Settings"
 msgstr ""
 
-#: app/helpers/application_helper.rb:26
-msgid "Users"
-msgstr ""
-
 #: app/views/volunteer_requests/show.html.haml:4
 msgid "Volunteer Request from"
 msgstr ""
 
-#: app/helpers/application_helper.rb:23
 #: app/views/volunteer_requests/show.html.haml:1
 msgid "Volunteer Requests"
 msgstr ""
@@ -188,16 +178,8 @@ msgid_plural "bars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/views/users/show.html.haml:21
-msgid "change my password"
-msgstr ""
-
 #: app/views/users/edit.html.haml:13
 msgid "change password"
-msgstr ""
-
-#: app/views/users/show.html.haml:19
-msgid "edit my profile"
 msgstr ""
 
 #: app/views/pages/home.html.haml:3
