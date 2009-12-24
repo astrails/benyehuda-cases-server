@@ -4,7 +4,7 @@ module FastGettext::TranslationRepository
       has_many :translations, :class_name=>'TranslationText'
 
       attr_accessible :key, :key_value, :translations_attributes
-      accepts_nested_attributes_for :translations, :allow_destroy => true
+      accepts_nested_attributes_for :translations
 
       def key_value=(value)
         write_attribute(:key, ActiveSupport::JSON.encode(value))

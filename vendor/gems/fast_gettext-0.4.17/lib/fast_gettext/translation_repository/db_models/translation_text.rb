@@ -4,7 +4,6 @@ module FastGettext::TranslationRepository
       belongs_to :key, :class_name=>'TranslationKey', :foreign_key => :translation_key_id
 
       attr_accessible :text, :text_value, :locale
-      validates_presence_of :translation_key_id
       validates_presence_of :locale
       validates_uniqueness_of :locale, :scope=>:translation_key_id
 
