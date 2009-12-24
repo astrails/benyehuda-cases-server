@@ -25,4 +25,6 @@ protected
     # session[:locale] = I18n.locale = FastGettext.set_locale(params[:locale] || session[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'] || 'en')
   end
 
+  alias :authenticate_translations_admin :require_admin
+
 end
