@@ -1,7 +1,8 @@
 class ActionController::Base
   protected
 
-  helper_method :valid_locale?, :default_locale, :current_locale
+  helper_method :valid_locale?, :default_locale, :current_locale,
+    :home_path, :canonic_url_for, :canonic_domain_for
 
   # returns true if "locale" is supported
   def valid_locale?(locale)
@@ -60,7 +61,6 @@ class ActionController::Base
       raise "unknown source"
     end
   end
-
 
   def detect_locale(sources)
     sources.each do |source|
@@ -121,6 +121,9 @@ class ActionController::Base
   def canonic_url_for(locale)
     url = request.protocol + canonic_domain_for(locale)
     url << (request.get? ? request.fullpath : home_path)
+    uri = URI.parse(url)
+    uri.query = [uri.query, "locale=#{locale}"].compact.join("&")
+    uri.to_s
   end
 
   # this filter will redirect to canonic domain if needed.

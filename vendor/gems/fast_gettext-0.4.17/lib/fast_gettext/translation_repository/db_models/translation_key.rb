@@ -3,19 +3,11 @@ module FastGettext::TranslationRepository
     class TranslationKey < ActiveRecord::Base
       has_many :translations, :class_name=>'TranslationText'
 
-      attr_accessible :key, :raw_key, :translations_attributes
+      attr_accessible :key, :translations_attributes
       accepts_nested_attributes_for :translations, :allow_destroy => true
 
-      def key=(value)
+      def key_value=(value)
         write_attribute(:key, ActiveSupport::JSON.encode(value))
-      end
-
-      def raw_key
-        read_attribute(:key)
-      end
-
-      def raw_key=(key)
-        write_attribute(:key, key)
       end
 
       validates_uniqueness_of :key

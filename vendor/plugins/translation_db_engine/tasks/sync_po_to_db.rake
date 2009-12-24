@@ -35,12 +35,12 @@ task :sync_po_to_db => :environment do
         #do not overwrite existing translations
         next if key.translations.detect{|text| text.locale == locale}
       else
-        key = keys[msgid] = TranslationKey.create!(:key => t.msgid)
+        key = keys[msgid] = TranslationKey.create!(:key_value => t.msgid)
       end
 
       #store translations
       puts "Creating text #{locale}:#{msgid} = #{t.msgstr.to_json}"
-      key.translations.create!(:locale => locale, :text => t.msgstr)
+      key.translations.create!(:locale => locale, :text_value => t.msgstr)
     end
   end
 end
