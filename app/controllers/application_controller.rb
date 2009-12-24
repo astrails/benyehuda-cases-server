@@ -19,10 +19,11 @@ protected
   end
 
 
-  def set_locale
-    # FastGettext.available_locales = ['de','en',...]
-    # FastGettext.text_domain = 'app'
-    # session[:locale] = I18n.locale = FastGettext.set_locale(params[:locale] || session[:locale] || request.env['HTTP_ACCEPT_LANGUAGE'] || 'en')
+  before_filter :set_localization_options
+  def set_localization_options
+    FastGettext.available_locales = AVAILABLE_LOCALES
+    FastGettext.text_domain = 'app'
+    super(:session_domain => true, :canonic_redirect => true)
   end
 
   alias :authenticate_translations_admin :require_admin
