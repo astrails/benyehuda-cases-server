@@ -1,4 +1,4 @@
-- page_title("Object Properties")
+- page_title(_("Object Properties"))
 
 %h3 Edit project property
 
@@ -6,5 +6,5 @@
 - semantic_form_for(@property) do |f|
   = f.object.errors.on(:base)
   != render :partial => "form", :locals => { :f => f }
-  != f.submit "Save"
-  != link_to "Cancel", properties_path
+  != f.submit _("Save")
+  != link_to _("Cancel"), properties_path

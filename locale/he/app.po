@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2009-12-24 04:44+0200\n"
+"POT-Creation-Date: 2009-12-24 10:48+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,170 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: app/views/users/index.html.haml:7
+msgid "All"
+msgstr ""
+
+#: app/views/properties/_property.html.haml:5
+#: app/views/users/_user.html.haml:10
+msgid "Are you sure?"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:16
+msgid "Back to Volunteer Requestes"
+msgstr ""
+
+#: app/views/dashboards/show.html.haml:6
+msgid "Become Volunteer"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:11
+msgid "Ben Yehuda Project"
+msgstr ""
+
+#: app/views/properties/edit.html.haml:10 app/views/properties/new.html.haml:9
+#: app/views/users/edit.html.haml:10
+msgid "Cancel"
+msgstr ""
+
+#: app/helpers/volunteer_requests_helper.rb:3
+msgid "Confirm"
+msgstr ""
+
+#: app/helpers/application_helper.rb:21 app/views/dashboards/show.html.haml:1
+msgid "Dashboard"
+msgstr ""
+
+#: app/views/properties/_property.html.haml:5
+msgid "Delete"
+msgstr ""
+
+#: app/views/users/_user.html.haml:10
+msgid "Disable"
+msgstr ""
+
+#: app/views/users/_user.html.haml:9
+msgid "Edit"
+msgstr ""
+
+#: app/views/users/edit.html.haml:3
+msgid "Edit Profile"
+msgstr ""
+
+#: app/views/users/_editor_form.html.haml:2
+msgid "Editor Settings"
+msgstr ""
+
+#: app/views/users/show.html.haml:9
+msgid "Email:"
+msgstr ""
+
+#: app/views/users/index.html.haml:9
+msgid "Enabled"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:38
+msgid "Footer"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:15
+msgid "Hello"
+msgstr ""
+
 #: app/views/pages/home.html.haml:1
 msgid "Hello World"
+msgstr ""
+
+#: app/views/properties/index.html.haml:11
+msgid "Name"
+msgstr ""
+
+#: app/views/users/show.html.haml:6
+msgid "Name:"
+msgstr ""
+
+#: app/views/properties/index.html.haml:5
+msgid "New"
+msgstr ""
+
+#: app/views/properties/new.html.haml:3
+msgid "New project property"
+msgstr ""
+
+#: app/helpers/application_helper.rb:27 app/views/properties/edit.html.haml:1
+#: app/views/properties/index.html.haml:1
+#: app/views/properties/index.html.haml:3 app/views/properties/new.html.haml:1
+msgid "Object Properties"
+msgstr ""
+
+#: app/views/properties/index.html.haml:10
+msgid "Parent"
+msgstr ""
+
+#: app/views/passwords/new.html.haml:1
+msgid "Password Reset"
+msgstr ""
+
+#: app/helpers/application_helper.rb:29 app/views/users/edit.html.haml:1
+#: app/views/users/show.html.haml:3
+msgid "Profile"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:11
+msgid "Reason"
+msgstr ""
+
+#: app/views/users/new.html.haml:1
+msgid "Register"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:8
+msgid "Requested at:"
+msgstr ""
+
+#: app/views/properties/edit.html.haml:9 app/views/properties/new.html.haml:8
+msgid "Save"
+msgstr ""
+
+#: app/views/passwords/new.html.haml:5
+msgid "Send Password Reset instructions"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:36
+msgid "Sidebar"
+msgstr ""
+
+#: app/views/users/new.html.haml:6
+msgid "Signup"
+msgstr ""
+
+#: app/views/properties/index.html.haml:12
+msgid "Type"
+msgstr ""
+
+#: app/views/users/edit.html.haml:9
+msgid "Update"
+msgstr ""
+
+#: app/views/users/_form.html.haml:1 app/views/users/_user_form.html.haml:2
+msgid "User Settings"
+msgstr ""
+
+#: app/helpers/application_helper.rb:26
+msgid "Users"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:4
+msgid "Volunteer Request from"
+msgstr ""
+
+#: app/helpers/application_helper.rb:23
+#: app/views/volunteer_requests/show.html.haml:1
+msgid "Volunteer Requests"
+msgstr ""
+
+#: app/views/users/_volunteer_form.html.haml:2
+msgid "Volunteer Settings"
 msgstr ""
 
 #: app/views/pages/home.html.haml:5
@@ -25,6 +187,18 @@ msgid "bar"
 msgid_plural "bars"
 msgstr[0] ""
 msgstr[1] ""
+
+#: app/views/users/show.html.haml:21
+msgid "change my password"
+msgstr ""
+
+#: app/views/users/edit.html.haml:13
+msgid "change password"
+msgstr ""
+
+#: app/views/users/show.html.haml:19
+msgid "edit my profile"
+msgstr ""
 
 #: app/views/pages/home.html.haml:3
 msgid "foo"
@@ -34,4 +208,22 @@ msgstr[1] ""
 
 #: app/views/pages/home.html.haml:7
 msgid "foo|bar"
+msgstr ""
+
+#: app/views/user_session/new.html.haml:7
+msgid "forgot_password"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:21
+#: app/views/passwords/new.html.haml:7 app/views/users/new.html.haml:8
+msgid "login"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:18
+msgid "logout"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:22
+#: app/views/user_session/new.html.haml:9
+msgid "register"
 msgstr ""

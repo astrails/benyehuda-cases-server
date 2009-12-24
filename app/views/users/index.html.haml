@@ -4,18 +4,18 @@
   = params[:all] == "true" ? "All Users" : "Users"
 
 %p
-  != link_to "All", users_path(:all => true)
+  != link_to _("All"), users_path(:all => true)
   \|
-  != link_to "Enabled", users_path
+  != link_to _("Enabled"), users_path
 
 %table.list
   %tr.title
-    %th Name
-    %th Email
-    %th Volunteer
-    %th Editor
-    %th Admin
-    %th Activated
+    %th _("Name")
+    %th _("Email")
+    %th _("Volunteer")
+    %th _("Editor")
+    %th _("Admin")
+    %th _("Activated")
     %th &nbsp;
     %th &nbsp;
   != render :partial => @users

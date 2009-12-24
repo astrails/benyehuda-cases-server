@@ -1,13 +1,13 @@
-- page_title("Profile")
+- page_title(_("Profile"))
 
-%h3 Edit Profile
+%h3= _("Edit Profile")
 
 - semantic_form_for(@user, :live_validations => true) do |f|
   = f.object.errors.on(:base)
   != render :partial => "form", :locals => { :f => f }
   %br
-  != f.submit "Update"
-  != link_to "Cancel", "/"
+  != f.submit _("Update")
+  != link_to _("Cancel"), "/"
 
 - when_current_user do
-  != link_to "change password", password_edit_path
+  != link_to _("change password"), password_edit_path

@@ -18,15 +18,15 @@ module ApplicationHelper
   def tabs_for_current_user
     @tabs_for_current_user ||= if logged_in?
       returning([]) do |res|
-        res << {:title => "Dashboard", :path => dashboard_path}
+        res << {:title => _("Dashboard"), :path => dashboard_path}
         if current_user.is_admin? || current_user.is_editor?
-          res << {:title => "Volunteer Requests", :path => volunteer_requests_path}
+          res << {:title => _("Volunteer Requests"), :path => volunteer_requests_path}
         end
         if current_user.is_admin?
-          res << {:title => "Users", :path => users_path}
-          res << {:title => "Object Properties", :path => properties_path}
+          res << {:title => _("Users"), :path => users_path}
+          res << {:title => _("Object Properties"), :path => properties_path}
         end
-        res << {:title => "Profile", :path => profile_path}
+        res << {:title => _("Profile"), :path => profile_path}
       end
     else
       false

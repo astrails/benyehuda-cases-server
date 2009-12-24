@@ -8,18 +8,24 @@
     .container
       #header.span-24.last
         .span-15
-          %h1 Ben Yehuda Project
+          %h1= _("Ben Yehuda Project")
         .span-9.last
           %p.prepend-5
             - if logged_in?
-              Hello
+              =_("Hello")
               != link_to h(current_user.name), edit_user_path(current_user)
               [
-              != link_to "logout", user_session_path, :method => :delete
+              != link_to _("logout"), user_session_path, :method => :delete
               ]
             - else
-              != link_to "login", login_path
-              != link_to "register", signup_path
+              != link_to _("login"), login_path
+              != link_to _("register"), signup_path
+            %br
+            - FastGettext.available_locales.each do |locale|
+              - if current_locale == locale
+                = locale
+              - else
+                != link_to locale, canonic_url_for(locale)
       #tabs.span-24.last
         != render :partial => 'layouts/tabs'
       #content.span-24.last
@@ -27,6 +33,6 @@
           != render :partial => 'layouts/flashes'
           != yield
         #sidebar.span-4.last
-          %h4 Sidebar
+          %h4= _("Sidebar")
       #footer.span-24.last
-        %h4 Footer
+        %h4=_("Footer")

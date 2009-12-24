@@ -1,8 +1,8 @@
-%h1 Register
+%h1= _("Register")
 
 - semantic_form_for(@user, :live_validations => true) do |f|
   = f.object.errors.on(:base)
   != render :partial => "form", :locals => { :f => f }
-  != f.submit "Signup"
+  != f.submit _("Signup")
 
-!= link_to "login", login_path
+!= link_to _("login"), login_path

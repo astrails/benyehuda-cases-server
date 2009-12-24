@@ -1,15 +1,15 @@
-- page_title("Object Properties")
+- page_title(_("Object Properties"))
 
-%h3 Object Properties
+%h3= _("Object Properties")
 
-!= link_to "New", new_property_path
+!= link_to _("New"), new_property_path
 
 - unless @properties.blank?
   %table.list
     %tr.title
-      %th Parent
-      %th Name
-      %th Type
+      %th= _("Parent")
+      %th= _("Name")
+      %th= _("Type")
       %th &nbsp;
     != render(:partial => @properties)
 

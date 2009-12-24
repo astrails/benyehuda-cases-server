@@ -1,21 +1,21 @@
 module PasswordsHelper
   def password_edit_title
     if logged_in?
-      "Change Password"
+      _("Change Password")
     elsif @user.active?
-      "Password Reset"
+      _("Password Reset")
     else
-      "Activate Account"
+      _("Activate Account")
     end
   end
 
   def password_edit_submit
     if logged_in?
-      "Change"
+      _("Change")
     elsif @user.active?
-      "Reset"
+      _("Reset")
     else
-      "Activate"
+      _("Activate")
     end
   end
 end

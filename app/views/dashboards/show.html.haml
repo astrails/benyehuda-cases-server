@@ -1,6 +1,6 @@
-- page_title("Dashboard")
+- page_title(_("Dashboard"))
 
 %h3 Dashboard
 
 - if current_user.might_become_volunteer?
-    != button_to "Become Volunteer", new_volunteer_request_path, :method => :get
+    != button_to _("Become Volunteer"), new_volunteer_request_path, :method => :get
