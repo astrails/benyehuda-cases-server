@@ -16,7 +16,12 @@ module FastGettext::TranslationRepository
       def self.translation(keys, locale)
         return unless translation_key = find_by_key(keys.to_json)
         return unless translation_text = translation_key.translations.find_by_locale(locale)
-        translation_text.text
+        return unless value = translation_text.text
+        value = ActiveSupport::JSON.decode(value)
+        return if value.blank?
+
+        # replace "" with nil
+        value.is_a?(Array) ? value.map {|v| v.blank? ? nil : v} : value
       end
 
       def self.available_locales

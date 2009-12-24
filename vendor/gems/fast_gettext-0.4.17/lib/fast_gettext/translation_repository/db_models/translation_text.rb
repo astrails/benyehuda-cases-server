@@ -12,13 +12,6 @@ module FastGettext::TranslationRepository
         write_attribute(:text, ActiveSupport::JSON.encode(value))
       end
 
-      def text
-        return nil unless value = read_attribute(:text)
-        value = ActiveSupport::JSON.decode(value)
-        return nil if value.blank?
-        return value unless value.is_a?(Array)
-        value.map {|v| v.blank? ? nil : v} # replace "" with nil
-      end
     end
   end
 end
