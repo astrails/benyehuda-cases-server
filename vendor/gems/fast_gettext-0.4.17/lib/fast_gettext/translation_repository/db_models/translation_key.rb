@@ -2,13 +2,19 @@ module FastGettext::TranslationRepository
   module DbModels
     class TranslationKey < ActiveRecord::Base
       has_many :translations, :class_name=>'TranslationText'
+
+      attr_accessible :key
       accepts_nested_attributes_for :translations, :allow_destroy => true
-      
+
+      def key=(value)
+        write_attribute(:key, value.blank? ? nil : ActiveSupport::JSON.encode(value))
+      end
+
       validates_uniqueness_of :key
       validates_presence_of :key
 
-      def self.translation(key, locale)
-        return unless translation_key = find_by_key(key)
+      def self.translation(keys, locale)
+        return unless translation_key = find_by_key(keys.to_json)
         return unless translation_text = translation_key.translations.find_by_locale(locale)
         translation_text.text
       end

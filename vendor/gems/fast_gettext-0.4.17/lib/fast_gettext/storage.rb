@@ -96,10 +96,9 @@ module FastGettext
     end
 
     def cached_plural_find(*keys)
-      key = '||||' + keys * '||||'
-      translation = current_cache[key]
+      translation = current_cache[keys]
       return translation if translation or translation == false #found or was not found before
-      current_cache[key] = current_repository.plural(*keys) || false
+      current_cache[keys] = current_repository.plural(*keys) || false
     end
 
     def locale
@@ -118,7 +117,7 @@ module FastGettext
       self.locale = new_locale
       locale
     end
-    
+
     @@default_locale = nil
     def default_locale=(new_locale)
       @@default_locale = best_locale_in(new_locale)
