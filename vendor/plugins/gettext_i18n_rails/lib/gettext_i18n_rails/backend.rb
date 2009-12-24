@@ -13,7 +13,7 @@ module GettextI18nRails
       FastGettext.available_locales || []
     end
 
-    def translate(locale, key, options)
+    def translate_without_interpolation(locale, key, options)
       flat_key = flatten_key key, options
       if FastGettext.key_exist?(flat_key)
         raise "no yet build..." if options[:locale]
@@ -32,6 +32,16 @@ module GettextI18nRails
         backend.translate locale, key, options
       end
     end
+
+    def translate(locale, key, options)
+      res = translate_without_interpolation(locale, key, options)
+
+      reserved = :scope, :default, :locale
+      values = options.reject { |name, value| reserved.include?(name) }
+
+      backend.send :interpolate, locale, res, values
+    end
+
 
     def method_missing(method, *args)
       backend.send(method, *args)
