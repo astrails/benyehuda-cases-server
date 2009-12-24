@@ -2,7 +2,7 @@ class ActionController::Base
   protected
 
   helper_method :valid_locale?, :default_locale, :current_locale,
-    :home_path, :canonic_url_for, :canonic_domain_for
+    :home_path, :locale_url_for, :locale_domain_for
 
   # returns true if "locale" is supported
   def valid_locale?(locale)
@@ -107,7 +107,7 @@ class ActionController::Base
     end
   end
 
-  def canonic_domain_for(locale)
+  def locale_domain_for(locale)
     _, domain, port = parse_host_and_port_for_locale
     domain = "#{domain}:#{port}" if port && port != "80"
     (locale == default_locale) ? domain : locale + "." + domain
@@ -118,18 +118,20 @@ class ActionController::Base
     "/"
   end
 
-  def canonic_url_for(locale)
-    url = request.protocol + canonic_domain_for(locale)
-    url << (request.get? ? request.fullpath : home_path)
-    uri = URI.parse(url)
-    uri.query = [uri.query, "locale=#{locale}"].compact.join("&")
-    uri.to_s
+  def locale_url_for(locale)
+    if request.get?
+      url_for(params.merge(:locale => locale, :host => locale_domain_for(locale)))
+    else
+      request.protocol + locale_domain_for(locale) + home_path + "?locale=" + locale 
+    end
   end
 
   # this filter will redirect to canonic domain if needed.
   def redirect_to_canonic_domain
-    return if request.host_with_port == canonic_domain_for(current_locale)
-    redirect_to(canonic_url_for(current_locale))
+    return unless request.get?
+    locale_domain = locale_domain_for(current_locale)
+    return if request.host_with_port == locale_domain
+    redirect_to(locale_url_for(current_locale))
   end
 
   def set_localization_options(options = {})
