@@ -1,15 +1,11 @@
-class TranslationKeysController < ActionController::Base
-  before_filter :authenticate
+class TranslationKeysController < ApplicationController
+  unloadable
+  # should be defined in the ApplicationController by the user
+  # can usually be just an alias to require_admin
+  before_filter :authenticate_translations_admin
   before_filter :find_translation_key, :only=>%w[show edit update destroy]
 
-  #use host layout/helpers
-  helper :all
   layout :choose_layout
-
-  #prevent 'method missing' for normally controller-side helpers
-  def current_user;nil;end
-  def logged_in?;false;end
-  helper_method :current_user, :logged_in?
 
   def index
     @translation_keys = TranslationKey.find(:all)
@@ -61,7 +57,7 @@ class TranslationKeysController < ActionController::Base
   end
 
   def choose_layout
-    @@config[:layout] || 'application'
+    self.class.config[:layout] || 'application'
   end
 
   def authenticate
