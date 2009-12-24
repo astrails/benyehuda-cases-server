@@ -8,7 +8,7 @@ class TranslationKeysController < ApplicationController
   layout :choose_layout
 
   def index
-    @translation_keys = TranslationKey.find(:all)
+    @translation_keys = TranslationKey.paginate(:page => params[:lage])
   end
 
   def new
@@ -21,7 +21,7 @@ class TranslationKeysController < ApplicationController
     @translation_key = TranslationKey.new(params[:translation_key])
     if @translation_key.save
       flash[:notice] = 'Created!'
-      redirect_to translation_key_path(@translation_key)
+      redirect_to translation_keys_path
     else
       flash[:error] = 'Failed to save!'
       render :action=>:edit
@@ -38,7 +38,7 @@ class TranslationKeysController < ApplicationController
   def update
     if @translation_key.update_attributes(params[:translation_key])
       flash[:notice] = 'Saved!'
-      redirect_to @translation_key
+      redirect_to translation_keys_path
     else
       flash[:error] = 'Failed to save!'
       render :action=>:edit

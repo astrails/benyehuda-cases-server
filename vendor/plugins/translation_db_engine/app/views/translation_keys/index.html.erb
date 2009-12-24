@@ -1,6 +1,7 @@
 <% locales = TranslationKey.available_locales %>
 <%= link_to "New", new_translation_key_url %>
 
+<%= will_paginate(@translation_keys) %>
 <table>
   <thead>
     <tr>
@@ -26,3 +27,4 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate(@translation_keys) %>
