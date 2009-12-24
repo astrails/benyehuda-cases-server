@@ -3,7 +3,7 @@ module PropertiesHelper
     property_parent = property_parent.to_s.downcase
     association_name = "#{property_parent}_properties"
 
-    Property.send("available_for_#{property_parent}").each do |property|
+    Property.send("available_for_#{property_parent}", current_user).each do |property|
       haml_concat render(:partial => "layouts/properties_form", :locals => {:f => f, :property => property, :association_name => association_name})
     end
   end
@@ -19,5 +19,12 @@ module PropertiesHelper
     end
 
     std_opts
+  end
+
+  def property_value(p)
+    if "boolean" == p.property.property_type
+      return p.custom_value.to_s == "1" ? "true" : "false"
+    end
+    p.custom_value
   end
 end

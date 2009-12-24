@@ -1,0 +1,4 @@
+- page_title("Dashboard")
+
+!= render(:partial => "tasks/index", :locals => {:tasks => @tasks, :title => "Unassigned Tasks"})
+!= will_paginate(@tasks)

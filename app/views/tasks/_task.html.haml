@@ -1,0 +1,10 @@
+%tr{:class => cycle("odd", "even")}
+  %td= task.id
+  %td= "#{time_ago_in_words(task.updated_at)} ago"
+  %td!= link_to h(task.name.utf_snippet(30)), task_path(task)
+  %td= task.kind
+  %td!= person_link(task.editor)
+  %td!= person_link(task.assignee)
+  %td= textify_state(task.state)
+  %td= task.documents.count
+  %td!= render(:partial => "tasks/task_actions", :locals => {:task => task})

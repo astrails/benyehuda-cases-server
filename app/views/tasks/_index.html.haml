@@ -1,0 +1,20 @@
+%h4
+  = title
+  = "(#{tasks.count})"
+
+- if tasks.blank?
+  No Tasks found
+- else
+  %table.list
+    %tr
+      %th &nbsp;
+      %th Last Updated
+      %th Name
+      %th Kind
+      %th Editor
+      %th Assignee
+      %th State
+      %th Files
+      %th &nbsp;
+
+    != render(:partial => tasks)

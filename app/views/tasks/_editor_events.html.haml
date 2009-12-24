@@ -1,0 +1,13 @@
+- @task.simple_editor_events.each do |e|
+  != link_to textify_event(e), task_path(@task, :event => e), :method => :put, :confirm => "Are you sure?"
+
+- if @task.can_be_rejected?
+  #reject_task
+    != render(:partial => "reject")
+
+- if @task.can_create_new_task?
+  - toggle_js = "jQuery('#new_task_link, #new_task_container').toggle();"
+  != link_to_function "Create new task based on this one", toggle_js, :id => "new_task_link"
+  #new_task_container
+    TODO: New task form goes here
+    != link_to_function "cancel", toggle_js

@@ -11,6 +11,19 @@
 
 ActiveRecord::Schema.define(:version => 20091223191615) do
 
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.string   "message",              :limit => 4096
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "editor_eyes_only",                     :default => false
+    t.boolean  "is_rejection_reason",                  :default => false
+    t.boolean  "is_abandoning_reason",                 :default => false
+  end
+
+  add_index "comments", ["task_id", "created_at", "editor_eyes_only"], :name => "task_created_eyes"
+
   create_table "custom_properties", :force => true do |t|
     t.integer  "property_id"
     t.integer  "proprietary_id"
@@ -35,6 +48,18 @@ ActiveRecord::Schema.define(:version => 20091223191615) do
     t.datetime "updated_at"
   end
 
+  create_table "documents", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
   create_table "global_preferences", :force => true do |t|
     t.string   "name"
     t.string   "value"
@@ -49,6 +74,22 @@ ActiveRecord::Schema.define(:version => 20091223191615) do
     t.string   "title"
     t.string   "parent_type",   :limit => 32
     t.string   "property_type", :limit => 32
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_public",                   :default => true
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "creator_id"
+    t.integer  "editor_id"
+    t.integer  "assignee_id"
+    t.string   "name"
+    t.string   "state",       :limit => 16
+    t.string   "kind"
+    t.string   "difficulty",  :limit => 16
+    t.boolean  "full_nikkud",               :default => false
+    t.integer  "parent_id"
+    t.integer  "child_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

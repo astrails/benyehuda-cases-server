@@ -21,3 +21,15 @@ table.list tr.title {
 table.list td,  table.list th{
 	border:1px solid #ddd;
 }
+
+div.editor_eyes_only {
+	background:#eee;
+}
+
+div.rejection_reason {
+	border:1px solid red;
+}
+
+div.abandoning_reason {
+	border:1px solid blue;
+}

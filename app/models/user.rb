@@ -32,11 +32,29 @@ class User < ActiveRecord::Base
   has_many_custom_properties :volunteer # volunteer_properties
   has_many_custom_properties :editor #editor_properties
 
+  has_many :created_tasks, :class_name => "Task", :foreign_key => "creator_id"
+  has_many :editing_tasks, :class_name => "Task", :foreign_key => "editor_id", :order => "tasks.updated_at"
+  has_many :assigned_tasks, :class_name => "Task", :foreign_key => "assignee_id", :order => "tasks.updated_at"
+
+  has_many :comments
+
   def disabled?
     !disabled_at.blank?
   end
 
   def might_become_volunteer?
-    !is_volunteer? && !is_editor? && !is_admin? && volunteer_request.blank?
+    !is_volunteer? && !admin_or_editor? && volunteer_request.blank?
+  end
+
+  def public_roles
+    @public_roles ||= returning([]) do |res|
+      res << "admin" if is_admin?
+      res << "editor" if is_editor?
+      res << "volunteer" if is_volunteer?
+    end
+  end
+
+  def admin_or_editor?
+    try(:is_admin?) || try(:is_editor?)
   end
 end

@@ -3,4 +3,12 @@
 %h3 Dashboard
 
 - if current_user.might_become_volunteer?
-    != button_to _("Become Volunteer"), new_volunteer_request_path, :method => :get
+  != button_to _("Become Volunteer"), new_volunteer_request_path, :method => :get
+
+- if current_user.is_admin?
+  != link_to "New Task", new_admin_task_path
+
+!= render(:partial => "tasks/index", :locals => {:tasks => current_user.assigned_tasks.visible_in_my_tasks, :title => "My Tasks"})
+
+- when_editor do
+  != render(:partial => "editor_dashboard")

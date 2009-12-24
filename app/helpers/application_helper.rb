@@ -19,12 +19,14 @@ module ApplicationHelper
     @tabs_for_current_user ||= if logged_in?
       returning([]) do |res|
         res << {:title => _("Dashboard"), :path => dashboard_path}
-        if current_user.is_admin? || current_user.is_editor?
-          res << {:title => _("Volunteer Requests"), :path => volunteer_requests_path}
+        if current_user.admin_or_editor?
+          res << {:title => "Volunteer Requests", :path => volunteer_requests_path}
         end
         if current_user.is_admin?
-          res << {:title => _("Users"), :path => users_path}
-          res << {:title => _("Object Properties"), :path => properties_path}
+          res << {:title => "Tasks Admin", :path => admin_tasks_path}
+          res << {:title => "Users", :path => users_path}
+          res << {:title => "Object Properties", :path => properties_path}
+          res << {:title => "Global Preferences", :path => global_preferences_path}
         end
         res << {:title => _("Profile"), :path => profile_path}
       end

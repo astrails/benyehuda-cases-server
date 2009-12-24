@@ -9,4 +9,4 @@
 
 set :application, "<%= name %>.com"
 set :repository, "git@astrails.com:<%= name %>"
-set :domain, "astrails@astrails.com"
+set :domain, "astrails@<%= name %>.astrails.com"

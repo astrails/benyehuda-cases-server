@@ -1,0 +1,17 @@
+%h3= @task.name
+
+%h4
+  = textify_state(@task.state)
+  - when_editor_or_admin do
+    != link_to("(change assignments)", edit_task_assignment_path(@task))
+
+- if @task.editor
+  %p
+    %strong Editor:
+    != link_to h(@task.editor.name), profiles_path(@task.editor)
+
+- if @task.assignee
+  %p
+    %strong Assignee:
+    != link_to h(@task.assignee.name), profiles_path(@task.assignee)
+

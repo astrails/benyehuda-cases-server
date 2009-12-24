@@ -8,10 +8,19 @@ ActionController::Routing::Routes.draw do |map|
   map.signup "/signup", :controller => "users", :action => "new"
   map.resources :users
   map.resource :profile, :controller => "users"
+  map.profiles '/profiles/:id', :controller => "users", :action => "show", :public_profile => true
   map.root :controller => :pages, :action => :show, :id => :home
 
   map.resources :pages, :controller => 'pages', :only => [:show]
   map.resources :properties
   map.resource :dashboard
   map.resources :volunteer_requests
+  map.namespace :admin do |admin|
+    admin.resources :tasks
+  end
+  map.resources :tasks do |tasks|
+    tasks.resources :documents
+    tasks.resource  :assignment
+    tasks.resources :comments
+  end
 end

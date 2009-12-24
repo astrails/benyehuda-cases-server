@@ -1,0 +1,9 @@
+- f.inputs :name => "General" do
+  != f.input :name, :label => "Description", :required => true
+  != f.input :kind, :as => :select, :collection => Task::KINDS, :required => true
+  != f.input :difficulty, :as => :select, :collection => Task::DIFFICULTIES, :required => true
+  != f.input :full_nikkud, :as => :boolean, :label => "Full Nikkud"
+
+%br
+- f.inputs :name => "Task Settings" do
+  - custom_properties_fields(f, "task")
