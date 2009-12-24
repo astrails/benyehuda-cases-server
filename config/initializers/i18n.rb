@@ -6,4 +6,3 @@ TranslationText.class_eval {attr_accessible :text, :locale}
 FastGettext.add_text_domain 'app', :type => :db, :model => TranslationKey
 FastGettext.default_text_domain = 'app'
 FastGettext.available_locales = AVAILABLE_LOCALES
-FastGettext.locale = AVAILABLE_LOCALES.first
