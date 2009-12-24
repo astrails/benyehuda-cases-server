@@ -107,11 +107,11 @@ module RubyGettextExtractor
     end
 
     def new_call recv, meth, args = nil
-      # we dont care if the method is called on a a object
+      # we dont care if the method is called on an object
       if recv.nil?
-        if (meth == :_ || meth == :p_ || meth == :N_ || meth == :pgettext)
+        if (meth == :_ || meth == :s_)
           key = extract_key(args, "\004")
-        elsif meth == :n_
+        elsif meth == :n_ || meth == :N_
           key = extract_key(args, "\000")
         else
           # skip
