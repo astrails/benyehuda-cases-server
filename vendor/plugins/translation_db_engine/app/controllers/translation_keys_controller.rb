@@ -8,7 +8,7 @@ class TranslationKeysController < ApplicationController
   layout :choose_layout
 
   def index
-    @translation_keys = TranslationKey.paginate(:page => params[:lage])
+    @translation_keys = TranslationKey.paginate(:page => params[:page])
   end
 
   def new
