@@ -1,10 +1,10 @@
 class CreateTranslationTables < ActiveRecord::Migration
   def self.up
     create_table :translation_keys do |t|
-      t.string :key, :null => false
+      t.column :key, "varchar(1024) binary", :null => false
       t.timestamps
     end
-    add_index :translation_keys, :key, :unique => true
+    add_index :translation_keys, :key
 
     create_table :translation_texts do |t|
       t.text :text

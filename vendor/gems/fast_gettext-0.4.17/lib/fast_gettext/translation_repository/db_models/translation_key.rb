@@ -3,7 +3,7 @@ module FastGettext::TranslationRepository
     class TranslationKey < ActiveRecord::Base
       has_many :translations, :class_name=>'TranslationText'
 
-      attr_accessible :key, :translations_attributes
+      attr_accessible :key, :key_value, :translations_attributes
       accepts_nested_attributes_for :translations, :allow_destroy => true
 
       def key_value=(value)

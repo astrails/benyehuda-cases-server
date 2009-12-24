@@ -7,17 +7,17 @@ def gettext_flatten_locales_hash(h, prefix = nil)
 end
 
 namespace :gettext do
-  namespace :sync do
+  namespace :yml do
     desc "sync locales .yml file to db"
     task :locales => :environment do
       locales_path = File.read(File.join(RAILS_ROOT, "config", "locales", "en.yml"))
       if File.exists?(locales_path)
         messages = gettext_flatten_locales_hash(YAML.load(locales_path))
         messages.each do |k, v|
-          unless key = TranslationKey.find_by_key(k)
+          unless key = TranslationKey.find_by_key(k.to_json)
             puts "new error message key: #{k}"
 
-            TranslationKey.create(:key => k,
+            TranslationKey.create(:key_value => k,
               :translations_attributes => AVAILABLE_LOCALES.map {|loc| {:locale => loc, :text => ('en' == loc) ? v : nil}})
           end
         end

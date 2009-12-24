@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(:version => 20091223191615) do
   end
 
   create_table "translation_keys", :force => true do |t|
-    t.string   "key",        :null => false
+    t.string   "key",        :limit => 1024, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key", :unique => true
+  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key"
 
   create_table "translation_texts", :force => true do |t|
     t.text     "text"
