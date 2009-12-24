@@ -119,13 +119,13 @@ class ActionController::Base
   end
 
   def canonic_url_for(locale)
-    url = request.protocol + canonic_domain_for(lang)
+    url = request.protocol + canonic_domain_for(locale)
     url << (request.get? ? request.fullpath : home_path)
   end
 
   # this filter will redirect to canonic domain if needed.
   def redirect_to_canonic_domain
-    return request.host_with_port == canonic_domain_for(current_locale)
+    return if request.host_with_port == canonic_domain_for(current_locale)
     redirect_to(canonic_url_for(current_locale))
   end
 
