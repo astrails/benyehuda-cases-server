@@ -1,6 +1,4 @@
 class ActionController::Base
-  extend ActiveSupport::Memoizable
-
   protected
 
   helper_method :valid_locale?, :default_locale, :current_locale
@@ -27,16 +25,17 @@ class ActionController::Base
   #     www.foobar.com:3000   =>  [nil, "foobar.com", "3000"]
   #     en.foobar.com         =>  ["en", "foobar.com", nil]
   def parse_host_and_port_for_locale
-    parts = request.host_with_port.split('.')
+    @parsed_host_and_port ||= begin
+      parts = request.host_with_port.split('.')
 
-    parts.shift if parts.first == 'www'
+      parts.shift if parts.first == 'www'
 
-    lang = parts.shift if valid_locale?(parts.first)
+      lang = parts.shift if valid_locale?(parts.first)
 
-    host, port = parts.join('.').split(':')
-    [lang, host, port]
+      host, port = parts.join('.').split(':')
+      [lang, host, port]
+    end
   end
-  memoize :parse_host_and_port_for_locale
 
   # returns locala from a 'source'
   # available sources are :params, :session, :cookie, :domain, :header, and :default
@@ -81,15 +80,24 @@ class ActionController::Base
     session[:locale] = FastGettext.set_locale(detect_locale(sources))
   end
 
+  def canonic_session_domain(session_domain = true)
+    return unless session_domain
+
+    session_domain = parse_host_and_port_for_locale[1] if true == session_domain
+
+    return session_domain unless session_domain.downcase == "localhost"
+
+    logger.debug "can't use 'localhost' as session domain. leaving it default."
+    nil
+  end
+
   # sets session's domain settings
   # this is needed so that the cookie will be set on some 'base' domain
   # and thus be available on child subdomains, so that for example
   # session will be shared between en.domain.com and ru.domain.com
   # you can pass the desired session_domain or just 'true' for autodetection
   def set_session_domain(session_domain = true)
-    return unless session_domain
-
-    session_domain = parse_host_and_port_for_locale[1] if true == session_domain
+    return unless session_domain = canonic_session_domain(session_domain)
 
     if request.env['rack.session.options']
       logger.debug "set session domain = #{session_domain}"
@@ -101,7 +109,7 @@ class ActionController::Base
 
   def canonic_domain_for(locale)
     _, domain, port = parse_host_and_port_for_locale
-    domain << ":" << port if port && port != "80"
+    domain = "#{domain}:#{port}" if port && port != "80"
     (locale == default_locale) ? domain : locale + "." + domain
   end
 
