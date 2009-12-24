@@ -13,6 +13,10 @@ task :sync_po_to_db => :environment do
     po_files << p
   end
 
+  # In most cases translations can easily fit in memory. we can greatly improve
+  # performance of this task by preloading them all at once
+  keys = TranslationKey.all(:include => :translations).index_by(&:key)
+
   #insert all their translation into the db
   po_files.each do |p|
     #read translations from po-files
@@ -25,13 +29,18 @@ task :sync_po_to_db => :environment do
     translations.reject(&:fuzzy?).each do |t|
       next if t.msgid.blank? #atm do not insert metadata
 
-      key = TranslationKey.find_or_create_by_key(t.msgid)
-      #do not overwrite existing translations
-      next if key.translations.detect{|text| text.locale == locale}
+      msgid = t.msgid.to_json
+
+      if key = keys[msgid]
+        #do not overwrite existing translations
+        next if key.translations.detect{|text| text.locale == locale}
+      else
+        key = keys[msgid] = TranslationKey.create!(:key => t.msgid)
+      end
 
       #store translations
-      puts "Creating text #{locale}:#{t.msgid} = #{t.msgstr}"
-      key.translations.create!(:locale=>locale, :text=>t.msgstr)
+      puts "Creating text #{locale}:#{msgid} = #{t.msgstr.to_json}"
+      key.translations.create!(:locale => locale, :text => t.msgstr)
     end
   end
 end
