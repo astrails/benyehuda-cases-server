@@ -35,8 +35,10 @@ module FastGettext
         @model.translation(key, FastGettext.locale)
       end
 
-      def plural(*args)
-        @model.translation(args, FastGettext.locale) || []
+      def plural(*msgids)
+        translations = @model.translation(msgids, FastGettext.locale) || []
+        return translations unless translations.blank? || translations.all?(&:blank?)
+        msgids.map{|msgid| self[msgid] || msgid} #try to translate each id
       end
 
       def self.require_models
