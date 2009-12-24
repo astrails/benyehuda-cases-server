@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def hebrew_layout?
-    false
+    "he" == current_locale
   end
 
   def tabs_for_current_user
