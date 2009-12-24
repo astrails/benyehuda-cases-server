@@ -109,9 +109,9 @@ module RubyGettextExtractor
     def new_call recv, meth, args = nil
       # we dont care if the method is called on an object
       if recv.nil?
-        if (meth == :_ || meth == :s_)
+        if (meth == :_ || meth == :s_ || meth == :N_)
           key = extract_key(args, "\004")
-        elsif meth == :n_ || meth == :N_
+        elsif meth == :n_ || meth == :Nn_
           key = extract_key(args, "\000")
         else
           # skip
