@@ -7,7 +7,7 @@ module FastGettext::TranslationRepository
       accepts_nested_attributes_for :translations, :allow_destroy => true
 
       def key=(value)
-        write_attribute(:key, value.blank? ? nil : ActiveSupport::JSON.encode(value))
+        write_attribute(:key, ActiveSupport::JSON.encode(value))
       end
 
       validates_uniqueness_of :key

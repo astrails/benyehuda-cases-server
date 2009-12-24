@@ -9,13 +9,15 @@ module FastGettext::TranslationRepository
       validates_uniqueness_of :locale, :scope=>:translation_key_id
 
       def text=(value)
-        @text = value.blank? ? nil : value
-        write_attribute(:text, @text && ActiveSupport::JSON.encode(@text))
+        write_attribute(:text, ActiveSupport::JSON.encode(value))
       end
 
-      def text(refresh = false)
-        return @text if defined?(@text) && !refresh
-        @text = (value = read_attribute(:text)) && ActiveSupport::JSON.decode(value)
+      def text
+        return nil unless value = read_attribute(:text)
+        value = ActiveSupport::JSON.decode(value)
+        return nil if value.blank?
+        return value unless value.is_a?(Array)
+        value.map {|v| v.blank? ? nil : v} # replace "" with nil
       end
     end
   end
