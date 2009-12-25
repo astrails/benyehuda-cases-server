@@ -1,10 +1,9 @@
 module UserHelper
 
-  # TODO: gettext
   ROLES = {
-    "editor" => "Editor",
-    "volunteer" => "Volunteer",
-    "admin" => "Admin"
+    "editor" => N_("user role|Editor"),
+    "volunteer" => N_("user role|Volunteer"),
+    "admin" => N_("user role|Admin")
   }
 
   def when_volunteer
@@ -25,7 +24,7 @@ module UserHelper
 
   def user_roles(roles)
     return "No roles defined" if roles.blank?
-    roles.map{ |r| ROLES[r]}.join(", ")
+    roles.map{ |r| s_(ROLES[r])}.join(", ")
   end
 
   def when_editor_or_admin

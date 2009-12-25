@@ -23,7 +23,7 @@ module PropertiesHelper
 
   def property_value(p)
     if "boolean" == p.property.property_type
-      return p.custom_value.to_s == "1" ? "true" : "false"
+      return p.custom_value.to_s == "1" ? _("true") : _("false")
     end
     p.custom_value
   end

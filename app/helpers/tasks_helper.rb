@@ -1,37 +1,37 @@
 module TasksHelper
   TASK_STATES = {
-    "unassigned" => "Unassigned",
-    "assigned" => "Assigned/Work in Progress",
-    "stuck" => "Editors Help Required",
-    "partial" => "Partialy Ready",
-    "waits_for_editor" => "Waits for Editor's approvement",
-    "rejected" => "Rejected by Editor", 
-    "approved" => "Approved by Editor",
-    "ready_to_publish" => "Ready to Publish",
-    "other_task_created" => "Another Task Created"
+    "unassigned" => N_("task state|Unassigned"),
+    "assigned" => N_("task state|Assigned/Work in Progress"),
+    "stuck" => N_("task state|Editors Help Required"),
+    "partial" => N_("task state|Partialy Ready"),
+    "waits_for_editor" => N_("task state|Waits for Editor's approvement"),
+    "rejected" => N_("task state|Rejected by Editor"), 
+    "approved" => N_("task state|Approved by Editor"),
+    "ready_to_publish" => N_("task state|Ready to Publish"),
+    "other_task_created" => N_("task state|Another Task Created")
   }
 
   TASK_EVENTS = {
     # editor
-    "approve" => "Approve",
-    "reject" => "Reject", 
-    "complete" => "Mark as Completed", 
-    "create_other_task" => "Create Other Task",
+    "approve" => N_("task event|Approve"),
+    "reject" => N_("task event|Reject"),
+    "complete" => N_("task event|Mark as Completed"),
+    "create_other_task" => N_("task event|Create Other Task"),
     # assignee
-    "finish" => "Finish",
-    "abandon" => "Abandon", 
-    "help_required" => "Need Editor's Help", 
-    "finish_partially" => "Mark as Finished Partly"
+    "finish" => N_("task event|Finish"),
+    "abandon" => N_("task event|Abandon"),
+    "help_required" => N_("task event|Need Editor's Help"),
+    "finish_partially" => N_("task event|Mark as Finished Partly")
   }
 
   def textify_state(state)
     # TODO: gettext here
-    TASK_STATES[state]
+    s_(TASK_STATES[state])
   end
 
   def textify_event(event)
     # TODO: gettext here
-    TASK_EVENTS[event]
+    s_(TASK_EVENTS[event])
   end
 
   def upload_javascripts
@@ -49,7 +49,7 @@ module TasksHelper
         'script'    : '#{task_documents_path(@task)}',
         'auto'      : true,
         'multi'     : true,
-        'fileDesc'  : 'Choose files to attach to the project:',
+        'fileDesc'  : '#{_('Choose files to attach to the project:')}',
         'hideButton': false,
         'scriptAccess': 'always',
         'folder': '/stub',
@@ -65,7 +65,7 @@ module TasksHelper
           eval(response);
         },
         'onError': function() {
-          alert('Opps, something went wrong. Please try again later.');
+          alert('#{_('Opps, something went wrong. Please try again later.')}');
           window.location.href = window.location.href;
         }
       });
