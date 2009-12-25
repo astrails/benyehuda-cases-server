@@ -1,4 +1,4 @@
-- (@user.id == current_user.id) ? set_tab(:profile) : set_tab(:users)
+- (@user.id == current_user.id) ? set_tab(:profile, false) : set_tab(:users, false)
 
 != render(:partial => "users/public_profile")
 != render(:partial => "users/show") unless public_profile?

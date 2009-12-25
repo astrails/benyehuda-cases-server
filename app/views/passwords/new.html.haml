@@ -1,6 +1,4 @@
-- set_tab :profile
-
-%h3 Change Password
+- set_tab :profile, _("Change Password")
 
 - semantic_form_for(@user, :url => passwords_path) do |f|
   != f.input :email

@@ -1,8 +1,4 @@
-- set_tab :volunteer_requests
-
-%h3
-  = _("Volunteer Request from")
-  != link_to h(@volunteer_request.user.name), user_path(@volunteer_request.user)
+- set_tab :volunteer_requests, _("Volunteer Request from %{user_link}") % {:user_link => link_to(h(@volunteer_request.user.name), user_path(@volunteer_request.user))}
 
 %p
   = _("Requested at:")

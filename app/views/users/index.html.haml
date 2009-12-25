@@ -1,7 +1,5 @@
-- set_tab :users
+- set_tab :users, (params[:all] == "true" ? _("All Users") : _("Users"))
 
-%h3
-  = params[:all] == "true" ? "All Users" : "Users"
 
 %p
   != link_to _("All"), users_path(:all => true)
@@ -10,12 +8,12 @@
 
 %table.list
   %tr.title
-    %th _("Name")
-    %th _("Email")
-    %th _("Volunteer")
-    %th _("Editor")
-    %th _("Admin")
-    %th _("Activated")
+    %th= _("Name")
+    %th= _("Email")
+    %th= _("Volunteer")
+    %th= _("Editor")
+    %th= _("Admin")
+    %th= _("Activated")
     %th &nbsp;
     %th &nbsp;
   != render :partial => @users

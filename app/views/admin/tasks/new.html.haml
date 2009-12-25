@@ -1,6 +1,4 @@
-- set_tab :tasks_admin
-
-%h3 New Task
+- set_tab :tasks_admin, _("New Task")
 
 - semantic_form_for(@task, :live_validations => true, :url => admin_tasks_path) do |f|
   - f.inputs do

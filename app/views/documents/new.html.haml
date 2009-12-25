@@ -1,4 +1,4 @@
-%h3 Attach new document
+%h3= _("Attach New Document")
 - @document ||= @task.documents.build
 - semantic_form_for(@document, :live_validations => false, :url => task_documents_path(@task), :html => { :multipart => true }) do |f|
   != render(:partial => "new", :locals => {:f => f})

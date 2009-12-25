@@ -1,6 +1,4 @@
-- set_tab :profile
-
-%h3= _("Edit Profile")
+- set_tab :profile, _("Edit Profile")
 
 - semantic_form_for(@user, :live_validations => true) do |f|
   = f.object.errors.on(:base)

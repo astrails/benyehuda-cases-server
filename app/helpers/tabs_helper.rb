@@ -17,9 +17,20 @@ module TabsHelper
     end
   end
 
-  def set_tab(name)
+  def set_tab(name, page_title = nil)
     name = name.to_sym
     @current_tab = name
-    @page_title ||= tabs_by_name[name]
+    case page_title
+    when String
+      @page_title = page_title
+      render_page_title
+    when NilClass
+      @page_title ||= s_(tabs_by_name[name][:title])
+      render_page_title
+    end
+  end
+
+  def render_page_title
+    haml_tag(:h3, @page_title)
   end
 end
