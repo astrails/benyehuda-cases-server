@@ -7,11 +7,11 @@
 
 - if @task.editor
   %p
-    %strong Editor:
+    %strong= _("Editor:")
     != link_to h(@task.editor.name), profiles_path(@task.editor)
 
 - if @task.assignee
   %p
-    %strong Assignee:
+    %strong= _("Assignee:")
     != link_to h(@task.assignee.name), profiles_path(@task.assignee)
 

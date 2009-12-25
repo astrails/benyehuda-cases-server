@@ -1,8 +1,8 @@
-%h3 Comments
+%h3= _("Comments")
 
 #comments
   != render(:partial => "comments/comment", :collection => comments)
 
-%h4 Add Comment
+%h4= _("Add Comment")
 #new_comment
   != render(:partial => "comments/new")

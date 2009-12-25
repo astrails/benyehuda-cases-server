@@ -1,6 +1,6 @@
 %tr{:class => cycle("odd", "even")}
   %td= task.id
-  %td= "#{time_ago_in_words(task.updated_at)} ago"
+  %td= _("%{time} ago") % {:time => time_ago_in_words(task.updated_at)}
   %td!= link_to h(task.name.utf_snippet(30)), task_path(task)
   %td= task.kind
   %td!= person_link(task.editor)

@@ -1,11 +1,11 @@
 - f.inputs :name => _("User Settings") do
-  != f.input :name
-  != f.input :email, :input_html => {:disabled => !f.object.new_record?}, :required => f.object.new_record?
+  != f.input :name, :label => _("Name")
+  != f.input :email, :input_html => {:disabled => !f.object.new_record?}, :required => f.object.new_record?, :label => _("Email")
 
   - when_admin do
-    != f.input :is_admin
-    != f.input :is_editor
-    != f.input :is_volunteer
+    != f.input :is_admin, :label => _("Is Admin")
+    != f.input :is_editor, :label => _("Is Editor")
+    != f.input :is_volunteer, :label => _("Is Volunteer")
 
 - unless f.object.new_record?
   != render(:partial => "users/user_form", :locals => {:f => f})

@@ -6,6 +6,6 @@
   - semantic_form_remote_for(@task, :live_validations => false, :url => task_path(@task, :event => "reject")) do |f|
     - f.inputs do
       - f.fields_for :comment, @task.rejection_comment  do |comment_fields|
-        != comment_fields.input :message, :as => :text, :input_html => {:id => "reject_comment_message", :class => "comment_message #{has_rejection_errors? && 'active activated'}"}, :label => "Rejection Reason"
-    != f.submit "Reject"
-    != link_to_function "cancel", toggle_js
+        != comment_fields.input :message, :as => :text, :input_html => {:id => "reject_comment_message", :class => "comment_message #{has_rejection_errors? && 'active activated'}"}, :label => _("Rejection Reason")
+    != f.submit _("Reject")
+    != link_to_function _("cancel"), toggle_js

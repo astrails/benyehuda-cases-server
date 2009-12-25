@@ -3,18 +3,18 @@
   = "(#{tasks.count})"
 
 - if tasks.blank?
-  No Tasks found
+  = _("No Tasks found")
 - else
   %table.list
     %tr
       %th &nbsp;
-      %th Last Updated
-      %th Name
-      %th Kind
-      %th Editor
-      %th Assignee
-      %th State
-      %th Files
+      %th= _("Last Updated")
+      %th= _("Name")
+      %th= _("Kind")
+      %th= _("Editor")
+      %th= _("Assignee")
+      %th= _("State")
+      %th= _("Files")
       %th &nbsp;
 
     != render(:partial => tasks)

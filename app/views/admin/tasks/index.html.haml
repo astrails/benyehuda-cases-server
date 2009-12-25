@@ -1,7 +1,7 @@
 - set_tab :tasks_admin, _("All Tasks")
 
-!= link_to "New", new_admin_task_path
-!= link_to "All", admin_tasks_path
+!= link_to _("New"), new_admin_task_path
+!= link_to _("All"), admin_tasks_path
 &nbsp;
 - Task.aasm_states.collect(&:name).each do |name|
   != link_to textify_state(name.to_s), admin_tasks_path(name => true)
@@ -10,14 +10,14 @@
 %table.list
   %tr
     %th &nbsp;
-    %th Creater
-    %th Last Updated
-    %th Name
-    %th Kind
-    %th Editor
-    %th Assignee
-    %th State
-    %th Files
+    %th= _("Creater")
+    %th= _("Last Updated")
+    %th= _("Name")
+    %th= _("Kind")
+    %th= _("Editor")
+    %th= _("Assignee")
+    %th= _("State")
+    %th= _("Files")
     %th &nbsp;
     %th &nbsp;
   != render(:partial => @tasks)

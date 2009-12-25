@@ -1,8 +1,6 @@
 %div[document]
   != link_to document.file_file_name, document.file.url
   = "(#{sprintf("%.2f", document.file_file_size.to_f/1024)} KB)"
-  Uploaded by
-  != link_to h(document.user.name), profiles_path(document.user)
-  = "#{time_ago_in_words(document.created_at)} ago"
+  != _("Uploaded by %{user} %{time} ago") % {:user => link_to(h(document.user.name), profiles_path(document.user)), :time => time_ago_in_words(document.created_at)}
   - if document_can_be_deleted_by?(document, current_user)
-    != link_to "Remove", task_document_path(document.task_id, document), :method => :delete, :confirm => "Are you sure?"
+    != link_to _("Remove"), task_document_path(document.task_id, document), :method => :delete, :confirm => _('Are you sure?')

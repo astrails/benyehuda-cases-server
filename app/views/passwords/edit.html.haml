@@ -1,6 +1,6 @@
 - set_tab :profile, _("Change Password")
 
 - semantic_form_for(@user, :url => password_path(@user.perishable_token), :method => :put, :live_validations => true) do |f|
-  != f.input :password
-  != f.input :password_confirmation
+  != f.input :password, :label => _("Password")
+  != f.input :password_confirmation, :label => _("Password Confirmation")
   != f.submit password_edit_submit

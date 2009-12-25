@@ -1,4 +1,4 @@
 - set_tab :dashboard
 
-!= render(:partial => "tasks/index", :locals => {:tasks => @tasks, :title => "Unassigned Tasks"})
+!= render(:partial => "tasks/index", :locals => {:tasks => @tasks, :title => _("Unassigned Tasks")})
 != will_paginate(@tasks)

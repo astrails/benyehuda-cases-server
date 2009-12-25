@@ -5,5 +5,5 @@
   - f.inputs do
     = f.object.errors.on(:base)
     != f.input :reason, :as => :text
-    != f.submit "Request"
-    != link_to "Cancel", properties_path
+    != f.submit _("Request")
+    != link_to _("cancel"), properties_path

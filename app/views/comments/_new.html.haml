@@ -1,7 +1,7 @@
 - semantic_form_remote_for(@comment ||= Comment.new, :live_validations => false, :url => task_comments_path(@task)) do |f|
   - f.inputs do
-    != f.input :message, :as => :text, :input_html => {:class => "comment_message #{!@comment.errors.blank? && 'active activated'}"}
+    != f.input :message, :as => :text, :input_html => {:class => "comment_message #{!@comment.errors.blank? && 'active activated'}"}, :label => _("Message")
     - when_editor_or_admin do
       != f.input :editor_eyes_only
-  != f.submit "Publish"
-  != link_to_function "Cancel", "if (confirm('Are you sure?')) {jQuery('#comment_message').val('').removeClass('active').css({height:'30px'});}"
+  != f.submit _("Publish")
+  != link_to_function _("Cancel"), "if (confirm('#{_('Are you sure?')}')) {jQuery('#comment_message').val('').removeClass('active').css({height:'30px'});}"

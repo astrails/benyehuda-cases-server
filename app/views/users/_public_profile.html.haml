@@ -1,36 +1,36 @@
 %h3= @user.name
 
 %p
-  %strong Email:
+  %strong= _("Email")
   =h @user.email
 
 %p
-  %strong Roles:
+  %strong= _("Roles")
   = user_roles(@user.public_roles)
 
 %p
-  %strong Registered since:
+  %strong= _("Registered since")
   - if @user.activated_at
     = @user.activated_at.strftime("%Y-%m-%d")
   - else
-    Not activated yet
+    = _("Not activated yet")
 
 
-%h4 User Properties:
+%h4= _("User Properties")
 - @user.user_properties.visible_for(current_user).each do |p|
   %p
     %strong= "#{p.property.title}:"
     = property_value(p)
 
 - when_user_volunteer do
-  %h4 Volunteer Properties:
+  %h4= _("Volunteer Properties")
   - @user.volunteer_properties.visible_for(current_user).each do |p|
     %p
       %strong= "#{p.property.title}:"
       = property_value(p)
 
 - when_user_editor do
-  %h4 Editor Properties:
+  %h4= _("Editor Properties")
   - @user.editor_properties.visible_for(current_user).each do |p|
     %p
       %strong= "#{p.property.title}:"
