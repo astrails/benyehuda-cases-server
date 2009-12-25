@@ -1,2 +1,2 @@
 - f.fields_for("#{association_name}[#{property.id}]") do |upf|
-  != upf.input :custom_value, property_input_opts(property, association_name, f), :label => _("Value")
+  != upf.input :custom_value, property_input_opts(property, association_name, f)
