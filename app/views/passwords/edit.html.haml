@@ -1,4 +1,6 @@
-%h1= page_title password_edit_title
+- set_tab :profile
+
+%h3 Change Password
 
 - semantic_form_for(@user, :url => password_path(@user.perishable_token), :method => :put, :live_validations => true) do |f|
   != f.input :password

@@ -27,7 +27,7 @@
               - else
                 != link_to locale, locale_url_for(locale)
       #tabs.span-24.last
-        != render :partial => 'layouts/tabs'
+        - render_tabs
       #content.span-24.last
         #main.span-19.colborder
           != render :partial => 'layouts/flashes'
@@ -37,6 +37,4 @@
       #footer.span-24.last
         %h4=_("Footer")
         - if current_user.try(:is_admin?)
-          != link_to "i18n", translation_keys_path
-          != link_to "conf", global_preferences_path
           != link_to "restart", restart_path, :method => :post, :confirm => "Really RESTART the server??!"

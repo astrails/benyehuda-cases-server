@@ -1,4 +1,4 @@
-- page_title("Profile") if @user.id == current_user.id
+- (@user.id == current_user.id) ? set_tab(:profile) : set_tab(:users)
 
 != render(:partial => "users/public_profile")
 != render(:partial => "users/show") unless public_profile?

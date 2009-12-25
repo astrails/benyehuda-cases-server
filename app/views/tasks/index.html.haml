@@ -1,4 +1,6 @@
-- page_title("Dashboard")
+- set_tab :dashboard
+
+%h3= _("Dashbaord")
 
 != render(:partial => "tasks/index", :locals => {:tasks => @tasks, :title => "Unassigned Tasks"})
 != will_paginate(@tasks)
