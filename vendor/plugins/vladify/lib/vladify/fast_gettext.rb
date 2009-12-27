@@ -7,25 +7,20 @@ def gettext_flatten_locales_hash(h, prefix = nil)
 end
 
 namespace :gettext do
-  namespace :yml do
-    desc "sync locales .yml file to db"
-    task :locales => :environment do
-      locales_path = File.read(File.join(RAILS_ROOT, "config", "locales", "en.yml"))
-      if File.exists?(locales_path)
-        messages = gettext_flatten_locales_hash(YAML.load(locales_path))
-        messages.each do |k, v|
-          unless key = TranslationKey.find_by_key(k.to_json)
-            puts "new error message key: #{k}"
+  desc "sync locales .yml file to db"
+  task :yml => :environment do
+    I18n.load_path.flatten.each do |filename|
+      next unless File.exists?(filename)
+      messages = gettext_flatten_locales_hash(YAML.load(File.read(filename)))
+      messages.each do |k, v|
+        unless key = TranslationKey.find_by_key(k.to_json)
+          puts "new error message key: #{k}"
 
-            TranslationKey.create(:key_value => k,
-              :translations_attributes => AVAILABLE_LOCALES.map {|loc| {:locale => loc, :text => ('en' == loc) ? v : nil}})
-          end
+          TranslationKey.create(:key_value => k,
+            :translations_attributes => AVAILABLE_LOCALES.map {|loc| {:locale => loc, :text => v}})
         end
       end
     end
-
-    desc "sync gettext .po files to db"
-    task :po => :sync_po_to_db
   end
 end
 
@@ -35,8 +30,8 @@ namespace :remote do
     remote_task :sync do
       # only need to do it on one of the :app hosts
       break unless target_host == Rake::RemoteTask.hosts_for(:app).first
-      Rake::Task["gettext:sync:locales"].invoke
-      Rake::Task["gettext:sync:po"].invoke
+      run rake "gettext:yml"
+      run rake "gettext:sync"
     end
   end
 end
