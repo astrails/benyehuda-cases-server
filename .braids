@@ -48,11 +48,6 @@ vendor/plugins/rack-bug:
   type: git
   revision: 3a0933f50d5fc8f65bf9594f8ca526702d309d37
   remote: braid/vendor/plugins/rack-bug
-vendor/plugins/restart_controller: 
-  squashed: true
-  branch: master
-<<<<<<< HEAD
-  remote: braid/vendor/plugins/log-buddy
 vendor/gems/fast_gettext-0.4.17: 
   squashed: true
   url: git://github.com/astrails/fast_gettext.git
@@ -60,12 +55,13 @@ vendor/gems/fast_gettext-0.4.17:
   revision: 25bf50aade2f2d9edd042b2000253f5226964e7d
   branch: master
   remote: braid/vendor/gems/fast-gettext
-=======
+vendor/plugins/restart_controller: 
+  squashed: true
+  branch: master
   url: git://github.com/astrails/restart_controller.git
   type: git
   revision: 43e48faf45246e38292c95e7245a975bdef3f6b8
   remote: braid/vendor/plugins/restart-controller
->>>>>>> master
 vendor/plugins/high_voltage: 
   squashed: true
   branch: master
