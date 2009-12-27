@@ -17,7 +17,7 @@ namespace :gettext do
           puts "new error message key: #{k}"
 
           TranslationKey.create(:key_value => k,
-            :translations_attributes => AVAILABLE_LOCALES.map {|loc| {:locale => loc, :text => v}})
+            :translations_attributes => AVAILABLE_LOCALES.map {|loc| {:locale => loc, :text_value => v}})
         end
       end
     end
