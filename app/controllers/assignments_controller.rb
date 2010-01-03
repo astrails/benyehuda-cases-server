@@ -2,6 +2,7 @@ class AssignmentsController < ApplicationController
   before_filter :require_editor_or_admin, :set_task
 
   def edit
+    @skip_assignment_links = true
   end
 
   def update
