@@ -80,4 +80,10 @@ module TasksHelper
   def has_abandoning_errors?
     @task.abandoning_comment && !@task.abandoning_comment.errors.blank?
   end
+
+  def link_to_editors_email(task)
+    return if task.editor.blank? || task.editor.disabled?
+
+    mail_to task.editor.email, _("Send Email to Editor"), :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
+  end
 end

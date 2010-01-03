@@ -10,6 +10,7 @@
   %p
     %strong= _("Editor:")
     != link_to h(@task.editor.name), profiles_path(@task.editor)
+    != link_to_editors_email(@task)
 
 - if @task.assignee
   %p
