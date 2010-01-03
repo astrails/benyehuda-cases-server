@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :profile, :controller => "users"
   map.profiles '/profiles/:id', :controller => "users", :action => "show", :public_profile => true
-  map.root :controller => :pages, :action => :show, :id => :home
+  map.root :controller => :welcome, :action => :index
 
   map.resources :pages, :controller => 'pages', :only => [:show]
   map.resources :properties
