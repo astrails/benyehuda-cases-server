@@ -32,8 +32,8 @@ protected
     return false
   end
 
-  before_filter :set_localization_options
-  def set_localization_options
+  before_filter :setup_localization
+  def setup_localization
     FastGettext.available_locales = AVAILABLE_LOCALES
     FastGettext.text_domain = 'app'
     super(:session_domain => true, :canonic_redirect => true)
