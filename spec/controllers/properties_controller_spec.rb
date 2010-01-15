@@ -52,7 +52,7 @@ describe PropertiesController do
     end
 
     it "should create" do
-      post :create, :property => {:title => "new one", :parent_type => "Editor", :property_type => "string"}
+      post :create, :property => {:title => "new one", :parent_type => "Editor", :property_type => "string", :comment => "some comment"}
       assigns[:property].should_not be_blank
       response.should redirect_to(properties_path)
     end

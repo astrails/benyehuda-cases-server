@@ -1,4 +1,6 @@
-!= f.input :parent_type, :as => :select, :collection => Property::PARENTS, :label => _("Parent Type")
-!= f.input :title, :label => _("Title")
-!= f.input :property_type, :as => :select, :collection => Property::TYPES, :label => _("Propery Type")
-!= f.input :is_public, :as => :boolean, :label => _("Public")
+- f.inputs do
+  != f.input :parent_type, :as => :select, :collection => Property::PARENTS, :label => _("Parent Type")
+  != f.input :title, :label => _("Title")
+  != f.input :property_type, :as => :select, :collection => Property::TYPES, :label => _("Propery Type")
+  != f.input :is_public, :as => :boolean, :label => _("Public")
+  != f.input :comment, :label => _("Comments")

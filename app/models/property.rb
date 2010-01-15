@@ -11,7 +11,7 @@ class Property < ActiveRecord::Base
 
   validates_uniqueness_of :title, :scope => [:parent_type]
 
-  attr_accessible :title, :parent_type, :property_type, :is_public
+  attr_accessible :title, :parent_type, :property_type, :is_public, :comment
 
   named_scope :by_parent_type, {:order => "properties.parent_type DESC"}
   named_scope :by_title, {:order => "properties.title DESC"}
