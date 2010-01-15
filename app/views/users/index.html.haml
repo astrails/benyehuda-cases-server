@@ -6,6 +6,8 @@
   \|
   != link_to _("Enabled"), users_path
 
+!= will_paginate(@users)
+
 %table.list
   %tr.title
     %th= _("Name")
@@ -18,3 +20,5 @@
     %th &nbsp;
     %th &nbsp;
   != render :partial => @users
+
+!= will_paginate(@users)
