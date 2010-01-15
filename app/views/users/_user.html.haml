@@ -4,10 +4,13 @@
   %td= boolean_property(user.is_volunteer)
   %td= boolean_property(user.is_editor)
   %td= boolean_property(user.is_admin)
+
+  %td!= activation_email_links(user)
+
   %td= user.activated_at
   - if user.activated_at
     %td.edit!= link_to _("Edit"), edit_user_path(user)
     %td.delete!= link_to _("Disable"), user, :method => "delete", :confirm => _("Are you sure?")
-  - else
+  - else    
     %td &nbsp;
     %td &nbsp;

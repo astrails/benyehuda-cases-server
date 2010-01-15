@@ -6,7 +6,9 @@ ActionController::Routing::Routes.draw do |map|
   map.login "/login", :controller => "user_session", :action => "new"
   map.resource :user_session, :controller => "user_session"
   map.signup "/signup", :controller => "users", :action => "new"
-  map.resources :users
+  map.resources :users do |user|
+    user.resources :activation_instructions
+  end
   map.resource :profile, :controller => "users"
   map.profiles '/profiles/:id', :controller => "users", :action => "show", :public_profile => true
   map.root :controller => :welcome, :action => :index

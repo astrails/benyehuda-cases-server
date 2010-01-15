@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   named_scope :admins, {:conditions => {:is_admin => true}}
 
   named_scope :enabled, {:conditions => "users.disabled_at IS NULL"}
+  named_scope :not_activated, {:conditions => "users.activated_at is NULL"}
 
   has_one :volunteer_request
   has_many :confirmed_volunteer_requests, :class_name => "VolunteerRequest", :foreign_key => :approver_id
@@ -53,6 +54,12 @@ class User < ActiveRecord::Base
       res << "volunteer" if is_volunteer?
     end
   end
+
+  def deliver_activation_instructions_with_db_update!
+    update_attribute(:activation_email_sent_at, Time.now.utc)
+    deliver_activation_instructions_without_db_update!
+  end
+  alias_method_chain :deliver_activation_instructions!, :db_update
 
   def admin_or_editor?
     try(:is_admin?) || try(:is_editor?)

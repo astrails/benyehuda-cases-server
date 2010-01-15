@@ -36,4 +36,21 @@ module UserHelper
     return "me" if user.id == current_user.id
     link_to(h(user.name), profiles_path(user))
   end
+
+  def activation_email_links(user)
+    link_opts = 
+    returning("") do |res|
+      if user.activation_email_sent_at
+        res << user.activation_email_sent_at.to_s
+        res << " " << send_activation_link(user, s_("activation email|Resend")) unless user.activated_at
+      else
+        res << send_activation_link(user, s_("activation email|Send Activation Email"))
+      end
+    end
+  end
+
+protected
+  def send_activation_link(user, text)
+    link_to text, user_activation_instructions_path(user, :page => params[:page]), :method => :post, :confirm => (_("Send Activation Email to %{user}. Are you sure?") % {:user => "#{h(user.name)} <#{user.email}>"})
+  end
 end

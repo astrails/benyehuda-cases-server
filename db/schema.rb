@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091223191615) do
+ActiveRecord::Schema.define(:version => 20100115141939) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -113,26 +113,27 @@ ActiveRecord::Schema.define(:version => 20091223191615) do
   add_index "translation_texts", ["translation_key_id", "locale"], :name => "index_translation_texts_on_translation_key_id_and_locale", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "name",                :limit => 48
-    t.string   "email",               :limit => 100,                    :null => false
-    t.string   "crypted_password",    :limit => 128
-    t.string   "password_salt",       :limit => 20
-    t.string   "persistence_token",   :limit => 128
-    t.string   "single_access_token", :limit => 20
-    t.string   "perishable_token",    :limit => 20
+    t.string   "name",                     :limit => 48
+    t.string   "email",                    :limit => 100,                    :null => false
+    t.string   "crypted_password",         :limit => 128
+    t.string   "password_salt",            :limit => 20
+    t.string   "persistence_token",        :limit => 128
+    t.string   "single_access_token",      :limit => 20
+    t.string   "perishable_token",         :limit => 20
     t.integer  "login_count"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.datetime "activated_at"
-    t.string   "current_login_ip",    :limit => 15
-    t.string   "last_login_ip",       :limit => 15
+    t.string   "current_login_ip",         :limit => 15
+    t.string   "last_login_ip",            :limit => 15
     t.boolean  "is_admin"
     t.boolean  "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_volunteer",                       :default => false
-    t.boolean  "is_editor",                          :default => false
+    t.boolean  "is_volunteer",                            :default => false
+    t.boolean  "is_editor",                               :default => false
     t.datetime "disabled_at"
+    t.datetime "activation_email_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-15 15:34+0200\n"
+"POT-Creation-Date: 2010-01-15 16:33+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,8 +29,12 @@ msgstr ""
 msgid "Abandoning Reason"
 msgstr ""
 
-#: app/views/users/index.html.haml:16
+#: app/views/users/index.html.haml:17
 msgid "Activated"
+msgstr ""
+
+#: app/views/users/index.html.haml:16
+msgid "Activation email sent"
 msgstr ""
 
 #: app/views/comments/_index.html.haml:6
@@ -61,7 +65,7 @@ msgstr ""
 #: app/views/tasks/_editor_events.html.haml:2
 #: app/views/tasks/_task_actions.html.haml:3
 #: app/views/tasks/_task_actions.html.haml:7
-#: app/views/users/_user.html.haml:10
+#: app/views/users/_user.html.haml:13
 msgid "Are you sure?"
 msgstr ""
 
@@ -153,7 +157,7 @@ msgstr ""
 msgid "Difficulty"
 msgstr ""
 
-#: app/views/users/_user.html.haml:10
+#: app/views/users/_user.html.haml:13
 msgid "Disable"
 msgstr ""
 
@@ -161,7 +165,7 @@ msgstr ""
 msgid "Document deleted"
 msgstr ""
 
-#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:9
+#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:12
 msgid "Edit"
 msgstr ""
 
@@ -420,11 +424,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: app/views/users/_user.html.haml:12
-msgid "Send Activation Email"
-msgstr ""
-
-#: app/views/users/_user.html.haml:12
+#: app/helpers/user_helper.rb:54
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr ""
 
@@ -573,6 +573,14 @@ msgstr ""
 
 #: app/controllers/volunteer_requests_controller.rb:41
 msgid "Your request has already been posted."
+msgstr ""
+
+#: app/helpers/user_helper.rb:45
+msgid "activation email|Resend"
+msgstr ""
+
+#: app/helpers/user_helper.rb:47
+msgid "activation email|Send Activation Email"
 msgstr ""
 
 #: app/views/tasks/show.html.haml:3
