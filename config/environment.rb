@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem "grosser-pomo", :lib => false, :source=>"http://gems.github.com/", :version => '>=0.5.1'
   config.gem "aasm", :version => "2.1.3", :library => false
   config.gem 'mime-types', :lib => 'mime/types', :version => "1.16"
+  config.gem "fastercsv", :version => "1.5.0"
   # config.middleware.use Rack::NoIE
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -63,3 +64,6 @@ Rails::Initializer.run do |config|
     config.load_paths << "#{RAILS_ROOT}/app/#{dir}" 
   end
 end
+
+WillPaginate::ViewHelpers.pagination_options[:previous_label] = s_('paginator - previous page|&laquo; Previous')
+WillPaginate::ViewHelpers.pagination_options[:next_label] = s_('paginator - previous page|Next &raquo;')
