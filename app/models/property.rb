@@ -13,8 +13,7 @@ class Property < ActiveRecord::Base
 
   attr_accessible :title, :parent_type, :property_type, :is_public, :comment
 
-  named_scope :by_parent_type, {:order => "properties.parent_type DESC"}
-  named_scope :by_title, {:order => "properties.title DESC"}
+  named_scope :by_parent_type_and_title, {:order => "properties.parent_type, properties.title"}
 
   PARENTS.each do |parent|
     named_scope "available_for_#{parent.downcase}".to_sym, lambda {|user|

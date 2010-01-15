@@ -23,7 +23,7 @@ class PropertiesController < InheritedResources::Base
 
 protected
   def collection
-    @properties ||= end_of_association_chain.by_parent_type.by_title.paginate(:page => params[:page], :per_page => params[:per_page])
+    @properties ||= end_of_association_chain.by_parent_type_and_title.paginate(:page => params[:page], :per_page => params[:per_page])
   end
   
 end
