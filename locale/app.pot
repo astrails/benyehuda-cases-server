@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2009-12-24 19:42+0200\n"
+"POT-Creation-Date: 2010-01-15 14:55+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,20 +16,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: app/views/users/index.html.haml:7
+#: app/views/tasks/_task.html.haml:3
+#: app/views/volunteer_requests/_volunteer_request.html.haml:3
+msgid "%{time} ago"
+msgstr ""
+
+#: app/views/tasks/_abandon.html.haml:10
+msgid "Abandon"
+msgstr ""
+
+#: app/views/tasks/_abandon.html.haml:9
+msgid "Abandoning Reason"
+msgstr ""
+
+#: app/views/users/index.html.haml:16
+msgid "Activated"
+msgstr ""
+
+#: app/views/comments/_index.html.haml:6
+msgid "Add Comment"
+msgstr ""
+
+#: app/views/users/index.html.haml:15
+msgid "Admin"
+msgstr ""
+
+#: app/views/admin/tasks/index.html.haml:4 app/views/users/index.html.haml:5
 msgid "All"
 msgstr ""
 
+#: app/views/admin/tasks/index.html.haml:1
+msgid "All Tasks"
+msgstr ""
+
+#: app/views/users/index.html.haml:1
+msgid "All Users"
+msgstr ""
+
+#: app/helpers/volunteer_requests_helper.rb:3
+#: app/views/comments/_new.html.haml:7
+#: app/views/documents/_document.html.haml:6
 #: app/views/properties/_property.html.haml:6
+#: app/views/tasks/_assignee_events.html.haml:2
+#: app/views/tasks/_editor_events.html.haml:2
+#: app/views/tasks/_task_actions.html.haml:3
+#: app/views/tasks/_task_actions.html.haml:7
 #: app/views/users/_user.html.haml:10
 msgid "Are you sure?"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:16
+#: app/views/assignments/edit.html.haml:7
+msgid "Assign"
+msgstr ""
+
+#: app/views/admin/tasks/index.html.haml:18
+#: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
+msgid "Assignee"
+msgstr ""
+
+#: app/views/tasks/_description.html.haml:17
+msgid "Assignee:"
+msgstr ""
+
+#: app/views/admin/tasks/_task.html.haml:12
+msgid "Assignments"
+msgstr ""
+
+#: app/views/documents/new.html.haml:1
+msgid "Attach New Document"
+msgstr ""
+
+#: app/views/tasks/_new_document.html.haml:5
+msgid "Attach new document"
+msgstr ""
+
+#: app/views/tasks/_documents.html.haml:3
+msgid "Attached documents"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:12
 msgid "Back to Volunteer Requestes"
 msgstr ""
 
-#: app/views/dashboards/show.html.haml:6
+#: app/views/dashboards/show.html.haml:4
 msgid "Become Volunteer"
 msgstr ""
 
@@ -37,16 +106,38 @@ msgstr ""
 msgid "Ben Yehuda Project"
 msgstr ""
 
-#: app/views/properties/edit.html.haml:10 app/views/properties/new.html.haml:9
-#: app/views/users/edit.html.haml:10
+#: app/views/admin/tasks/edit.html.haml:9
+#: app/views/admin/tasks/new.html.haml:9 app/views/comments/_new.html.haml:7
+#: app/views/documents/new.html.haml:6 app/views/properties/edit.html.haml:8
+#: app/views/properties/new.html.haml:7 app/views/users/edit.html.haml:8
 msgid "Cancel"
+msgstr ""
+
+#: app/views/assignments/edit.html.haml:4
+msgid "Change Assignments"
+msgstr ""
+
+#: app/views/passwords/edit.html.haml:1 app/views/passwords/new.html.haml:1
+msgid "Change Password"
+msgstr ""
+
+#: app/views/comments/_index.html.haml:1
+msgid "Comments"
 msgstr ""
 
 #: app/helpers/volunteer_requests_helper.rb:3
 msgid "Confirm"
 msgstr ""
 
-#: app/helpers/application_helper.rb:21 app/views/dashboards/show.html.haml:1
+#: app/views/tasks/_editor_events.html.haml:10
+msgid "Create new task based on this one"
+msgstr ""
+
+#: app/views/admin/tasks/index.html.haml:13
+msgid "Creater"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:3
 msgid "Dashboard"
 msgstr ""
 
@@ -54,28 +145,94 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: app/views/admin/tasks/_form.html.haml:2
+msgid "Description"
+msgstr ""
+
+#: app/views/admin/tasks/_form.html.haml:4
+msgid "Difficulty"
+msgstr ""
+
 #: app/views/users/_user.html.haml:10
 msgid "Disable"
 msgstr ""
 
-#: app/views/users/_user.html.haml:9
+#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:9
 msgid "Edit"
 msgstr ""
 
-#: app/views/users/edit.html.haml:3
+#: app/views/users/edit.html.haml:1
 msgid "Edit Profile"
+msgstr ""
+
+#: app/views/properties/edit.html.haml:1
+msgid "Edit Project Property"
+msgstr ""
+
+#: app/views/admin/tasks/edit.html.haml:1
+msgid "Edit Task"
+msgstr ""
+
+#: app/views/admin/tasks/index.html.haml:17
+#: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
+#: app/views/users/index.html.haml:14
+msgid "Editor"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:33
+msgid "Editor Properties"
 msgstr ""
 
 #: app/views/users/_editor_form.html.haml:2
 msgid "Editor Settings"
 msgstr ""
 
-#: app/views/users/index.html.haml:9
+#: app/views/tasks/_description.html.haml:11
+msgid "Editor:"
+msgstr ""
+
+#: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:5
+#: app/views/users/_form.html.haml:3
+#: app/views/users/_public_profile.html.haml:4
+#: app/views/users/index.html.haml:12
+msgid "Email"
+msgstr ""
+
+#: app/views/users/index.html.haml:7
 msgid "Enabled"
+msgstr ""
+
+#: app/views/documents/_new.html.haml:3
+msgid "File"
+msgstr ""
+
+#: app/views/admin/tasks/index.html.haml:20
+#: app/views/tasks/_index.html.haml:17
+msgid "Files"
+msgstr ""
+
+#: app/views/tasks/_new_document.html.haml:7
+msgid "Flash Media Player"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:38
 msgid "Footer"
+msgstr ""
+
+#: app/views/volunteer_requests/index.html.haml:5
+msgid "From"
+msgstr ""
+
+#: app/views/admin/tasks/_form.html.haml:5
+msgid "Full Nikkud"
+msgstr ""
+
+#: app/views/tasks/_new_document.html.haml:8
+msgid "Get Flash Media Player!"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:8
+msgid "Global Preferences"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:15
@@ -86,58 +243,171 @@ msgstr ""
 msgid "Hello World"
 msgstr ""
 
-#: app/views/properties/index.html.haml:11
+#: app/views/users/_form.html.haml:6
+msgid "Is Admin"
+msgstr ""
+
+#: app/views/users/_form.html.haml:7
+msgid "Is Editor"
+msgstr ""
+
+#: app/views/users/_form.html.haml:8
+msgid "Is Volunteer"
+msgstr ""
+
+#: app/views/tasks/_new_document.html.haml:7
+msgid "It looks like you don't have %{flash} installed or enabled."
+msgstr ""
+
+#: app/views/admin/tasks/_form.html.haml:3
+#: app/views/admin/tasks/index.html.haml:16
+#: app/views/tasks/_index.html.haml:13
+msgid "Kind"
+msgstr ""
+
+#: app/views/admin/tasks/index.html.haml:14
+#: app/views/tasks/_index.html.haml:11
+msgid "Last Updated"
+msgstr ""
+
+#: app/views/user_session/new.html.haml:1
+msgid "Login"
+msgstr ""
+
+#: app/views/comments/_new.html.haml:3
+msgid "Message"
+msgstr ""
+
+#: app/views/tasks/_task_actions.html.haml:12
+msgid "More Actions"
+msgstr ""
+
+#: app/views/dashboards/show.html.haml:9
+msgid "My Tasks"
+msgstr ""
+
+#: app/views/admin/tasks/_form.html.haml:2
+#: app/views/admin/tasks/index.html.haml:15
+#: app/views/properties/index.html.haml:9 app/views/tasks/_index.html.haml:12
+#: app/views/users/_form.html.haml:2 app/views/users/index.html.haml:11
 msgid "Name"
 msgstr ""
 
-#: app/views/properties/index.html.haml:5
+#: app/views/admin/tasks/index.html.haml:3
+#: app/views/properties/index.html.haml:3
 msgid "New"
 msgstr ""
 
-#: app/views/properties/new.html.haml:3
-msgid "New project property"
+#: app/views/properties/new.html.haml:1
+msgid "New Property"
 msgstr ""
 
-#: app/views/properties/edit.html.haml:1
-#: app/views/properties/index.html.haml:1
-#: app/views/properties/index.html.haml:3 app/views/properties/new.html.haml:1
+#: app/views/admin/tasks/new.html.haml:1 app/views/dashboards/show.html.haml:7
+msgid "New Task"
+msgstr ""
+
+#: app/views/volunteer_requests/new.html.haml:1
+msgid "New Volunteer Request"
+msgstr ""
+
+#: app/views/tasks/_index.html.haml:6
+msgid "No Tasks found"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:16
+msgid "Not activated yet"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:7
 msgid "Object Properties"
 msgstr ""
 
-#: app/views/properties/index.html.haml:10
+#: app/views/properties/index.html.haml:8
 msgid "Parent"
 msgstr ""
 
-#: app/views/passwords/new.html.haml:1
-msgid "Password Reset"
+#: app/views/properties/_form.html.haml:1
+msgid "Parent Type"
 msgstr ""
 
-#: app/helpers/application_helper.rb:31 app/views/users/edit.html.haml:1
+#: app/views/passwords/edit.html.haml:4 app/views/user_session/new.html.haml:6
+msgid "Password"
+msgstr ""
+
+#: app/views/passwords/edit.html.haml:5
+msgid "Password Confirmation"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:10
 msgid "Profile"
 msgstr ""
 
-#: app/views/properties/index.html.haml:13
+#: app/views/properties/_form.html.haml:3
+msgid "Propery Type"
+msgstr ""
+
+#: app/views/properties/_form.html.haml:4
+#: app/views/properties/index.html.haml:11
 msgid "Public"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:11
+#: app/views/comments/_new.html.haml:6
+msgid "Publish"
+msgstr ""
+
+#: app/views/volunteer_requests/index.html.haml:7
+#: app/views/volunteer_requests/show.html.haml:7
 msgid "Reason"
+msgstr ""
+
+#: app/views/tasks/_task_actions.html.haml:10
+msgid "Reassign"
 msgstr ""
 
 #: app/views/users/new.html.haml:1
 msgid "Register"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:8
+#: app/views/users/_public_profile.html.haml:12
+msgid "Registered since"
+msgstr ""
+
+#: app/views/tasks/_reject.html.haml:10
+msgid "Reject"
+msgstr ""
+
+#: app/views/tasks/_reject.html.haml:9
+msgid "Rejection Reason"
+msgstr ""
+
+#: app/views/documents/_document.html.haml:6
+msgid "Remove"
+msgstr ""
+
+#: app/views/volunteer_requests/new.html.haml:8
+msgid "Request"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:4
 msgid "Requested at:"
 msgstr ""
 
-#: app/views/properties/edit.html.haml:9 app/views/properties/new.html.haml:8
+#: app/views/users/_public_profile.html.haml:8
+msgid "Roles"
+msgstr ""
+
+#: app/views/admin/tasks/edit.html.haml:8
+#: app/views/admin/tasks/new.html.haml:8 app/views/properties/edit.html.haml:7
+#: app/views/properties/new.html.haml:6
 msgid "Save"
 msgstr ""
 
+#: app/helpers/tasks_helper.rb:87
+msgid "Send Email to Editor"
+msgstr ""
+
 #: app/views/passwords/new.html.haml:5
-msgid "Send Password Reset instructions"
+msgid "Send Password Reset Instructions"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:36
@@ -148,28 +418,89 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: app/views/properties/index.html.haml:12
+#: app/views/admin/tasks/index.html.haml:19
+#: app/views/tasks/_index.html.haml:16
+msgid "State"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:5
+msgid "Tasks Admin"
+msgstr ""
+
+#: app/views/properties/_form.html.haml:2
+msgid "Title"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:9
+msgid "Translations"
+msgstr ""
+
+#: app/views/properties/index.html.haml:10
 msgid "Type"
 msgstr ""
 
-#: app/views/users/edit.html.haml:9
+#: app/views/tasks/index.html.haml:3
+msgid "Unassigned Tasks"
+msgstr ""
+
+#: app/views/dashboards/_editor_dashboard.html.haml:4
+msgid "Unassigned tasks (%{count})"
+msgstr ""
+
+#: app/views/users/edit.html.haml:7
 msgid "Update"
+msgstr ""
+
+#: app/views/documents/new.html.haml:5
+msgid "Upload"
+msgstr ""
+
+#: app/views/documents/_document.html.haml:4
+msgid "Uploaded by %{user} %{time} ago"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:19
+msgid "User Properties"
 msgstr ""
 
 #: app/views/users/_form.html.haml:1 app/views/users/_user_form.html.haml:2
 msgid "User Settings"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:4
-msgid "Volunteer Request from"
+#: app/helpers/tabs_helper.rb:6 app/views/users/index.html.haml:1
+msgid "Users"
+msgstr ""
+
+#: app/views/users/index.html.haml:13
+msgid "Volunteer"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:26
+msgid "Volunteer Properties"
 msgstr ""
 
 #: app/views/volunteer_requests/show.html.haml:1
+msgid "Volunteer Request from %{user_link}"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:4
 msgid "Volunteer Requests"
 msgstr ""
 
 #: app/views/users/_volunteer_form.html.haml:2
 msgid "Volunteer Settings"
+msgstr ""
+
+#: app/views/volunteer_requests/index.html.haml:6
+msgid "When"
+msgstr ""
+
+#: app/views/tasks/show.html.haml:3
+msgid "back to dashboard"
+msgstr ""
+
+#: app/views/assignments/edit.html.haml:8
+msgid "back to task"
 msgstr ""
 
 #: app/views/pages/home.html.haml:5
@@ -178,8 +509,31 @@ msgid_plural "bars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/views/users/edit.html.haml:13
+#: app/views/tasks/_abandon.html.haml:11
+#: app/views/tasks/_editor_events.html.haml:13
+#: app/views/tasks/_reject.html.haml:11
+#: app/views/volunteer_requests/new.html.haml:9
+msgid "cancel"
+msgstr ""
+
+#: app/views/users/_show.html.haml:12
+msgid "change my password"
+msgstr ""
+
+#: app/views/users/edit.html.haml:11
 msgid "change password"
+msgstr ""
+
+#: app/views/users/_show.html.haml:10
+msgid "edit my profile"
+msgstr ""
+
+#: app/views/users/_show.html.haml:6
+msgid "edit user's profile"
+msgstr ""
+
+#: app/helpers/properties_helper.rb:26
+msgid "false"
 msgstr ""
 
 #: app/views/pages/home.html.haml:3
@@ -192,12 +546,13 @@ msgstr[1] ""
 msgid "foo|bar"
 msgstr ""
 
-#: app/views/user_session/new.html.haml:7
+#: app/views/user_session/new.html.haml:9
 msgid "forgot_password"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:21
-#: app/views/passwords/new.html.haml:7 app/views/users/new.html.haml:8
+#: app/views/passwords/new.html.haml:7 app/views/user_session/new.html.haml:7
+#: app/views/users/new.html.haml:8
 msgid "login"
 msgstr ""
 
@@ -206,6 +561,98 @@ msgid "logout"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:22
-#: app/views/user_session/new.html.haml:9
+#: app/views/user_session/new.html.haml:11
 msgid "register"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:22
+msgid "task event|Abandon"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:16
+msgid "task event|Approve"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:19
+msgid "task event|Create Other Task"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:21
+msgid "task event|Finish"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:18
+msgid "task event|Mark as Completed"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:24
+msgid "task event|Mark as Finished Partly"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:23
+msgid "task event|Need Editor's Help"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:17
+msgid "task event|Reject"
+msgstr ""
+
+#: app/views/admin/tasks/_form.html.haml:1
+msgid "task section|General"
+msgstr ""
+
+#: app/views/admin/tasks/_form.html.haml:8
+msgid "task section|Task Settings"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:11
+msgid "task state|Another Task Created"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:9
+msgid "task state|Approved by Editor"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:4
+msgid "task state|Assigned/Work in Progress"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:5
+msgid "task state|Editors Help Required"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:6
+msgid "task state|Partialy Ready"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:10
+msgid "task state|Ready to Publish"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:8
+msgid "task state|Rejected by Editor"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:3
+msgid "task state|Unassigned"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:7
+msgid "task state|Waits for Editor's approvement"
+msgstr ""
+
+#: app/helpers/properties_helper.rb:26
+msgid "true"
+msgstr ""
+
+#: app/helpers/user_helper.rb:6
+msgid "user role|Admin"
+msgstr ""
+
+#: app/helpers/user_helper.rb:4
+msgid "user role|Editor"
+msgstr ""
+
+#: app/helpers/user_helper.rb:5
+msgid "user role|Volunteer"
 msgstr ""
