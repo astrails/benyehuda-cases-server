@@ -13,7 +13,7 @@ class VolunteerRequestsController < InheritedResources::Base
       return
     end
 
-    flash[:notice] = "Thank you, your request has been posted."
+    flash[:notice] = _("Thank you, your request has been posted.")
     redirect_to home_path
   end
 
@@ -22,7 +22,7 @@ class VolunteerRequestsController < InheritedResources::Base
   def update
     @volunteer_requests = VolunteerRequest.pending.find(params[:id])
     @volunteer_requests.approve!(current_user)
-    flash[:notice] = "Volunteer request approved!"
+    flash[:notice] = _("Volunteer request approved!")
     redirect_to volunteer_requests_path
   end
 
@@ -38,7 +38,7 @@ protected
   def check_volunteer_request
     return true if current_user.might_become_volunteer?
 
-    flash[:error] = "Your request has already been posted."
+    flash[:error] = _("Your request has already been posted.")
     redirect_to home_path
   end
 end

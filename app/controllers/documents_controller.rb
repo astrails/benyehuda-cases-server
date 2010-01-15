@@ -28,7 +28,7 @@ class DocumentsController < InheritedResources::Base
     document = @task.documents.find(params[:id])
     document.deleted_at = Time.now.utc
     document.save!
-    flash[:notice] = "Document deleted"
+    flash[:notice] = _("Document deleted")
     redirect_to task_path(@task)
   end
 
@@ -39,7 +39,7 @@ protected
     return true unless resource # let it fail
     return true if resource.user_id == current_user.id # owner
 
-    flash[:error] = "Only the owner can see this page"
+    flash[:error] = _("Only the owner can see this page")
     redirect_to task_path(@task)
     return false
   end

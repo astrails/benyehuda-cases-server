@@ -10,7 +10,7 @@ class UsersController < InheritedResources::Base
     user.is_admin = true if User.count.zero?
     if user.save_without_session_maintenance
       user.deliver_activation_instructions!
-      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+      flash[:notice] = s_("Your account has been created. Please check your e-mail for your account activation instructions!")
       redirect_to "/"
     else
       render :action => :new
@@ -20,7 +20,7 @@ class UsersController < InheritedResources::Base
   def update
     @user = User.find(params[:id])
     unless @user.activated_at
-      flash[:error] = "You cannot edit unactivated users"
+      flash[:error] = _("You cannot edit unactivated users")
       redirect_to users_path
       return
     end
@@ -36,12 +36,12 @@ class UsersController < InheritedResources::Base
   def destroy
     @user = User.enabled.find(params[:id])
     if @user.id == current_user.id
-      flash[:error] = "You cannot remove your own account"
+      flash[:error] = _("You cannot remove your own account")
       redirect_to users_path
       return
     end
     @user.update_attribute(:disabled_at, Time.now.utc)
-    flash[:notice] = "User disabled"
+    flash[:notice] = _("User disabled")
     redirect_to users_path
   end
 
@@ -62,7 +62,7 @@ class UsersController < InheritedResources::Base
     # allow editors and admins to see public profile of volunteers
     return true if resource.is_volunteer? && current_user.admin_or_editor?
 
-    flash[:error] = "Only registered activists allowed to access this page"
+    flash[:error] = _("Only registered activists allowed to access this page")
     redirect_to "/"
     return false
   end
@@ -73,7 +73,7 @@ class UsersController < InheritedResources::Base
     return true if current_user.try(:is_admin?)
     return true if resource == current_user # owner
 
-    flash[:error] = "Only the owner can see this page"
+    flash[:error] = _("Only the owner can see this page")
     redirect_to "/"
     return false
   end
