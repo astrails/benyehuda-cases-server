@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-15 16:33+0200\n"
+"POT-Creation-Date: 2010-01-15 17:41+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,11 @@ msgstr ""
 msgid "Abandoning Reason"
 msgstr ""
 
-#: app/views/users/index.html.haml:17
+#: app/views/users/index.html.haml:19
 msgid "Activated"
 msgstr ""
 
-#: app/views/users/index.html.haml:16
+#: app/views/users/index.html.haml:18
 msgid "Activation email sent"
 msgstr ""
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Add Comment"
 msgstr ""
 
-#: app/views/users/index.html.haml:15
+#: app/views/users/index.html.haml:17
 msgid "Admin"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 #: app/helpers/volunteer_requests_helper.rb:3
 #: app/views/comments/_new.html.haml:7
 #: app/views/documents/_document.html.haml:6
-#: app/views/properties/_property.html.haml:6
+#: app/views/properties/_property.html.haml:7
 #: app/views/tasks/_assignee_events.html.haml:2
 #: app/views/tasks/_editor_events.html.haml:2
 #: app/views/tasks/_task_actions.html.haml:3
@@ -126,6 +126,8 @@ msgid "Change Password"
 msgstr ""
 
 #: app/views/comments/_index.html.haml:1
+#: app/views/properties/_form.html.haml:6
+#: app/views/properties/index.html.haml:12
 msgid "Comments"
 msgstr ""
 
@@ -145,7 +147,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: app/views/properties/_property.html.haml:6
+#: app/views/properties/_property.html.haml:7
 msgid "Delete"
 msgstr ""
 
@@ -183,7 +185,7 @@ msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:17
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
-#: app/views/users/index.html.haml:14
+#: app/views/users/index.html.haml:16
 msgid "Editor"
 msgstr ""
 
@@ -202,7 +204,7 @@ msgstr ""
 #: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:5
 #: app/views/users/_form.html.haml:3
 #: app/views/users/_public_profile.html.haml:4
-#: app/views/users/index.html.haml:12
+#: app/views/users/index.html.haml:14
 msgid "Email"
 msgstr ""
 
@@ -297,7 +299,7 @@ msgstr ""
 #: app/views/admin/tasks/_form.html.haml:2
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/properties/index.html.haml:9 app/views/tasks/_index.html.haml:12
-#: app/views/users/_form.html.haml:2 app/views/users/index.html.haml:11
+#: app/views/users/_form.html.haml:2 app/views/users/index.html.haml:13
 msgid "Name"
 msgstr ""
 
@@ -348,7 +350,7 @@ msgstr ""
 msgid "Parent"
 msgstr ""
 
-#: app/views/properties/_form.html.haml:1
+#: app/views/properties/_form.html.haml:2
 msgid "Parent Type"
 msgstr ""
 
@@ -364,11 +366,11 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: app/views/properties/_form.html.haml:3
+#: app/views/properties/_form.html.haml:4
 msgid "Propery Type"
 msgstr ""
 
-#: app/views/properties/_form.html.haml:4
+#: app/views/properties/_form.html.haml:5
 #: app/views/properties/index.html.haml:11
 msgid "Public"
 msgstr ""
@@ -477,7 +479,7 @@ msgstr ""
 msgid "Thank you, your request has been posted."
 msgstr ""
 
-#: app/views/properties/_form.html.haml:2
+#: app/views/properties/_form.html.haml:3
 msgid "Title"
 msgstr ""
 
@@ -525,7 +527,7 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: app/views/users/index.html.haml:13
+#: app/views/users/index.html.haml:15
 msgid "Volunteer"
 msgstr ""
 
@@ -646,6 +648,14 @@ msgstr ""
 
 #: app/views/layouts/application.html.haml:18
 msgid "logout"
+msgstr ""
+
+#: config/initializers/i18n.rb:8
+msgid "paginator - previous page|&laquo; Previous"
+msgstr ""
+
+#: config/initializers/i18n.rb:9
+msgid "paginator - previous page|Next &raquo;"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:22
