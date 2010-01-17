@@ -6,19 +6,20 @@
   <thead>
     <tr>
       <td>Key</td>
-      <% locales.each do |locale| %>
-        <td><%= locale%></td>
-      <% end %>
+      <td>Translations</td>
     </tr>
   </thead>
   <tbody>
     <% @translation_keys.each do |key| %>
       <tr class="<%= cycle "even","odd"%>">
         <td><%= key.key %></td>
-        <% translations = key.translations.map{|t| [t.locale, t]} %>
-        <% locales.each do |locale| %>
-          <td><%= translations.assoc(locale)[1].text if translations.assoc(locale) %></td>
-        <% end %>
+        <td>
+          <% translations = key.translations.map{|t| [t.locale, t]} %>
+          <% locales.each do |locale| %>
+            <%= locale %>:
+            <%= translations.assoc(locale)[1].text if translations.assoc(locale) %><br/>
+          <% end %>
+        </td>
         <td>
           <%= link_to '<b style="color:red">X</b>', key, :confirm=>"Delete key #{key.key} ?", :method=>:delete %>
           <%= link_to "Edit", key %>
