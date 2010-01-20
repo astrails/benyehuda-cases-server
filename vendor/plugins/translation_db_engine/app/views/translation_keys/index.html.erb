@@ -1,12 +1,37 @@
-<% locales = TranslationKey.available_locales %>
-<%= link_to "New", new_translation_key_url %>
+<%= link_to "New", new_translation_key_url %><br/>
+
+Filter by locale:
+<% if by_locale %>
+  <%= link_to "all", translation_keys_path %>
+<% else %>
+  <b>all</b>
+<% end %>
+<% all_available_locales.each do |locale| %>
+  <% if by_locale == locale %>
+    <b><%= locale %></b>
+  <% else %>
+    <%= link_to locale, translation_keys_path(:by_locale => locale) %>
+  <% end %>
+<% end %>
+<br/>
+
+<% if by_locale %>
+  Filter:
+  <% if params[:untranslated] %>
+    <%= link_to "all", translation_keys_path(:by_locale => by_locale) %>
+    <b>untranslated</b>
+  <% else %>
+    <b>all</b>
+    <%= link_to "untranslated", translation_keys_path(:by_locale => by_locale, :untranslated => true) %>
+  <% end %>
+<% end %>
 
 <%= will_paginate(@translation_keys) %>
 <table>
   <thead>
     <tr>
       <td>Key</td>
-      <% locales.each do |locale| %>
+      <% locales_to_edit.each do |locale| %>
         <td><%= locale%></td>
       <% end %>
     </tr>
@@ -16,12 +41,12 @@
       <tr class="<%= cycle "even","odd"%>">
         <td><%= key.key %></td>
         <% translations = key.translations.map{|t| [t.locale, t]} %>
-        <% locales.each do |locale| %>
+        <% locales_to_edit.each do |locale| %>
           <td><%= translations.assoc(locale)[1].text if translations.assoc(locale) %></td>
         <% end %>
         <td>
           <%= link_to '<b style="color:red">X</b>', key, :confirm=>"Delete key #{key.key} ?", :method=>:delete %>
-          <%= link_to "Edit", key %>
+          <%= link_to "Edit", edit_translation_key_path(key, :by_locale => by_locale, :untranslated => untranslated) %>
         </td>
       </tr>
     <% end %>

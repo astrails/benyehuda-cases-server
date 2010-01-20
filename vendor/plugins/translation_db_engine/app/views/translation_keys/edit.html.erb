@@ -1,6 +1,8 @@
 <% new = @translation_key.new_record? %>
 <h1><%= @translation_key.key || "New translation" %></h1>
 <% form_for @translation_key do |f|%>
+  <%= hidden_field_tag :by_locale, by_locale %>
+  <%= hidden_field_tag :untranslated, untranslated %>
   <%= f.error_messages %>
   <p>
     <%= f.label :key %>
@@ -15,6 +17,6 @@
     <%= tf.hidden_field :locale if tf.object.new_record? %>
   <% end %>
 
-  <%= f.submit(new ? "Create" : "Save") %>
+  <%= f.submit(new ? "Create" : "Save", :name => "") %>
   <%= link_to 'Back to overview', translation_keys_path %>
 <% end %>
