@@ -57,9 +57,9 @@ describe TasksController do
       @user = Factory.create(:editor)
       UserSession.create(@user)
       @task = Factory.create(:task)
-      post :create, :id => @task.id
+      xhr :post, :create, :id => @task.id
       response.flash[:error].should == "Sorry, you're not allowed to perfrom this operation"
-      response.should redirect_to("/tasks/#{@task.id}")
+      response.body.should == "window.location.href = \"/tasks/#{@task.id}\";"
     end
 
     describe "editor" do
@@ -104,6 +104,50 @@ describe TasksController do
       put :update, :id => @task.id, :event => "abandon", :task => {:comment => {:message => "comment"}}
       response.body =~ /window\.location\.href/
       response.body =~ /dashboard/
+    end
+  end
+
+  describe "update" do
+    describe "assignee" do      
+      before(:each) do
+        @task = Factory.create(:assigned_task)
+        UserSession.create(@task.assignee)
+      end
+      it "help_required" do
+        put :update, :id => @task.id, :event => "help_required"
+        response.should redirect_to(task_path(@task))
+        @task.reload.state.should == "stuck"
+      end
+
+      it "finish_partially" do
+        put :update, :id => @task.id, :event => "finish_partially"
+        response.should redirect_to(task_path(@task))
+        @task.reload.state.should == "partial"
+      end
+
+      it "finish" do
+        put :update, :id => @task.id, :event => "finish"
+        response.should redirect_to(task_path(@task))
+        @task.reload.state.should == "waits_for_editor"
+      end
+    end
+
+    describe "editor" do
+      it "approve" do
+        @task = Factory.create(:waits_for_editor_approve_task)
+        UserSession.create(@task.editor)
+        put :update, :id => @task.id, :event => "approve"
+        response.should redirect_to(task_path(@task))
+        @task.reload.state.should == "approved"
+      end
+
+      it "complete" do
+        @task = Factory.create(:approved_task)
+        UserSession.create(@task.editor)
+        put :update, :id => @task.id, :event => "complete"
+        response.should redirect_to(task_path(@task))
+        @task.reload.state.should == "ready_to_publish"
+      end
     end
   end
 

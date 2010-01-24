@@ -39,18 +39,12 @@ class TasksController < InheritedResources::Base
     # all security verifications passed in allow_event_for?
     return _event_with_comment(params[:event]) if EVENTS_WITH_COMMENTS.keys.member?(params[:event])
 
-    # TODO: handle new tasks (based on this one) creating
-
     resource.send(params[:event])
     resource.save
 
     flash[:notice] = _("Task updated")
 
-    if resource.participant?(current_user)
-      redirect_to task_path(resource)
-    else
-      redirect_to dashboard_path
-    end
+    redirect_to task_path(resource)
   end
 
 protected

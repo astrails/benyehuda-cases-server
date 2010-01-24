@@ -55,23 +55,36 @@ describe DocumentsController do
   end
 
   describe "create attachment" do
-    describe  "participants" do
-      [:creator, :editor, :assignee].each do |u|
+    [:creator, :editor, :assignee].each do |u|
+      describe  "participants - #{u} -" do
         before(:each) do
           @user = @task.send(u)
           UserSession.create(@user)
+        end
+
+        it "should render errors" do
           @doc = mock_model(Document)
           @doc.should_receive(:user_id=).and_return(true)
-          @doc.stub!(:save).and_return(false)
-          @doc.stub!(:new_record?).and_return(true)
           @doc.errors.stub!(:empty?)
           @doc.errors.stub!(:on)
           @doc.errors.stub!(:[])
+          @doc.stub!(:save).and_return(false)
+          @doc.stub!(:new_record?).and_return(true)
           @task.documents.stub!(:build).and_return(@doc)
-          post :create, :task_id => "1", :document => {}
+          xhr :post, :create, :task_id => "1", :document => {}
+          response.status.should == "422 Unprocessable Entity"
         end
-        it "should render errors for #{u}" do
+
+        it "should render new doc for #{u}" do
+          @doc = Factory.build(:document)
+          @doc.stub!(:save).and_return(true)
+          @doc.stub!(:new_record?).and_return(false)
+          @doc.stub!(:to_param).and_return("123")
+          @doc.stub!(:file).and_return(mock("url", :url => "foobar"))
+          @task.documents.stub!(:build).and_return(@doc)
+          xhr :post, :create, :task_id => "1", :document => {}
           response.should be_success
+          response.should render_template("document")
         end
       end
     end

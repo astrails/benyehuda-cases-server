@@ -19,7 +19,7 @@ class DocumentsController < InheritedResources::Base
       end
       success.html {redirect_to task_path(@task)}
       failure.js do
-        render :status => :unprocessable_entity
+        render :status => :unprocessable_entity, :nothing => true
       end
     end
   end

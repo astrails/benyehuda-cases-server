@@ -115,13 +115,13 @@ describe Task do
           @task = Factory.create(:task)
           @user = Factory.create(u)
         end
-        [Task.aasm_events.collect(&:first).collect(&:task_event_cleanup)].each do |e|
-          it "should not be allowed" do
+        Task.aasm_events.collect(&:first).collect(&:task_event_cleanup).each do |e|
+          it "#{e} should not be allowed for" do
             @task.allow_event_for?(e, @user).should be_false
           end
         end
         ["destroy", "update", "junk", "foobar"].each do |e|
-          it "should not be allowed" do
+          it "#{e} should not be allowed for #{u}" do
             @task.allow_event_for?(e, @user).should be_false
           end
         end
@@ -142,6 +142,27 @@ describe Task do
         "create_other_task" => true,
         "finish_partially" => false,
         "approve" => true
+      }.each do |key, value|
+        it "should #{value ? "allow" : "disallow"} #{key}" do
+          @task.allow_event_for?(key, @user).should == value
+        end
+      end
+    end
+
+    describe "creator - participant" do
+      before(:each) do
+        @task = Factory.create(:task)
+        @user = @task.creator
+      end
+
+      { "reject" => false,
+        "abandon" => false,
+        "complete" => false,
+        "finish" => false,
+        "help_required" => false,
+        "create_other_task" => false,
+        "finish_partially" => false,
+        "approve" => false
       }.each do |key, value|
         it "should #{value ? "allow" : "disallow"} #{key}" do
           @task.allow_event_for?(key, @user).should == value
