@@ -1,79 +1,64 @@
-class TranslationKeysController < ApplicationController
+class TranslationKeysController < InheritedResources::Base
   unloadable
   # should be defined in the ApplicationController by the user
   # can usually be just an alias to require_admin
   before_filter :authenticate_translations_admin
-  before_filter :find_translation_key, :only=>%w[show edit update destroy]
+  actions :all, :except => :show
 
-  layout :choose_layout
-
-  def index
-    @translation_keys = TranslationKey.paginate(:page => params[:page])
-  end
+  has_scope :by_locale, :only => [:index, :edit]
+  has_scope :untranslated, :boolean => true , :only => :index
 
   def new
-    @translation_key = TranslationKey.new
+    build_resource
     add_default_locales_to_translation
-    render :action=>:edit
-  end
-
-  def create
-    @translation_key = TranslationKey.new(params[:translation_key])
-    if @translation_key.save
-      flash[:notice] = 'Created!'
-      redirect_to translation_keys_path
-    else
-      flash[:error] = 'Failed to save!'
-      render :action=>:edit
+    new! do |fmt|
+      fmt.html {render :action => :edit}
     end
   end
 
-  def show
-    render :action=>:edit
-  end
-
-  def edit
+  def create
+    create! do |s,f|
+      s.html {redirect_to translation_keys_path(:by_locale => by_locale, :untranslated => untranslated)}
+      f.html {render :action => :edit}
+    end
   end
 
   def update
-    if @translation_key.update_attributes(params[:translation_key])
-      flash[:notice] = 'Saved!'
-      redirect_to translation_keys_path
-    else
-      flash[:error] = 'Failed to save!'
-      render :action=>:edit
+    update! do |s,f|
+      s.html {redirect_to translation_keys_path(:by_locale => by_locale, :untranslated => untranslated)}
+      f.html {render :action => :edit}
     end
   end
 
   def destroy
-    @translation_key.destroy
-    redirect_to translation_keys_path
+    destroy! {translation_keys_path}
   end
 
   protected
 
-  def self.config
-    @@config ||= YAML::load(File.read(Rails.root.join('config','translation_db_engine.yml'))).with_indifferent_access rescue {}
-  end
-
-  def choose_layout
-    self.class.config[:layout] || 'application'
-  end
-
-  def authenticate
-    return unless auth = self.class.config[:auth]
-    authenticate_or_request_with_http_basic do |username, password|
-      username == auth[:name] && password == auth[:password]
-    end
-  end
-
-  def find_translation_key
-    @translation_key = TranslationKey.find(params[:id])
-  end
-
   def add_default_locales_to_translation
-    TranslationKey.available_locales.each do |locale|
+    all_available_locales.each do |locale|
       @translation_key.translations.build(:locale=>locale)
     end
   end
+
+  protected
+
+  def all_available_locales
+    @all_locales ||= (TranslationKey.available_locales + AVAILABLE_LOCALES).sort.uniq
+  end
+
+  def by_locale
+    params[:by_locale].blank? ? nil : params[:by_locale]
+  end
+
+  def untranslated
+    params[:untranslated].blank? ? nil : params[:untranslated]
+  end
+
+  def locales_to_edit
+    by_locale ? [by_locale] : all_available_locales
+  end
+
+  helper_method :all_available_locales, :by_locale, :untranslated, :locales_to_edit
 end

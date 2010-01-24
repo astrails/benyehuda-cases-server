@@ -39,6 +39,15 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  def email
+    email = GlobalPreference.get(:email_override)
+    unless email.blank?
+      email
+    else
+      read_attribute(:email)
+    end
+  end
+
   def disabled?
     !disabled_at.blank?
   end

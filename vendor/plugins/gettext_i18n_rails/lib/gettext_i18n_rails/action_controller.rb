@@ -122,7 +122,7 @@ class ActionController::Base
     if request.get?
       url_for(params.merge(:locale => locale, :host => locale_domain_for(locale)))
     else
-      request.protocol + locale_domain_for(locale) + home_path + "?locale=" + locale 
+      request.protocol + locale_domain_for(locale) + home_path + "?locale=" + locale
     end
   end
 
@@ -134,7 +134,7 @@ class ActionController::Base
     redirect_to(locale_url_for(current_locale))
   end
 
-  def set_localization_options(options = {})
+  def setup_localization(options = {})
     set_gettext_locale(options[:sources])
     set_session_domain(options[:session_domain])
     redirect_to_canonic_domain if options[:canonic_redirect]
