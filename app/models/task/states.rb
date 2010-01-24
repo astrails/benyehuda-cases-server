@@ -83,7 +83,7 @@ module Task::States
         transitions :from => [:approved, :ready_to_publish], :to => :other_task_creat
       end
       before_validation_on_create :pre_process_parent_task
-      after_create :clone_parent_documents 
+      after_create :post_process_parent_task
 
       named_scope :visible_in_my_tasks, {:conditions => "tasks.state NOT IN ('ready_to_publish', 'other_task_creat')"}
 
@@ -135,14 +135,17 @@ module Task::States
   end
 
   def clone_parent_documents
-    return if parent_id.blank?
-
     parent.documents.each do |doc|
       d = doc.clone
       d.task_id = self.id
       d.file = doc.file.to_file
       d.save
     end
+  end
+
+  def post_process_parent_task
+    return if parent_id.blank?
+    clone_parent_documents
   end
 
   def build_chained_task(opts, actor) # opts -> name, kind, difficulty, full_nikkud

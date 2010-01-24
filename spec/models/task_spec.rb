@@ -80,7 +80,14 @@ describe Task do
       task.assignee_id.should be_nil
     end
 
-    it "should have test for build_chained_task"
+    it "should build_chained_task" do
+      task = Factory.create(:approved_task)
+      chained_task = task.build_chained_task({:name => "foo bar"}, task.editor)
+      chained_task.parent_id.should == task.id
+      chained_task.name.should == "foo bar"
+      chained_task.should_receive(:clone_parent_documents).and_return(true)
+      chained_task.save.should be_true
+    end
   end
 
   describe "participant" do
