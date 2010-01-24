@@ -4,11 +4,14 @@
     = [textify_kind(@task.kind), textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
 
 - when_editor_or_admin do
-  %p
-    - if @task.child
-      != _("Chained task - %{chained_task}") % {:chained_task => link_to(h(@task.child.name), task_path(@task.child))}
-    - if @task.parent
-      != _("Parent task - %{chained_task}") % {:chained_task => link_to(h(@task.parent.name), task_path(@task.parent))}
+  - unless @task.children.blank?
+    %h4= _("Chained tasks")
+    - @task.children.each do |c|
+      != link_to(h(c.name), task_path(c))
+      %br
+  - if @task.parent
+    %h4= _("Parent task")
+    != link_to(h(@task.parent.name), task_path(@task.parent))
 
 %h4
   = textify_state(@task.state)

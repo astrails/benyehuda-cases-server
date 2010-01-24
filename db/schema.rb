@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100115144543) do
+ActiveRecord::Schema.define(:version => 20100124092059) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(:version => 20100115144543) do
     t.string   "difficulty",  :limit => 16
     t.boolean  "full_nikkud",               :default => false
     t.integer  "parent_id"
-    t.integer  "child_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

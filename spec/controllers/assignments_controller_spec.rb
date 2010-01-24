@@ -21,6 +21,7 @@ describe AssignmentsController do
       @user = Factory.create(:editor)
       UserSession.create(@user)
       @task = Factory.create(:task)
+      @task.stub!(:children).and_return([])
       Task.stub!(:find).and_return(@task)
     end
 

@@ -146,8 +146,8 @@ module Task::States
   end
 
   def build_chained_task(opts, actor) # opts -> name, kind, difficulty, full_nikkud
-    new_task = self.build_child(opts)
-    new_task.creator = actor
+    new_task = Task.new(opts)
+    new_task.editor = new_task.creator = actor
     new_task.parent_id = self.id
     new_task
   end

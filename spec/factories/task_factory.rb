@@ -5,6 +5,7 @@ Factory.define :task do |t|
   t.association :editor, :factory => :editor
   t.kind "typing"
   t.difficulty "normal"
+  t.parent_id nil
 end
 
 Factory.define :assigned_task, :parent => :task do |t|

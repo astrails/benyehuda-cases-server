@@ -71,7 +71,8 @@ describe TasksController do
       @comments = mock("comments")
       @comments.stub(:with_user).and_return(@comments)
       @task.stub!(:comments).and_return(@comments)
-      Task.stub(:find).and_return(@task)
+      Task.stub!(:find).and_return(@task)
+      @task.stub!(:children).and_return([])
     end
 
     it "should not allow access to anyone" do

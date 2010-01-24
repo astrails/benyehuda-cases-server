@@ -5,7 +5,7 @@ class Task < ActiveRecord::Base
   belongs_to :assignee, :class_name => "User"
 
   belongs_to :parent, :class_name => "Task"
-  has_one    :child, :class_name => "Task", :foreign_key => "child_id"
+  has_many   :children, :class_name => "Task", :foreign_key => "parent_id"
 
   include CustomProperties
   has_many_custom_properties :task # task_properties
