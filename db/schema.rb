@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100124092059) do
+ActiveRecord::Schema.define(:version => 20100124121333) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -134,6 +134,8 @@ ActiveRecord::Schema.define(:version => 20100124092059) do
     t.boolean  "is_editor",                               :default => false
     t.datetime "disabled_at"
     t.datetime "activation_email_sent_at"
+    t.boolean  "notify_on_comments",                      :default => true
+    t.boolean  "notify_on_status",                        :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

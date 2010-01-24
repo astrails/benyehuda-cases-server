@@ -1,11 +1,14 @@
 - f.inputs :name => _("User Settings") do
   != f.input :name, :label => _("Name")
   != f.input :email, :input_html => {:disabled => !f.object.new_record?}, :required => f.object.new_record?, :label => _("Email")
-
   - when_admin do
     != f.input :is_admin, :label => _("Is Admin")
     != f.input :is_editor, :label => _("Is Editor")
     != f.input :is_volunteer, :label => _("Is Volunteer")
+
+- f.inputs :name => _("Email Notifications") do
+  != f.input :notify_on_comments, :label => _("When a comment added to my task"), :as => :boolean
+  != f.input :notify_on_status, :label => _("When my task status changed"), :as => :boolean
 
 - unless f.object.new_record?
   != render(:partial => "users/user_form", :locals => {:f => f})

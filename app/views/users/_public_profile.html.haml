@@ -1,8 +1,6 @@
-%h3= @user.name
-
-%p
-  %strong= _("Email")
-  =h @user.email
+%h3
+  = @user.name
+  %small= @user.email
 
 %p
   %strong= _("Roles")
@@ -15,6 +13,9 @@
   - else
     = _("Not activated yet")
 
+%p
+  %strong= _("Email Notifications")
+  = email_notifications(@user)
 
 %h4= _("User Properties")
 - @user.user_properties.visible_for(current_user).each do |p|

@@ -49,6 +49,14 @@ module UserHelper
     end
   end
 
+  def email_notifications(user)
+    returning([]) do |res|
+      res << _("When a comment added to my task") if user.notify_on_comments?
+      res << _("When my task status changed") if user.notify_on_status?
+      res << s_("notifications|None") if res.blank?
+    end.join(", ")
+  end
+
 protected
   def send_activation_link(user, text)
     link_to text, user_activation_instructions_path(user, :page => params[:page]), :method => :post, :confirm => (_("Send Activation Email to %{user}. Are you sure?") % {:user => "#{h(user.name)} <#{user.email}>"})
