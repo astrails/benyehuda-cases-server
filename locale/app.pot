@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-15 17:45+0200\n"
+"POT-Creation-Date: 2010-01-24 12:29+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Assignee"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:17
+#: app/views/tasks/_description.html.haml:31
 msgid "Assignee:"
 msgstr ""
 
@@ -117,6 +117,10 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: app/views/tasks/_description.html.haml:8
+msgid "Chained tasks"
+msgstr ""
+
 #: app/views/assignments/edit.html.haml:4
 msgid "Change Assignments"
 msgstr ""
@@ -135,7 +139,11 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: app/views/tasks/_editor_events.html.haml:10
+#: app/views/tasks/_new_chain_task.html.haml:8
+msgid "Create"
+msgstr ""
+
+#: app/views/tasks/_editor_events.html.haml:9
 msgid "Create new task based on this one"
 msgstr ""
 
@@ -152,10 +160,12 @@ msgid "Delete"
 msgstr ""
 
 #: app/views/admin/tasks/_form.html.haml:2
+#: app/views/tasks/_new_chain_task.html.haml:4
 msgid "Description"
 msgstr ""
 
 #: app/views/admin/tasks/_form.html.haml:4
+#: app/views/tasks/_new_chain_task.html.haml:6
 msgid "Difficulty"
 msgstr ""
 
@@ -197,7 +207,7 @@ msgstr ""
 msgid "Editor Settings"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:11
+#: app/views/tasks/_description.html.haml:25
 msgid "Editor:"
 msgstr ""
 
@@ -233,7 +243,8 @@ msgstr ""
 msgid "From"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:5
+#: app/helpers/tasks_helper.rb:54 app/views/admin/tasks/_form.html.haml:5
+#: app/views/tasks/_new_chain_task.html.haml:7
 msgid "Full Nikkud"
 msgstr ""
 
@@ -272,6 +283,7 @@ msgstr ""
 #: app/views/admin/tasks/_form.html.haml:3
 #: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:13
+#: app/views/tasks/_new_chain_task.html.haml:5
 msgid "Kind"
 msgstr ""
 
@@ -299,6 +311,7 @@ msgstr ""
 #: app/views/admin/tasks/_form.html.haml:2
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/properties/index.html.haml:9 app/views/tasks/_index.html.haml:12
+#: app/views/tasks/_new_chain_task.html.haml:4
 #: app/views/users/_form.html.haml:2 app/views/users/index.html.haml:13
 msgid "Name"
 msgstr ""
@@ -333,7 +346,7 @@ msgid "Object Properties"
 msgstr ""
 
 #: app/controllers/application_controller.rb:30
-#: app/controllers/tasks_controller.rb:48
+#: app/controllers/tasks_controller.rb:62
 msgid "Only participant can see this page"
 msgstr ""
 
@@ -354,12 +367,20 @@ msgstr ""
 msgid "Parent Type"
 msgstr ""
 
+#: app/views/tasks/_description.html.haml:13
+msgid "Parent task"
+msgstr ""
+
 #: app/views/passwords/edit.html.haml:4 app/views/user_session/new.html.haml:6
 msgid "Password"
 msgstr ""
 
 #: app/views/passwords/edit.html.haml:5
 msgid "Password Confirmation"
+msgstr ""
+
+#: app/views/tasks/_new_chain_task.html.haml:1
+msgid "Please wait..."
 msgstr ""
 
 #: app/helpers/tabs_helper.rb:10
@@ -430,7 +451,7 @@ msgstr ""
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:87
+#: app/helpers/tasks_helper.rb:111
 msgid "Send Email to Editor"
 msgstr ""
 
@@ -446,7 +467,7 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:20
+#: app/controllers/tasks_controller.rb:85
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr ""
 
@@ -459,6 +480,10 @@ msgstr ""
 msgid "Task abandoned"
 msgstr ""
 
+#: app/controllers/tasks_controller.rb:15
+msgid "Task created."
+msgstr ""
+
 #: app/controllers/assignments_controller.rb:10
 msgid "Task has been reassigned"
 msgstr ""
@@ -467,7 +492,7 @@ msgstr ""
 msgid "Task rejected"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:33
+#: app/controllers/tasks_controller.rb:47
 msgid "Task updated"
 msgstr ""
 
@@ -600,7 +625,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/views/tasks/_abandon.html.haml:11
-#: app/views/tasks/_editor_events.html.haml:13
+#: app/views/tasks/_new_chain_task.html.haml:9
 #: app/views/tasks/_reject.html.haml:11
 #: app/views/volunteer_requests/new.html.haml:9
 msgid "cancel"
@@ -663,39 +688,68 @@ msgstr ""
 msgid "register"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:22
+#: app/models/task.rb:40
+msgid "task cannot be updated"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:9
+msgid "task difficulty|easy"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:11
+msgid "task difficulty|hard"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:10
+msgid "task difficulty|normal"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:34
 msgid "task event|Abandon"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:16
+#: app/helpers/tasks_helper.rb:28
 msgid "task event|Approve"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:19
+#: app/helpers/tasks_helper.rb:31
 msgid "task event|Create Other Task"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:21
+#: app/helpers/tasks_helper.rb:33
 msgid "task event|Finish"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:18
+#: app/helpers/tasks_helper.rb:30
 msgid "task event|Mark as Completed"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:24
+#: app/helpers/tasks_helper.rb:36
 msgid "task event|Mark as Finished Partly"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:23
+#: app/helpers/tasks_helper.rb:35
 msgid "task event|Need Editor's Help"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:17
+#: app/helpers/tasks_helper.rb:29
 msgid "task event|Reject"
 msgstr ""
 
+#: app/helpers/tasks_helper.rb:5
+msgid "task kind|other"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:4
+msgid "task kind|proofing"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:3
+msgid "task kind|typing"
+msgstr ""
+
 #: app/views/admin/tasks/_form.html.haml:1
+#: app/views/tasks/_new_chain_task.html.haml:2
 msgid "task section|General"
 msgstr ""
 
@@ -703,39 +757,39 @@ msgstr ""
 msgid "task section|Task Settings"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:11
+#: app/helpers/tasks_helper.rb:23
 msgid "task state|Another Task Created"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:9
+#: app/helpers/tasks_helper.rb:21
 msgid "task state|Approved by Editor"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:4
+#: app/helpers/tasks_helper.rb:16
 msgid "task state|Assigned/Work in Progress"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:5
+#: app/helpers/tasks_helper.rb:17
 msgid "task state|Editors Help Required"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:6
+#: app/helpers/tasks_helper.rb:18
 msgid "task state|Partialy Ready"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:10
+#: app/helpers/tasks_helper.rb:22
 msgid "task state|Ready to Publish"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:8
+#: app/helpers/tasks_helper.rb:20
 msgid "task state|Rejected by Editor"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:3
+#: app/helpers/tasks_helper.rb:15
 msgid "task state|Unassigned"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:7
+#: app/helpers/tasks_helper.rb:19
 msgid "task state|Waits for Editor's approvement"
 msgstr ""
 
