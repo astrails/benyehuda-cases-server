@@ -25,10 +25,19 @@ module FastGettext::TranslationRepository
         write_attribute(:key, ActiveSupport::JSON.encode(value))
       end
 
+      def key_value
+        Db.decode_value(key)
+      end
+
+      validates_uniqueness_of :key
+      validates_presence_of :key
+
       def self.translation(keys, locale)
         return unless translation_key = find_by_key(keys.to_json)
-        return unless translation_text = translation_key.translations.find_by_locale(locale)
-        Db.decode_value(translation_text.text)
+        return unless translation_text =
+          translation_key.translations.find_by_locale(locale) ||
+          translation_key.translations.find_by_locale(FastGettext.default_locale)
+        translation_text.text_value
       end
 
       def self.available_locales

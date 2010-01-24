@@ -2,140 +2,140 @@
 vendor/gems/fast_gettext-0.4.17: 
   squashed: true
   url: git://github.com/astrails/fast_gettext.git
-  type: git
-  revision: 3431638c2653a70373bb789e87d80e88d9bc2426
   branch: master
+  type: git
+  revision: f8e0665c4bf42b258548e21f898ab268191c017f
   remote: braid/vendor/gems/fast-gettext
+vendor/plugins/hoptoad_notifier: 
+  squashed: true
+  branch: master
+  url: git://github.com/thoughtbot/hoptoad_notifier.git
+  type: git
+  revision: 6a373ee8f14f93a975f523d0b91d282929c66c60
+  remote: braid/vendor/plugins/hoptoad-notifier
 vendor/plugins/gettext_i18n_rails: 
   squashed: true
+  branch: master
   url: git://github.com/astrails/gettext_i18n_rails.git
   type: git
   revision: f2ee50cc3c48f9623f566429e893ad23b42e0a34
-  branch: master
   remote: braid/vendor/plugins/gettext-i18n-rails
+vendor/plugins/log_buddy: 
+  squashed: true
+  branch: master
+  url: git://github.com/relevance/log_buddy.git
+  type: git
+  revision: 3769a4b010250d65b174740e47367319f809ae70
+  remote: braid/vendor/plugins/log-buddy
+vendor/plugins/vladify: 
+  squashed: true
+  branch: master
+  url: git://github.com/astrails/vladify.git
+  type: git
+  revision: 36cd814ddeada345ed7ceb5d880e7c9a7469cd2c
+  remote: braid/vendor/plugins/vladify
+vendor/plugins/jrails: 
+  squashed: true
+  branch: master
+  url: git://github.com/aaronchi/jrails.git
+  type: git
+  revision: 712ccd1245d2871c7018a1c095f27db243209c46
+  remote: braid/vendor/plugins/jrails
+vendor/plugins/rack-bug: 
+  squashed: true
+  branch: master
+  url: git://github.com/brynary/rack-bug.git
+  type: git
+  revision: 3a0933f50d5fc8f65bf9594f8ca526702d309d37
+  remote: braid/vendor/plugins/rack-bug
 vendor/plugins/translation_db_engine: 
   squashed: true
+  branch: master
   url: git://github.com/astrails/translation_db_engine.git
   type: git
   revision: 159b6494f0ef261f7e91d0cf95c3bb607071fb2d
-  branch: master
   remote: braid/vendor/plugins/translation-db-engine
-vendor/plugins/rack-bug: 
-  squashed: true
-  type: git
-  url: git://github.com/brynary/rack-bug.git
-  revision: 3a0933f50d5fc8f65bf9594f8ca526702d309d37
-  branch: master
-  remote: braid/vendor/plugins/rack-bug
-vendor/plugins/jrails: 
-  squashed: true
-  type: git
-  url: git://github.com/aaronchi/jrails.git
-  revision: 712ccd1245d2871c7018a1c095f27db243209c46
-  branch: master
-  remote: braid/vendor/plugins/jrails
-vendor/plugins/vladify: 
-  squashed: true
-  type: git
-  url: git://github.com/astrails/vladify.git
-  revision: 36cd814ddeada345ed7ceb5d880e7c9a7469cd2c
-  branch: master
-  remote: braid/vendor/plugins/vladify
-vendor/plugins/hoptoad_notifier: 
-  squashed: true
-  type: git
-  url: git://github.com/thoughtbot/hoptoad_notifier.git
-  revision: 6a373ee8f14f93a975f523d0b91d282929c66c60
-  branch: master
-  remote: braid/vendor/plugins/hoptoad-notifier
-vendor/plugins/inherited_resources: 
-  squashed: true
-  type: git
-  url: git://github.com/josevalim/inherited_resources.git
-  revision: 6284ba802d935de936542edafcd960951d5fb604
-  branch: master
-  remote: braid/vendor/plugins/inherited-resources
-vendor/plugins/log_buddy: 
-  squashed: true
-  type: git
-  url: git://github.com/relevance/log_buddy.git
-  revision: 3769a4b010250d65b174740e47367319f809ae70
-  branch: master
-  remote: braid/vendor/plugins/log-buddy
-vendor/plugins/high_voltage: 
-  squashed: true
-  type: git
-  url: git://github.com/thoughtbot/high_voltage.git
-  revision: 13bb9c75611938f3f1a6636ddcd1e270ee8fc1fd
-  branch: master
-  remote: braid/vendor/plugins/high-voltage
-vendor/plugins/paperclip: 
-  squashed: true
-  type: git
-  url: git://github.com/thoughtbot/paperclip.git
-  revision: c64223c60dd7b0c4c4bc218de906061a6563a5a8
-  branch: master
-  remote: braid/vendor/plugins/paperclip
-vendor/plugins/jrails_in_place_editing: 
-  squashed: true
-  type: git
-  url: git://github.com/rakuto/jrails_in_place_editing
-  revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
-  branch: master
-  remote: braid/vendor/plugins/jrails-in-place-editing
 vendor/plugins/restart_controller: 
   squashed: true
-  type: git
+  branch: master
   url: git://github.com/astrails/restart_controller.git
+  type: git
   revision: 43e48faf45246e38292c95e7245a975bdef3f6b8
-  branch: master
   remote: braid/vendor/plugins/restart-controller
-vendor/plugins/astrails-user-auth: 
+vendor/plugins/high_voltage: 
   squashed: true
-  type: git
-  url: git://github.com/astrails/astrails-user-auth
-  revision: d351c66326f9c0d2a0cf5d84bae320a109187718
   branch: master
-  remote: braid/vendor/plugins/astrails-user-auth
-vendor/plugins/trusted-params: 
+  url: git://github.com/thoughtbot/high_voltage.git
+  type: git
+  revision: 13bb9c75611938f3f1a6636ddcd1e270ee8fc1fd
+  remote: braid/vendor/plugins/high-voltage
+vendor/plugins/inherited_resources: 
   squashed: true
-  type: git
-  url: git://github.com/ryanb/trusted-params.git
-  revision: da34c4aa2188226eaddc2e3c9cb4bea585d0568e
   branch: master
-  remote: braid/vendor/plugins/trusted-params
-vendor/plugins/global_preferences: 
+  url: git://github.com/josevalim/inherited_resources.git
+  type: git
+  revision: 6284ba802d935de936542edafcd960951d5fb604
+  remote: braid/vendor/plugins/inherited-resources
+vendor/plugins/jrails_in_place_editing: 
   squashed: true
-  type: git
-  url: git://github.com/astrails/global_preferences
-  revision: bd1d770756462039152ab968245e9cf5847a3914
   branch: master
-  remote: braid/vendor/plugins/global-preferences
+  url: git://github.com/rakuto/jrails_in_place_editing
+  type: git
+  revision: 9574ba62bb37d381ff448e040f69e632795d1cd9
+  remote: braid/vendor/plugins/jrails-in-place-editing
+vendor/plugins/paperclip: 
+  squashed: true
+  branch: master
+  url: git://github.com/thoughtbot/paperclip.git
+  type: git
+  revision: c64223c60dd7b0c4c4bc218de906061a6563a5a8
+  remote: braid/vendor/plugins/paperclip
+vendor/plugins/validation_reflection: 
+  squashed: true
+  branch: master
+  url: git://github.com/redinger/validation_reflection.git
+  type: git
+  revision: a2bcc8c836a45af8a7784b51b4d586ed8924f01f
+  remote: braid/vendor/plugins/validation-reflection
 vendor/plugins/let_my_controller_go: 
   squashed: true
-  type: git
-  url: git://github.com/astrails/let_my_controller_go.git
-  revision: e51c299748e54d4602adc6610653e82178238525
   branch: master
+  url: git://github.com/astrails/let_my_controller_go.git
+  type: git
+  revision: e51c299748e54d4602adc6610653e82178238525
   remote: braid/vendor/plugins/let-my-controller-go
 vendor/plugins/live-validations: 
   squashed: true
-  type: git
+  branch: master
   url: git://github.com/augustl/live-validations.git
-  revision: e6904d149977c991898d416cfd7b5c29f4ada0ba
-  branch: master
-  remote: braid/vendor/plugins/live-validations
-vendor/plugins/validation_reflection: 
-  squashed: true
   type: git
-  url: git://github.com/redinger/validation_reflection.git
-  revision: a2bcc8c836a45af8a7784b51b4d586ed8924f01f
+  revision: e6904d149977c991898d416cfd7b5c29f4ada0ba
+  remote: braid/vendor/plugins/live-validations
+vendor/plugins/global_preferences: 
+  squashed: true
   branch: master
-  remote: braid/vendor/plugins/validation-reflection
+  url: git://github.com/astrails/global_preferences
+  type: git
+  revision: bd1d770756462039152ab968245e9cf5847a3914
+  remote: braid/vendor/plugins/global-preferences
+vendor/plugins/trusted-params: 
+  squashed: true
+  branch: master
+  url: git://github.com/ryanb/trusted-params.git
+  type: git
+  revision: da34c4aa2188226eaddc2e3c9cb4bea585d0568e
+  remote: braid/vendor/plugins/trusted-params
+vendor/plugins/astrails-user-auth: 
+  squashed: true
+  branch: master
+  url: git://github.com/astrails/astrails-user-auth
+  type: git
+  revision: d351c66326f9c0d2a0cf5d84bae320a109187718
+  remote: braid/vendor/plugins/astrails-user-auth
 vendor/plugins/delayed_job: 
   squashed: true
-  type: git
-  url: git://github.com/collectiveidea/delayed_job.git
-  revision: 0a42461db81cba96d0f267b99304e6725f8ca993
   branch: master
+  url: git://github.com/collectiveidea/delayed_job.git
+  type: git
+  revision: 0a42461db81cba96d0f267b99304e6725f8ca993
   remote: braid/vendor/plugins/delayed-job

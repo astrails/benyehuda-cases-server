@@ -11,6 +11,10 @@ module FastGettext::TranslationRepository
         write_attribute(:text, ActiveSupport::JSON.encode(value))
       end
 
+      def text_value
+        Db.decode_value(text)
+      end
+
     end
   end
 end

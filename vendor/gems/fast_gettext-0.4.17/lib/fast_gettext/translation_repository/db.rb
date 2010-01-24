@@ -66,9 +66,9 @@ module FastGettext
           end
 
           DbModels::TranslationKey.all(:include => :translations).each do |translation_key|
-            key = Db.decode_value(translation_key.key)
+            key = translation_key.key_value
             translation_key.translations.each do |translation_text|
-              value = Db.decode_value(translation_text.text)
+              value = translation_text.text_value
               FastGettext.caches[FastGettext.text_domain][translation_text.locale][key] = value || false
             end
             missing = FastGettext.available_locales - translation_key.translations.map(&:locale)
