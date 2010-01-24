@@ -31,7 +31,7 @@ module Task::States
       aasm_state          :ready_to_publish
 
       # editor confirms that a child task created (proofing or other task)
-      aasm_state          :other_task_created
+      aasm_state          :other_task_creat
 
       validates_presence_of :state
       validates_presence_of :assignee, :editor, :if => :should_have_assigned_peers?, :on => :update
@@ -76,14 +76,16 @@ module Task::States
 
       # edtior, admin marks as ready to publish
       aasm_event :complete do
-        transitions :from => [:approved, :other_task_created], :to => :ready_to_publish
+        transitions :from => [:approved, :other_task_creat], :to => :ready_to_publish
       end
 
       aasm_event :create_other_task do
-        transitions :from => [:approved, :ready_to_publish], :to => :other_task_created
+        transitions :from => [:approved, :ready_to_publish], :to => :other_task_creat
       end
+      before_validation_on_create :pre_process_parent_task
+      after_create :clone_parent_documents 
 
-      named_scope :visible_in_my_tasks, {:conditions => "tasks.state NOT IN ('ready_to_publish', 'other_task_created')"}
+      named_scope :visible_in_my_tasks, {:conditions => "tasks.state NOT IN ('ready_to_publish', 'other_task_creat')"}
 
       has_reason_comment :_reject, :rejection, :editor
       has_reason_comment(:_abandon, :abandoning, :assignee) do |task|
@@ -121,12 +123,32 @@ module Task::States
     _abandon
   end
 
-  def build_chained_task(opts) # opts -> name, kind, difficulty, full_nikkud
+  def pre_process_parent_task
+    return if parent_id.blank?
+
+    begin
+      parent.create_other_task
+      parent.save!
+    rescue AASM::InvalidTransition, ActiveRecord::RecordInvalid
+      @parent_task_cannot_be_updated = true
+    end
+  end
+
+  def clone_parent_documents
+    return if parent_id.blank?
+
+    parent.documents.each do |doc|
+      d = doc.clone
+      d.task_id = self.id
+      d.file = doc.file.to_file
+      d.save
+    end
+  end
+
+  def build_chained_task(opts, actor) # opts -> name, kind, difficulty, full_nikkud
     new_task = self.build_child(opts)
     new_task.creator = actor
     new_task.parent_id = self.id
-    create_other_task
-    # TODO: move all attachments to new task
     new_task
   end
 

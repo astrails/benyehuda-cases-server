@@ -1,4 +1,16 @@
 module TasksHelper
+  TASK_KINDS = {
+    "typing" => N_("task kind|typing"),
+    "proofing" => N_("task kind|proofing"),
+     "other" => N_("task kind|other")
+  }
+
+  TASK_DIFFICULTY = {
+    "easy" => N_("task difficulty|easy"),
+    "normal" => N_("task difficulty|normal"),
+    "hard" => N_("task difficulty|hard")
+  }
+
   TASK_STATES = {
     "unassigned" => N_("task state|Unassigned"),
     "assigned" => N_("task state|Assigned/Work in Progress"),
@@ -8,7 +20,7 @@ module TasksHelper
     "rejected" => N_("task state|Rejected by Editor"), 
     "approved" => N_("task state|Approved by Editor"),
     "ready_to_publish" => N_("task state|Ready to Publish"),
-    "other_task_created" => N_("task state|Another Task Created")
+    "other_task_creat" => N_("task state|Another Task Created")
   }
 
   TASK_EVENTS = {
@@ -32,6 +44,18 @@ module TasksHelper
   def textify_event(event)
     # TODO: gettext here
     s_(TASK_EVENTS[event])
+  end
+
+  def textify_kind(kind)
+    s_(TASK_KINDS[kind])
+  end
+
+  def textify_full_nikud(task)
+    task.full_nikkud ? _("Full Nikkud") : ""
+  end
+
+  def textify_difficulty(dif)
+    s_(TASK_DIFFICULTY[dif])
   end
 
   def upload_javascripts
@@ -85,5 +109,9 @@ module TasksHelper
     return if task.editor.blank? || task.editor.disabled?
 
     mail_to task.editor.email, _("Send Email to Editor"), :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
+  end
+
+  def toggle_chained_js
+    "jQuery('#new_task_link, #new_task_container').toggle();"
   end
 end

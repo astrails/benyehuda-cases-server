@@ -36,6 +36,10 @@ class Task < ActiveRecord::Base
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
 
+  def validate
+    errors.add(:base, _("task cannot be updated")) if @parent_task_cannot_be_updated
+  end
+
   def participant?(user)
     return false unless user
     [creator_id, editor_id, assignee_id].member?(user.id)

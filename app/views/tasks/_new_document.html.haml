@@ -4,7 +4,7 @@
 
 %h3= _("Attach new document")
 #no_flash_player{:style => "display:none"}
-  = _("It looks like you don't have %{flash} installed or enabled.") % {:flash => link_to(_("Flash Media Player"), "http://www.adobe.com/go/getflashplayer", :target => "_blank")}
+  != _("It looks like you don't have %{flash} installed or enabled.") % {:flash => link_to(_("Flash Media Player"), "http://www.adobe.com/go/getflashplayer", :target => "_blank")}
   %a{:href => "http://www.adobe.com/go/getflashplayer", :target => "_blank"}= _("Get Flash Media Player!")
 
 %input#upload_documents{:type => "file", :name => "upload_documents"}

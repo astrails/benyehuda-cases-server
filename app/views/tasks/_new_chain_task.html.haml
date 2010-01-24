@@ -1,0 +1,8 @@
+- semantic_form_remote_for(@chained_task ||= @task.clone, :task, :live_validations => false, :url => tasks_path(:id => @task.id), :method => :post, :before => "jQuery('#create_chained').attr('disabled', true).val('#{_("Please wait...")}')") do |f|
+  - f.inputs :name => s_("task section|General") do
+    != f.input :name, :label => _("Description"), :required => true, :label => _("Name")
+    != f.input :kind, :as => :select, :collection => Task::KINDS, :required => true, :label => _("Kind")
+    != f.input :difficulty, :as => :select, :collection => Task::DIFFICULTIES, :required => true, :label => _("Difficulty")
+    != f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")
+  != f.submit _("Create"), :id => "create_chained"
+  != link_to_function _("cancel"), toggle_chained_js

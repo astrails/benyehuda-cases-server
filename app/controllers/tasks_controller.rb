@@ -1,9 +1,24 @@
 class TasksController < InheritedResources::Base
   before_filter :require_task_participant_or_editor, :only => [:show, :update]
-  before_filter :require_editor_or_admin, :only => :index
-  actions :index, :show, :update
+  before_filter :require_editor_or_admin, :only => [:index, :create]
+  actions :index, :show, :update, :create
 
   EVENTS_WITH_COMMENTS = {"reject" => N_("Task rejected"), "abandon" => N_("Task abandoned")}
+
+  def create
+    parent = Task.find(params[:id])
+    @chained_task = parent.build_chained_task(params[:task], current_user)
+    if @chained_task.save
+      flash[:notice] = _("Task created.")
+      render(:update) do |page|
+        page.redirect_to task_path(@chained_task)
+      end
+    else
+      render(:update) do |page|
+        page[:new_task_container].replaceWith render(:partial => "new_chain_task")
+      end
+    end
+  end
 
   def index
     @tasks = Task.unassigned.paginate(:page => params[:page], :per_page => params[:per_page])
