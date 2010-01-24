@@ -45,6 +45,48 @@ describe TasksController do
     end
   end
 
+  describe "create child task" do
+    it "should not allow changing task to volunteer" do
+      @user = Factory.create(:volunteer)
+      UserSession.create(@user)
+      post :create, :id => 12
+      response.should redirect_to("/dashboard")
+    end
+
+    it "should not allow creating child task when event is not in chain" do
+      @user = Factory.create(:editor)
+      UserSession.create(@user)
+      @task = Factory.create(:task)
+      post :create, :id => @task.id
+      response.flash[:error].should == "Sorry, you're not allowed to perfrom this operation"
+      response.should redirect_to("/tasks/#{@task.id}")
+    end
+
+    describe "editor" do
+      before(:each) do
+        @task = Factory.create(:approved_task)
+        UserSession.create(@task.editor)
+      end
+
+      it "should render errors on creation" do
+        xhr :post, :create, :id => @task.id
+        response.should be_success
+        assigns[:chained_task].should be_new_record
+        response.should render_template("new_chain_task")
+      end
+
+      it "should create chained task" do
+        Task.stub!(:find).and_return(@task)
+        chained_task = mock("chained_task", :id => 123, :to_param => "123")
+        chained_task.stub!(:save).and_return(true)
+        @task.should_receive(:build_chained_task).and_return(chained_task)
+        xhr :post, :create, :id => @task.id, :task => {:name => "lalala"}
+        response.should be_success
+        response.body.should == "window.location.href = \"/tasks/123\";"
+      end
+    end
+  end
+
   describe "abandon" do
     before(:each) do
       @task = Factory.create(:assigned_task)

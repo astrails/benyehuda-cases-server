@@ -6,8 +6,11 @@ class TasksController < InheritedResources::Base
   EVENTS_WITH_COMMENTS = {"reject" => N_("Task rejected"), "abandon" => N_("Task abandoned")}
 
   def create
-    parent = Task.find(params[:id])
-    @chained_task = parent.build_chained_task(params[:task], current_user)
+    @task = Task.find(params[:id])
+
+    return unless _allow_event?(@task, :create_other_task, current_user)
+
+    @chained_task = @task.build_chained_task(params[:task], current_user)
     if @chained_task.save
       flash[:notice] = _("Task created.")
       render(:update) do |page|
@@ -31,11 +34,7 @@ class TasksController < InheritedResources::Base
   end
 
   def update
-    unless resource.allow_event_for?(params[:event], current_user)
-      flash[:error] = _("Sorry, you're not allowed to perfrom this operation")
-      redirect_to task_path(resource)
-      return false
-    end
+    return unless _allow_event?(resource, params[:event], current_user)
 
     # all security verifications passed in allow_event_for?
     return _event_with_comment(params[:event]) if EVENTS_WITH_COMMENTS.keys.member?(params[:event])
@@ -78,5 +77,22 @@ protected
     render(:update) do |page|
       page.redirect_to(resource.participant?(current_user) ? task_path(resource) : dashboard_path)
     end    
+  end
+
+  def _allow_event?(task, event, user)
+    return true if task.allow_event_for?(event, user)
+
+    flash[:error] = _("Sorry, you're not allowed to perfrom this operation")
+
+    respond_to do |wants|
+      wants.html {redirect_to task_path(task)}
+      wants.js do
+        render(:update) do |page|
+          page.redirect_to task_path(task)
+        end
+      end
+    end
+
+    false
   end
 end
