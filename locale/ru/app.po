@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-24 14:47+0200\n"
+"POT-Creation-Date: 2010-01-24 19:00+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -621,6 +621,102 @@ msgstr ""
 msgid "activation email|Send Activation Email"
 msgstr ""
 
+#: locale/yml_import.rb:79
+msgid "activerecord.errors.full_messages.format"
+msgstr "{{attribute}} {{message}}"
+
+#: locale/yml_import.rb:77
+msgid "activerecord.errors.messages.accepted"
+msgstr "must be accepted"
+
+#: locale/yml_import.rb:62
+msgid "activerecord.errors.messages.blank"
+msgstr "can't be blank"
+
+#: locale/yml_import.rb:63
+msgid "activerecord.errors.messages.confirmation"
+msgstr "doesn't match confirmation"
+
+#: locale/yml_import.rb:67
+msgid "activerecord.errors.messages.empty"
+msgstr "can't be empty"
+
+#: locale/yml_import.rb:74
+msgid "activerecord.errors.messages.equal_to"
+msgstr "must be equal to {{count}}"
+
+#: locale/yml_import.rb:70
+msgid "activerecord.errors.messages.even"
+msgstr "must be even"
+
+#: locale/yml_import.rb:66
+msgid "activerecord.errors.messages.exclusion"
+msgstr "is reserved"
+
+#: locale/yml_import.rb:76
+msgid "activerecord.errors.messages.greater_than"
+msgstr "must be greater than {{count}}"
+
+#: locale/yml_import.rb:59
+msgid "activerecord.errors.messages.greater_than_or_equal_to"
+msgstr "must be greater than or equal to {{count}}"
+
+#: locale/yml_import.rb:72
+msgid "activerecord.errors.messages.inclusion"
+msgstr "is not included in the list"
+
+#: locale/yml_import.rb:61
+msgid "activerecord.errors.messages.invalid"
+msgstr "is invalid"
+
+#: locale/yml_import.rb:75
+msgid "activerecord.errors.messages.less_than"
+msgstr "must be less than {{count}}"
+
+#: locale/yml_import.rb:65
+msgid "activerecord.errors.messages.less_than_or_equal_to"
+msgstr "must be less than or equal to {{count}}"
+
+#: locale/yml_import.rb:60
+msgid "activerecord.errors.messages.not_a_number"
+msgstr "is not a number"
+
+#: locale/yml_import.rb:69
+msgid "activerecord.errors.messages.odd"
+msgstr "must be odd"
+
+#: locale/yml_import.rb:64
+msgid "activerecord.errors.messages.record_invalid"
+msgstr "Validation failed: {{errors}}"
+
+#: locale/yml_import.rb:73
+msgid "activerecord.errors.messages.taken"
+msgstr "has already been taken"
+
+#: locale/yml_import.rb:78
+msgid "activerecord.errors.messages.too_long"
+msgstr "is too long (maximum is {{count}} characters)"
+
+#: locale/yml_import.rb:71
+msgid "activerecord.errors.messages.too_short"
+msgstr "is too short (minimum is {{count}} characters)"
+
+#: locale/yml_import.rb:68
+msgid "activerecord.errors.messages.wrong_length"
+msgstr "is the wrong length (should be {{count}} characters)"
+
+#: locale/yml_import.rb:24
+msgid "activerecord.errors.template.body"
+msgstr "There were problems with the following fields:"
+
+#: locale/yml_import.rb:40
+msgid "activerecord.errors.template.header.one"
+msgstr "1 error prohibited this {{model}} from being saved"
+
+#: locale/yml_import.rb:25
+msgid "activerecord.errors.template.header.other"
+msgstr "{{count}} errors prohibited this {{model}} from being saved"
+
 #: app/views/tasks/show.html.haml:3
 msgid "back to dashboard"
 msgstr ""
@@ -650,6 +746,126 @@ msgstr ""
 msgid "change password"
 msgstr ""
 
+#: locale/yml_import.rb:9
+msgid "date.formats.default"
+msgstr "%Y-%m-%d"
+
+#: locale/yml_import.rb:7
+msgid "date.formats.long"
+msgstr "%B %d, %Y"
+
+#: locale/yml_import.rb:1
+msgid "date.formats.short"
+msgstr "%b %d"
+
+#: locale/yml_import.rb:48
+msgid "datetime.distance_in_words.about_x_hours.one"
+msgstr "about 1 hour"
+
+#: locale/yml_import.rb:43
+msgid "datetime.distance_in_words.about_x_hours.other"
+msgstr "about {{count}} hours"
+
+#: locale/yml_import.rb:28
+msgid "datetime.distance_in_words.about_x_months.one"
+msgstr "about 1 month"
+
+#: locale/yml_import.rb:12
+msgid "datetime.distance_in_words.about_x_months.other"
+msgstr "about {{count}} months"
+
+#: locale/yml_import.rb:27
+msgid "datetime.distance_in_words.about_x_years.one"
+msgstr "about 1 year"
+
+#: locale/yml_import.rb:29
+msgid "datetime.distance_in_words.about_x_years.other"
+msgstr "about {{count}} years"
+
+#: locale/yml_import.rb:35
+msgid "datetime.distance_in_words.half_a_minute"
+msgstr "half a minute"
+
+#: locale/yml_import.rb:44
+msgid "datetime.distance_in_words.less_than_x_minutes.one"
+msgstr "less than a minute"
+
+#: locale/yml_import.rb:36
+msgid "datetime.distance_in_words.less_than_x_minutes.other"
+msgstr "less than {{count}} minutes"
+
+#: locale/yml_import.rb:49
+msgid "datetime.distance_in_words.less_than_x_seconds.one"
+msgstr "less than 1 second"
+
+#: locale/yml_import.rb:47
+msgid "datetime.distance_in_words.less_than_x_seconds.other"
+msgstr "less than {{count}} seconds"
+
+#: locale/yml_import.rb:39
+msgid "datetime.distance_in_words.over_x_years.one"
+msgstr "over 1 year"
+
+#: locale/yml_import.rb:30
+msgid "datetime.distance_in_words.over_x_years.other"
+msgstr "over {{count}} years"
+
+#: locale/yml_import.rb:16
+msgid "datetime.distance_in_words.x_days.one"
+msgstr "1 day"
+
+#: locale/yml_import.rb:55
+msgid "datetime.distance_in_words.x_days.other"
+msgstr "{{count}} days"
+
+#: locale/yml_import.rb:56
+msgid "datetime.distance_in_words.x_minutes.one"
+msgstr "1 minute"
+
+#: locale/yml_import.rb:50
+msgid "datetime.distance_in_words.x_minutes.other"
+msgstr "{{count}} minutes"
+
+#: locale/yml_import.rb:38
+msgid "datetime.distance_in_words.x_months.one"
+msgstr "1 month"
+
+#: locale/yml_import.rb:37
+msgid "datetime.distance_in_words.x_months.other"
+msgstr "{{count}} months"
+
+#: locale/yml_import.rb:54
+msgid "datetime.distance_in_words.x_seconds.one"
+msgstr "1 second"
+
+#: locale/yml_import.rb:13
+msgid "datetime.distance_in_words.x_seconds.other"
+msgstr "{{count}} seconds"
+
+#: locale/yml_import.rb:15
+msgid "datetime.prompts.day"
+msgstr "Day"
+
+#: locale/yml_import.rb:19
+msgid "datetime.prompts.hour"
+msgstr "Hour"
+
+#: locale/yml_import.rb:46
+msgid "datetime.prompts.minute"
+msgstr "Minute"
+
+#: locale/yml_import.rb:42
+msgid "datetime.prompts.month"
+msgstr "Month"
+
+#: locale/yml_import.rb:53
+msgid "datetime.prompts.second"
+msgstr "Seconds"
+
+#: locale/yml_import.rb:34
+msgid "datetime.prompts.year"
+msgstr "Year"
+
 #: app/views/users/_show.html.haml:10
 msgid "edit my profile"
 msgstr ""
@@ -661,6 +877,14 @@ msgstr ""
 #: app/helpers/properties_helper.rb:26
 msgid "false"
 msgstr ""
+
+#: locale/yml_import.rb:81
+msgid "flash.user_session.create.notice"
+msgstr "Logged in"
+
+#: locale/yml_import.rb:80
+msgid "flash.user_session.destroy.notice"
+msgstr "Goodbye"
 
 #: app/views/pages/home.html.haml:3
 msgid "foo"
@@ -690,11 +914,75 @@ msgstr ""
 msgid "notifications|None"
 msgstr ""
 
-#: config/environment.rb:68
+#: locale/yml_import.rb:57
+msgid "number.currency.format.delimiter"
+msgstr ","
+
+#: locale/yml_import.rb:20
+msgid "number.currency.format.format"
+msgstr "%u%n"
+
+#: locale/yml_import.rb:41
+msgid "number.currency.format.separator"
+msgstr "."
+
+#: locale/yml_import.rb:31
+msgid "number.currency.format.unit"
+msgstr "$"
+
+#: locale/yml_import.rb:17
+msgid "number.format.delimiter"
+msgstr ","
+
+#: locale/yml_import.rb:58
+msgid "number.format.separator"
+msgstr "."
+
+#: locale/yml_import.rb:23
+msgid "number.human.format.delimiter"
+msgstr ""
+
+#: locale/yml_import.rb:21
+msgid "number.human.storage_units.format"
+msgstr "%n %u"
+
+#: locale/yml_import.rb:18
+msgid "number.human.storage_units.units.byte.one"
+msgstr "Byte"
+
+#: locale/yml_import.rb:45
+msgid "number.human.storage_units.units.byte.other"
+msgstr "Bytes"
+
+#: locale/yml_import.rb:32
+msgid "number.human.storage_units.units.gb"
+msgstr "GB"
+
+#: locale/yml_import.rb:14
+msgid "number.human.storage_units.units.kb"
+msgstr "KB"
+
+#: locale/yml_import.rb:52
+msgid "number.human.storage_units.units.mb"
+msgstr "MB"
+
+#: locale/yml_import.rb:22
+msgid "number.human.storage_units.units.tb"
+msgstr "TB"
+
+#: locale/yml_import.rb:51
+msgid "number.percentage.format.delimiter"
+msgstr ""
+
+#: locale/yml_import.rb:33
+msgid "number.precision.format.delimiter"
+msgstr ""
+
+#: app/controllers/application_controller.rb:46
 msgid "paginator - previous page|&laquo; Previous"
 msgstr ""
 
-#: config/environment.rb:69
+#: app/controllers/application_controller.rb:47
 msgid "paginator - previous page|Next &raquo;"
 msgstr ""
 
@@ -702,6 +990,22 @@ msgstr ""
 #: app/views/user_session/new.html.haml:11
 msgid "register"
 msgstr ""
+
+#: locale/yml_import.rb:5
+msgid "support.array.last_word_connector"
+msgstr ", and "
+
+#: locale/yml_import.rb:10
+msgid "support.array.two_words_connector"
+msgstr " and "
+
+#: locale/yml_import.rb:3
+msgid "support.array.words_connector"
+msgstr ", "
+
+#: locale/yml_import.rb:26
+msgid "support.select.prompt"
+msgstr "Please select"
 
 #: app/models/task.rb:40
 msgid "task cannot be updated"
@@ -807,6 +1111,26 @@ msgstr ""
 #: app/helpers/tasks_helper.rb:19
 msgid "task state|Waits for Editor's approvement"
 msgstr ""
+
+#: locale/yml_import.rb:11
+msgid "time.am"
+msgstr "am"
+
+#: locale/yml_import.rb:6
+msgid "time.formats.default"
+msgstr "%a, %d %b %Y %H:%M:%S %z"
+
+#: locale/yml_import.rb:8
+msgid "time.formats.long"
+msgstr "%B %d, %Y %H:%M"
+
+#: locale/yml_import.rb:2
+msgid "time.formats.short"
+msgstr "%d %b %H:%M"
+
+#: locale/yml_import.rb:4
+msgid "time.pm"
+msgstr "pm"
 
 #: app/helpers/properties_helper.rb:26
 msgid "true"
