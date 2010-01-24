@@ -40,4 +40,10 @@ protected
   end
 
   alias :authenticate_translations_admin :require_admin
+
+  before_filter :setup_will_paginate
+  def setup_will_paginate
+    WillPaginate::ViewHelpers.pagination_options[:previous_label] = s_('paginator - previous page|&laquo; Previous')
+    WillPaginate::ViewHelpers.pagination_options[:next_label] = s_('paginator - previous page|Next &raquo;')
+  end
 end

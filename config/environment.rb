@@ -65,5 +65,3 @@ Rails::Initializer.run do |config|
   end
 end
 
-WillPaginate::ViewHelpers.pagination_options[:previous_label] = s_('paginator - previous page|&laquo; Previous')
-WillPaginate::ViewHelpers.pagination_options[:next_label] = s_('paginator - previous page|Next &raquo;')
