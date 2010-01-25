@@ -51,9 +51,7 @@ module GettextI18nRails
 
     end
 
-    pos.each_with_index do |po, i|
-      File.open(po_filenames[i], "w") {|f| f.write Pomo::PoFile.to_text(po.sort_by{|x| [*x.msgid].first || ""})}
-    end
+    File.open(default_locale_po_file, "w") {|f| f.write Pomo::PoFile.to_text(po.sort_by{|x| [*x.msgid].first || ""})}
   end
 
 end
