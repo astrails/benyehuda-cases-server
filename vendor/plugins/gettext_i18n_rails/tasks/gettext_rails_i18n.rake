@@ -78,4 +78,6 @@ namespace :gettext do
 
     GettextI18nRails.store_yml_translations("locale/yml_import.rb", "locale/#{FastGettext.default_locale}/app.po")
   end
+
+  task :find_all => [:store_yml_translations, :find]
 end
