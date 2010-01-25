@@ -21,9 +21,7 @@ module FastGettext
 
     #returns the plural forms or all singlgular translations that where found
     def plural(*msgids)
-      translations = plural_translations(msgids)
-      return translations unless translations.empty?
-      msgids.map{|msgid| self[msgid] || msgid} #try to translate each id
+      plural_translations(msgids)
     end
 
     def pluralisation_rule

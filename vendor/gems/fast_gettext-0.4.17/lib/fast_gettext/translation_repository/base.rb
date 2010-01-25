@@ -17,17 +17,33 @@ module FastGettext
         []
       end
 
+      # try to translate in current locale, and then in default
       def [](key)
-        current_translations[key]
+        current_translations[key] || default_translations[key]
       end
 
       def plural(*keys)
-        current_translations.plural(*keys)
+        # first translate in current locale
+        translations = current_translations.plural(*keys)
+        return translations unless translations.empty?
+
+        # then tryt default locale
+        translations = default_translations.plural(*keys)
+        return translations unless translations.empty?
+
+        # then try to translate each singular part individually
+        keys.map do |key|
+          self[key] || key
+        end
       end
 
       protected
 
       def current_translations
+        MoFile.empty
+      end
+
+      def default_translations
         MoFile.empty
       end
 

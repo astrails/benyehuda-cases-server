@@ -32,12 +32,11 @@ module FastGettext::TranslationRepository
       validates_uniqueness_of :key
       validates_presence_of :key
 
+      # retrun translation for the locale or default locale
       def self.translation(keys, locale)
         return unless translation_key = find_by_key(keys.to_json)
-        return unless translation_text =
-          translation_key.translations.find_by_locale(locale) ||
-          translation_key.translations.find_by_locale(FastGettext.default_locale)
-        translation_text.text_value
+        translation_key.translations.find_by_locale(locale).try(:text_value) ||
+          translation_key.translations.find_by_locale(FastGettext.default_locale).try(:text_value)
       end
 
       def self.available_locales

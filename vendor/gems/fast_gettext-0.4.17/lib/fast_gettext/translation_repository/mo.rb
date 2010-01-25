@@ -30,6 +30,10 @@ module FastGettext
       def current_translations
         @files[FastGettext.locale] || MoFile.empty
       end
+
+      def default_translations
+        @files[FastGettext.default_locale] || MoFile.empty
+      end
     end
   end
 end
