@@ -36,11 +36,13 @@ task :sync_po_to_db => :environment do
       if translation = key.translations.detect{|text| text.locale == locale}
         # existing translation
         # only by a non-empty .po translation
-        unless [*t.msgstr].all?(&:blank?) || t.msgstr == translation.text_value
-          puts "Updating translation #{locale}:#{msgid} = #{t.msgstr.to_json} [was #{translation.text}]"
-          translation.text_value = t.msgstr
-          translation.save!
-        end
+        next if [*t.msgstr].all?(&:blank?) # po has no translation. leave db alone
+        next if t.msgstr == translation.text_value # po and db are the same
+        next unless translation.text_value.blank? # don't touch existing db translations
+
+        puts "Updating translation #{locale}:#{msgid} = #{t.msgstr.to_json} [was #{translation.text}]"
+        translation.text_value = t.msgstr
+        translation.save!
       else
         # new translation
         puts "Creating translation #{locale}:#{msgid} = #{t.msgstr.to_json}"
