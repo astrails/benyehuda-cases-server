@@ -102,7 +102,7 @@ module FastGettext
     end
 
     def locale
-      _locale || ( default_locale || (available_locales||[]).first || 'en' )
+      _locale || default_locale
     end
 
     def locale=(new_locale)
@@ -125,7 +125,7 @@ module FastGettext
     end
 
     def default_locale
-      @@default_locale
+      @@default_locale || available_locales.try(:first) || 'en'
     end
 
     #Opera: de-DE,de;q=0.9,en;q=0.8
