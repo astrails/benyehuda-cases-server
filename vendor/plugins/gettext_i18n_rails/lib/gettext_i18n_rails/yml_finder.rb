@@ -10,15 +10,10 @@ module GettextI18nRails
     end
   end
 
-  def store_yml_translations(rb_filename, *po_filenames)
+  def store_yml_translations(rb_filename, default_locale_po_file)
 
-    pos = []
-    po_indexes = []
-
-    po_filenames.each do |po_filename|
-      pos << po = Pomo::PoFile.parse(File.read(po_filename))
-      po_indexes << po.index_by(&:msgid)
-    end
+    po = Pomo::PoFile.parse(File.read(default_locale_po_file))
+    po_index = po.index_by(&:msgid)
 
     File.open(rb_filename, "w") do |rb_file|
 
@@ -40,17 +35,15 @@ module GettextI18nRails
           # since msgmerge will remove anything that is not in the locale/app.pot
           rb_file.puts "_(#{k.inspect})"
 
-          pos.each_with_index do |po, i|
-            # add translation to the .po File
-            if translation = po_indexes[i][k]
-              translation.msgstr = v if translation.msgstr.blank?
-            else
-              translation = Pomo::Translation.new
-              translation.comment = ": " + yml_file
-              translation.msgid = k
-              translation.msgstr = v
-              po << po_indexes[i][k] = translation
-            end
+          # add translation to the .po File
+          if translation = po_index[k]
+            translation.msgstr = v if translation.msgstr.blank?
+          else
+            translation = Pomo::Translation.new
+            translation.comment = ": " + yml_file
+            translation.msgid = k
+            translation.msgstr = v
+            po << po_index[k] = translation
           end
 
         end
