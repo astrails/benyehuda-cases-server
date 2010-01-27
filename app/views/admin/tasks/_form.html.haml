@@ -1,7 +1,7 @@
 - f.inputs :name => s_("task section|General") do
   != f.input :name, :label => _("Description"), :required => true, :label => _("Name")
-  != f.input :kind, :as => :select, :collection => Task::KINDS, :required => true, :label => _("Kind")
-  != f.input :difficulty, :as => :select, :collection => Task::DIFFICULTIES, :required => true, :label => _("Difficulty")
+  != f.input :kind, :as => :select, :collection => Task::KINDS.map{|k| [textify_kind(k), k]}, :required => true, :label => _("Kind")
+  != f.input :difficulty, :as => :select, :collection => Task::DIFFICULTIES.map{|k| [textify_difficulty(k), k]}, :required => true, :label => _("Difficulty")
   != f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")
 
 %br
