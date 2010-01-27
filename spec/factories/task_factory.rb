@@ -8,6 +8,14 @@ Factory.define :task do |t|
   t.parent_id nil
 end
 
+Factory.define :unassigned_task, :class => Task do |t|
+  t.sequence(:name) {|n| "some_#{n}"}
+  t.association :creator, :factory => :admin
+  t.kind "typing"
+  t.difficulty "normal"
+  t.parent_id nil
+end
+
 Factory.define :assigned_task, :parent => :task do |t|
   t.state "assigned"
 end

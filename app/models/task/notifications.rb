@@ -9,23 +9,21 @@ module Task::Notifications
   end
 
   def task_changes_recipients(force = false)
-    return if @task_changes_recipients
-
     state_changed_by = []
     state_changed_for = []
 
     if state_changed? || force
       state_changed_for = [editor, assignee]
-      state_changed_by << current_controller.current_user
+      state_changed_by << current_controller.current_user if current_controller && current_controller.current_user
     elsif editor_id_changed? || assignee_id_changed?
       state_changed_for << editor if editor_id_changed?
       state_changed_for << assignee if assignee_id_changed?
-      state_changed_by << current_controller.current_user
+      state_changed_by << current_controller.current_user if current_controller && current_controller.current_user
     else
       return nil
     end
 
-    @task_changes_recipients = (state_changed_for.compact.uniq - state_changed_by)
+    (state_changed_for.compact.uniq - state_changed_by)
   end
 
   def notify_state_changes_prepare

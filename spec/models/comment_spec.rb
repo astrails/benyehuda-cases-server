@@ -26,9 +26,7 @@ describe Comment do
 
   describe "notification for unassigned task" do
     it "should not send notifications" do
-      @task = Task.new(:name => "foo bar", :kind => "typing", :difficulty => "easy")
-      @task.creator_id = Factory.create(:admin)
-      @task.save!
+      @task = Factory.create(:unassigned_task)
       @comment = @task.comments.new(:message => "foo bar foo bar")
       @comment.user_id = @task.creator_id
       @task.stub!(:current_controller).and_return mock("current_controller")

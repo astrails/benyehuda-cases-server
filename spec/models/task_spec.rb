@@ -27,6 +27,76 @@ describe Task do
     @task.should be_unassigned
   end
 
+  describe "notifications" do
+    def check_email(user, state, name)
+      ActionMailer::Base.deliveries.last.to_addrs.size.should == 1
+      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.to_email_address
+      ActionMailer::Base.deliveries.last.body.should =~ /#{state}/
+      ActionMailer::Base.deliveries.last.body.should =~ /#{name}/
+    end
+
+    describe "basic" do
+      before(:each) do
+        @task = Factory.create(:task)
+        @task.stub!(:current_controller).and_return mock("current_controller")
+        ActionMailer::Base.deliveries = []
+      end
+
+      it "should send email to editor if assignee changed the task" do
+        @task.send(:current_controller).stub!(:current_user).and_return(@task.assignee)
+        @task.state = "assigned"
+        @task.help_required
+        @task.save!
+        check_email(@task.editor, "Editors Help Required", @task.name)
+      end
+
+      it "should send email to assignee if editor changed the task" do
+        @task.send(:current_controller).stub!(:current_user).and_return(@task.editor)
+        @task.state = "waits_for_editor"
+        @task.approve
+        @task.save!
+        check_email(@task.assignee, "Approved by Editor", @task.name)
+      end
+    end
+
+    describe "unassigned task" do
+      it "should send email to assignee and editor if both assigned" do
+        @task = Factory.create(:unassigned_task)
+        @task.stub!(:current_controller).and_return mock("current_controller")
+        @task.send(:current_controller).stub!(:current_user).and_return(@task.editor)
+        ActionMailer::Base.deliveries = []
+
+        @task.assign!(Factory.create(:editor), Factory.create(:admin))
+        ActionMailer::Base.deliveries.last.to_addrs.size.should == 2
+        ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.to_email_address, @task.assignee.to_email_address]
+        ActionMailer::Base.deliveries.last.body.should =~ /Assigned\/Work in Progress/
+        ActionMailer::Base.deliveries.last.body.should =~ /#{@task.name}/
+      end
+    end
+
+    describe "reassigned task" do
+      before(:each) do
+        @task = Factory.create(:unassigned_task)
+        @task.stub!(:current_controller).and_return mock("current_controller")
+        @task.send(:current_controller).stub!(:current_user).and_return(@task.editor)
+        @task.assign!(Factory.create(:editor), Factory.create(:volunteer))
+        ActionMailer::Base.deliveries = []
+      end
+
+      it "should send email to new volunteer if assignee changed" do
+        another = Factory.create(:another_volunteer)
+        @task.assign!(@task.editor, another)
+        check_email(another, "Assigned/Work in Progress", @task.name)
+      end
+
+      it "should send email to new editor if editor changed" do
+        another = Factory.create(:another_editor)
+        @task.assign!(another, @task.assignee)
+        check_email(another, "Assigned/Work in Progress", @task.name)
+      end
+    end
+  end
+
   describe "extra events" do
     it "should assign editor and assignee" do
       task = @user.created_tasks.create!(:name => "some name", :kind => "typing", :difficulty => "normal", :full_nikkud => true)
