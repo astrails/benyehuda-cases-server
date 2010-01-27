@@ -1,8 +1,10 @@
-Hello <%= @user.name %>,
-your account has been activated.
+<%= _("Hello %{user_name},
 
-You can login into your account at <%= @login_url %>
+Your account has been activated.
+
+You can login into your account at %{login_url}
 
 This email was generated automatically. Please do not reply to it.
 
-<%= @domain %> Team
+%{domain} Team
+") % {:user_name => @user.name, :login_url => @login_url, :domain => @domain} %>
