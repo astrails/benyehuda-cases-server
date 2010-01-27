@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-24 19:00+0200\n"
+"POT-Creation-Date: 2010-01-27 20:41+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: app/views/users/_form.html.haml:9
+#: app/views/users/_form.html.haml:11
 #: app/views/users/_public_profile.html.haml:17
 msgid "Email Notifications"
 msgstr ""
@@ -265,6 +265,34 @@ msgstr ""
 
 #: app/views/pages/home.html.haml:1
 msgid "Hello World"
+msgstr ""
+
+#: app/views/notification/comment_added.text.plain.erb:1
+msgid ""
+"Hello,\n"
+"\n"
+"New comment to the task '%{task_name}' added by %{user_name}:\n"
+"\n"
+"%{comment}\n"
+"\n"
+"%{task_url}\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team"
+msgstr ""
+
+#: app/views/notification/task_state_changed.text.plan.erb:1
+msgid ""
+"Hello,\n"
+"\n"
+"The task '%{task_name}' state is changed to %{new_state}.\n"
+"\n"
+"%{task_url}\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team"
 msgstr ""
 
 #: app/views/users/_form.html.haml:5
@@ -583,11 +611,11 @@ msgstr ""
 msgid "When"
 msgstr ""
 
-#: app/helpers/user_helper.rb:54 app/views/users/_form.html.haml:10
+#: app/helpers/user_helper.rb:54 app/views/users/_form.html.haml:12
 msgid "When a comment added to my task"
 msgstr ""
 
-#: app/helpers/user_helper.rb:55 app/views/users/_form.html.haml:11
+#: app/helpers/user_helper.rb:55 app/views/users/_form.html.haml:13
 msgid "When my task status changed"
 msgstr ""
 
@@ -744,6 +772,12 @@ msgstr ""
 
 #: app/views/users/edit.html.haml:11
 msgid "change password"
+msgstr ""
+
+#: app/models/notification.rb:7
+msgid ""
+"comment added notification subject|New comment (%{domain}): %"
+"{task_name_snippet}"
 msgstr ""
 
 #: locale/yml_import.rb:9
@@ -991,6 +1025,11 @@ msgstr ""
 msgid "register"
 msgstr ""
 
+#: app/models/notification.rb:17
+msgid ""
+"state changed notification subject|%{state} (%{domain}): %{task_name_snippet}"
+msgstr ""
+
 #: locale/yml_import.rb:5
 msgid "support.array.last_word_connector"
 msgstr ", and "
@@ -1007,7 +1046,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Please select"
 
-#: app/models/task.rb:40
+#: app/models/task.rb:41
 msgid "task cannot be updated"
 msgstr ""
 
