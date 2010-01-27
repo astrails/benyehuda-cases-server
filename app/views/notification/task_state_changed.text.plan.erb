@@ -1,0 +1,10 @@
+<%= _("Hello,
+
+The task '%{task_name}' state is changed to %{new_state}.
+
+%{task_url}
+
+This email was generated automatically. Please do not reply to it.
+
+%{domain} Team") % {:task_name => @task.name, :new_state => textify_state(@task.state), :task_url => @task_url, :domain => @domain} 
+%>

@@ -39,6 +39,17 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  def wants_to_be_notified_of?(type)
+    case type.to_sym
+    when :comments
+      notify_on_comments?
+    when :state
+      notify_on_status?
+    else
+      nil
+    end
+  end
+
   def email
     email = GlobalPreference.get(:email_override)
     unless email.blank?
@@ -72,5 +83,9 @@ class User < ActiveRecord::Base
 
   def admin_or_editor?
     try(:is_admin?) || try(:is_editor?)
+  end
+
+  def to_email_address
+    "#{name} <#{email}>"
   end
 end

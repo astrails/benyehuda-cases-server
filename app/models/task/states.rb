@@ -38,7 +38,15 @@ module Task::States
 
       # assign a task to new assignee
       aasm_event :_assign do
-        transitions :from => [:unassigned, :assigned, :stuck, :partial, :waits_for_editor, :rejected, :confirmed], :to => :assigned
+        transitions :from => [:unassigned, :assigned], :to => :assigned
+        transitions :from => :waits_for_editor, :to => :waits_for_editor
+        transitions :from => :confirmed, :to => :confirmed
+        transitions :from => :other_task_creat, :to => :other_task_creat
+        transitions :from => :approved, :to => :approved
+        transitions :from => :ready_to_publish, :to => :ready_to_publish
+        transitions :from => :stuck, :to => :stuck
+        transitions :from => :partial, :to => :partial
+        transitions :from => :rejected, :to => :rejected
       end
       protected :_assign, :_assign!
 
@@ -80,7 +88,7 @@ module Task::States
       end
 
       aasm_event :create_other_task do
-        transitions :from => [:approved, :ready_to_publish], :to => :other_task_creat
+        transitions :from => [:approved, :ready_to_publish, :other_task_creat], :to => :other_task_creat
       end
       before_validation_on_create :pre_process_parent_task
       after_create :post_process_parent_task

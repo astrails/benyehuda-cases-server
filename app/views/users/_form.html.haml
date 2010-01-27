@@ -6,11 +6,12 @@
     != f.input :is_editor, :label => _("Is Editor")
     != f.input :is_volunteer, :label => _("Is Volunteer")
 
-- f.inputs :name => _("Email Notifications") do
-  != f.input :notify_on_comments, :label => _("When a comment added to my task"), :as => :boolean
-  != f.input :notify_on_status, :label => _("When my task status changed"), :as => :boolean
 
 - unless f.object.new_record?
+  - f.inputs :name => _("Email Notifications") do
+    != f.input :notify_on_comments, :label => _("When a comment added to my task"), :as => :boolean
+    != f.input :notify_on_status, :label => _("When my task status changed"), :as => :boolean
+
   != render(:partial => "users/user_form", :locals => {:f => f})
 
   - when_user_volunteer do

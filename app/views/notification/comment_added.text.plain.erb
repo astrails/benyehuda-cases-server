@@ -1,0 +1,13 @@
+<%= _("Hello,
+
+New comment to the task '%{task_name}' added by %{user_name}:
+
+%{comment}
+
+%{task_url}
+
+This email was generated automatically. Please do not reply to it.
+
+%{domain} Team") % {:task_name => @comment.task.name, :task_url => @task_url, :domain => @domain,
+:user_name => @comment.user.name, :comment => @comment.message}
+%>

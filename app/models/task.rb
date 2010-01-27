@@ -12,6 +12,7 @@ class Task < ActiveRecord::Base
 
   include CommentWithReason
   include Task::States
+  include Task::Notifications
 
   validates_presence_of :creator_id
   validates_presence_of :name
