@@ -2,7 +2,7 @@
 
 - semantic_form_for(@task, :live_validations => false, :url => task_assignment_path(@task), :method => :put) do |f|
   - f.inputs :name => _("Change Assignments") do
-    != f.input :assignee, :as => :select, :collection => User.all_volunteers, :label => _("Assignee")
-    != f.input :editor, :as => :select, :collection => User.all_editors, :label => _("Editor")
+    != f.input :assignee, :as => :select, :collection => User.all_volunteers.find(:all, :order => "users.name"), :label => _("Assignee")
+    != f.input :editor, :as => :select, :collection => User.all_editors.find(:all, :order => "users.name"), :label => _("Editor")
   != f.submit _("Assign")
   != link_to _("back to task"), task_path(@task)
