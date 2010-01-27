@@ -37,7 +37,10 @@ module Astrails
       protected
 
       def domain
-        @domain ||= default_url_options[:host] = GlobalPreference.get(:domain)
+        if domain = GlobalPreference.get(:domain)
+          default_url_options[:host] = domain
+        end
+        @domain ||= domain
       end
 
     end

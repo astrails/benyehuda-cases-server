@@ -27,7 +27,6 @@ describe ActivationInstructionsController do
     it "should send activation email" do
       @user = Factory.create(:user)
       @user.reload.activation_email_sent_at.should be_blank
-      GlobalPreference.stub!(:get).with(:domain).and_return("test.com")
       post :create, :user_id => @user.id, :page => 12
       response.should redirect_to("/users?page=12")
       ActionMailer::Base.deliveries.last.to_s.should =~ /To activate your/
