@@ -13,15 +13,16 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  named_scope :volunteers, {:conditions => {:is_volunteer => true}}
-  named_scope :all_volunteers, {:conditions => "users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1"}
+  named_scope :volunteers, {:conditions => "is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}
+  named_scope :all_volunteers, {:conditions => "(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"}
 
-  named_scope :editors, {:conditions => {:is_editor => true}}
-  named_scope :all_editors, {:conditions => "is_editor = 1 OR is_admin = 1"}
+  named_scope :editors, {:conditions => "is_editor = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}
+  named_scope :all_editors, {:conditions => "(is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"}
 
   named_scope :admins, {:conditions => {:is_admin => true}}
 
   named_scope :enabled, {:conditions => "users.disabled_at IS NULL"}
+  named_scope :active, {:conditions => "users.activated_at IS NOT NULL"}
   named_scope :not_activated, {:conditions => "users.activated_at is NULL"}
 
   has_one :volunteer_request
