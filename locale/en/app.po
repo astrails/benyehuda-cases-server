@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-27 20:41+0200\n"
+"POT-Creation-Date: 2010-01-27 21:02+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -335,6 +335,10 @@ msgstr ""
 msgid "More Actions"
 msgstr ""
 
+#: app/views/dashboards/_editor_dashboard.html.haml:1
+msgid "My Editing Tasks"
+msgstr ""
+
 #: app/views/dashboards/show.html.haml:9
 msgid "My Tasks"
 msgstr ""
@@ -388,6 +392,10 @@ msgstr ""
 #: app/controllers/documents_controller.rb:42
 #: app/controllers/users_controller.rb:76
 msgid "Only the owner can see this page"
+msgstr ""
+
+#: app/views/dashboards/_editor_dashboard.html.haml:3
+msgid "Other"
 msgstr ""
 
 #: app/views/properties/index.html.haml:8
@@ -942,6 +950,10 @@ msgstr ""
 
 #: app/views/layouts/application.html.haml:18
 msgid "logout"
+msgstr ""
+
+#: app/helpers/user_helper.rb:36
+msgid "me"
 msgstr ""
 
 #: app/helpers/user_helper.rb:56

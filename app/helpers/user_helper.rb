@@ -33,7 +33,7 @@ module UserHelper
 
   def person_link(user)
     return "" unless user
-    return "me" if user.id == current_user.id
+    return _("me") if user.id == current_user.id
     link_to(h(user.name), profiles_path(user))
   end
 
