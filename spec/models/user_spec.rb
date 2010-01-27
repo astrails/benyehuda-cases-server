@@ -4,10 +4,10 @@ describe User do
   describe "named scopes" do
     {
       :admins => {:conditions => {:is_admin => true}},
-      :all_editors => {:conditions => "is_editor = 1 OR is_admin = 1"},
-      :editors => {:conditions => {:is_editor => true}},
-      :all_volunteers =>  {:conditions => "users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1"},
-      :volunteers => {:conditions => {:is_volunteer => true}}
+      :all_editors => {:conditions => "(is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"},
+      :editors => {:conditions => "is_editor = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"},
+      :all_volunteers =>  {:conditions => "(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"},
+      :volunteers => {:conditions => "is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}
     }.each do |scope_name, expectation|
 
       it "should generate for #{scope_name}" do
