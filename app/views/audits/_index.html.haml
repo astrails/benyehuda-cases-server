@@ -1,0 +1,9 @@
+%h3= _("History")
+
+#audits
+  - @audits_count = 0
+  - @task.task_audits.each do |audit|
+    %div[audit]
+      %span== #{@audits_count += 1}. #{audit.created_at.try(:strftime, '%m/%d/%y %H:%M')}
+      \-
+      = audit.long_messages.join(" ")

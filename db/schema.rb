@@ -9,7 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD:db/schema.rb
 ActiveRecord::Schema.define(:version => 20100124121333) do
+=======
+ActiveRecord::Schema.define(:version => 20100116201857) do
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "user_id"
+    t.integer  "action"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "task_id"
+    t.text     "changes"
+    t.boolean  "hidden",         :default => false
+  end
+>>>>>>> history:db/schema.rb
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"

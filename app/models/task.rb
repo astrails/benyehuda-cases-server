@@ -1,4 +1,11 @@
 class Task < ActiveRecord::Base
+  include ActsAsAuditable
+  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :kind, :difficulty,
+    :conversions => {
+      :creator_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
+      :editor_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
+      :assignee_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
+    }
 
   belongs_to :creator, :class_name => "User"
   belongs_to :editor, :class_name => "User"
@@ -6,6 +13,8 @@ class Task < ActiveRecord::Base
 
   belongs_to :parent, :class_name => "Task"
   has_many   :children, :class_name => "Task", :foreign_key => "parent_id"
+
+  has_many :task_audits, :class_name => "Audit"
 
   include CustomProperties
   has_many_custom_properties :task # task_properties

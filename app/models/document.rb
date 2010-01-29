@@ -2,6 +2,12 @@ class Document < ActiveRecord::Base
   belongs_to :user
   belongs_to :task , :touch => true
 
+  include ActsAsAuditable
+  acts_as_auditable :file_file_name,
+    :name => :file_file_name,
+    :auditable_title => proc {|d| "Document \"#{d.file_file_name}\""},
+    :audit_source => proc {|d| " by #{d.user.try(:name)}" }
+
   has_attached_file :file,
     :storage        => :s3,
     :bucket         => GlobalPreference.get(:s3_bucket),

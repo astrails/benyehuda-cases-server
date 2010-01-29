@@ -2,6 +2,12 @@ class Comment < ActiveRecord::Base
   belongs_to :task
   belongs_to :user
   
+  include ActsAsAuditable
+  acts_as_auditable :message, 
+    :name => :message, 
+    :auditable_title => proc {|c| "Comment \"#{c.message}\""}, 
+    :audit_source => proc {|c| " by #{c.user.try(:name)}" }
+
   validates_length_of :message, :in => 2..4096, :allow_nil => false, :allow_blank => false
   validates_presence_of :task_id, :user_id
 
