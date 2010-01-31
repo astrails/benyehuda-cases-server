@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem "aasm", :version => "2.1.3", :library => false
   config.gem 'mime-types', :lib => 'mime/types', :version => "1.16"
   config.gem "fastercsv", :version => "1.5.0"
+  config.gem 'hoptoad_notifier', :version => "2.1.3"
   # config.middleware.use Rack::NoIE
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
