@@ -22,4 +22,5 @@
 
 != render(:partial => "comments/index", :locals => {:comments => @comments})
 
-!= render(:partial => "audits/index")
+- when_editor_or_admin do
+  != render(:partial => "audits/index")

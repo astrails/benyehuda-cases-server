@@ -76,7 +76,7 @@ private
     if self.is_a?(User)
       self.id
     else
-      current_controller && current_controller.current_user.id
+      current_controller && current_controller.current_user && current_controller.current_user.id
     end
   end
 end
