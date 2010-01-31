@@ -29,7 +29,7 @@ module Task::Notifications
   def notify_state_changes_prepare
     return if SKIP_STATES.member?(state.to_sym)
 
-    recipients = task_changes_recipients.select {|r| r.wants_to_be_notified_of?(:state)}
+    recipients = (task_changes_recipients || []).select {|r| r.wants_to_be_notified_of?(:state)}
     return if recipients.blank?
 
     if "production" == Rails.env

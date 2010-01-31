@@ -5,8 +5,8 @@ class Document < ActiveRecord::Base
   include ActsAsAuditable
   acts_as_auditable :file_file_name,
     :name => :file_file_name,
-    :auditable_title => proc {|d| "Document \"#{d.file_file_name}\""},
-    :audit_source => proc {|d| " by #{d.user.try(:name)}" }
+    :auditable_title => proc {|d| N_("document audit|Document \"%{file_name}\"") % {:file_name => d.file_file_name}},
+    :audit_source => proc {|d| N_("document audit| by %{user_name}") % {:user_name => d.user.try(:name)} }
 
   has_attached_file :file,
     :storage        => :s3,

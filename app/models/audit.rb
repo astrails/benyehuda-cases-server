@@ -16,9 +16,9 @@ class Audit < ActiveRecord::Base
   def long_messages
     case action
     when 1 # create
-      ["#{title} was created#{via_source}."] + compose_messages
+      [s_("audit created|%{title} was created%{via_source}.") % {:title => title, :via_source => via_source}] + compose_messages
     when 2 # removed
-      ["#{title} was removed."] + compose_messages
+      [s_("audit removed|%{title} was removed.") % {:title => title}] + compose_messages
     when 3 # update
       compose_messages
     end
@@ -26,14 +26,14 @@ class Audit < ActiveRecord::Base
 
   def title
     @title ||= if auditable
-      auditable.class.auditable_title.respond_to?(:call) ? auditable.class.auditable_title.call(auditable) : auditable.name
+      auditable.class.auditable_title.respond_to?(:call) ? s_(auditable.class.auditable_title.call(auditable)) : auditable.name
     else
       ""
     end
   end
 
   def via_source
-    auditable.class.try(:audit_source) ? auditable.class.audit_source.call(auditable) : nil
+    auditable.class.try(:audit_source) ? s_(auditable.class.audit_source.call(auditable)) : nil
   end
 
   def compose_messages
