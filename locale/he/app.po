@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-01-31 14:39+0200\n"
+"POT-Creation-Date: 2010-02-04 13:15+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,6 +121,10 @@ msgstr ""
 msgid "Chained tasks"
 msgstr ""
 
+#: app/views/passwords/edit.html.haml:6
+msgid "Change"
+msgstr ""
+
 #: app/views/assignments/edit.html.haml:4
 msgid "Change Assignments"
 msgstr ""
@@ -139,7 +143,7 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: app/views/tasks/_new_chain_task.html.haml:8
+#: app/views/tasks/_new_chain_task.html.haml:4
 msgid "Create"
 msgstr ""
 
@@ -159,13 +163,11 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:2
-#: app/views/tasks/_new_chain_task.html.haml:4
+#: app/views/tasks/_form.html.haml:2
 msgid "Description"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:4
-#: app/views/tasks/_new_chain_task.html.haml:6
+#: app/views/tasks/_form.html.haml:4
 msgid "Difficulty"
 msgstr ""
 
@@ -207,6 +209,10 @@ msgstr ""
 msgid "Editor Settings"
 msgstr ""
 
+#: app/views/comments/_new.html.haml:5
+msgid "Editor eyes only"
+msgstr ""
+
 #: app/views/tasks/_description.html.haml:25
 msgid "Editor:"
 msgstr ""
@@ -242,12 +248,15 @@ msgstr ""
 msgid "Footer"
 msgstr ""
 
+#: app/views/user_session/new.html.haml:9
+msgid "Forgot Password"
+msgstr ""
+
 #: app/views/volunteer_requests/index.html.haml:5
 msgid "From"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:54 app/views/admin/tasks/_form.html.haml:5
-#: app/views/tasks/_new_chain_task.html.haml:7
+#: app/helpers/tasks_helper.rb:54 app/views/tasks/_form.html.haml:5
 msgid "Full Nikkud"
 msgstr ""
 
@@ -376,10 +385,8 @@ msgstr ""
 msgid "It looks like you don't have %{flash} installed or enabled."
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:3
-#: app/views/admin/tasks/index.html.haml:16
+#: app/views/admin/tasks/index.html.haml:16 app/views/tasks/_form.html.haml:3
 #: app/views/tasks/_index.html.haml:13
-#: app/views/tasks/_new_chain_task.html.haml:5
 msgid "Kind"
 msgstr ""
 
@@ -408,11 +415,10 @@ msgstr ""
 msgid "My Tasks"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:2
 #: app/views/admin/tasks/index.html.haml:15
-#: app/views/properties/index.html.haml:9 app/views/tasks/_index.html.haml:12
-#: app/views/tasks/_new_chain_task.html.haml:4
-#: app/views/users/_form.html.haml:2 app/views/users/index.html.haml:13
+#: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
+#: app/views/tasks/_index.html.haml:12 app/views/users/_form.html.haml:2
+#: app/views/users/index.html.haml:13
 msgid "Name"
 msgstr ""
 
@@ -513,7 +519,7 @@ msgstr ""
 msgid "Reassign"
 msgstr ""
 
-#: app/views/users/new.html.haml:1
+#: app/views/user_session/new.html.haml:11 app/views/users/new.html.haml:1
 msgid "Register"
 msgstr ""
 
@@ -841,10 +847,14 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/views/tasks/_abandon.html.haml:11
-#: app/views/tasks/_new_chain_task.html.haml:9
+#: app/views/tasks/_new_chain_task.html.haml:5
 #: app/views/tasks/_reject.html.haml:11
 #: app/views/volunteer_requests/new.html.haml:9
 msgid "cancel"
+msgstr ""
+
+#: app/views/tasks/_description.html.haml:21
+msgid "change assignments"
 msgstr ""
 
 #: app/views/users/_show.html.haml:12
@@ -1027,10 +1037,6 @@ msgstr[1] ""
 msgid "foo|bar"
 msgstr ""
 
-#: app/views/user_session/new.html.haml:9
-msgid "forgot_password"
-msgstr ""
-
 #: app/views/layouts/application.html.haml:21
 #: app/views/passwords/new.html.haml:7 app/views/user_session/new.html.haml:7
 #: app/views/users/new.html.haml:8
@@ -1122,7 +1128,6 @@ msgid "paginator - previous page|Next &raquo;"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:22
-#: app/views/user_session/new.html.haml:11
 msgid "register"
 msgstr ""
 
@@ -1207,12 +1212,11 @@ msgstr ""
 msgid "task kind|typing"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:1
-#: app/views/tasks/_new_chain_task.html.haml:2
+#: app/views/tasks/_form.html.haml:1
 msgid "task section|General"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:8
+#: app/views/admin/tasks/_form.html.haml:4
 msgid "task section|Task Settings"
 msgstr ""
 
@@ -1273,6 +1277,7 @@ msgid "time.pm"
 msgstr "pm"
 
 #: app/helpers/properties_helper.rb:26
+#: app/views/properties/_property.html.haml:5
 msgid "true"
 msgstr ""
 

@@ -18,7 +18,7 @@
   - unless @skip_assignment_links
     %small
       - when_editor_or_admin do
-        != link_to("(change assignments)", edit_task_assignment_path(@task))
+        != link_to("(#{_("change assignments")})", edit_task_assignment_path(@task))
 
 - if @task.editor
   %p

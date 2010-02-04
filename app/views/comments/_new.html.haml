@@ -2,6 +2,6 @@
   - f.inputs do
     != f.input :message, :as => :text, :input_html => {:class => "comment_message #{!@comment.errors.blank? && 'active activated'}"}, :label => _("Message")
     - when_editor_or_admin do
-      != f.input :editor_eyes_only
+      != f.input :editor_eyes_only, :label => _("Editor eyes only")
   != f.submit _("Publish")
   != link_to_function _("Cancel"), "if (confirm('#{_('Are you sure?')}')) {jQuery('#comment_message').val('').removeClass('active').css({height:'30px'});}"
