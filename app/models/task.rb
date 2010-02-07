@@ -36,8 +36,6 @@ class Task < ActiveRecord::Base
 
   attr_accessible :name, :kind, :difficulty, :full_nikkud
 
-  named_scope :by_updated_at, :order => "tasks.updated_at"
-
   has_many :comments, :order => "comments.task_id, comments.created_at"
 
   include DefaultAttributes
@@ -48,12 +46,22 @@ class Task < ActiveRecord::Base
 
   define_index do
     indexes :name, :sortable => true
-    has :created_at, :as => :datetime
-    has :updated_at, :as => :datetime
-    has :full_nikkud, :as => :full_nikkud, :type => :boolean
-    has :difficulty
-    has :kind
-    has :state
+    has :created_at
+    has :updated_at
+    has :full_nikkud, :type => :boolean
+    indexes :difficulty, :sortable => true
+    indexes :kind, :sortable => true
+    indexes :state, :sortable => true
+  end
+  sphinx_scope(:by_updated_at){{:order => "updated_at DESC"}}
+
+  def self.filter(opts)
+    search_opts = {:conditions => {}, :with => {}}
+    search_opts[:conditions][:state] = opts[:state] unless opts[:state].blank?
+    search_opts[:conditions][:difficulty] = opts[:difficulty] unless opts[:difficulty].blank?
+    search_opts[:conditions][:kind] = opts[:kind] unless opts[:kind].blank?
+    search_opts[:with][:full_nikkud] = ("true" == opts[:full_nikkud]) unless opts[:full_nikkud].blank?
+    self.search(opts[:query], search_opts).by_updated_at
   end
 
   def validate

@@ -1,11 +1,8 @@
 - set_tab :tasks_admin, _("All Tasks")
 
+!= render(:partial => "search")
+
 != link_to _("New"), new_admin_task_path
-!= link_to _("All"), admin_tasks_path
-&nbsp;
-- Task.aasm_states.collect(&:name).each do |name|
-  != link_to textify_state(name.to_s), admin_tasks_path(name => true)
-  &nbsp;
 
 %table.list
   %tr
@@ -20,5 +17,6 @@
     %th= _("Files")
     %th &nbsp;
     %th &nbsp;
-  != render(:partial => @tasks)
+  - unless @tasks.blank?
+    != render(:partial => @tasks)
 != will_paginate(@tasks)

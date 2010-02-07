@@ -45,8 +45,13 @@ describe Admin::TasksController do
     end
 
     describe_action(:new) { it_should_render_template :new }
-    describe_action(:index) { it_should_render_template :index }
-    # describe_action(:create ) { it_should_redirect_to("/admin/tasks")}
+
+    it "should render index" do
+      Task.stub!(:filter).and_return([@task, @task])
+      get :index
+      response.should be_success
+      response.should render_template("index")
+    end
     
     it "should render edit" do
       get :edit, :id => @task.id

@@ -114,4 +114,18 @@ module TasksHelper
   def toggle_chained_js
     "jQuery('#new_task_link, #new_task_container').toggle();"
   end
+
+  def task_states_for_select
+    Task.aasm_states.collect(&:name).map do |name|
+      [textify_state(name.to_s), name.to_s]
+    end
+  end
+
+  def task_kinds_for_select
+    Task::KINDS.map{|k| [textify_kind(k), k]}
+  end
+
+  def task_difficulties_for_select
+    Task::DIFFICULTIES.map{|k| [textify_difficulty(k), k]}
+  end
 end
