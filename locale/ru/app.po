@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-07 10:57+0200\n"
+"POT-Creation-Date: 2010-02-07 12:04+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -251,7 +251,7 @@ msgstr "Только для редактора"
 msgid "Editor:"
 msgstr "Редактор:"
 
-#: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:5
+#: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:6
 #: app/views/users/_form.html.haml:3 app/views/users/index.html.haml:14
 msgid "Email"
 msgstr "Электронная почта"
@@ -282,7 +282,7 @@ msgstr "Флеш плэйер"
 msgid "Footer"
 msgstr "Ноги"
 
-#: app/views/user_session/new.html.haml:9
+#: app/views/user_session/new.html.haml:11
 msgid "Forgot Password"
 msgstr "Забыл Пароль"
 
@@ -599,7 +599,7 @@ msgstr "Родитель типа"
 msgid "Parent task"
 msgstr "Родитель задачи"
 
-#: app/views/passwords/edit.html.haml:4 app/views/user_session/new.html.haml:6
+#: app/views/passwords/edit.html.haml:4 app/views/user_session/new.html.haml:7
 msgid "Password"
 msgstr "Пароль"
 
@@ -646,7 +646,7 @@ msgstr "Причины"
 msgid "Reassign"
 msgstr "Переназначение"
 
-#: app/views/user_session/new.html.haml:11 app/views/users/new.html.haml:1
+#: app/views/user_session/new.html.haml:13 app/views/users/new.html.haml:1
 msgid "Register"
 msgstr "Регистрация"
 
@@ -661,6 +661,10 @@ msgstr "Отклонить"
 #: app/views/tasks/_reject.html.haml:9
 msgid "Rejection Reason"
 msgstr "Причины отказа"
+
+#: app/views/user_session/new.html.haml:8
+msgid "Remember me"
+msgstr ""
 
 #: app/views/documents/_document.html.haml:6
 msgid "Remove"
@@ -993,6 +997,79 @@ msgstr "%{title} Была создана %{via_source}."
 msgid "audit removed|%{title} was removed."
 msgstr "%{title} Была удалена."
 
+#: locale/yml_import.rb:86
+msgid "authlogic.attributes.user_session.email"
+msgstr ""
+
+#: locale/yml_import.rb:94
+msgid "authlogic.attributes.user_session.login"
+msgstr ""
+
+#: locale/yml_import.rb:95
+msgid "authlogic.attributes.user_session.password"
+msgstr ""
+
+#: locale/yml_import.rb:97
+msgid "authlogic.attributes.user_session.remember_me"
+msgstr ""
+
+#: locale/yml_import.rb:96
+msgid "authlogic.error_messages.consecutive_failed_logins_limit_exceeded"
+msgstr ""
+
+#: locale/yml_import.rb:83
+#, fuzzy
+msgid "authlogic.error_messages.email_invalid"
+msgstr "is invalid"
+
+#: locale/yml_import.rb:81
+#, fuzzy
+msgid "authlogic.error_messages.login_blank"
+msgstr "can't be blank"
+
+#: locale/yml_import.rb:84
+#, fuzzy
+msgid "authlogic.error_messages.login_invalid"
+msgstr "is invalid"
+
+#: locale/yml_import.rb:90
+#, fuzzy
+msgid "authlogic.error_messages.login_not_found"
+msgstr "is too long (maximum is {{count}} characters)"
+
+#: locale/yml_import.rb:93
+msgid "authlogic.error_messages.no_authentication_details"
+msgstr ""
+
+#: locale/yml_import.rb:91
+#, fuzzy
+msgid "authlogic.error_messages.not_active"
+msgstr "is not a number"
+
+#: locale/yml_import.rb:82
+#, fuzzy
+msgid "authlogic.error_messages.not_approved"
+msgstr "is not a number"
+
+#: locale/yml_import.rb:80
+#, fuzzy
+msgid "authlogic.error_messages.not_confirmed"
+msgstr "doesn't match confirmation"
+
+#: locale/yml_import.rb:87
+#, fuzzy
+msgid "authlogic.error_messages.password_blank"
+msgstr "can't be blank"
+
+#: locale/yml_import.rb:89
+#, fuzzy
+msgid "authlogic.error_messages.password_invalid"
+msgstr "Validation failed: {{errors}}"
+
+#: locale/yml_import.rb:92
+msgid "authlogic.models.user_session"
+msgstr ""
+
 #: app/views/tasks/show.html.haml:3
 msgid "back to dashboard"
 msgstr "Назад в центр управления"
@@ -1180,11 +1257,11 @@ msgstr "Изменить профиль пользователя"
 msgid "false"
 msgstr "ложно"
 
-#: locale/yml_import.rb:81
+#: locale/yml_import.rb:88
 msgid "flash.user_session.create.notice"
 msgstr "Logged in"
 
-#: locale/yml_import.rb:80
+#: locale/yml_import.rb:85
 msgid "flash.user_session.destroy.notice"
 msgstr "Goodbye"
 
@@ -1199,7 +1276,7 @@ msgid "foo|bar"
 msgstr "Бар"
 
 #: app/views/layouts/application.html.haml:21
-#: app/views/passwords/new.html.haml:7 app/views/user_session/new.html.haml:7
+#: app/views/passwords/new.html.haml:7 app/views/user_session/new.html.haml:9
 #: app/views/users/new.html.haml:8
 msgid "login"
 msgstr "Войти"
