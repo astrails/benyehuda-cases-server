@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def allow_email_change?
+    activated_at.nil? || new_record?
+  end
+
   def email
     email = GlobalPreference.get(:email_override)
     unless email.blank?

@@ -25,6 +25,7 @@ class UsersController < InheritedResources::Base
       @user.is_volunteer = params[:user].delete(:is_volunteer)
       @user.is_editor = params[:user].delete(:is_editor)
     end
+    params[:user].trust(:email) if current_user.is_admin?
     update!
   end
 

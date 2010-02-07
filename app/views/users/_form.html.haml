@@ -1,6 +1,6 @@
 - f.inputs :name => _("User Settings") do
   != f.input :name, :label => _("Name")
-  != f.input :email, :input_html => {:disabled => !f.object.new_record?}, :required => f.object.new_record?, :label => _("Email")
+  != f.input :email, :input_html => {:disabled => !f.object.allow_email_change?}, :required => f.object.new_record?, :label => _("Email")
   - when_admin do
     != f.input :is_admin, :label => _("Is Admin")
     != f.input :is_editor, :label => _("Is Editor")
