@@ -1,3 +1,5 @@
+config/*.sphinx.conf
+db/sphinx/*
 log/*.log
 log/*.pid
 db/*.db

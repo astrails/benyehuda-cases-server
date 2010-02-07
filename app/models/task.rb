@@ -46,6 +46,16 @@ class Task < ActiveRecord::Base
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
 
+  define_index do
+    indexes :name, :sortable => true
+    has :created_at, :as => :datetime
+    has :updated_at, :as => :datetime
+    has :full_nikkud, :as => :full_nikkud, :type => :boolean
+    has :difficulty
+    has :kind
+    has :state
+  end
+
   def validate
     errors.add(:base, _("task cannot be updated")) if @parent_task_cannot_be_updated
   end
