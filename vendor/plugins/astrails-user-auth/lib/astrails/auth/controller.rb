@@ -28,7 +28,7 @@ module Astrails
         return true if current_user
 
         store_location
-        flash[:error] = "You must be logged in to access this page"
+        flash[:error] = _("You must be logged in to access this page")
         redirect_to login_path
         return false
       end
@@ -37,7 +37,7 @@ module Astrails
         return true unless current_user
 
         store_location
-        flash[:error] = "You must be logged out to access this page"
+        flash[:error] = _("You must be logged out to access this page")
         redirect_to home_path
         return false
       end
@@ -46,7 +46,7 @@ module Astrails
         return false if false == require_user
         return true if current_user.is_admin?
 
-        flash[:error] = "You must be an admin to access this page"
+        flash[:error] = _("You must be an admin to access this page")
         redirect_to "/"
         return false
       end

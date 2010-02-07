@@ -8,7 +8,7 @@ class UserSessionController < InheritedResources::Base
     create! do |success, failure|
       success.html do
         if current_user.disabled?
-          flash[:error] = "Your account has been disabled, please contact support."
+          flash[:error] = _("Your account has been disabled, please contact support.")
           flash.delete(:notice)
           current_user_session.destroy
           redirect_to login_path

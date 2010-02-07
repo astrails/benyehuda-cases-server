@@ -14,13 +14,13 @@ class PasswordsController < InheritedResources::Base
       @user.deliver_password_reset_instructions!
       if @user.activated_at
         # user is already active
-        flash[:notice] = "Instructions to reset your password have been emailed to you. Please check your email."
+        flash[:notice] = _("Instructions to reset your password have been emailed to you. Please check your email.")
       else
-        flash[:notice] = "Instructions to activate your account have been emailed to you. Please check your email."
+        flash[:notice] = _("Instructions to activate your account have been emailed to you. Please check your email.")
       end
       redirect_to "/"
     else
-      flash[:error] = "No user was found with that email address"
+      flash[:error] = _("No user was found with that email address")
       render :action => :new
     end
   end
@@ -65,18 +65,19 @@ class PasswordsController < InheritedResources::Base
 
     if with_activation_check
       if current_user && !@user.activated_at
-        flash[:error] = "Please log out to activate new account"
+        flash[:error] = _("Please log out to activate new account")
         redirect_to profile_path
         return false
       end
     end
     unless resource
-      flash[:error] = <<-END
+      flash[:error] = _(<<-END
         We're sorry, but we could not locate your account.
         If you are having issues try copying and pasting the URL
         from your email into your browser or restarting the
         reset password process.
       END
+      )
       redirect_to new_password_path
       return false
     end

@@ -3,7 +3,7 @@ module Astrails
     class Mailer < ActionMailer::Base
 
       def password_reset_instructions(user)
-        subject       "#{domain}: Password Reset Instructions"
+        subject       (_("%{domain}: Password Reset Instructions") % {:domain => domain})
         from          "Password Reset <noreply@#{domain}>"
         recipients    user.email
         sent_on       Time.now
@@ -11,7 +11,7 @@ module Astrails
       end
 
       def password_reset_confirmation(user)
-        subject       "#{domain}: Password Reset Notification"
+        subject       (_("%{domain}: Password Reset Notification") % {:domain => domain})
         from          "Password Reset <noreply@#{domain}>"
         recipients    user.email
         sent_on       Time.now
@@ -19,7 +19,7 @@ module Astrails
       end
 
       def activation_instructions(user)
-        subject       "#{domain}: Account Activation Instructions"
+        subject       (_("%{domain}: Account Activation Instructions") % {:domain => domain})
         from          "Activation <noreply@#{domain}>"
         recipients    user.email
         sent_on       Time.now
@@ -27,7 +27,7 @@ module Astrails
       end
 
       def activation_confirmation(user)
-        subject       "Welcome to #{domain}"
+        subject       (_("Welcome to %{domain}") % {:domain => domain})
         from          "Activation <noreply@#{domain}>"
         recipients    user.email
         sent_on       Time.now
