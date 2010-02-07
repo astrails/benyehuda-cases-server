@@ -40,6 +40,11 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  def has_no_credentials?
+    # self.crypted_password.blank?
+    self.crypted_password.blank? && !activated_at.blank?
+  end
+
   def wants_to_be_notified_of?(type)
     case type.to_sym
     when :comments

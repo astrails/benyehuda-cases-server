@@ -4,6 +4,6 @@
 - semantic_form_for(@volunteer_request, :live_validations => true) do |f|
   - f.inputs do
     = f.object.errors.on(:base)
-    != f.input :reason, :as => :text
+    != f.input :reason, :as => :text, :label => _("Reason")
     != f.submit _("Request")
     != link_to _("cancel"), properties_path
