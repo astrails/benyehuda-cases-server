@@ -2,8 +2,10 @@
 
 - semantic_form_for(@user_session, :url => user_session_path) do |f|
   = f.object.errors.on(:base)
-  != f.input :email, :label => _("Email")
-  != f.input :password, :label => _("Password")
+  - f.inputs do
+    != f.input :email, :label => _("Email")
+    != f.input :password, :label => _("Password")
+    != f.input :remember_me, :label => _("Remember me"), :as => :boolean, :input_html => {:checked => true}, :required => false
   != f.submit _("login")
 
 != link_to _("Forgot Password"), new_password_path, :class => "forgot_password"
