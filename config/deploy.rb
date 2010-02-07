@@ -4,7 +4,7 @@ require "vladify/fast_gettext"
 # require "vladify/gettext"
 require "vladify/thinking_sphinx"
 # require "vladify/ultrasphinx"
-# require "vladify/whenever"
+require "vladify/whenever"
 # require "vladify/workling"
 
 set :application, "benyehuda.org"
