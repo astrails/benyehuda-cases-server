@@ -20,7 +20,7 @@ namespace :gettext do
     if GetText.respond_to? :update_pofiles_org
       GetText.update_pofiles_org(
         "app",
-        Dir.glob("{app,lib,config,locale}/**/*.{rb,erb,haml}"),
+        Dir.glob("{app,lib,config,locale}/**/*.{rb,erb,haml}") + Dir.glob("vendor/plugins/astrails-user-auth/{app,lib}/**/*.{rb}"),
         "version 0.0.1",
         :po_root => 'locale',
         :msgmerge=>['--sort-output']
