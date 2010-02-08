@@ -30,7 +30,7 @@ describe Task do
   describe "notifications" do
     def check_email(user, state, name)
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 1
-      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.to_email_address
+      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.email_recipient
       ActionMailer::Base.deliveries.last.body.should =~ /#{state}/
       ActionMailer::Base.deliveries.last.body.should =~ /#{name}/
     end
@@ -68,7 +68,7 @@ describe Task do
 
         @task.assign!(Factory.create(:editor), Factory.create(:admin))
         ActionMailer::Base.deliveries.last.to_addrs.size.should == 2
-        ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.to_email_address, @task.assignee.to_email_address]
+        ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.email_recipient, @task.assignee.email_recipient]
         ActionMailer::Base.deliveries.last.body.should =~ /Assigned\/Work in Progress/
         ActionMailer::Base.deliveries.last.body.should =~ /#{@task.name}/
       end

@@ -8,7 +8,7 @@ class Notification < ActionMailer::Base
                   :task_name_snippet => comment.task.name.utf_snippet(20),
                   :domain => domain}
     from        from_address
-    recipients  recipient_users.collect(&:to_email_address)
+    recipients  recipient_users.collect(&:email_recipient)
     sent_on     Time.now.utc
     body        :comment => comment, :task_url => task_url(comment.task)
   end
@@ -18,7 +18,7 @@ class Notification < ActionMailer::Base
                   :state => textify_state(task.state), :task_name_snippet => task.name.utf_snippet(20),
                   :domain => domain}
     from        from_address
-    recipients  recipient_users.collect(&:to_email_address)
+    recipients  recipient_users.collect(&:email_recipient)
     sent_on     Time.now.utc
     body        :task => task, :task_url => task_url(task)
   end

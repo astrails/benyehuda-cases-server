@@ -48,7 +48,7 @@ describe Comment do
 
     def check_email(user)
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 1
-      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.to_email_address
+      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.email_recipient
       ActionMailer::Base.deliveries.last.body.should =~ /foo bar foo bar/
     end
 
@@ -71,7 +71,7 @@ describe Comment do
       current_controller.stub!(:current_user).and_return(@task.creator)
       @comment.save!
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 2
-      ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.to_email_address, @task.assignee.to_email_address]
+      ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.email_recipient, @task.assignee.email_recipient]
       ActionMailer::Base.deliveries.last.body.should =~ /foo bar foo bar/
     end
 

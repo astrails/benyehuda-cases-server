@@ -60,13 +60,10 @@ class User < ActiveRecord::Base
     activated_at.nil? || new_record?
   end
 
-  def email
-    email = GlobalPreference.get(:email_override)
-    unless email.blank?
-      email
-    else
-      read_attribute(:email)
-    end
+  def email_recipient
+    addr = GlobalPreference.get(:email_override)
+    addr = email if addr.blank?
+    "#{name} <#{addr}>"
   end
 
   def disabled?
@@ -95,7 +92,4 @@ class User < ActiveRecord::Base
     try(:is_admin?) || try(:is_editor?)
   end
 
-  def to_email_address
-    "#{name} <#{email}>"
-  end
 end
