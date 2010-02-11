@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-07 12:04+0200\n"
+"POT-Creation-Date: 2010-02-11 20:03+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,8 @@ msgstr "Добавить комментарий"
 msgid "Admin"
 msgstr "Администратор"
 
-#: app/views/admin/tasks/index.html.haml:4 app/views/users/index.html.haml:5
+#: app/views/admin/tasks/_search.html.haml:16
+#: app/views/users/index.html.haml:5
 msgid "All"
 msgstr "Все"
 
@@ -105,7 +106,7 @@ msgstr "Вы уверены?"
 msgid "Assign"
 msgstr "Назначение"
 
-#: app/views/admin/tasks/index.html.haml:18
+#: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
 msgstr "Ответственный"
@@ -185,7 +186,7 @@ msgstr "Создать"
 msgid "Create new task based on this one"
 msgstr "Создать новую задачу, основанную на этом одном"
 
-#: app/views/admin/tasks/index.html.haml:13
+#: app/views/admin/tasks/index.html.haml:10
 msgid "Creater"
 msgstr "Созидатель"
 
@@ -201,6 +202,7 @@ msgstr "Удалить"
 msgid "Description"
 msgstr "Описание"
 
+#: app/views/admin/tasks/_search.html.haml:10
 #: app/views/tasks/_form.html.haml:4
 msgid "Difficulty"
 msgstr "Трудность"
@@ -213,7 +215,7 @@ msgstr "Выключать"
 msgid "Document deleted"
 msgstr "Документ удален"
 
-#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:12
+#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:11
 msgid "Edit"
 msgstr "Изменить"
 
@@ -229,7 +231,7 @@ msgstr "Изменить проектов недвижимости"
 msgid "Edit Task"
 msgstr "Редактирование задачи"
 
-#: app/views/admin/tasks/index.html.haml:17
+#: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/index.html.haml:16
 msgid "Editor"
@@ -269,10 +271,15 @@ msgstr "Включено"
 msgid "File"
 msgstr "Файл"
 
-#: app/views/admin/tasks/index.html.haml:20
+#: app/views/admin/tasks/index.html.haml:17
 #: app/views/tasks/_index.html.haml:17
 msgid "Files"
 msgstr "Файлы"
+
+#: app/views/admin/tasks/_search.html.haml:15
+#, fuzzy
+msgid "Filter"
+msgstr "Файл"
 
 #: app/views/tasks/_new_document.html.haml:7
 msgid "Flash Media Player"
@@ -290,7 +297,8 @@ msgstr "Забыл Пароль"
 msgid "From"
 msgstr "От"
 
-#: app/helpers/tasks_helper.rb:54 app/views/tasks/_form.html.haml:5
+#: app/helpers/tasks_helper.rb:54 app/views/admin/tasks/_search.html.haml:6
+#: app/views/tasks/_form.html.haml:5
 msgid "Full Nikkud"
 msgstr "Полное Nikkud"
 
@@ -498,12 +506,13 @@ msgstr "Является волонтером"
 msgid "It looks like you don't have %{flash} installed or enabled."
 msgstr "Похоже, вы не имеете %{flash} установлено или включено."
 
-#: app/views/admin/tasks/index.html.haml:16 app/views/tasks/_form.html.haml:3
+#: app/views/admin/tasks/_search.html.haml:8
+#: app/views/admin/tasks/index.html.haml:13 app/views/tasks/_form.html.haml:3
 #: app/views/tasks/_index.html.haml:13
 msgid "Kind"
 msgstr "Вид"
 
-#: app/views/admin/tasks/index.html.haml:14
+#: app/views/admin/tasks/index.html.haml:11
 #: app/views/tasks/_index.html.haml:11
 msgid "Last Updated"
 msgstr "Последнее обновление"
@@ -524,18 +533,18 @@ msgstr "Дополнительные действия"
 msgid "My Editing Tasks"
 msgstr "Моя редактирование задач"
 
-#: app/views/dashboards/show.html.haml:9
+#: app/views/dashboards/show.html.haml:10
 msgid "My Tasks"
 msgstr "Мои задачи"
 
-#: app/views/admin/tasks/index.html.haml:15
+#: app/views/admin/tasks/index.html.haml:12
 #: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
 #: app/views/tasks/_index.html.haml:12 app/views/users/_form.html.haml:2
 #: app/views/users/index.html.haml:13
 msgid "Name"
 msgstr "Имя"
 
-#: app/views/admin/tasks/index.html.haml:3
+#: app/views/admin/tasks/index.html.haml:5
 #: app/views/properties/index.html.haml:3
 msgid "New"
 msgstr "Новый"
@@ -573,13 +582,13 @@ msgstr "Свойства объекта"
 msgid "Only participant can see this page"
 msgstr "Единственным участником видите эту страницу"
 
-#: app/controllers/users_controller.rb:65
+#: app/controllers/users_controller.rb:61
 msgid "Only registered activists allowed to access this page"
 msgstr ""
 "Только зарегистрированные активистов, которым разрешен доступ к этой странице"
 
 #: app/controllers/documents_controller.rb:42
-#: app/controllers/users_controller.rb:76
+#: app/controllers/users_controller.rb:72
 msgid "Only the owner can see this page"
 msgstr "Только владелец может увидеть эту страницу"
 
@@ -620,6 +629,13 @@ msgstr ""
 msgid "Please wait..."
 msgstr "Пожалуйста, подождите ..."
 
+#: app/views/volunteer_requests/index.html.haml:7
+#: app/views/volunteer_requests/new.html.haml:7
+#: app/views/volunteer_requests/show.html.haml:7
+#, fuzzy
+msgid "Preferences"
+msgstr "Глобальные настройки"
+
 #: app/helpers/tabs_helper.rb:10
 msgid "Profile"
 msgstr "Профиль"
@@ -637,10 +653,9 @@ msgstr "Общественные"
 msgid "Publish"
 msgstr "Публикации"
 
-#: app/views/volunteer_requests/index.html.haml:7
-#: app/views/volunteer_requests/show.html.haml:7
-msgid "Reason"
-msgstr "Причины"
+#: app/views/admin/tasks/_search.html.haml:13
+msgid "Query"
+msgstr ""
 
 #: app/views/tasks/_task_actions.html.haml:10
 msgid "Reassign"
@@ -693,6 +708,10 @@ msgstr "Роли"
 msgid "Save"
 msgstr "Сохранить"
 
+#: app/views/admin/tasks/_search.html.haml:1
+msgid "Search/Filter"
+msgstr ""
+
 #: app/helpers/user_helper.rb:62
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr "Выслать письмо активации для %{user}. Вы уверены?"
@@ -717,10 +736,17 @@ msgstr "Регистрация"
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr "К сожалению, вы не позволили perfrom этой операции"
 
-#: app/views/admin/tasks/index.html.haml:19
+#: app/views/admin/tasks/_search.html.haml:4
+#: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:16
 msgid "State"
 msgstr "Государство"
+
+#: app/views/volunteer_requests/new.html.haml:7
+msgid ""
+"State your preferred material (author, genre, etc.), and make any other "
+"comment you wish to communicate to the editors"
+msgstr ""
 
 #: app/controllers/tasks_controller.rb:6
 msgid "Task abandoned"
@@ -749,6 +775,12 @@ msgstr "Задачи администратора"
 #: app/controllers/volunteer_requests_controller.rb:16
 msgid "Thank you, your request has been posted."
 msgstr "Спасибо, ваш запрос был размещен."
+
+#: app/helpers/dashboards_helper.rb:6
+msgid "There is %d pending volunter request"
+msgid_plural "There are %d pending volunter requests"
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/views/properties/_form.html.haml:3
 msgid "Title"
@@ -790,7 +822,7 @@ msgstr "Свойства пользователей"
 msgid "User Settings"
 msgstr "Настройки пользователя"
 
-#: app/controllers/users_controller.rb:44
+#: app/controllers/users_controller.rb:40
 msgid "User disabled"
 msgstr "Пользователь инвалидов"
 
@@ -838,11 +870,7 @@ msgstr "Если добавить комментарий к моей задач�
 msgid "When my task status changed"
 msgstr "Когда моя задача статус изменился"
 
-#: app/controllers/users_controller.rb:23
-msgid "You cannot edit unactivated users"
-msgstr "Вы не можете редактировать неактивированных пользователей"
-
-#: app/controllers/users_controller.rb:39
+#: app/controllers/users_controller.rb:35
 msgid "You cannot remove your own account"
 msgstr "Вы не можете удалить свою собственную учетную запись"
 
@@ -1390,7 +1418,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Выбираем"
 
-#: app/models/task.rb:50
+#: app/models/task.rb:68
 msgid "task cannot be updated"
 msgstr "Задача не может быть обновлен"
 
@@ -1530,3 +1558,9 @@ msgstr "Редактор"
 #: app/helpers/user_helper.rb:5
 msgid "user role|Volunteer"
 msgstr "Волонтер"
+
+#~ msgid "Reason"
+#~ msgstr "Причины"
+
+#~ msgid "You cannot edit unactivated users"
+#~ msgstr "Вы не можете редактировать неактивированных пользователей"

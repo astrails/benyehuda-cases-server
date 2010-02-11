@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-07 12:04+0200\n"
+"POT-Creation-Date: 2010-02-11 20:03+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,8 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:4 app/views/users/index.html.haml:5
+#: app/views/admin/tasks/_search.html.haml:16
+#: app/views/users/index.html.haml:5
 msgid "All"
 msgstr ""
 
@@ -101,7 +102,7 @@ msgstr ""
 msgid "Assign"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:18
+#: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
 msgstr ""
@@ -181,7 +182,7 @@ msgstr ""
 msgid "Create new task based on this one"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:13
+#: app/views/admin/tasks/index.html.haml:10
 msgid "Creater"
 msgstr ""
 
@@ -197,6 +198,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: app/views/admin/tasks/_search.html.haml:10
 #: app/views/tasks/_form.html.haml:4
 msgid "Difficulty"
 msgstr ""
@@ -209,7 +211,7 @@ msgstr ""
 msgid "Document deleted"
 msgstr ""
 
-#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:12
+#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:11
 msgid "Edit"
 msgstr ""
 
@@ -225,7 +227,7 @@ msgstr ""
 msgid "Edit Task"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:17
+#: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/index.html.haml:16
 msgid "Editor"
@@ -265,9 +267,13 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:20
+#: app/views/admin/tasks/index.html.haml:17
 #: app/views/tasks/_index.html.haml:17
 msgid "Files"
+msgstr ""
+
+#: app/views/admin/tasks/_search.html.haml:15
+msgid "Filter"
 msgstr ""
 
 #: app/views/tasks/_new_document.html.haml:7
@@ -286,7 +292,8 @@ msgstr ""
 msgid "From"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:54 app/views/tasks/_form.html.haml:5
+#: app/helpers/tasks_helper.rb:54 app/views/admin/tasks/_search.html.haml:6
+#: app/views/tasks/_form.html.haml:5
 msgid "Full Nikkud"
 msgstr ""
 
@@ -427,12 +434,13 @@ msgstr ""
 msgid "It looks like you don't have %{flash} installed or enabled."
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:16 app/views/tasks/_form.html.haml:3
+#: app/views/admin/tasks/_search.html.haml:8
+#: app/views/admin/tasks/index.html.haml:13 app/views/tasks/_form.html.haml:3
 #: app/views/tasks/_index.html.haml:13
 msgid "Kind"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:14
+#: app/views/admin/tasks/index.html.haml:11
 #: app/views/tasks/_index.html.haml:11
 msgid "Last Updated"
 msgstr ""
@@ -453,18 +461,18 @@ msgstr ""
 msgid "My Editing Tasks"
 msgstr ""
 
-#: app/views/dashboards/show.html.haml:9
+#: app/views/dashboards/show.html.haml:10
 msgid "My Tasks"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:15
+#: app/views/admin/tasks/index.html.haml:12
 #: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
 #: app/views/tasks/_index.html.haml:12 app/views/users/_form.html.haml:2
 #: app/views/users/index.html.haml:13
 msgid "Name"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:3
+#: app/views/admin/tasks/index.html.haml:5
 #: app/views/properties/index.html.haml:3
 msgid "New"
 msgstr ""
@@ -502,12 +510,12 @@ msgstr ""
 msgid "Only participant can see this page"
 msgstr ""
 
-#: app/controllers/users_controller.rb:65
+#: app/controllers/users_controller.rb:61
 msgid "Only registered activists allowed to access this page"
 msgstr ""
 
 #: app/controllers/documents_controller.rb:42
-#: app/controllers/users_controller.rb:76
+#: app/controllers/users_controller.rb:72
 msgid "Only the owner can see this page"
 msgstr ""
 
@@ -547,6 +555,12 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
+#: app/views/volunteer_requests/index.html.haml:7
+#: app/views/volunteer_requests/new.html.haml:7
+#: app/views/volunteer_requests/show.html.haml:7
+msgid "Preferences"
+msgstr ""
+
 #: app/helpers/tabs_helper.rb:10
 msgid "Profile"
 msgstr ""
@@ -564,9 +578,8 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: app/views/volunteer_requests/index.html.haml:7
-#: app/views/volunteer_requests/show.html.haml:7
-msgid "Reason"
+#: app/views/admin/tasks/_search.html.haml:13
+msgid "Query"
 msgstr ""
 
 #: app/views/tasks/_task_actions.html.haml:10
@@ -619,6 +632,10 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
+#: app/views/admin/tasks/_search.html.haml:1
+msgid "Search/Filter"
+msgstr ""
+
 #: app/helpers/user_helper.rb:62
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr ""
@@ -643,9 +660,16 @@ msgstr ""
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:19
+#: app/views/admin/tasks/_search.html.haml:4
+#: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:16
 msgid "State"
+msgstr ""
+
+#: app/views/volunteer_requests/new.html.haml:7
+msgid ""
+"State your preferred material (author, genre, etc.), and make any other "
+"comment you wish to communicate to the editors"
 msgstr ""
 
 #: app/controllers/tasks_controller.rb:6
@@ -675,6 +699,12 @@ msgstr ""
 #: app/controllers/volunteer_requests_controller.rb:16
 msgid "Thank you, your request has been posted."
 msgstr ""
+
+#: app/helpers/dashboards_helper.rb:6
+msgid "There is %d pending volunter request"
+msgid_plural "There are %d pending volunter requests"
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/views/properties/_form.html.haml:3
 msgid "Title"
@@ -716,7 +746,7 @@ msgstr ""
 msgid "User Settings"
 msgstr ""
 
-#: app/controllers/users_controller.rb:44
+#: app/controllers/users_controller.rb:40
 msgid "User disabled"
 msgstr ""
 
@@ -764,11 +794,7 @@ msgstr ""
 msgid "When my task status changed"
 msgstr ""
 
-#: app/controllers/users_controller.rb:23
-msgid "You cannot edit unactivated users"
-msgstr ""
-
-#: app/controllers/users_controller.rb:39
+#: app/controllers/users_controller.rb:35
 msgid "You cannot remove your own account"
 msgstr ""
 
@@ -1307,7 +1333,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Please select"
 
-#: app/models/task.rb:50
+#: app/models/task.rb:68
 msgid "task cannot be updated"
 msgstr ""
 
