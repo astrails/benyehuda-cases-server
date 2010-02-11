@@ -19,6 +19,10 @@ module GettextI18nRails
         raise "no yet build..." if options[:locale]
         _(flat_key)
       else
+        if options[:count]
+          try_key = flat_key + (1 == options[:count] ? ".one" : ".other")
+          return FastGettext._(try_key) if FastGettext.key_exist?(try_key)
+        end
         if self.class.translate_defaults
           options[:default].to_a.each do |default|
             #try the more specific key first e.g. 'activerecord.errors.my custom message'
