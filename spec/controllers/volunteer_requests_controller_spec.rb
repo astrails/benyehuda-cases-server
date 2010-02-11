@@ -72,7 +72,7 @@ describe VolunteerRequestsController do
     describe "user with volunteer request" do
 
       before(:each) do
-        @user.create_volunteer_request(:reason => "some long text")
+        @user.create_volunteer_request(:preferences => "some long text")
         @user.should_not be_might_become_volunteer
       end
 
@@ -83,7 +83,7 @@ describe VolunteerRequestsController do
       end
 
       it "should not be able to create another one" do
-        post :create, :volunteer_request => {:reason => "some long text"}
+        post :create, :volunteer_request => {:preferences => "some long text"}
         flash[:error].should =~ /Your request has already been posted/
         response.should redirect_to("/dashboard")
         assigns[:volunteer_request].should be_blank
@@ -100,7 +100,7 @@ describe VolunteerRequestsController do
       describe_action(:new) {it_should_render_template(:new)}
 
       it "should create request" do
-        post :create, :volunteer_request => {:reason => "some long text"}
+        post :create, :volunteer_request => {:preferences => "some long text"}
         response.should redirect_to("/dashboard")
         @user.reload.volunteer_request.should_not be_blank
       end

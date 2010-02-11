@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100124121333) do
+ActiveRecord::Schema.define(:version => 20100211173913) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(:version => 20100124121333) do
 
   create_table "volunteer_requests", :force => true do |t|
     t.integer  "user_id"
-    t.string   "reason",      :limit => 4096
+    t.string   "preferences", :limit => 4096
     t.datetime "approved_at"
     t.integer  "approver_id"
     t.datetime "created_at"

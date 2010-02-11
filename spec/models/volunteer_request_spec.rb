@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe VolunteerRequest do
   it "should create" do
-    @volunteer_request = VolunteerRequest.new(:reason => "some reason")
+    @volunteer_request = VolunteerRequest.new(:preferences => "some reason")
     @volunteer_request.user_id = 2
     @volunteer_request.should be_valid
     @volunteer_request.save
@@ -35,22 +35,22 @@ describe VolunteerRequest do
       @volunteer_request.errors.on(:user_id).should_not be_blank
     end
 
-    describe "reason" do
+    describe "preferences" do
       it "should be short" do
-        @volunteer_request.reason = "foo"
+        @volunteer_request.preferences = "foo"
         @volunteer_request.should_not be_valid
-        @volunteer_request.errors.on(:reason).should =~ /short/
+        @volunteer_request.errors.on(:preferences).should =~ /short/
       end
 
       it "should be short when blank" do
         @volunteer_request.should_not be_valid
-        @volunteer_request.errors.on(:reason).should =~ /short/
+        @volunteer_request.errors.on(:preferences).should =~ /short/
       end
 
       it "should be long" do
-        @volunteer_request.reason = "f" * 4097
+        @volunteer_request.preferences = "f" * 4097
         @volunteer_request.should_not be_valid
-        @volunteer_request.errors.on(:reason).should =~ /long/
+        @volunteer_request.errors.on(:preferences).should =~ /long/
       end
     end
   end

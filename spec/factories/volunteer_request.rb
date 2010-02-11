@@ -1,5 +1,5 @@
 Factory.define :volunteer_request do |volunteer_request|
-  volunteer_request.sequence(:reason) {|n| "Some reason #{n}"}
+  volunteer_request.sequence(:preferences) {|n| "Some reason #{n}"}
   volunteer_request.association :user, :factory => :active_user
 end
 

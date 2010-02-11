@@ -4,8 +4,8 @@
   = _("Requested at:")
   = @volunteer_request.created_at.to_s(:db)
 
-%h4= _("Reason")
-%p= @volunteer_request.reason
+%h4= _("Preferences")
+%p= @volunteer_request.preferences
 
 %p
   != confirm_button(@volunteer_request)
