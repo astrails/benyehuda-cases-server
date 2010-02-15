@@ -99,12 +99,18 @@ class ActionController::Base
   def set_session_domain(session_domain = true)
     return unless session_domain = canonic_session_domain(session_domain)
 
+    # set session domain
     if request.env['rack.session.options']
       logger.debug "set session domain = #{session_domain}"
       request.env['rack.session.options'][:domain] = session_domain
     else
       logger.debug "can't set session domain. there are no rack.session.options"
     end
+
+    # set cookies domain
+    @cookie_domain_key ||= Rails::VERSION::STRING >= '2.3' ? :domain : :session_domain
+    ActionController::Base.session_options[@cookie_domain_key] = session_domain
+
   end
 
   def locale_domain_for(locale)
