@@ -25,4 +25,5 @@ ActionController::Routing::Routes.draw do |map|
     tasks.resource  :assignment
     tasks.resources :comments
   end
+  map.resources :task_requests
 end

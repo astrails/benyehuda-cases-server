@@ -7,6 +7,13 @@
   != link_to _("New Task"), new_admin_task_path
   - pending_volunteer_requests
 
+- when_volunteer do
+  #task_request
+    - if current_user.task_requested_at.nil?
+      != link_to_remote _("Request a Task"), :url => task_requests_path, :method => :post
+    - else
+      != render(:partial => "users/task_request")
+
 != render(:partial => "tasks/index", :locals => {:tasks => current_user.assigned_tasks.visible_in_my_tasks, :title => _("My Tasks")})
 
 

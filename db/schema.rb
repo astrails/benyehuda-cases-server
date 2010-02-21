@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100211173913) do
+ActiveRecord::Schema.define(:version => 20100221153758) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(:version => 20100211173913) do
     t.datetime "activation_email_sent_at"
     t.boolean  "notify_on_comments",                      :default => true
     t.boolean  "notify_on_status",                        :default => true
+    t.datetime "task_requested_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

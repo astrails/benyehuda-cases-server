@@ -18,6 +18,15 @@ protected
     return false
   end
 
+  def require_volunteer
+    return false if false == require_user
+    return true if current_user.is_volunteer? || current_user.admin_or_editor?
+
+    flash[:error] = _("You must be a volunteer to access this page")
+    redirect_to home_path
+    return false
+  end
+
   def set_task
     @task = Task.find(params[:task_id])
   end
