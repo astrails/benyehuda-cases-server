@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-21 18:30+0200\n"
+"POT-Creation-Date: 2010-02-21 18:46+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -329,6 +329,17 @@ msgid ""
 "This email was generated automatically. Please do not reply to it.\n"
 "\n"
 "%{domain} Team\n"
+msgstr ""
+
+#: app/views/notification/volnteer_welcome.text.plain.erb:1
+msgid ""
+"Hello %{user_name},\n"
+"\n"
+"Welcome to Ben Yehuda Project!\n"
+"Instructions: TODO\n"
+"\n"
+"\n"
+"%{domain} Team"
 msgstr ""
 
 #: app/views/astrails/auth/mailer/password_reset_confirmation.erb:1
@@ -1498,4 +1509,8 @@ msgstr ""
 
 #: app/helpers/user_helper.rb:5
 msgid "user role|Volunteer"
+msgstr ""
+
+#: app/models/notification.rb:27
+msgid "volunteer welcome subject|Welcome to Ben Yehuda Project"
 msgstr ""
