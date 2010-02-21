@@ -1,0 +1,11 @@
+!= javascript_include_tag "jquery.lookup_updater"
+
+- form_tag users_path(:all => params[:all]), :method => :get do
+  != text_field_tag "query", params[:query], :id => "users_query", :autocomplete => "off"
+  != submit_tag _("Find")
+  \|
+  != link_to _("All"), users_path(:all => true)
+  \|
+  != link_to _("Enabled"), users_path
+
+!= javascript_tag "jQuery(function(){jQuery('#users_query').lookup_updater({url: '/users?all=#{params[:all]}'}).lookup_updater('start');});"

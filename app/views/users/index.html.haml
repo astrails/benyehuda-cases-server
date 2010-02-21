@@ -1,24 +1,6 @@
 - set_tab :users, (params[:all] == "true" ? _("All Users") : _("Users"))
 
+!= render(:partial => "search")
 
-%p
-  != link_to _("All"), users_path(:all => true)
-  \|
-  != link_to _("Enabled"), users_path
-
-!= will_paginate(@users)
-
-%table.list
-  %tr.title
-    %th= _("Name")
-    %th= _("Email")
-    %th= _("Volunteer")
-    %th= _("Editor")
-    %th= _("Admin")
-    %th= _("Activation email sent")
-    %th= _("Activated")
-    %th &nbsp;
-    %th &nbsp;
-  != render :partial => @users
-
-!= will_paginate(@users)
+#users
+  != render(:partial => "index")

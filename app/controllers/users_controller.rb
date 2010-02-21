@@ -5,6 +5,10 @@ class UsersController < InheritedResources::Base
   before_filter :require_owner_or_public_profile, :only => :show
   before_filter :set_default_domain, :only => :create
 
+  respond_to :html, :js
+
+  # index
+
   def create
     user = build_resource
     user.is_admin = true if User.count.zero?
@@ -75,7 +79,11 @@ class UsersController < InheritedResources::Base
   end
 
   def collection
-    @users ||= end_of_association_chain.send("true" == params[:all] ? :all : :enabled).paginate(:page => params[:page], :per_page => params[:per_page])
+    if params[:query].blank?
+      @users ||= end_of_association_chain.send("true" == params[:all] ? :all : :enabled).paginate(:page => params[:page], :per_page => params[:per_page])
+    else
+      @users ||= User.send("true" == params[:all] ? :sp_all : :sp_enabled).search(params[:query]).paginate(:page => params[:page], :per_page => params[:per_page])
+    end
   end
 
   def resource

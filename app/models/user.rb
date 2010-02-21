@@ -40,6 +40,14 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  define_index do
+    indexes :name, :sortable => true
+    indexes :email, :sortable => true
+    has :disabled_at
+  end
+  sphinx_scope(:sp_enabled) { {:where => "disabled_at is NULL"}}
+  sphinx_scope(:sp_all) {{}}
+
   def has_no_credentials?
     # self.crypted_password.blank?
     self.crypted_password.blank? && !activated_at.blank?
