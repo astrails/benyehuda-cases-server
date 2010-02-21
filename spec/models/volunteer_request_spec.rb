@@ -23,6 +23,11 @@ describe VolunteerRequest do
     it "should set appover" do
       @volunteer_request.approver_id.should == @admin.id
     end
+
+    it "should send welcome email" do
+      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == @volunteer_request.user.email_recipient
+      ActionMailer::Base.deliveries.last.body.should =~ /Welcome to Ben Yehuda Project/
+    end
   end
 
   describe "validations" do

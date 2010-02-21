@@ -41,6 +41,7 @@ describe VolunteerRequestsController do
 
     it "should approve" do
       @volunteer_request.approved_at.should be_blank
+      Notification.should_receive(:deliver_volnteer_welcome)
       put :update, :id => @volunteer_request.id
       response.should redirect_to(volunteer_requests_path)
       @volunteer_request.reload.approved_at.should_not be_blank

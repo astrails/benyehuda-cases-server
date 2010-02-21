@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  after_update :check_volunter_approved
+
   define_index do
     indexes :name, :sortable => true
     indexes :email, :sortable => true
@@ -102,4 +104,9 @@ class User < ActiveRecord::Base
     try(:is_admin?) || try(:is_editor?)
   end
 
+  def check_volunter_approved
+    if is_volunteer_changed? && is_volunteer?
+      Notification.deliver_volnteer_welcome(self)
+    end
+  end
 end

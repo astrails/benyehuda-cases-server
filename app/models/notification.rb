@@ -23,6 +23,14 @@ class Notification < ActionMailer::Base
     body        :task => task, :task_url => task_url(task)
   end
 
+  def volnteer_welcome(user)
+    subject     s_("volunteer welcome subject|Welcome to Ben Yehuda Project")
+    from        from_address
+    recipients  user.email_recipient
+    sent_on     Time.now.utc
+    body        :user => user, :domain => domain
+  end
+
 protected
 
   def domain
