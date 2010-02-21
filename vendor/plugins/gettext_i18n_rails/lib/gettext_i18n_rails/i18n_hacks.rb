@@ -7,4 +7,13 @@ module I18n
   def locale
     FastGettext.locale.to_sym
   end
+
+  def with_locale(new_locale)
+    begin
+      old_locale, I18n.locale = I18n.locale, new_locale
+      yield
+    ensure
+      I18n.locale = old_locale
+    end
+  end
 end
