@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-11 20:03+0200\n"
+"POT-Creation-Date: 2010-02-21 17:36+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr "Активированный"
 msgid "Activate Account"
 msgstr "Активированный"
 
-#: app/views/users/index.html.haml:19
+#: app/views/users/_index.html.haml:11
 msgid "Activated"
 msgstr "Активированный"
 
-#: app/views/users/index.html.haml:18
+#: app/views/users/_index.html.haml:10
 msgid "Activation email sent"
 msgstr "Активация электронной почты отправлено"
 
@@ -73,12 +73,12 @@ msgstr "Активация электронной почты отправлен�
 msgid "Add Comment"
 msgstr "Добавить комментарий"
 
-#: app/views/users/index.html.haml:17
+#: app/views/users/_index.html.haml:9
 msgid "Admin"
 msgstr "Администратор"
 
 #: app/views/admin/tasks/_search.html.haml:16
-#: app/views/users/index.html.haml:5
+#: app/views/users/_search.html.haml:7
 msgid "All"
 msgstr "Все"
 
@@ -233,7 +233,7 @@ msgstr "Редактирование задачи"
 
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
-#: app/views/users/index.html.haml:16
+#: app/views/users/_index.html.haml:8
 msgid "Editor"
 msgstr "Редактор"
 
@@ -254,7 +254,7 @@ msgid "Editor:"
 msgstr "Редактор:"
 
 #: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:6
-#: app/views/users/_form.html.haml:3 app/views/users/index.html.haml:14
+#: app/views/users/_form.html.haml:3 app/views/users/_index.html.haml:6
 msgid "Email"
 msgstr "Электронная почта"
 
@@ -263,7 +263,7 @@ msgstr "Электронная почта"
 msgid "Email Notifications"
 msgstr "Уведомления по электронной почте"
 
-#: app/views/users/index.html.haml:7
+#: app/views/users/_search.html.haml:9
 msgid "Enabled"
 msgstr "Включено"
 
@@ -280,6 +280,11 @@ msgstr "Файлы"
 #, fuzzy
 msgid "Filter"
 msgstr "Файл"
+
+#: app/views/users/_search.html.haml:5
+#, fuzzy
+msgid "Find"
+msgstr "Вид"
 
 #: app/views/tasks/_new_document.html.haml:7
 msgid "Flash Media Player"
@@ -540,7 +545,7 @@ msgstr "Мои задачи"
 #: app/views/admin/tasks/index.html.haml:12
 #: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
 #: app/views/tasks/_index.html.haml:12 app/views/users/_form.html.haml:2
-#: app/views/users/index.html.haml:13
+#: app/views/users/_index.html.haml:5
 msgid "Name"
 msgstr "Имя"
 
@@ -582,13 +587,13 @@ msgstr "Свойства объекта"
 msgid "Only participant can see this page"
 msgstr "Единственным участником видите эту страницу"
 
-#: app/controllers/users_controller.rb:61
+#: app/controllers/users_controller.rb:65
 msgid "Only registered activists allowed to access this page"
 msgstr ""
 "Только зарегистрированные активистов, которым разрешен доступ к этой странице"
 
 #: app/controllers/documents_controller.rb:42
-#: app/controllers/users_controller.rb:72
+#: app/controllers/users_controller.rb:76
 msgid "Only the owner can see this page"
 msgstr "Только владелец может увидеть эту страницу"
 
@@ -822,7 +827,7 @@ msgstr "Свойства пользователей"
 msgid "User Settings"
 msgstr "Настройки пользователя"
 
-#: app/controllers/users_controller.rb:40
+#: app/controllers/users_controller.rb:44
 msgid "User disabled"
 msgstr "Пользователь инвалидов"
 
@@ -830,7 +835,7 @@ msgstr "Пользователь инвалидов"
 msgid "Users"
 msgstr "Пользователь"
 
-#: app/views/users/index.html.haml:15
+#: app/views/users/_index.html.haml:7
 msgid "Volunteer"
 msgstr "Волонтер"
 
@@ -870,7 +875,7 @@ msgstr "Если добавить комментарий к моей задач�
 msgid "When my task status changed"
 msgstr "Когда моя задача статус изменился"
 
-#: app/controllers/users_controller.rb:35
+#: app/controllers/users_controller.rb:39
 msgid "You cannot remove your own account"
 msgstr "Вы не можете удалить свою собственную учетную запись"
 
@@ -897,7 +902,7 @@ msgid "You must be logged out to access this page"
 msgstr ""
 "Вы должны быть администратором или редактором для доступа к этой странице"
 
-#: app/controllers/users_controller.rb:13
+#: app/controllers/users_controller.rb:17
 msgid ""
 "Your account has been created. Please check your e-mail for your account "
 "activation instructions!"
