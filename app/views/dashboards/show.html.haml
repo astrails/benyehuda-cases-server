@@ -6,6 +6,7 @@
 - when_admin do
   != link_to _("New Task"), new_admin_task_path
   - pending_volunteer_requests
+  != render(:partial => "waiting_volunteers")
 
 - when_volunteer do
   #task_request
@@ -16,6 +17,6 @@
 
 != render(:partial => "tasks/index", :locals => {:tasks => current_user.assigned_tasks.visible_in_my_tasks, :title => _("My Tasks")})
 
-
 - when_editor do
   != render(:partial => "editor_dashboard")
+  != render(:partial => "waiting_volunteers")

@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   named_scope :active, {:conditions => "users.activated_at IS NOT NULL"}
   named_scope :not_activated, {:conditions => "users.activated_at is NULL"}
 
+  named_scope :waiting_for_tasks, {:conditions => "users.task_requested_at IS NOT NULL", :order => "users.task_requested_at DESC"}
+
   has_one :volunteer_request
   has_many :confirmed_volunteer_requests, :class_name => "VolunteerRequest", :foreign_key => :approver_id
   # has_many :volunteers_approved, :through => :volunteer_confirmations, :source => :user

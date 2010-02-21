@@ -1,0 +1,12 @@
+- unless @waiting_volunteers.blank?
+  %h4= _("Volunteers waiting for tasks")
+  %table.list
+    %tr.title
+      %th= _("Name")
+      %th= _("Email")
+      %th= _("Waits for")
+    - @waiting_volunteers.each do |v|
+      %tr{:class => cycle("odd", "even")}
+        %td!= link_to(v.name, profiles_path(v))
+        %td!= mail_to v.email
+        %td!= time_ago_in_words(v.task_requested_at)
