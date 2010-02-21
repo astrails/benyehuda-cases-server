@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-21 17:36+0200\n"
+"POT-Creation-Date: 2010-02-21 18:30+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -249,6 +249,7 @@ msgstr ""
 msgid "Editor:"
 msgstr ""
 
+#: app/views/dashboards/_waiting_volunteers.html.haml:6
 #: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:6
 #: app/views/users/_form.html.haml:3 app/views/users/_index.html.haml:6
 msgid "Email"
@@ -465,11 +466,12 @@ msgstr ""
 msgid "My Editing Tasks"
 msgstr ""
 
-#: app/views/dashboards/show.html.haml:10
+#: app/views/dashboards/show.html.haml:18
 msgid "My Tasks"
 msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:12
+#: app/views/dashboards/_waiting_volunteers.html.haml:5
 #: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
 #: app/views/tasks/_index.html.haml:12 app/views/users/_form.html.haml:2
 #: app/views/users/_index.html.haml:5
@@ -509,7 +511,7 @@ msgstr ""
 msgid "Object Properties"
 msgstr ""
 
-#: app/controllers/application_controller.rb:30
+#: app/controllers/application_controller.rb:39
 #: app/controllers/tasks_controller.rb:56
 msgid "Only participant can see this page"
 msgstr ""
@@ -618,6 +620,10 @@ msgstr ""
 msgid "Request"
 msgstr ""
 
+#: app/views/dashboards/show.html.haml:14
+msgid "Request a Task"
+msgstr ""
+
 #: app/views/volunteer_requests/show.html.haml:4
 msgid "Requested at:"
 msgstr ""
@@ -690,6 +696,10 @@ msgstr ""
 
 #: app/controllers/tasks_controller.rb:6
 msgid "Task rejected"
+msgstr ""
+
+#: app/views/users/_task_request.html.haml:1
+msgid "Task requested %{time} ago"
 msgstr ""
 
 #: app/controllers/tasks_controller.rb:45
@@ -782,6 +792,14 @@ msgstr ""
 msgid "Volunteer request approved!"
 msgstr ""
 
+#: app/views/dashboards/_waiting_volunteers.html.haml:2
+msgid "Volunteers waiting for tasks"
+msgstr ""
+
+#: app/views/dashboards/_waiting_volunteers.html.haml:7
+msgid "Waits for"
+msgstr ""
+
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/mailer.rb:30
 msgid "Welcome to %{domain}"
 msgstr ""
@@ -800,6 +818,10 @@ msgstr ""
 
 #: app/controllers/users_controller.rb:39
 msgid "You cannot remove your own account"
+msgstr ""
+
+#: app/controllers/application_controller.rb:25
+msgid "You must be a volunteer to access this page"
 msgstr ""
 
 #: app/controllers/application_controller.rb:16
@@ -1295,11 +1317,11 @@ msgstr ""
 msgid "number.precision.format.delimiter"
 msgstr ""
 
-#: app/controllers/application_controller.rb:46
+#: app/controllers/application_controller.rb:55
 msgid "paginator - previous page|&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application_controller.rb:47
+#: app/controllers/application_controller.rb:56
 msgid "paginator - previous page|Next &raquo;"
 msgstr ""
 
