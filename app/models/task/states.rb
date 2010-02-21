@@ -113,6 +113,10 @@ module Task::States
 
   def assign_assignee(new_assignee)
     self.assignee = new_assignee
+    if assignee_id_changed?
+      new_assignee.task_requested_at = nil
+      new_assignee.save
+    end
     _assign
   end
 

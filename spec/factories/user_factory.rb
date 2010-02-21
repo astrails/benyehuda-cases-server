@@ -33,3 +33,7 @@ end
 
 Factory.define :another_volunteer, :parent => :volunteer do |user|
 end
+
+Factory.define :volunteer_wanting_a_task, :parent => :volunteer do |user|
+  user.task_requested_at Time.now.utc
+end

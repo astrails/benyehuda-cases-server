@@ -72,6 +72,14 @@ describe Task do
         ActionMailer::Base.deliveries.last.body.should =~ /Assigned\/Work in Progress/
         ActionMailer::Base.deliveries.last.body.should =~ /#{@task.name}/
       end
+
+      it "should reset volunteer's task_requested_at" do
+        task = Factory.create(:unassigned_task)
+        volunteer = Factory.create(:volunteer_wanting_a_task)
+        volunteer.task_requested_at.should_not be_nil
+        task.assign!(Factory.create(:editor), volunteer)
+        volunteer.reload.task_requested_at.should be_nil
+      end
     end
 
     describe "reassigned task" do
