@@ -62,7 +62,7 @@ protected
   def _event_with_comment(event)
     unless resource.send("#{event}_with_comment", params[:task][:comment][:message])
       render(:update) do |page|
-        page[:abandon_task].html render(:partial => "tasks/#{event}")
+        page["#{event}_task"].html render(:partial => "tasks/#{event}")
       end
       return
     end
