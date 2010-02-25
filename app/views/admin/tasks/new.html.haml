@@ -6,5 +6,6 @@
   != render(:partial => "form", :locals => {:f => f})
   - f.inputs do
     != f.submit _("Save")
+    != f.submit _("Save and New")
     != link_to _("Cancel"), admin_tasks_path
 

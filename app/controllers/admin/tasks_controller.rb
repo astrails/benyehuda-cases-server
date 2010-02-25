@@ -5,7 +5,9 @@ class Admin::TasksController < InheritedResources::Base
   def create
     @task = current_user.created_tasks.create(params[:task])
     create! do |format|
-      format.html {redirect_to task_path(@task)}
+      format.html do
+        redirect_to (params[:commit] == _("Save and New")) ? new_admin_task_path : task_path(@task)
+      end
     end
   end
 
