@@ -1,10 +1,8 @@
 - if task.assignee?(current_user)
-  - task.simple_assignee_events.each do |e|
-    != link_to textify_event(e), task_path(task, :event => e), :method => :put, :confirm => _('Are you sure?')
+  != render(:partial => "tasks/assignee_simple_actions", :locals => {:task => task})
 
 - if task.editor?(current_user)
-  - task.simple_editor_events.each do |e|
-    != link_to textify_event(e), task_path(task, :event => e), :method => :put, :confirm => _('Are you sure?')
+  != render(:partial => "tasks/editor_simple_actions", :locals => {:task => task})
 
   - if current_user.admin_or_editor?
     != link_to _("Reassign"), edit_task_assignment_path(task)

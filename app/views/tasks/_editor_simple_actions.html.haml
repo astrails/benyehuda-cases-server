@@ -1,0 +1,2 @@
+- task.simple_editor_events.each do |e|
+  != link_to textify_event(e), task_path(task, :event => e), :method => :put, :confirm => _('Are you sure?')

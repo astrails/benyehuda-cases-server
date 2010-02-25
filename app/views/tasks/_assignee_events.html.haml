@@ -1,5 +1,4 @@
-- @task.simple_assignee_events.each do |e|
-  != link_to textify_event(e), task_path(@task, :event => e), :method => :put, :confirm => _('Are you sure?')
+!= render(:partial => "tasks/assignee_simple_actions", :locals => {:task => @task})
 
 - if @task.can_be_abandoned?
   #abandon_task

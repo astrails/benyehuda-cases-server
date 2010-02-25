@@ -1,0 +1,7 @@
+- semantic_form_remote_for(@task, :live_validations => false, :url => task_path(@task, :event => "finish")) do |f|
+  - f.inputs do
+    - f.fields_for :comment, @task.finished_comment  do |comment_fields|
+      != comment_fields.input :message, :as => :text, :input_html => {:id => "finish_comment_message", :class => "comment_message #{has_abandoning_errors? && 'active activated'}"}, :label => _("Task Finishing Comments")
+    != f.input :request_new_task, :as => :boolean, :label => _("Also request a new task")
+  != f.submit _("Finish")
+  != link_to _("cancel"), task_path(@task)

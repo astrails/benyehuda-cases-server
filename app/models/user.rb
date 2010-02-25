@@ -109,4 +109,9 @@ class User < ActiveRecord::Base
       Notification.deliver_volnteer_welcome(self)
     end
   end
+
+  def set_task_requested!
+    self.task_requested_at = Time.now.utc
+    save!
+  end
 end

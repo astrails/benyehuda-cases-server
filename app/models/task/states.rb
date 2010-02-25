@@ -95,11 +95,19 @@ module Task::States
 
       named_scope :visible_in_my_tasks, {:conditions => "tasks.state NOT IN ('ready_to_publish', 'other_task_creat')"}
 
-      has_reason_comment :_reject, :rejection, :editor
-      has_reason_comment(:_abandon, :abandoning, :assignee) do |task|
+      has_reason_comment :_reject, :rejection, :editor, N_("Task rejected")
+      has_reason_comment(:_abandon, :abandoning, :assignee, N_("Task abandoned")) do |task, opts|
         task.assignee = nil
       end
+
+      has_reason_comment(:finish, :finished, :assignee, N_("Task finished")) do |task, request_new_task|
+        task.assignee.set_task_requested! if request_new_task
+      end
     end
+  end
+
+  def request_new_task
+    true # always ask for new task when this one is done
   end
 
   def should_have_assigned_peers?
@@ -168,7 +176,11 @@ module Task::States
   end
 
   def simple_assignee_events
-    aasm_events_for_current_state.collect(&:task_event_cleanup) & ["help_required", "finish", "finish_partialy"]
+    aasm_events_for_current_state.collect(&:task_event_cleanup) & ["help_required", "finish_partialy"]
+  end
+
+  def can_be_finished?
+    aasm_events_for_current_state.member?(:finish)
   end
 
   def simple_editor_events

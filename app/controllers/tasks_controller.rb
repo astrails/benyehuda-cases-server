@@ -1,9 +1,15 @@
 class TasksController < InheritedResources::Base
-  before_filter :require_task_participant_or_editor, :only => [:show, :update]
+  before_filter :require_task_participant_or_editor, :only => [:show, :update, :edit]
   before_filter :require_editor_or_admin, :only => [:index, :create]
   actions :index, :show, :update, :create
 
-  EVENTS_WITH_COMMENTS = {"reject" => N_("Task rejected"), "abandon" => N_("Task abandoned")}
+  EVENTS_WITH_COMMENTS = {"reject" => N_("Task rejected"), "abandon" => N_("Task abandoned"), "finish" => N_("Task completed")}
+
+  # finishing tasks
+  def edit
+    @task = Task.find(params[:id])
+    return unless _allow_event?(@task, :finish, current_user)
+  end
 
   def create
     @task = Task.find(params[:id])
@@ -38,7 +44,7 @@ class TasksController < InheritedResources::Base
     return unless _allow_event?(resource, params[:event], current_user)
 
     # all security verifications passed in allow_event_for?
-    return _event_with_comment(params[:event]) if EVENTS_WITH_COMMENTS.keys.member?(params[:event])
+    return _event_with_comment(params[:event]) if resource.commentable_event?(params[:event])
 
     resource.send(params[:event])
     resource.save
@@ -60,7 +66,7 @@ protected
   end
 
   def _event_with_comment(event)
-    unless resource.send("#{event}_with_comment", params[:task][:comment][:message])
+    unless resource.event_with_comment(event, params[:task])
       render(:update) do |page|
         page["#{event}_task"].html render(:partial => "tasks/#{event}")
       end
@@ -68,7 +74,7 @@ protected
     end
 
     resource.save
-    flash[:notice] = s_(EVENTS_WITH_COMMENTS[event])
+    flash[:notice] = s_(resource.class.event_complete_message(event))
     render(:update) do |page|
       page.redirect_to(resource.participant?(current_user) ? task_path(resource) : dashboard_path)
     end    

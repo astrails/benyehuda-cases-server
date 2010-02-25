@@ -1,0 +1,13 @@
+- set_tab :dashboard, false
+
+!= link_to _("back to dashboard"), dashboard_path
+
+!= render(:partial => "description")
+
+!= render(:partial => "documents", :locals => {:documents => @task.documents})
+
+!= render(:partial => "new_document")
+
+
+#finish_task
+  != render(:partial => "finish")

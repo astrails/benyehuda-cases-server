@@ -42,6 +42,7 @@ describe TasksController do
       put :update, :id => @task.id, :event => "reject", :task => {:comment => {:message => "some comment"}}
       response.should be_success
       response.body =~ /window\.location\.href/
+      flash[:notice].should == "Task rejected"
     end
   end
 
@@ -87,23 +88,50 @@ describe TasksController do
     end
   end
 
-  describe "abandon" do
+  describe "assignee commentable events" do
     before(:each) do
       @task = Factory.create(:assigned_task)
       UserSession.create(@task.assignee)
     end
 
-    it "should render comment errors" do
-      put :update, :id => @task.id, :event => "abandon", :task => {:comment => {}}
-      response.should be_success
-      response.should render_template("tasks/abandon")
-      assigns[:task].abandoning_comment.errors.on(:message).should_not be_blank
+    describe "abandon" do
+      it "should render comment errors" do
+        put :update, :id => @task.id, :event => "abandon", :task => {:comment => {}}
+        response.should be_success
+        response.should render_template("tasks/abandon")
+        assigns[:task].abandoning_comment.errors.on(:message).should_not be_blank
+      end
+
+      it "should redirect with ajax" do
+        put :update, :id => @task.id, :event => "abandon", :task => {:comment => {:message => "comment"}}
+        response.body =~ /window\.location\.href/
+        response.body =~ /dashboard/
+        flash[:notice].should == "Task abandoned"
+      end
     end
 
-    it "should redirect with ajax" do
-      put :update, :id => @task.id, :event => "abandon", :task => {:comment => {:message => "comment"}}
-      response.body =~ /window\.location\.href/
-      response.body =~ /dashboard/
+    describe "finish" do
+      it "should render comment errors" do
+        put :update, :id => @task.id, :event => "finish", :task => {:comment => {}}
+        response.should be_success
+        response.should render_template("tasks/finish")
+        assigns[:task].finished_comment.errors.on(:message).should_not be_blank
+      end
+
+      it "should redirect with ajax" do
+        @task.assignee.task_requested_at.should be_nil
+        put :update, :id => @task.id, :event => "finish", :task => {:comment => {:message => "comment"}}
+        response.body =~ /window\.location\.href/
+        response.body =~ /dashboard/
+        flash[:notice].should == "Task finished"
+        @task.assignee.reload.task_requested_at.should be_nil
+      end
+
+      it "should reset task required for assignee" do
+        @task.assignee.task_requested_at.should be_nil
+        put :update, :id => @task.id, :event => "finish", :task => {:comment => {:message => "comment"}, :request_new_task => true}
+        @task.assignee.reload.task_requested_at.should_not be_nil
+      end
     end
   end
 
@@ -123,12 +151,6 @@ describe TasksController do
         put :update, :id => @task.id, :event => "finish_partially"
         response.should redirect_to(task_path(@task))
         @task.reload.state.should == "partial"
-      end
-
-      it "finish" do
-        put :update, :id => @task.id, :event => "finish"
-        response.should redirect_to(task_path(@task))
-        @task.reload.state.should == "waits_for_editor"
       end
     end
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100221153758) do
+ActiveRecord::Schema.define(:version => 20100225160659) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20100221153758) do
     t.boolean  "editor_eyes_only",                     :default => false
     t.boolean  "is_rejection_reason",                  :default => false
     t.boolean  "is_abandoning_reason",                 :default => false
+    t.boolean  "is_finished_reason"
   end
 
   add_index "comments", ["task_id", "created_at", "editor_eyes_only"], :name => "task_created_eyes"

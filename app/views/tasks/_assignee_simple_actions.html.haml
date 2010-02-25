@@ -1,0 +1,4 @@
+- if task.can_be_finished?
+  != link_to textify_event("finish"), edit_task_path(task)
+- task.simple_assignee_events.each do |e|
+  != link_to textify_event(e), task_path(task, :event => e), :method => :put, :confirm => _('Are you sure?')
