@@ -25,6 +25,7 @@ class TasksController < InheritedResources::Base
 
   def index
     @tasks = Task.unassigned.paginate(:page => params[:page], :per_page => params[:per_page])
+    @assignee = User.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def show

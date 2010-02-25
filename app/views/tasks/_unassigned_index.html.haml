@@ -1,0 +1,16 @@
+- if @tasks.blank?
+  = _("No Tasks found")
+- else
+  %h4= _("Assign a task to %{user_name}") % {:user_name => h(@assignee.name)}
+  %table.list
+    %tr
+      %th &nbsp;
+      %th= _("Name")
+      %th= _("Kind")
+      %th= _("State")
+      %th= _("Files")
+      %th &nbsp;
+
+    != render(:partial => "unassigned_task", :collection => @tasks)
+
+  != will_paginate(@tasks)

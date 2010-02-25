@@ -55,7 +55,10 @@ class Task < ActiveRecord::Base
   end
   sphinx_scope(:by_updated_at){{:order => "updated_at DESC"}}
 
+  SEARCH_KEYS = ["state", "difficulty", "kind", "full_nikkud", "query"]
   def self.filter(opts)
+    return self.all if (opts.keys & SEARCH_KEYS).blank?
+
     search_opts = {:conditions => {}, :with => {}}
     search_opts[:conditions][:state] = opts[:state] unless opts[:state].blank?
     search_opts[:conditions][:difficulty] = opts[:difficulty] unless opts[:difficulty].blank?

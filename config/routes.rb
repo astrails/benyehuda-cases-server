@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :tasks do |tasks|
     tasks.resources :documents
-    tasks.resource  :assignment
+    tasks.resource :assignment
     tasks.resources :comments
   end
   map.resources :task_requests

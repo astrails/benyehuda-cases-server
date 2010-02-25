@@ -1,4 +1,5 @@
 - set_tab :dashboard
 
+!= link_to _("back to dashboard"), dashboard_path
+
 != render(:partial => "tasks/index", :locals => {:tasks => @tasks, :title => _("Unassigned Tasks")})
-!= will_paginate(@tasks)

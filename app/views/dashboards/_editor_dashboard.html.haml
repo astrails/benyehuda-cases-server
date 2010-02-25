@@ -1,4 +1,4 @@
 != render(:partial => "tasks/index", :locals => {:tasks => current_user.editing_tasks.visible_in_my_tasks, :title => _("My Editing Tasks")})
 
 %h4= _("Other")
-!= link_to (_("Unassigned tasks (%{count})") % {:count => Task.unassigned.count}), tasks_path
+!= link_to((_("Unassigned tasks (%{count})") % {:count => Task.unassigned.count}), tasks_path)

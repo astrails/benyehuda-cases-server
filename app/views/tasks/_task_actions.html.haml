@@ -6,7 +6,7 @@
   - task.simple_editor_events.each do |e|
     != link_to textify_event(e), task_path(task, :event => e), :method => :put, :confirm => _('Are you sure?')
 
-- if current_user.admin_or_editor?
-  != link_to _("Reassign"), edit_task_assignment_path(task)
+  - if current_user.admin_or_editor?
+    != link_to _("Reassign"), edit_task_assignment_path(task)
 
-!= link_to _("More Actions"), task_path(task)
+  != link_to _("More Actions"), task_path(task)

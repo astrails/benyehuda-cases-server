@@ -7,4 +7,9 @@ module DashboardsHelper
       end
     end
   end
+  
+  def link_to_assign_a_task(user)
+    link_to_remote _("Assign a Task..."), :url => tasks_path(:assignee_id => user.id), :method => :get,
+      :before => "jQuery('#assign_now').html(#{_("Loading, please wait...").to_json}).dialog('open');"
+  end
 end

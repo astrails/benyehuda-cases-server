@@ -1,6 +1,6 @@
 %h4
   = title
-  = "(#{tasks.size})"
+  = "(#{tasks.respond_to?(:total_entries) ? tasks.total_entries : tasks.size})"
 
 - if tasks.blank?
   = _("No Tasks found")
@@ -18,3 +18,5 @@
       %th &nbsp;
 
     != render(:partial => tasks)
+- if tasks.respond_to?(:total_entries)
+  != will_paginate(tasks)
