@@ -130,11 +130,6 @@ module Task::States
     assign!(User.all_editors.find_by_id(new_editor_id.to_i), User.all_volunteers.find_by_id(new_assignee_id.to_i))
   end
 
-  def assign_to_volunteer!(new_assignee_id)
-    assign_assignee(User.all_volunteers.find_by_id(new_assignee_id.to_i))
-    save!
-  end
-
   def abandon
     self.assignee = nil
     _abandon

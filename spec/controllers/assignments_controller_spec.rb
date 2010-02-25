@@ -25,6 +25,12 @@ describe AssignmentsController do
       Task.stub!(:find).and_return(@task)
     end
 
+    it "should assign a task to self as editor" do
+      @task.should_receive(:assign_by_user_ids!).with(@user.id, "123").and_return(true)
+      post :create, :task_id => @task.id, :assignee_id => 123
+      response.should redirect_to("/dashboard")
+    end
+
     it "should render edit form" do
       get :edit, :task_id => @task.id
       response.should be_success
