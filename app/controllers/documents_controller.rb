@@ -8,7 +8,7 @@ class DocumentsController < InheritedResources::Base
 
   # create
   def create
-    @document = task.documents.prepare_document(current_user, params[:document])
+    @document = task.prepare_document(current_user, params[:document])
 
     create! do |success, failure|
       success.js do
@@ -26,7 +26,7 @@ class DocumentsController < InheritedResources::Base
 
   def destroy
     document = task.documents.find(params[:id])
-    documents.mark_as_deleted!
+    document.mark_as_deleted!
 
     respond_to do |wants|
       wants.html do

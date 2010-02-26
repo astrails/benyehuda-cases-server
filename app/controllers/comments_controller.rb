@@ -1,12 +1,11 @@
 class CommentsController < InheritedResources::Base
   belongs_to :task
-  before_filter :set_task
   before_filter :require_task_participant
 
   actions :create
 
   def create
-    @comment = @task.comments.build(params[:comment])
+    @comment = task.comments.build(params[:comment])
     @comment.user = current_user
     create! do |success, failure|
       success.js {
@@ -22,5 +21,10 @@ class CommentsController < InheritedResources::Base
         end
       }
     end
+  end
+
+protected
+  def task
+    @task ||= association_chain.last
   end
 end

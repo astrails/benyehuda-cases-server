@@ -29,28 +29,23 @@ describe DocumentsController do
   end
 
   describe "delete attachemnt" do
-    it "owner shold be able to delete document" do
-      @user = Factory.create(:active_user)
-      @document = mock_model(Document, :user_id => @user.id)
+    after(:each) do
       @task.documents.stub!(:find).and_return(@document)
       UserSession.create(@user)
-      @document.should_receive(:deleted_at=).and_return(true)
-      @document.should_receive(:save!).and_return(true)
+      @document.should_receive(:mark_as_deleted!).and_return(true)
 
       delete :destroy, :task_id => @task.id, :id => "1"
       response.should redirect_to(task_path(@task))
     end
 
+    it "owner shold be able to delete document" do
+      @user = Factory.create(:active_user)
+      @document = mock_model(Document, :user_id => @user.id)
+    end
+
     it "admin should be able to delete document even if didnt create it" do
       @user = Factory.create(:admin)
       @document = mock_model(Document, :user_id => (@user.id + 1))
-      @task.documents.stub!(:find).and_return(@document)
-      UserSession.create(@user)
-      @document.should_receive(:deleted_at=).and_return(true)
-      @document.should_receive(:save!).and_return(true)
-
-      delete :destroy, :task_id => @task.id, :id => "1"
-      response.should redirect_to(task_path(@task))
     end
   end
 
@@ -64,13 +59,12 @@ describe DocumentsController do
 
         it "should render errors" do
           @doc = mock_model(Document)
-          @doc.should_receive(:user_id=).and_return(true)
           @doc.errors.stub!(:empty?)
           @doc.errors.stub!(:on)
           @doc.errors.stub!(:[])
           @doc.stub!(:save).and_return(false)
           @doc.stub!(:new_record?).and_return(true)
-          @task.documents.stub!(:build).and_return(@doc)
+          @task.should_receive(:prepare_document).and_return(@doc)
           xhr :post, :create, :task_id => "1", :document => {}
           response.status.should == "422 Unprocessable Entity"
         end
@@ -80,8 +74,9 @@ describe DocumentsController do
           @doc.stub!(:save).and_return(true)
           @doc.stub!(:new_record?).and_return(false)
           @doc.stub!(:to_param).and_return("123")
+          @doc.stub!(:user).and_return(Factory.build(:user))
           @doc.stub!(:file).and_return(mock("url", :url => "foobar"))
-          @task.documents.stub!(:build).and_return(@doc)
+          @task.should_receive(:prepare_document).and_return(@doc)
           xhr :post, :create, :task_id => "1", :document => {}
           response.should be_success
           response.should render_template("document")
