@@ -1,5 +1,3 @@
 != render(:partial => "tasks/assignee_simple_actions", :locals => {:task => @task})
 
-- if @task.can_be_abandoned?
-  #abandon_task
-    != render(:partial => "abandon")
+- commentable_event_form("abandon")

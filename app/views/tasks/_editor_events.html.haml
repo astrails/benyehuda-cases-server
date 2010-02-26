@@ -1,8 +1,6 @@
 != render(:partial => "tasks/editor_simple_actions", :locals => {:task => @task})
 
-- if @task.can_be_rejected?
-  #reject_task
-    != render(:partial => "reject")
+- commentable_event_form("reject")
 
 - if @task.can_create_new_task?
   != link_to_function _("Create new task based on this one"), toggle_chained_js, :id => "new_task_link"
