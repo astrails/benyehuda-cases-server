@@ -7,8 +7,8 @@ class TasksController < InheritedResources::Base
 
   # finishing tasks
   def edit
-    @task = Task.find(params[:id])
-    return unless _allow_event?(@task, :finish, current_user)
+    return unless _allow_event?(resource, :finish, current_user)
+    @no_docs_uploaded = resource.documents.uploaded_by(current_user).count.zero?
   end
 
   def create

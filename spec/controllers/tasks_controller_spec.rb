@@ -111,6 +111,23 @@ describe TasksController do
     end
 
     describe "finish" do
+      it "should show warning message" do
+        get :edit, :id => @task.id
+        response.should be_success
+        response.body.should =~ /Did you forget to upload documents?/
+      end
+
+      it "should not show warning" do
+        Task.stub!(:find).and_return(@task)
+        documents = []
+        documents.stub!(:uploaded_by).and_return(documents)
+        documents.stub!(:count).and_return(2)
+        @task.stub!(:documents).and_return(documents)
+        get :edit, :id => @task.id
+        response.should be_success
+        response.body.should_not =~ /Did you forget to upload documents?/
+      end
+
       it "should render comment errors" do
         put :update, :id => @task.id, :event => "finish", :task => {:comment => {}}
         response.should be_success

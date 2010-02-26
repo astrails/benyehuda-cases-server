@@ -18,9 +18,4 @@ class AssignmentsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     render :action => "edit"
   end
-
-protected
-  def set_task
-    @task = Task.find(params[:task_id])
-  end
 end

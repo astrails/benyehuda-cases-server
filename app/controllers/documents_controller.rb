@@ -15,6 +15,7 @@ class DocumentsController < InheritedResources::Base
       success.js do
         render(:update) do |page|
           page[:documents].append render(:partial => "documents/document", :object => @document)
+          page[:no_docs_uploaded].remove
         end
       end
       success.html {redirect_to task_path(@task)}

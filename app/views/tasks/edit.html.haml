@@ -4,6 +4,9 @@
 
 != render(:partial => "description")
 
+- if @no_docs_uploaded
+  #no_docs_uploaded.error= _("Did you forget to upload documents?")
+
 != render(:partial => "documents", :locals => {:documents => @task.documents})
 
 != render(:partial => "new_document")

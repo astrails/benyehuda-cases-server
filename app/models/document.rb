@@ -23,5 +23,5 @@ class Document < ActiveRecord::Base
 
   validates_presence_of :user_id, :task_id
 
-  # named_scope :active, :conditions => {:deleted_at => nil}
+  named_scope :uploaded_by, lambda {|user| {:conditions => ["documents.user_id = ?", user.id]}}
 end
