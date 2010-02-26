@@ -33,3 +33,7 @@ div.rejection_reason {
 div.abandoning_reason {
 	border:1px solid blue;
 }
+
+div.finished_reason {
+	border:1px solid green;
+}
