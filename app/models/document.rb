@@ -24,4 +24,9 @@ class Document < ActiveRecord::Base
   validates_presence_of :user_id, :task_id
 
   named_scope :uploaded_by, lambda {|user| {:conditions => ["documents.user_id = ?", user.id]}}
+
+  def mark_as_deleted!
+    self.deleted_at = Time.now.utc
+    save!
+  end
 end

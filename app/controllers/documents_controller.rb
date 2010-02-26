@@ -1,6 +1,5 @@
 class DocumentsController < InheritedResources::Base
   belongs_to :task
-  before_filter :set_task
   before_filter :require_task_participant, :only => [:new, :create]
   before_filter :require_owner, :only => :destroy
   actions :new, :create, :destroy
@@ -9,8 +8,8 @@ class DocumentsController < InheritedResources::Base
 
   # create
   def create
-    @document = @task.documents.build(params[:document])
-    @document.user_id = current_user.id
+    @document = task.documents.prepare_document(current_user, params[:document])
+
     create! do |success, failure|
       success.js do
         render(:update) do |page|
@@ -18,7 +17,7 @@ class DocumentsController < InheritedResources::Base
           page[:no_docs_uploaded].remove
         end
       end
-      success.html {redirect_to task_path(@task)}
+      success.html {redirect_to task_path(task)}
       failure.js do
         render :status => :unprocessable_entity, :nothing => true
       end
@@ -26,11 +25,20 @@ class DocumentsController < InheritedResources::Base
   end
 
   def destroy
-    document = @task.documents.find(params[:id])
-    document.deleted_at = Time.now.utc
-    document.save!
-    flash[:notice] = _("Document deleted")
-    redirect_to task_path(@task)
+    document = task.documents.find(params[:id])
+    documents.mark_as_deleted!
+
+    respond_to do |wants|
+      wants.html do
+        flash[:notice] = _("Document deleted")
+        redirect_to task_path(task)
+      end
+      wants.js do
+        render(:update) do |page|
+          page[dom_id(document)].remove
+        end
+      end
+    end
   end
 
 protected
@@ -41,7 +49,11 @@ protected
     return true if resource.user_id == current_user.id # owner
 
     flash[:error] = _("Only the owner can see this page")
-    redirect_to task_path(@task)
+    redirect_to task_path(task)
     return false
+  end
+
+  def task
+    @task ||= association_chain.last
   end
 end

@@ -83,4 +83,10 @@ class Task < ActiveRecord::Base
   def editor?(user)
     return editor && user && user.id == editor.id
   end
+
+  def prepare_document(uploader, opts)
+    doc = self.documents.build(opts)
+    doc.user_id = uploader.id
+    doc
+  end
 end
