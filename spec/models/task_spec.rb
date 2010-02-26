@@ -140,7 +140,7 @@ describe Task do
 
     it "should reject" do
       task = Factory.create(:waits_for_editor_approve_task)
-      task.event_with_comment("reject", "reason")
+      task.event_with_comment("reject", :comment => {:message => "reason"})
       task.should be_rejected
       task.rejection_comment.message.should == "reason"
       task.rejection_comment.is_rejection_reason.should be_true
@@ -150,7 +150,7 @@ describe Task do
     it "should abandon" do
       task = Factory.create(:assigned_task)
       a_id = task.assignee_id
-      task.event_with_comment("abandon", "reason")
+      task.event_with_comment("abandon", :comment => {:message => "reason"})
       task.should be_unassigned
       task.abandoning_comment.message.should == "reason"
       task.abandoning_comment.is_abandoning_reason.should be_true
@@ -173,12 +173,12 @@ describe Task do
       end
 
       it "just finish" do
-        @task.event_with_comment("finish", "reason")
+        @task.event_with_comment("finish", :comment => {:message => "reason"})
         @task.assignee.task_requested_at.should be_nil
       end
 
       it "finish and set task required" do
-        @task.event_with_comment("finish", "reason", :request_new_task => true)
+        @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => true)
         @task.assignee.task_requested_at.should_not be_nil
       end
     end
