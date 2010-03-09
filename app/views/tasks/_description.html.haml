@@ -33,4 +33,6 @@
   %p
     %strong= _("Assignee:")
     != link_to h(@task.assignee.name), profiles_path(@task.assignee)
+    - if @task.editor?(current_user)
+      != link_to_assignee_email(@task)
 

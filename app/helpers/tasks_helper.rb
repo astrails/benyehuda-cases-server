@@ -111,6 +111,12 @@ module TasksHelper
     mail_to task.editor.email, _("Send Email to Editor"), :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
   end
 
+  def link_to_assignee_email(task)
+    return if task.assignee.blank? || task.assignee.disabled?
+
+    mail_to task.assignee.email, _("Send Email to Assignee"), :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
+  end
+
   def toggle_chained_js
     "jQuery('#new_task_link, #new_task_container').toggle();"
   end
