@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
   named_scope :enabled, {:conditions => "users.disabled_at IS NULL"}
   named_scope :active, {:conditions => "users.activated_at IS NOT NULL"}
   named_scope :not_activated, {:conditions => "users.activated_at is NULL"}
-  named_scope :active_first, :order => "users.activated_at DESC"
+  named_scope :active_first, :order => "users.current_login_at DESC"
   named_scope :by_id, :order => "users.id"
+  named_scope :by_last_login, :order => "users.current_login_at DESC"
 
   named_scope :waiting_for_tasks, {:conditions => "users.task_requested_at IS NOT NULL", :order => "users.task_requested_at DESC"}
 
@@ -51,10 +52,11 @@ class User < ActiveRecord::Base
     indexes :email, :sortable => true
     has :disabled_at
     has :activated_at
+    has :current_login_at
   end
   sphinx_scope(:sp_enabled) { {:where => "disabled_at is NULL"}}
-  sphinx_scope(:sp_active_first) { {:order => "activated_at DESC"}}
-  sphinx_scope(:sp_all) {{}}
+  sphinx_scope(:sp_active_first) { {:order => "current_login_at DESC"}}
+  sphinx_scope(:sp_all) { {}}
 
   def has_no_credentials?
     # self.crypted_password.blank?

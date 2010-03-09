@@ -1,4 +1,5 @@
 %tr{:class => cycle("odd", "even")}
+  %td= user.id
   %td!= link_to(h(user.name), user_path(user))
   %td= user.email
   %td= boolean_property(user.is_volunteer)
@@ -8,6 +9,7 @@
   %td!= activation_email_links(user)
 
   %td= user.activated_at
+  %td= user.current_login_at ? (_("%{time} ago") % {:time => time_ago_in_words(user.current_login_at)}) : s_("last login|never")
   %td.edit!= link_to _("Edit"), edit_user_path(user)
   - if user.activated_at
     %td.delete!= link_to _("Disable"), user, :method => "delete", :confirm => _("Are you sure?")

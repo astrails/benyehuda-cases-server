@@ -2,6 +2,7 @@
 
 %table.list
   %tr.title
+    %th= _("ID")
     %th= _("Name")
     %th= _("Email")
     %th= _("Volunteer")
@@ -9,6 +10,7 @@
     %th= _("Admin")
     %th= _("Activation email sent")
     %th= _("Activated")
+    %th= _("Last Login")
     %th &nbsp;
     %th &nbsp;
   != render :partial => @users
