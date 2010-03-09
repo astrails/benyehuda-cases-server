@@ -1,10 +1,6 @@
 - # admin eyes/own user only goes here
 
 - if @user.activated_at
-  - when_admin do
-    %p
-      != link_to _("edit user's profile"), edit_user_path(@user)
-
   - when_current_user do
     %p
       != link_to _("edit my profile"), edit_profile_path

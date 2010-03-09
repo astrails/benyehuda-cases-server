@@ -2,6 +2,9 @@
   = @task.name
   %small
     = [textify_kind(@task.kind), textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
+    - when_admin do
+      != link_to _("Edit"), edit_task_path(@task)
+
 
 - when_editor_or_admin do
   - unless @task.children.blank?
