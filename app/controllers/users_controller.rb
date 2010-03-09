@@ -80,9 +80,9 @@ class UsersController < InheritedResources::Base
 
   def collection
     if params[:query].blank?
-      @users ||= end_of_association_chain.send("true" == params[:all] ? :all : :enabled).paginate(:page => params[:page], :per_page => params[:per_page])
+      @users ||= end_of_association_chain.send("true" == params[:all] ? :by_id : :enabled).active_first.paginate(:page => params[:page], :per_page => params[:per_page])
     else
-      @users ||= User.send("true" == params[:all] ? :sp_all : :sp_enabled).search(params[:query]).paginate(:page => params[:page], :per_page => params[:per_page])
+      @users ||= User.send("true" == params[:all] ? :sp_all : :sp_enabled).sp_active_first.search(params[:query]).paginate(:page => params[:page], :per_page => params[:per_page])
     end
   end
 
