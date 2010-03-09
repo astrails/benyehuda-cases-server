@@ -42,7 +42,7 @@ describe Property do
         it "should not allow wrong inclusions" do
           @property.send("#{p}=", "junk")
           @property.should_not be_valid
-          @property.errors.on(p).should =~ /not included in the list/
+          @property.errors.on(p).should =~ /unknown/
         end
       end
     end
