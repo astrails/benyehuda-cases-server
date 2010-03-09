@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-02-21 18:46+0200\n"
+"POT-Creation-Date: 2010-03-09 15:26+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 msgid "%{domain}: Password Reset Notification"
 msgstr ""
 
-#: app/views/tasks/_task.html.haml:3
+#: app/views/tasks/_task.html.haml:3 app/views/users/_user.html.haml:12
 #: app/views/volunteer_requests/_volunteer_request.html.haml:3
 msgid "%{time} ago"
 msgstr ""
@@ -57,11 +57,11 @@ msgstr ""
 msgid "Activate Account"
 msgstr ""
 
-#: app/views/users/_index.html.haml:11
+#: app/views/users/_index.html.haml:12
 msgid "Activated"
 msgstr ""
 
-#: app/views/users/_index.html.haml:10
+#: app/views/users/_index.html.haml:11
 msgid "Activation email sent"
 msgstr ""
 
@@ -69,12 +69,12 @@ msgstr ""
 msgid "Add Comment"
 msgstr ""
 
-#: app/views/users/_index.html.haml:9
+#: app/views/users/_index.html.haml:10
 msgid "Admin"
 msgstr ""
 
 #: app/views/admin/tasks/_search.html.haml:16
-#: app/views/users/_search.html.haml:7
+#: app/views/users/_search.html.haml:8
 msgid "All"
 msgstr ""
 
@@ -86,20 +86,35 @@ msgstr ""
 msgid "All Users"
 msgstr ""
 
+#: app/views/tasks/_finish.html.haml:5
+msgid "Also request a new task"
+msgstr ""
+
 #: app/helpers/volunteer_requests_helper.rb:3
 #: app/views/comments/_new.html.haml:7
 #: app/views/documents/_document.html.haml:6
 #: app/views/properties/_property.html.haml:7
-#: app/views/tasks/_assignee_events.html.haml:2
-#: app/views/tasks/_editor_events.html.haml:2
-#: app/views/tasks/_task_actions.html.haml:3
-#: app/views/tasks/_task_actions.html.haml:7
-#: app/views/users/_user.html.haml:13
+#: app/views/tasks/_assignee_simple_actions.html.haml:4
+#: app/views/tasks/_editor_simple_actions.html.haml:2
+#: app/views/users/_user.html.haml:15
 msgid "Are you sure?"
 msgstr ""
 
 #: app/views/assignments/edit.html.haml:7
+#: app/views/tasks/_unassigned_task.html.haml:7
 msgid "Assign"
+msgstr ""
+
+#: app/views/dashboards/_waiting_volunteers.html.haml:19
+msgid "Assign a Task"
+msgstr ""
+
+#: app/helpers/dashboards_helper.rb:12
+msgid "Assign a Task..."
+msgstr ""
+
+#: app/views/tasks/_unassigned_index.html.haml:4
+msgid "Assign a task to %{user_name}"
 msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:15
@@ -107,7 +122,7 @@ msgstr ""
 msgid "Assignee"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:31
+#: app/views/tasks/_description.html.haml:34
 msgid "Assignee:"
 msgstr ""
 
@@ -140,13 +155,14 @@ msgid "Ben Yehuda Project"
 msgstr ""
 
 #: app/views/admin/tasks/edit.html.haml:9
-#: app/views/admin/tasks/new.html.haml:9 app/views/comments/_new.html.haml:7
+#: app/views/admin/tasks/new.html.haml:10 app/views/comments/_new.html.haml:7
+#: app/views/dashboards/_waiting_volunteers.html.haml:17
 #: app/views/documents/new.html.haml:6 app/views/properties/edit.html.haml:8
 #: app/views/properties/new.html.haml:7 app/views/users/edit.html.haml:8
 msgid "Cancel"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:8
+#: app/views/tasks/_description.html.haml:11
 msgid "Chained tasks"
 msgstr ""
 
@@ -178,7 +194,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: app/views/tasks/_editor_events.html.haml:9
+#: app/views/tasks/_editor_events.html.haml:6
 msgid "Create new task based on this one"
 msgstr ""
 
@@ -198,20 +214,25 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#: app/views/tasks/edit.html.haml:8
+msgid "Did you forget to upload documents?"
+msgstr ""
+
 #: app/views/admin/tasks/_search.html.haml:10
 #: app/views/tasks/_form.html.haml:4
 msgid "Difficulty"
 msgstr ""
 
-#: app/views/users/_user.html.haml:13
+#: app/views/users/_user.html.haml:15
 msgid "Disable"
 msgstr ""
 
-#: app/controllers/documents_controller.rb:31
+#: app/controllers/documents_controller.rb:33
 msgid "Document deleted"
 msgstr ""
 
-#: app/views/admin/tasks/_task.html.haml:11 app/views/users/_user.html.haml:11
+#: app/views/admin/tasks/_task.html.haml:11
+#: app/views/tasks/_description.html.haml:6 app/views/users/_user.html.haml:13
 msgid "Edit"
 msgstr ""
 
@@ -229,11 +250,11 @@ msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
-#: app/views/users/_index.html.haml:8
+#: app/views/users/_index.html.haml:9
 msgid "Editor"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:34
+#: app/views/users/_public_profile.html.haml:37
 msgid "Editor Properties"
 msgstr ""
 
@@ -245,23 +266,27 @@ msgstr ""
 msgid "Editor eyes only"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:25
+#: app/views/tasks/_description.html.haml:28
 msgid "Editor:"
 msgstr ""
 
-#: app/views/dashboards/_waiting_volunteers.html.haml:6
+#: app/views/dashboards/_waiting_volunteers.html.haml:7
 #: app/views/passwords/new.html.haml:4 app/views/user_session/new.html.haml:6
-#: app/views/users/_form.html.haml:3 app/views/users/_index.html.haml:6
+#: app/views/users/_form.html.haml:3 app/views/users/_index.html.haml:7
 msgid "Email"
 msgstr ""
 
 #: app/views/users/_form.html.haml:11
-#: app/views/users/_public_profile.html.haml:17
+#: app/views/users/_public_profile.html.haml:20
 msgid "Email Notifications"
 msgstr ""
 
-#: app/views/users/_search.html.haml:9
+#: app/views/users/_search.html.haml:10
 msgid "Enabled"
+msgstr ""
+
+#: app/views/users/index.html.haml:1
+msgid "Enabled Users"
 msgstr ""
 
 #: app/views/documents/_new.html.haml:3
@@ -270,6 +295,7 @@ msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:17
 #: app/views/tasks/_index.html.haml:17
+#: app/views/tasks/_unassigned_index.html.haml:11
 msgid "Files"
 msgstr ""
 
@@ -277,8 +303,12 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: app/views/users/_search.html.haml:5
+#: app/views/users/_search.html.haml:6
 msgid "Find"
+msgstr ""
+
+#: app/views/tasks/_finish.html.haml:6
+msgid "Finish"
 msgstr ""
 
 #: app/views/tasks/_new_document.html.haml:7
@@ -422,6 +452,10 @@ msgstr ""
 msgid "History"
 msgstr ""
 
+#: app/views/users/_index.html.haml:5
+msgid "ID"
+msgstr ""
+
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:19
 msgid ""
 "Instructions to activate your account have been emailed to you. Please check "
@@ -453,7 +487,12 @@ msgstr ""
 #: app/views/admin/tasks/_search.html.haml:8
 #: app/views/admin/tasks/index.html.haml:13 app/views/tasks/_form.html.haml:3
 #: app/views/tasks/_index.html.haml:13
+#: app/views/tasks/_unassigned_index.html.haml:9
 msgid "Kind"
+msgstr ""
+
+#: app/views/users/_index.html.haml:13
+msgid "Last Login"
 msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:11
@@ -469,7 +508,7 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: app/views/tasks/_task_actions.html.haml:12
+#: app/views/tasks/_task_actions.html.haml:10
 msgid "More Actions"
 msgstr ""
 
@@ -482,10 +521,11 @@ msgid "My Tasks"
 msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:12
-#: app/views/dashboards/_waiting_volunteers.html.haml:5
+#: app/views/dashboards/_waiting_volunteers.html.haml:6
 #: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
-#: app/views/tasks/_index.html.haml:12 app/views/users/_form.html.haml:2
-#: app/views/users/_index.html.haml:5
+#: app/views/tasks/_index.html.haml:12
+#: app/views/tasks/_unassigned_index.html.haml:8
+#: app/views/users/_form.html.haml:2 app/views/users/_index.html.haml:6
 msgid "Name"
 msgstr ""
 
@@ -507,6 +547,7 @@ msgid "New Volunteer Request"
 msgstr ""
 
 #: app/views/tasks/_index.html.haml:6
+#: app/views/tasks/_unassigned_index.html.haml:2
 msgid "No Tasks found"
 msgstr ""
 
@@ -514,7 +555,7 @@ msgstr ""
 msgid "No user was found with that email address"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:14
+#: app/views/users/_public_profile.html.haml:17
 msgid "Not activated yet"
 msgstr ""
 
@@ -523,7 +564,7 @@ msgid "Object Properties"
 msgstr ""
 
 #: app/controllers/application_controller.rb:39
-#: app/controllers/tasks_controller.rb:56
+#: app/controllers/tasks_controller.rb:63
 msgid "Only participant can see this page"
 msgstr ""
 
@@ -531,7 +572,7 @@ msgstr ""
 msgid "Only registered activists allowed to access this page"
 msgstr ""
 
-#: app/controllers/documents_controller.rb:42
+#: app/controllers/documents_controller.rb:51
 #: app/controllers/users_controller.rb:76
 msgid "Only the owner can see this page"
 msgstr ""
@@ -548,7 +589,7 @@ msgstr ""
 msgid "Parent Type"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:13
+#: app/views/tasks/_description.html.haml:16
 msgid "Parent task"
 msgstr ""
 
@@ -599,7 +640,7 @@ msgstr ""
 msgid "Query"
 msgstr ""
 
-#: app/views/tasks/_task_actions.html.haml:10
+#: app/views/tasks/_task_actions.html.haml:8
 msgid "Reassign"
 msgstr ""
 
@@ -607,7 +648,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:10
+#: app/views/users/_public_profile.html.haml:13
 msgid "Registered since"
 msgstr ""
 
@@ -643,7 +684,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:6
+#: app/views/users/_public_profile.html.haml:9
 msgid "Roles"
 msgstr ""
 
@@ -651,6 +692,11 @@ msgstr ""
 #: app/views/admin/tasks/new.html.haml:8 app/views/properties/edit.html.haml:7
 #: app/views/properties/new.html.haml:6
 msgid "Save"
+msgstr ""
+
+#: app/controllers/admin/tasks_controller.rb:9
+#: app/views/admin/tasks/new.html.haml:9
+msgid "Save and New"
 msgstr ""
 
 #: app/views/admin/tasks/_search.html.haml:1
@@ -677,13 +723,14 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:79
+#: app/controllers/tasks_controller.rb:86
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr ""
 
 #: app/views/admin/tasks/_search.html.haml:4
 #: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:16
+#: app/views/tasks/_unassigned_index.html.haml:10
 msgid "State"
 msgstr ""
 
@@ -693,19 +740,32 @@ msgid ""
 "comment you wish to communicate to the editors"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:6
+#: app/views/tasks/_finish.html.haml:4
+msgid "Task Finishing Comments"
+msgstr ""
+
+#: app/controllers/tasks_controller.rb:6 app/models/task/states.rb:99
 msgid "Task abandoned"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:15
+#: app/controllers/tasks_controller.rb:6
+msgid "Task completed"
+msgstr ""
+
+#: app/controllers/tasks_controller.rb:21
 msgid "Task created."
 msgstr ""
 
-#: app/controllers/assignments_controller.rb:10
+#: app/models/task/states.rb:103
+msgid "Task finished"
+msgstr ""
+
+#: app/controllers/assignments_controller.rb:6
+#: app/controllers/assignments_controller.rb:16
 msgid "Task has been reassigned"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:6
+#: app/controllers/tasks_controller.rb:6 app/models/task/states.rb:98
 msgid "Task rejected"
 msgstr ""
 
@@ -713,7 +773,7 @@ msgstr ""
 msgid "Task requested %{time} ago"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:45
+#: app/controllers/tasks_controller.rb:52
 msgid "Task updated"
 msgstr ""
 
@@ -743,7 +803,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: app/views/tasks/index.html.haml:3
+#: app/views/tasks/index.html.haml:5
 msgid "Unassigned Tasks"
 msgstr ""
 
@@ -763,7 +823,7 @@ msgstr ""
 msgid "Uploaded by %{user} %{time} ago"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:20
+#: app/views/users/_public_profile.html.haml:23
 msgid "User Properties"
 msgstr ""
 
@@ -775,15 +835,15 @@ msgstr ""
 msgid "User disabled"
 msgstr ""
 
-#: app/helpers/tabs_helper.rb:6 app/views/users/index.html.haml:1
+#: app/helpers/tabs_helper.rb:6
 msgid "Users"
 msgstr ""
 
-#: app/views/users/_index.html.haml:7
+#: app/views/users/_index.html.haml:8
 msgid "Volunteer"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:27
+#: app/views/users/_public_profile.html.haml:30
 msgid "Volunteer Properties"
 msgstr ""
 
@@ -803,11 +863,11 @@ msgstr ""
 msgid "Volunteer request approved!"
 msgstr ""
 
-#: app/views/dashboards/_waiting_volunteers.html.haml:2
+#: app/views/dashboards/_waiting_volunteers.html.haml:3
 msgid "Volunteers waiting for tasks"
 msgstr ""
 
-#: app/views/dashboards/_waiting_volunteers.html.haml:7
+#: app/views/dashboards/_waiting_volunteers.html.haml:8
 msgid "Waits for"
 msgstr ""
 
@@ -977,79 +1037,71 @@ msgstr ""
 msgid "audit removed|%{title} was removed."
 msgstr ""
 
-#: locale/yml_import.rb:86
+#: locale/yml_import.rb:88
 msgid "authlogic.attributes.user_session.email"
 msgstr ""
 
-#: locale/yml_import.rb:94
+#: locale/yml_import.rb:96
 msgid "authlogic.attributes.user_session.login"
 msgstr ""
 
-#: locale/yml_import.rb:95
+#: locale/yml_import.rb:97
 msgid "authlogic.attributes.user_session.password"
 msgstr ""
 
-#: locale/yml_import.rb:97
+#: locale/yml_import.rb:99
 msgid "authlogic.attributes.user_session.remember_me"
 msgstr ""
 
-#: locale/yml_import.rb:96
+#: locale/yml_import.rb:98
 msgid "authlogic.error_messages.consecutive_failed_logins_limit_exceeded"
 msgstr ""
 
-#: locale/yml_import.rb:83
-#, fuzzy
-msgid "authlogic.error_messages.email_invalid"
-msgstr "is invalid"
-
-#: locale/yml_import.rb:81
-#, fuzzy
-msgid "authlogic.error_messages.login_blank"
-msgstr "can't be blank"
-
 #: locale/yml_import.rb:84
-#, fuzzy
+msgid "authlogic.error_messages.email_invalid"
+msgstr ""
+
+#: locale/yml_import.rb:82
+msgid "authlogic.error_messages.login_blank"
+msgstr ""
+
+#: locale/yml_import.rb:85
 msgid "authlogic.error_messages.login_invalid"
-msgstr "is invalid"
+msgstr ""
 
-#: locale/yml_import.rb:90
-#, fuzzy
+#: locale/yml_import.rb:92
 msgid "authlogic.error_messages.login_not_found"
-msgstr "is too long (maximum is {{count}} characters)"
+msgstr ""
 
-#: locale/yml_import.rb:93
+#: locale/yml_import.rb:95
 msgid "authlogic.error_messages.no_authentication_details"
 msgstr ""
 
-#: locale/yml_import.rb:91
-#, fuzzy
+#: locale/yml_import.rb:93
 msgid "authlogic.error_messages.not_active"
-msgstr "is not a number"
+msgstr ""
 
-#: locale/yml_import.rb:82
-#, fuzzy
+#: locale/yml_import.rb:83
 msgid "authlogic.error_messages.not_approved"
-msgstr "is not a number"
+msgstr ""
 
 #: locale/yml_import.rb:80
-#, fuzzy
 msgid "authlogic.error_messages.not_confirmed"
-msgstr "doesn't match confirmation"
-
-#: locale/yml_import.rb:87
-#, fuzzy
-msgid "authlogic.error_messages.password_blank"
-msgstr "can't be blank"
+msgstr ""
 
 #: locale/yml_import.rb:89
-#, fuzzy
-msgid "authlogic.error_messages.password_invalid"
-msgstr "Validation failed: {{errors}}"
+msgid "authlogic.error_messages.password_blank"
+msgstr ""
 
-#: locale/yml_import.rb:92
+#: locale/yml_import.rb:91
+msgid "authlogic.error_messages.password_invalid"
+msgstr ""
+
+#: locale/yml_import.rb:94
 msgid "authlogic.models.user_session"
 msgstr ""
 
+#: app/views/tasks/edit.html.haml:3 app/views/tasks/index.html.haml:3
 #: app/views/tasks/show.html.haml:3
 msgid "back to dashboard"
 msgstr ""
@@ -1064,18 +1116,18 @@ msgid_plural "bars"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/views/tasks/_abandon.html.haml:11
+#: app/views/tasks/_abandon.html.haml:11 app/views/tasks/_finish.html.haml:7
 #: app/views/tasks/_new_chain_task.html.haml:5
 #: app/views/tasks/_reject.html.haml:11
 #: app/views/volunteer_requests/new.html.haml:9
 msgid "cancel"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:21
+#: app/views/tasks/_description.html.haml:24
 msgid "change assignments"
 msgstr ""
 
-#: app/views/users/_show.html.haml:12
+#: app/views/users/_show.html.haml:8
 msgid "change my password"
 msgstr ""
 
@@ -1225,23 +1277,31 @@ msgstr ""
 msgid "document audit|Document \"%{file_name}\""
 msgstr ""
 
-#: app/views/users/_show.html.haml:10
-msgid "edit my profile"
+#: app/views/users/_public_profile.html.haml:6
+msgid "edit"
 msgstr ""
 
 #: app/views/users/_show.html.haml:6
-msgid "edit user's profile"
+msgid "edit my profile"
 msgstr ""
 
 #: app/helpers/properties_helper.rb:26
 msgid "false"
 msgstr ""
 
-#: locale/yml_import.rb:88
+#: locale/yml_import.rb:87
+msgid "flash.admin.tasks.create.notice"
+msgstr ""
+
+#: locale/yml_import.rb:81
+msgid "flash.admin.tasks.update.notice"
+msgstr ""
+
+#: locale/yml_import.rb:90
 msgid "flash.user_session.create.notice"
 msgstr "Logged in"
 
-#: locale/yml_import.rb:85
+#: locale/yml_import.rb:86
 msgid "flash.user_session.destroy.notice"
 msgstr "Goodbye"
 
@@ -1253,6 +1313,10 @@ msgstr[1] ""
 
 #: app/views/pages/home.html.haml:7
 msgid "foo|bar"
+msgstr ""
+
+#: app/views/users/_user.html.haml:12
+msgid "last login|never"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:21
@@ -1370,7 +1434,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Please select"
 
-#: app/models/task.rb:68
+#: app/models/task.rb:71
 msgid "task cannot be updated"
 msgstr ""
 

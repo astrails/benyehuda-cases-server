@@ -5,6 +5,12 @@ en:
         notice: "Logged in"
       destroy:
         notice: "Goodbye"
+    admin:
+      tasks:
+        create:
+          notice: "Task {{task_name}} created"
+        update:
+          notice: "Task {{task_name}} updated"
   authlogic:
     error_messages:
       login_blank: "can not be blank"
