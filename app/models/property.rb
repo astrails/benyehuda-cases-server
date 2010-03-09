@@ -6,8 +6,8 @@ class Property < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :parent_type
   validates_presence_of :property_type
-  validates_inclusion_of :parent_type, :in => PARENTS, :message => "not included in the list"
-  validates_inclusion_of :property_type, :in => TYPES, :message => "not included in the list"
+  validates_inclusion_of :parent_type, :in => PARENTS
+  validates_inclusion_of :property_type, :in => TYPES
 
   validates_uniqueness_of :title, :scope => [:parent_type]
 

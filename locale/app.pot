@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-09 20:43+0200\n"
+"POT-Creation-Date: 2010-03-09 20:59+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1017,6 +1017,14 @@ msgstr ""
 msgid "activerecord.errors.messages.wrong_length"
 msgstr ""
 
+#: locale/yml_import.rb:98
+msgid "activerecord.errors.models.property.attributes.parent_type.inclusion"
+msgstr ""
+
+#: locale/yml_import.rb:94
+msgid "activerecord.errors.models.property.attributes.property_type.inclusion"
+msgstr ""
+
 #: locale/yml_import.rb:24
 msgid "activerecord.errors.template.body"
 msgstr ""
@@ -1041,19 +1049,19 @@ msgstr ""
 msgid "authlogic.attributes.user_session.email"
 msgstr ""
 
-#: locale/yml_import.rb:100
+#: locale/yml_import.rb:102
 msgid "authlogic.attributes.user_session.login"
 msgstr ""
 
-#: locale/yml_import.rb:101
+#: locale/yml_import.rb:103
 msgid "authlogic.attributes.user_session.password"
 msgstr ""
 
-#: locale/yml_import.rb:103
+#: locale/yml_import.rb:105
 msgid "authlogic.attributes.user_session.remember_me"
 msgstr ""
 
-#: locale/yml_import.rb:102
+#: locale/yml_import.rb:104
 msgid "authlogic.error_messages.consecutive_failed_logins_limit_exceeded"
 msgstr ""
 
@@ -1069,15 +1077,15 @@ msgstr ""
 msgid "authlogic.error_messages.login_invalid"
 msgstr ""
 
-#: locale/yml_import.rb:95
+#: locale/yml_import.rb:96
 msgid "authlogic.error_messages.login_not_found"
 msgstr ""
 
-#: locale/yml_import.rb:99
+#: locale/yml_import.rb:101
 msgid "authlogic.error_messages.no_authentication_details"
 msgstr ""
 
-#: locale/yml_import.rb:97
+#: locale/yml_import.rb:99
 msgid "authlogic.error_messages.not_active"
 msgstr ""
 
@@ -1093,11 +1101,11 @@ msgstr ""
 msgid "authlogic.error_messages.password_blank"
 msgstr ""
 
-#: locale/yml_import.rb:94
+#: locale/yml_import.rb:95
 msgid "authlogic.error_messages.password_invalid"
 msgstr ""
 
-#: locale/yml_import.rb:98
+#: locale/yml_import.rb:100
 msgid "authlogic.models.user_session"
 msgstr ""
 
@@ -1317,7 +1325,7 @@ msgstr ""
 msgid "flash.user_session.destroy.notice"
 msgstr ""
 
-#: locale/yml_import.rb:96
+#: locale/yml_import.rb:97
 msgid "flash.users.update.notice"
 msgstr ""
 

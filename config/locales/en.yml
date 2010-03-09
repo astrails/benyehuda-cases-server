@@ -1,4 +1,13 @@
 en:
+  activerecord:
+    errors:
+      models:
+        property:
+          attributes:
+            parent_type:
+              inclusion: "unknown parent type"
+            property_type:
+              inclusion: "unknown property type"
   flash:
     user_session:
       create:
