@@ -21,6 +21,7 @@ class CommentsController < InheritedResources::Base
         end
       }
     end
+    flash[:notice] = nil
   end
 
 protected

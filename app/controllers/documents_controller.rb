@@ -17,7 +17,7 @@ class DocumentsController < InheritedResources::Base
           page[:no_docs_uploaded].remove
         end
       end
-      success.html {redirect_to task_path(task)}
+      success.html {redirect_to task_path(task); flash[:notice] = nil}
       failure.js do
         render :status => :unprocessable_entity, :nothing => true
       end

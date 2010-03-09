@@ -11,6 +11,16 @@ en:
           notice: "Task {{task_name}} created"
         update:
           notice: "Task {{task_name}} updated"
+    properties:
+        create:
+          notice: "New property created"
+        update:
+          notice: "Property updated"
+        destroy:
+          notice: "Property removed"
+    users:
+        update:
+          notice: "User updated"
   authlogic:
     error_messages:
       login_blank: "can not be blank"

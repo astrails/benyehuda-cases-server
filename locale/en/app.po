@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-09 15:26+0200\n"
+"POT-Creation-Date: 2010-03-09 20:43+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1037,67 +1037,67 @@ msgstr ""
 msgid "audit removed|%{title} was removed."
 msgstr ""
 
-#: locale/yml_import.rb:88
+#: locale/yml_import.rb:91
 msgid "authlogic.attributes.user_session.email"
 msgstr "email"
 
-#: locale/yml_import.rb:96
+#: locale/yml_import.rb:100
 msgid "authlogic.attributes.user_session.login"
 msgstr "login"
 
-#: locale/yml_import.rb:97
+#: locale/yml_import.rb:101
 msgid "authlogic.attributes.user_session.password"
 msgstr "password"
 
-#: locale/yml_import.rb:99
+#: locale/yml_import.rb:103
 msgid "authlogic.attributes.user_session.remember_me"
 msgstr "remember me"
 
-#: locale/yml_import.rb:98
+#: locale/yml_import.rb:102
 msgid "authlogic.error_messages.consecutive_failed_logins_limit_exceeded"
 msgstr "Consecutive failed logins limit exceeded, account is disabled."
 
-#: locale/yml_import.rb:84
+#: locale/yml_import.rb:86
 msgid "authlogic.error_messages.email_invalid"
 msgstr "should look like an email address."
 
-#: locale/yml_import.rb:82
+#: locale/yml_import.rb:84
 msgid "authlogic.error_messages.login_blank"
 msgstr "can not be blank"
 
-#: locale/yml_import.rb:85
+#: locale/yml_import.rb:87
 msgid "authlogic.error_messages.login_invalid"
 msgstr "should use only letters, numbers, spaces, and .-_@ please."
 
-#: locale/yml_import.rb:92
+#: locale/yml_import.rb:95
 msgid "authlogic.error_messages.login_not_found"
 msgstr "is not valid"
 
-#: locale/yml_import.rb:95
+#: locale/yml_import.rb:99
 msgid "authlogic.error_messages.no_authentication_details"
 msgstr "You did not provide any details for authentication."
 
-#: locale/yml_import.rb:93
+#: locale/yml_import.rb:97
 msgid "authlogic.error_messages.not_active"
 msgstr "Your account is not active"
 
-#: locale/yml_import.rb:83
+#: locale/yml_import.rb:85
 msgid "authlogic.error_messages.not_approved"
 msgstr "Your account is not approved"
 
-#: locale/yml_import.rb:80
+#: locale/yml_import.rb:81
 msgid "authlogic.error_messages.not_confirmed"
 msgstr "Your account is not confirmed"
 
-#: locale/yml_import.rb:89
+#: locale/yml_import.rb:92
 msgid "authlogic.error_messages.password_blank"
 msgstr "can not be blank"
 
-#: locale/yml_import.rb:91
+#: locale/yml_import.rb:94
 msgid "authlogic.error_messages.password_invalid"
 msgstr "is not valid"
 
-#: locale/yml_import.rb:94
+#: locale/yml_import.rb:98
 msgid "authlogic.models.user_session"
 msgstr "UserSession"
 
@@ -1289,21 +1289,37 @@ msgstr ""
 msgid "false"
 msgstr ""
 
-#: locale/yml_import.rb:87
+#: locale/yml_import.rb:89
 msgid "flash.admin.tasks.create.notice"
 msgstr "Task {{task_name}} created"
 
-#: locale/yml_import.rb:81
+#: locale/yml_import.rb:82
 msgid "flash.admin.tasks.update.notice"
 msgstr "Task {{task_name}} updated"
 
 #: locale/yml_import.rb:90
+msgid "flash.properties.create.notice"
+msgstr "New property created"
+
+#: locale/yml_import.rb:83
+msgid "flash.properties.destroy.notice"
+msgstr "Property removed"
+
+#: locale/yml_import.rb:80
+msgid "flash.properties.update.notice"
+msgstr "Property updated"
+
+#: locale/yml_import.rb:93
 msgid "flash.user_session.create.notice"
 msgstr "Logged in"
 
-#: locale/yml_import.rb:86
+#: locale/yml_import.rb:88
 msgid "flash.user_session.destroy.notice"
 msgstr "Goodbye"
+
+#: locale/yml_import.rb:96
+msgid "flash.users.update.notice"
+msgstr "User updated"
 
 #: app/views/pages/home.html.haml:3
 msgid "foo"
