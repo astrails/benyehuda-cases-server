@@ -1,6 +1,7 @@
 # not defying InheritedResources on purpose. This one MUST be
 # loaded AFTER the original InheritedResources
 module InheritedResources::PaginatedCollectionHelper
+  unloadable
   protected
 
   def collection

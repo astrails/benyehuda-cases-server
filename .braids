@@ -51,7 +51,7 @@ vendor/plugins/inherited_resources:
 vendor/plugins/inherited_resources_pagination: 
   branch: master
   remote: braid/vendor/plugins/inherited-resources-pagination
-  revision: 917ee66a8fd4e89a0e8c1658659428c447a37da4
+  revision: 98ea512c5615f76397e40f785c04df2362ec1d73
   squashed: true
   type: git
   url: git://github.com/astrails/inherited_resources_pagination.git
