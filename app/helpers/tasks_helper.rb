@@ -62,7 +62,7 @@ module TasksHelper
     javascript_tag <<-EOJS
     jQuery(document).ready(function() {
       if (!swfobject.hasFlashPlayerVersion("9.0.24")) {
-        jQuery("#no_flash_player").toggle();
+        jQuery("#no_flash_player, #upload_documents").toggle();
         return;
       }
       jQuery("#upload_documents").uploadify({
