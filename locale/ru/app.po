@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-09 20:59+0200\n"
+"POT-Creation-Date: 2010-03-15 13:10+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -790,6 +790,11 @@ msgstr "Поиск / Фильтр"
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr "Выслать письмо активации для %{user}. Вы уверены?"
 
+#: app/helpers/tasks_helper.rb:117
+#, fuzzy
+msgid "Send Email to Assignee"
+msgstr "Отправить письмо редактору"
+
 #: app/helpers/tasks_helper.rb:111
 msgid "Send Email to Editor"
 msgstr "Отправить письмо редактору"
@@ -1132,6 +1137,18 @@ msgstr "%{title} Была создана %{via_source}."
 #: app/models/audit.rb:21
 msgid "audit removed|%{title} was removed."
 msgstr "%{title} Была удалена."
+
+#: app/models/comment.rb:10
+msgid "auditable|Comment"
+msgstr ""
+
+#: app/models/document.rb:10
+msgid "auditable|Document"
+msgstr ""
+
+#: app/models/task.rb:8
+msgid "auditable|Task"
+msgstr ""
 
 #: locale/yml_import.rb:91
 msgid "authlogic.attributes.user_session.email"
@@ -1546,7 +1563,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Выбираем"
 
-#: app/models/task.rb:71
+#: app/models/task.rb:72
 msgid "task cannot be updated"
 msgstr "Задача не может быть обновлен"
 
