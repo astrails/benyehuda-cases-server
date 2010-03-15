@@ -1,8 +1,12 @@
 class CommentsController < InheritedResources::Base
   belongs_to :task
-  before_filter :require_task_participant
+  before_filter :require_task_participant, :only => :create
+  before_filter :require_admin, :only => :destroy
 
-  actions :create
+  actions :create, :destroy
+  respond_to :js
+
+  # destroy
 
   def create
     @comment = task.comments.build(params[:comment])
@@ -21,6 +25,11 @@ class CommentsController < InheritedResources::Base
         end
       }
     end
+    flash[:notice] = nil
+  end
+
+  def destroy
+    destroy!
     flash[:notice] = nil
   end
 

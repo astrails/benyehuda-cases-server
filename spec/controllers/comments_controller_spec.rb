@@ -25,6 +25,33 @@ describe CommentsController do
     end
   end
 
+  describe "destroy" do
+    describe "any user" do
+      it "should not allow perform this operation" do
+        @user = Factory.create(:active_user)
+        UserSession.create(@user)
+        delete :destroy, :id => 123, :task_id => 123
+        response.should be_redirect
+      end
+    end
+    describe "admin" do
+      it "should allow deleteing a comment" do
+        @user = Factory.create(:admin)
+        UserSession.create(@user)
+
+        task = Factory.create(:task)
+        Task.stub!(:find).and_return(task)
+        comment = mock_model(Comment)
+        task.comments.stub!(:find).and_return(comment)
+
+        comment.stub!(:destroy).and_return(true)
+        xhr :delete, :destroy, :id => 123, :task_id => 123
+        response.should be_success
+        response.should render_template("destroy.rjs")
+      end
+    end
+  end
+
   describe "create" do
     before(:each) do
       @user = Factory.create(:active_user)

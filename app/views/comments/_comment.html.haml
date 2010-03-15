@@ -2,4 +2,6 @@
   != "By %{name} %{time} ago" % {:name => link_to(h(comment.user.name), profiles_path(comment.user)), :time => time_ago_in_words(comment.created_at)}
   %p
     = comment.message
+    - when_admin do
+      != link_to_remote _("Delete"), :url => task_comment_path(comment.task_id, comment), :method => :delete, :confirm => _("Are you sure?"), :before => "jQuery('##{dom_id(comment)}').hide('fast')"
   
