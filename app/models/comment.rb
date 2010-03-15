@@ -6,8 +6,8 @@ class Comment < ActiveRecord::Base
   acts_as_auditable :message, 
     :name => :message, 
     :auditable_title => proc {|c| N_("comment audit|Comment \"%{message}\"") % {:message => c.message}},
-    :audit_source => proc {|c| N_("comment audit| by %{user_name}") % {:user_name => c.user.try(:name)}
-  }
+    :audit_source => proc {|c| N_("comment audit| by %{user_name}") % {:user_name => c.user.try(:name)}},
+    :default_title => N_("auditable|Comment")
 
   validates_length_of :message, :in => 2..4096, :allow_nil => false, :allow_blank => false
   validates_presence_of :task_id, :user_id

@@ -28,12 +28,12 @@ class Audit < ActiveRecord::Base
     @title ||= if auditable
       auditable.class.auditable_title.respond_to?(:call) ? s_(auditable.class.auditable_title.call(auditable)) : auditable.name
     else
-      ""
+      s_(auditable_type.constantize.send(:default_title))
     end
   end
 
   def via_source
-    auditable.class.try(:audit_source) ? s_(auditable.class.audit_source.call(auditable)) : nil
+    (auditable && auditable.class.try(:audit_source)) ? s_(auditable.class.audit_source.call(auditable)) : nil
   end
 
   def compose_messages

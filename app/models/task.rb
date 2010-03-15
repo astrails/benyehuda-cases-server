@@ -5,6 +5,7 @@ class Task < ActiveRecord::Base
       :creator_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :editor_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :assignee_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
+      :default_title => N_("auditable|Task")
     }
 
   belongs_to :creator, :class_name => "User"

@@ -5,7 +5,8 @@ module ActsAsAuditable
 
   module ClassMethods
     def auditable_attrs; @auditable_attrs; end
-    attr_accessor :auditable_name, :audit_conversions, :auditable_title, :audit_source
+    def default_title; @default_title; end
+    attr_accessor :auditable_name, :audit_conversions, :auditable_title, :audit_source, :default_title
     
     def acts_as_auditable *attrs
       has_many :audits, :as => :auditable
@@ -20,6 +21,7 @@ module ActsAsAuditable
       @audit_conversions = options[:conversions] || {}
       @auditable_title = options[:auditable_title] || {}
       @audit_source = options[:audit_source] || nil
+      @default_title = options[:default_title] || ""
       @auditable_attrs = attrs
     end
   end
