@@ -17,6 +17,10 @@ class Admin::TasksController < InheritedResources::Base
     end
   end
 
+  def index
+    index!
+    current_user.search_settings.set_from_params!(params)
+  end
 
 protected
   def collection

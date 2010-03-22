@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100225160659) do
+ActiveRecord::Schema.define(:version => 20100322112953) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(:version => 20100225160659) do
   end
 
   add_index "audits", ["task_id"], :name => "index_audits_on_task_id"
+
+  create_table "books", :force => true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "translator"
+    t.string   "source_file_name"
+    t.binary   "xbook",            :limit => 16777215
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -95,6 +105,16 @@ ActiveRecord::Schema.define(:version => 20100225160659) do
     t.boolean  "is_public",                   :default => true
     t.string   "comment"
   end
+
+  create_table "search_settings", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "search_key"
+    t.string   "search_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "search_settings", ["user_id", "search_key"], :name => "index_search_settings_on_user_id_and_search_key"
 
   create_table "tasks", :force => true do |t|
     t.integer  "creator_id"

@@ -141,4 +141,9 @@ module TasksHelper
       haml_concat render(:partial => "tasks/#{event}")
     end
   end
+
+  def params_or_user_settings(key)
+    return params[key] if params[key]
+    current_user.search_settings.find_by_search_key(key.to_s).try(:search_value)
+  end
 end
