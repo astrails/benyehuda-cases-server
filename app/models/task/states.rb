@@ -152,6 +152,10 @@ module Task::States
     rescue AASM::InvalidTransition, ActiveRecord::RecordInvalid
       @parent_task_cannot_be_updated = true
     end
+
+    if self.comments.first
+      self.comments.first.user_id = self.creator_id
+    end
   end
 
   def clone_parent_documents
@@ -163,9 +167,17 @@ module Task::States
     end
   end
 
+  def clone_children_comments
+    return unless comment = comments.first
+    c = comment.clone
+    c.task_id = parent_id
+    c.save
+  end
+
   def post_process_parent_task
     return if parent_id.blank?
     clone_parent_documents
+    clone_children_comments
   end
 
   def build_chained_task(opts, actor) # opts -> name, kind, difficulty, full_nikkud

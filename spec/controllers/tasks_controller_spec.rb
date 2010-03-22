@@ -76,14 +76,40 @@ describe TasksController do
         response.should render_template("new_chain_task")
       end
 
-      it "should create chained task" do
-        Task.stub!(:find).and_return(@task)
-        chained_task = mock("chained_task", :id => 123, :to_param => "123")
-        chained_task.stub!(:save).and_return(true)
-        @task.should_receive(:build_chained_task).and_return(chained_task)
-        xhr :post, :create, :id => @task.id, :task => {:name => "lalala"}
+      it "should return errors when related message is invalid" do
+        xhr :post, :create, :id => @task.id, :task => {:comments_attributes => [{:message => "1"}]}
         response.should be_success
-        response.body.should == "window.location.href = \"/tasks/123\";"
+        assigns[:chained_task].should be_new_record
+        assigns[:chained_task].errors.on(:comments_message).should_not be_blank
+        response.should render_template("new_chain_task")
+      end
+
+      it "should not return errors when related message is empty" do
+        xhr :post, :create, :id => @task.id, :task => {:comments_attributes => [{:message => ""}]}
+        response.should be_success
+        assigns[:chained_task].should be_new_record
+        assigns[:chained_task].errors.on(:comments).should be_blank
+        response.should render_template("new_chain_task")
+      end
+
+      it "should create chained task with comment" do
+        xhr :post, :create, :id => @task.id, :task => {:name => "lalala", :comments_attributes => [{:message => "chained foobar"}]}
+        assigns[:chained_task].should_not be_new_record
+        assigns[:chained_task].comments.count.should == 1
+        assigns[:chained_task].comments.first.should_not be_new_record
+        assigns[:chained_task].comments.first.message.should == "chained foobar"
+        @task.comments.last.message.should == "chained foobar"
+        @task.comments.last.user_id.should == assigns[:chained_task].comments.first.user_id
+        response.should be_success
+      end
+
+      it "should create chained without a comment" do
+        xhr :post, :create, :id => @task.id, :task => {:name => "foobar"}
+        assigns[:chained_task].should_not be_new_record
+        assigns[:chained_task].comments.count.should == 0
+        assigns[:chained_task].name.should == "foobar"
+        response.should be_success
+        response.body.should == "window.location.href = \"/tasks/#{assigns[:chained_task].id}\";"
       end
     end
   end

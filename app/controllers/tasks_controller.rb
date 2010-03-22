@@ -17,6 +17,7 @@ class TasksController < InheritedResources::Base
     return unless _allow_event?(@task, :create_other_task, current_user)
 
     @chained_task = @task.build_chained_task(params[:task], current_user)
+    @comment = @chained_task.comments.first
     if @chained_task.save
       flash[:notice] = _("Task created.")
       render(:update) do |page|

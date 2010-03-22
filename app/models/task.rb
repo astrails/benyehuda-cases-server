@@ -35,9 +35,11 @@ class Task < ActiveRecord::Base
   validates_presence_of :difficulty
   validates_inclusion_of :difficulty, :in => DIFFICULTIES, :message => "not included in the list"
 
-  attr_accessible :name, :kind, :difficulty, :full_nikkud
+  attr_accessible :name, :kind, :difficulty, :full_nikkud, :comments_attributes
 
   has_many :comments, :order => "comments.task_id, comments.created_at"
+  accepts_nested_attributes_for :comments, :allow_destroy => false, :reject_if => proc {|c| c["message"].blank?}
+  # validates_associated :comments, :on => :create
 
   include DefaultAttributes
   default_attribute :kind, "typing"

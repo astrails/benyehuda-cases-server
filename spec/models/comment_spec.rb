@@ -7,7 +7,7 @@ describe Comment do
   end
 
   describe "validations" do
-    [:task_id, :user_id, :message].each do |a|
+    [:user_id, :message].each do |a|
       it "should validate #{a}" do
         @comment.errors.on(a).should_not be_blank
       end
