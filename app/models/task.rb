@@ -67,7 +67,11 @@ class Task < ActiveRecord::Base
     search_opts[:conditions][:difficulty] = opts[:difficulty] unless opts[:difficulty].blank?
     search_opts[:conditions][:kind] = opts[:kind] unless opts[:kind].blank?
     search_opts[:with][:full_nikkud] = ("true" == opts[:full_nikkud]) unless opts[:full_nikkud].blank?
-    self.search(opts[:query], search_opts).by_updated_at
+    if opts[:query].blank?
+      self.find(:all, :conditions => search_opts[:conditions].merge(search_opts[:with]), :order => "updated_at DESC")
+    else
+      self.search(opts[:query], search_opts).by_updated_at
+    end
   end
 
   def validate
