@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-15 13:10+0200\n"
+"POT-Creation-Date: 2010-03-24 18:52+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: app/views/admin/tasks/_search.html.haml:16
+#: app/views/admin/tasks/_search.html.haml:18
 #: app/views/users/_search.html.haml:8
 msgid "All"
 msgstr ""
@@ -91,7 +91,7 @@ msgid "Also request a new task"
 msgstr ""
 
 #: app/helpers/volunteer_requests_helper.rb:3
-#: app/views/comments/_new.html.haml:7
+#: app/views/comments/_comment.html.haml:6 app/views/comments/_new.html.haml:7
 #: app/views/documents/_document.html.haml:6
 #: app/views/properties/_property.html.haml:7
 #: app/views/tasks/_assignee_simple_actions.html.haml:4
@@ -117,6 +117,7 @@ msgstr ""
 msgid "Assign a task to %{user_name}"
 msgstr ""
 
+#: app/views/admin/tasks/_form.html.haml:4
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
@@ -190,7 +191,7 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: app/views/tasks/_new_chain_task.html.haml:4
+#: app/views/tasks/_new_chain_task.html.haml:9
 msgid "Create"
 msgstr ""
 
@@ -206,6 +207,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
+#: app/views/comments/_comment.html.haml:6
 #: app/views/properties/_property.html.haml:7
 msgid "Delete"
 msgstr ""
@@ -248,6 +250,7 @@ msgstr ""
 msgid "Edit Task"
 msgstr ""
 
+#: app/views/admin/tasks/_form.html.haml:5
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/_index.html.haml:9
@@ -263,6 +266,7 @@ msgid "Editor Settings"
 msgstr ""
 
 #: app/views/comments/_new.html.haml:5
+#: app/views/tasks/_new_chain_task.html.haml:8
 msgid "Editor eyes only"
 msgstr ""
 
@@ -299,7 +303,7 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: app/views/admin/tasks/_search.html.haml:15
+#: app/views/admin/tasks/_search.html.haml:17
 msgid "Filter"
 msgstr ""
 
@@ -500,11 +504,16 @@ msgstr ""
 msgid "Last Updated"
 msgstr ""
 
+#: app/views/admin/tasks/_search.html.haml:12
+msgid "Length"
+msgstr ""
+
 #: app/views/user_session/new.html.haml:1
 msgid "Login"
 msgstr ""
 
 #: app/views/comments/_new.html.haml:3
+#: app/views/tasks/_new_chain_task.html.haml:6
 msgid "Message"
 msgstr ""
 
@@ -564,7 +573,7 @@ msgid "Object Properties"
 msgstr ""
 
 #: app/controllers/application_controller.rb:39
-#: app/controllers/tasks_controller.rb:63
+#: app/controllers/tasks_controller.rb:64
 msgid "Only participant can see this page"
 msgstr ""
 
@@ -636,7 +645,7 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: app/views/admin/tasks/_search.html.haml:13
+#: app/views/admin/tasks/_search.html.haml:15
 msgid "Query"
 msgstr ""
 
@@ -727,10 +736,11 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:86
+#: app/controllers/tasks_controller.rb:87
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr ""
 
+#: app/views/admin/tasks/_form.html.haml:7
 #: app/views/admin/tasks/_search.html.haml:4
 #: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:16
@@ -756,7 +766,7 @@ msgstr ""
 msgid "Task completed"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:21
+#: app/controllers/tasks_controller.rb:22
 msgid "Task created."
 msgstr ""
 
@@ -777,7 +787,7 @@ msgstr ""
 msgid "Task requested %{time} ago"
 msgstr ""
 
-#: app/controllers/tasks_controller.rb:52
+#: app/controllers/tasks_controller.rb:53
 msgid "Task updated"
 msgstr ""
 
@@ -1141,7 +1151,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/views/tasks/_abandon.html.haml:11 app/views/tasks/_finish.html.haml:7
-#: app/views/tasks/_new_chain_task.html.haml:5
+#: app/views/tasks/_new_chain_task.html.haml:10
 #: app/views/tasks/_reject.html.haml:11
 #: app/views/volunteer_requests/new.html.haml:9
 msgid "cancel"
@@ -1474,7 +1484,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Please select"
 
-#: app/models/task.rb:72
+#: app/models/task.rb:92
 msgid "task cannot be updated"
 msgstr ""
 
@@ -1534,11 +1544,23 @@ msgstr ""
 msgid "task kind|typing"
 msgstr ""
 
+#: app/helpers/tasks_helper.rb:143
+msgid "task length|Long"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:143
+msgid "task length|Medium"
+msgstr ""
+
+#: app/helpers/tasks_helper.rb:143
+msgid "task length|Short"
+msgstr ""
+
 #: app/views/tasks/_form.html.haml:1
 msgid "task section|General"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:4
+#: app/views/admin/tasks/_form.html.haml:10
 msgid "task section|Task Settings"
 msgstr ""
 

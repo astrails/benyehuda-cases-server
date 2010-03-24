@@ -5,28 +5,11 @@
 #
 #, fuzzy
 msgid ""
-msgstr ""
-"Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-15 13:10+0200\n"
-"PO-Revision-Date: 2009-12-23 22:46+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+msgstr "Project-Id-Version: version 0.0.1\nPOT-Creation-Date: 2010-03-24 18:52+0200\nPO-Revision-Date: 2009-12-23 22:46+0200\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:74
-msgid ""
-"        We're sorry, but we could not locate your account.\n"
-"        If you are having issues try copying and pasting the URL\n"
-"        from your email into your browser or restarting the\n"
-"        reset password process.\n"
-msgstr ""
-"Мы сожалеем, но мы не смогли найти Вашу учетную запись .\n"
-" Если у Вас возникли вопросы, попробуйте скопировать и вставить URL # # # # "
-"С Вашей электронной почты в вашем браузере или перезапуска # # # # процесс "
-"сброса пароля. # # # #"
+msgid "        We're sorry, but we could not locate your account.\n        If you are having issues try copying and pasting the URL\n        from your email into your browser or restarting the\n        reset password process.\n"
+msgstr "Мы сожалеем, но мы не смогли найти Вашу учетную запись .\n Если у Вас возникли вопросы, попробуйте скопировать и вставить URL # # # # С Вашей электронной почты в вашем браузере или перезапуска # # # # процесс сброса пароля. # # # #"
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/mailer.rb:22
 msgid "%{domain}: Account Activation Instructions"
@@ -55,11 +38,11 @@ msgstr "Оставившим Reason"
 
 #: vendor/plugins/astrails-user-auth/app/helpers/passwords_helper.rb:18
 msgid "Activate"
-msgstr ""
+msgstr "Активировать"
 
 #: vendor/plugins/astrails-user-auth/app/helpers/passwords_helper.rb:8
 msgid "Activate Account"
-msgstr ""
+msgstr "Активировать"
 
 #: app/views/users/_index.html.haml:12
 msgid "Activated"
@@ -77,7 +60,7 @@ msgstr "Добавить комментарий"
 msgid "Admin"
 msgstr "Администратор"
 
-#: app/views/admin/tasks/_search.html.haml:16
+#: app/views/admin/tasks/_search.html.haml:18
 #: app/views/users/_search.html.haml:8
 msgid "All"
 msgstr "Все"
@@ -92,10 +75,10 @@ msgstr "Все пользователи"
 
 #: app/views/tasks/_finish.html.haml:5
 msgid "Also request a new task"
-msgstr ""
+msgstr "Кроме того, заявку на новую задачу"
 
 #: app/helpers/volunteer_requests_helper.rb:3
-#: app/views/comments/_new.html.haml:7
+#: app/views/comments/_comment.html.haml:6 app/views/comments/_new.html.haml:7
 #: app/views/documents/_document.html.haml:6
 #: app/views/properties/_property.html.haml:7
 #: app/views/tasks/_assignee_simple_actions.html.haml:4
@@ -111,16 +94,17 @@ msgstr "Назначение"
 
 #: app/views/dashboards/_waiting_volunteers.html.haml:19
 msgid "Assign a Task"
-msgstr ""
+msgstr "Назначение Целевой"
 
 #: app/helpers/dashboards_helper.rb:12
 msgid "Assign a Task..."
-msgstr ""
+msgstr "Назначение целевой ..."
 
 #: app/views/tasks/_unassigned_index.html.haml:4
 msgid "Assign a task to %{user_name}"
-msgstr ""
+msgstr "Назначение задачи %{user_name}"
 
+#: app/views/admin/tasks/_form.html.haml:4
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
@@ -194,7 +178,7 @@ msgstr "Комментариев"
 msgid "Confirm"
 msgstr "Подтвердите"
 
-#: app/views/tasks/_new_chain_task.html.haml:4
+#: app/views/tasks/_new_chain_task.html.haml:9
 msgid "Create"
 msgstr "Создать"
 
@@ -210,6 +194,7 @@ msgstr "Созидатель"
 msgid "Dashboard"
 msgstr "Дашборд"
 
+#: app/views/comments/_comment.html.haml:6
 #: app/views/properties/_property.html.haml:7
 msgid "Delete"
 msgstr "Удалить"
@@ -252,6 +237,7 @@ msgstr "Изменить проектов недвижимости"
 msgid "Edit Task"
 msgstr "Редактирование задачи"
 
+#: app/views/admin/tasks/_form.html.haml:5
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/_index.html.haml:9
@@ -267,6 +253,7 @@ msgid "Editor Settings"
 msgstr "Параметры редактора"
 
 #: app/views/comments/_new.html.haml:5
+#: app/views/tasks/_new_chain_task.html.haml:8
 msgid "Editor eyes only"
 msgstr "Только для редактора"
 
@@ -291,7 +278,7 @@ msgstr "Включено"
 
 #: app/views/users/index.html.haml:1
 msgid "Enabled Users"
-msgstr ""
+msgstr "Включено пользователя"
 
 #: app/views/documents/_new.html.haml:3
 msgid "File"
@@ -303,9 +290,9 @@ msgstr "Файл"
 msgid "Files"
 msgstr "Файлы"
 
-#: app/views/admin/tasks/_search.html.haml:15
+#: app/views/admin/tasks/_search.html.haml:17
 msgid "Filter"
-msgstr ""
+msgstr "Фильтр"
 
 #: app/views/users/_search.html.haml:6
 msgid "Find"
@@ -313,7 +300,7 @@ msgstr "Вид"
 
 #: app/views/tasks/_finish.html.haml:6
 msgid "Finish"
-msgstr ""
+msgstr "Отделка"
 
 #: app/views/tasks/_new_document.html.haml:7
 msgid "Flash Media Player"
@@ -349,182 +336,36 @@ msgid "Hello"
 msgstr "Привет"
 
 #: app/views/astrails/auth/mailer/activation_instructions.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"To activate your %{domain} account please click on the URL below.\n"
-"\n"
-"%{account_activation_url}\n"
-"\n"
-"If the above URL does not work try copying and pasting it into your "
-"browser.\n"
-"If you continue to have problems, please feel free to contact us.\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
-msgstr ""
-"Привет %{user_name},\n"
-"\n"
-" Чтобы активировать счет %{domain} нажмите на ссылку ниже .\n"
-"\n"
-"%{account_activation_url}### \n"
-"# Если вышеуказанный URL не работает, попробуйте скопировать и вставить в "
-"адресную строку браузера .\n"
-" Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n"
-"\n"
-" Это сообщение было сгенерирован автоматически. Пожалуйста, не ответить на "
-"него .\n"
-"\n"
-"%{domain} команды # # # #"
+msgid "Hello %{user_name},\n\nTo activate your %{domain} account please click on the URL below.\n\n%{account_activation_url}\n\nIf the above URL does not work try copying and pasting it into your browser.\nIf you continue to have problems, please feel free to contact us.\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
+msgstr "Привет %{user_name},\n\n Чтобы активировать счет %{domain} нажмите на ссылку ниже .\n\n%{account_activation_url}### \n# Если вышеуказанный URL не работает, попробуйте скопировать и вставить в адресную строку браузера .\n Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n\n Это сообщение было сгенерирован автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
 
 #: app/views/notification/volnteer_welcome.text.plain.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"Welcome to Ben Yehuda Project!\n"
-"Instructions: TODO\n"
-"\n"
-"\n"
-"%{domain} Team"
-msgstr ""
-"Привет %{user_name},\n"
-"\n"
-" Добро пожаловать на Бен-Иегуда Проект !\n"
-" Инструкция: TODO \n"
-"\n"
-"\n"
-"%{domain} команда"
+msgid "Hello %{user_name},\n\nWelcome to Ben Yehuda Project!\nInstructions: TODO\n\n\n%{domain} Team"
+msgstr "Привет %{user_name},\n\n Добро пожаловать на Бен-Иегуда Проект !\n Инструкция: TODO \n\n\n%{domain} команда"
 
 #: app/views/astrails/auth/mailer/password_reset_confirmation.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"You successfully changed your password.\n"
-"\n"
-"You can login into your account at %{login_url}\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
-msgstr ""
-"Привет %{user_name},\n"
-"\n"
-" Вы успешно изменили свой пароль .\n"
-"\n"
-" Вы можете Войти в учетную запись на %{login_url}\n"
-"### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить "
-"на него .\n"
-"\n"
-"%{domain} команды # # # #"
+msgid "Hello %{user_name},\n\nYou successfully changed your password.\n\nYou can login into your account at %{login_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
+msgstr "Привет %{user_name},\n\n Вы успешно изменили свой пароль .\n\n Вы можете Войти в учетную запись на %{login_url}\n### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
 
 #: app/views/astrails/auth/mailer/activation_confirmation.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"Your account has been activated.\n"
-"\n"
-"You can login into your account at %{login_url}\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
-msgstr ""
-"Привет %{user_name},\n"
-"\n"
-" Ваша учетная запись была активирована .\n"
-"\n"
-" Вы можете Войти в учетную запись на %{login_url}\n"
-"### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить "
-"на него .\n"
-"\n"
-"%{domain} команды # # # #"
+msgid "Hello %{user_name},\n\nYour account has been activated.\n\nYou can login into your account at %{login_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
+msgstr "Привет %{user_name},\n\n Ваша учетная запись была активирована .\n\n Вы можете Войти в учетную запись на %{login_url}\n### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
 
 #: app/views/astrails/auth/mailer/password_reset_instructions.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"we have received a request to reset your password. If you did not make this "
-"request, simply ignore this email.\n"
-"If you did make this request just click the link below:\n"
-"\n"
-"%{edit_password_url}\n"
-"\n"
-"If the above URL does not work try copying and pasting it into your "
-"browser.\n"
-"If you continue to have problems, please feel free to contact us.\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
-msgstr ""
-"Привет %{user_name},\n"
-" Мы получили запрос на изменение пароля. Если вы не делали этот запрос, "
-"просто игнорируйте это сообщение .\n"
-" Если вы сделали эту просьбу просто нажмите на ссылку ниже :\n"
-"\n"
-"%{edit_password_url}\n"
-"### # Если выше URL не работает, попробуйте скопировать и вставить в "
-"адресную строку браузера .\n"
-" Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n"
-"\n"
-" Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на "
-"него .\n"
-"\n"
-"%{domain} команды # # # #"
+msgid "Hello %{user_name},\nwe have received a request to reset your password. If you did not make this request, simply ignore this email.\nIf you did make this request just click the link below:\n\n%{edit_password_url}\n\nIf the above URL does not work try copying and pasting it into your browser.\nIf you continue to have problems, please feel free to contact us.\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
+msgstr "Привет %{user_name},\n Мы получили запрос на изменение пароля. Если вы не делали этот запрос, просто игнорируйте это сообщение .\n Если вы сделали эту просьбу просто нажмите на ссылку ниже :\n\n%{edit_password_url}\n### # Если выше URL не работает, попробуйте скопировать и вставить в адресную строку браузера .\n Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n\n Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
 
 #: app/views/pages/home.html.haml:1
 msgid "Hello World"
 msgstr "Привет мир"
 
 #: app/views/notification/comment_added.text.plain.erb:1
-msgid ""
-"Hello,\n"
-"\n"
-"New comment to the task '%{task_name}' added by %{user_name}:\n"
-"\n"
-"%{comment}\n"
-"\n"
-"%{task_url}\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team"
-msgstr ""
-"Привет ,\n"
-"\n"
-" Новый комментарий к задаче&#39;%{task_name}&#39; добавил %{user_name}:\n"
-"\n"
-"%{comment}\n"
-"\n"
-"%{task_url}\n"
-"\n"
-" Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на "
-"него .\n"
-"\n"
-"%{domain} команда"
+msgid "Hello,\n\nNew comment to the task '%{task_name}' added by %{user_name}:\n\n%{comment}\n\n%{task_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team"
+msgstr "Привет ,\n\n Новый комментарий к задаче&#39;%{task_name}&#39; добавил %{user_name}:\n\n%{comment}\n\n%{task_url}\n\n Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команда"
 
 #: app/views/notification/task_state_changed.text.plan.erb:1
-msgid ""
-"Hello,\n"
-"\n"
-"The task '%{task_name}' state is changed to %{new_state}.\n"
-"\n"
-"%{task_url}\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team"
-msgstr ""
-"Привет ,\n"
-"\n"
-" задача&#39;%{task_name}&#39; государственной изменен на %{new_state}.\n"
-"\n"
-"%{task_url}\n"
-"\n"
-" Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на "
-"него .\n"
-"\n"
-"%{domain} команда"
+msgid "Hello,\n\nThe task '%{task_name}' state is changed to %{new_state}.\n\n%{task_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team"
+msgstr "Привет ,\n\n задача&#39;%{task_name}&#39; государственной изменен на %{new_state}.\n\n%{task_url}\n\n Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команда"
 
 #: app/views/audits/_index.html.haml:1
 msgid "History"
@@ -535,20 +376,12 @@ msgid "ID"
 msgstr ""
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:19
-msgid ""
-"Instructions to activate your account have been emailed to you. Please check "
-"your email."
-msgstr ""
-"Инструкция по активации вашей учетной записи были по электронной почте. "
-"Пожалуйста, проверьте электронную почту."
+msgid "Instructions to activate your account have been emailed to you. Please check your email."
+msgstr "Инструкция по активации вашей учетной записи были по электронной почте. Пожалуйста, проверьте электронную почту."
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:17
-msgid ""
-"Instructions to reset your password have been emailed to you. Please check "
-"your email."
-msgstr ""
-"Инструкция для сброса пароля был отправлен к вам. Пожалуйста, проверьте "
-"электронную почту."
+msgid "Instructions to reset your password have been emailed to you. Please check your email."
+msgstr "Инструкция для сброса пароля был отправлен к вам. Пожалуйста, проверьте электронную почту."
 
 #: app/views/users/_form.html.haml:5
 msgid "Is Admin"
@@ -575,18 +408,23 @@ msgstr "Вид"
 
 #: app/views/users/_index.html.haml:13
 msgid "Last Login"
-msgstr ""
+msgstr "Последнее Войти"
 
 #: app/views/admin/tasks/index.html.haml:11
 #: app/views/tasks/_index.html.haml:11
 msgid "Last Updated"
 msgstr "Последнее обновление"
 
+#: app/views/admin/tasks/_search.html.haml:12
+msgid "Length"
+msgstr "Длина"
+
 #: app/views/user_session/new.html.haml:1
 msgid "Login"
 msgstr "Войти"
 
 #: app/views/comments/_new.html.haml:3
+#: app/views/tasks/_new_chain_task.html.haml:6
 msgid "Message"
 msgstr "Сообщение"
 
@@ -646,14 +484,13 @@ msgid "Object Properties"
 msgstr "Свойства объекта"
 
 #: app/controllers/application_controller.rb:39
-#: app/controllers/tasks_controller.rb:63
+#: app/controllers/tasks_controller.rb:64
 msgid "Only participant can see this page"
 msgstr "Единственным участником видите эту страницу"
 
 #: app/controllers/users_controller.rb:65
 msgid "Only registered activists allowed to access this page"
-msgstr ""
-"Только зарегистрированные активистов, которым разрешен доступ к этой странице"
+msgstr "Только зарегистрированные активистов, которым разрешен доступ к этой странице"
 
 #: app/controllers/documents_controller.rb:51
 #: app/controllers/users_controller.rb:76
@@ -686,7 +523,7 @@ msgstr "Подтверждение пароля"
 
 #: vendor/plugins/astrails-user-auth/app/helpers/passwords_helper.rb:6
 msgid "Password Reset"
-msgstr ""
+msgstr "Сброс пароля"
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:68
 msgid "Please log out to activate new account"
@@ -719,7 +556,7 @@ msgstr "Общественные"
 msgid "Publish"
 msgstr "Публикации"
 
-#: app/views/admin/tasks/_search.html.haml:13
+#: app/views/admin/tasks/_search.html.haml:15
 msgid "Query"
 msgstr "Запросов"
 
@@ -757,7 +594,7 @@ msgstr "Запрос"
 
 #: app/views/dashboards/show.html.haml:14
 msgid "Request a Task"
-msgstr ""
+msgstr "Запрос Целевой"
 
 #: app/views/volunteer_requests/show.html.haml:4
 msgid "Requested at:"
@@ -765,7 +602,7 @@ msgstr "Запрашиваемые по адресу:"
 
 #: vendor/plugins/astrails-user-auth/app/helpers/passwords_helper.rb:16
 msgid "Reset"
-msgstr ""
+msgstr "Сброс"
 
 #: app/views/users/_public_profile.html.haml:9
 msgid "Roles"
@@ -791,9 +628,8 @@ msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr "Выслать письмо активации для %{user}. Вы уверены?"
 
 #: app/helpers/tasks_helper.rb:117
-#, fuzzy
 msgid "Send Email to Assignee"
-msgstr "Отправить письмо редактору"
+msgstr "Отправить Email к Правопреемник"
 
 #: app/helpers/tasks_helper.rb:111
 msgid "Send Email to Editor"
@@ -811,10 +647,11 @@ msgstr "Боковая панель"
 msgid "Signup"
 msgstr "Регистрация"
 
-#: app/controllers/tasks_controller.rb:86
+#: app/controllers/tasks_controller.rb:87
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr "К сожалению, вы не позволили perfrom этой операции"
 
+#: app/views/admin/tasks/_form.html.haml:7
 #: app/views/admin/tasks/_search.html.haml:4
 #: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:16
@@ -823,12 +660,8 @@ msgid "State"
 msgstr "Государство"
 
 #: app/views/volunteer_requests/new.html.haml:7
-msgid ""
-"State your preferred material (author, genre, etc.), and make any other "
-"comment you wish to communicate to the editors"
-msgstr ""
-"Государство нужный материал (автор, жанр и т.д.), а также делать любые "
-"другие комментарии вы хотите общаться в редакцию"
+msgid "State your preferred material (author, genre, etc.), and make any other comment you wish to communicate to the editors"
+msgstr "Государство нужный материал (автор, жанр и т.д.), а также делать любые другие комментарии вы хотите общаться в редакцию"
 
 #: app/views/tasks/_finish.html.haml:4
 msgid "Task Finishing Comments"
@@ -840,15 +673,15 @@ msgstr "Целевая брошенные"
 
 #: app/controllers/tasks_controller.rb:6
 msgid "Task completed"
-msgstr ""
+msgstr "Задача выполнена"
 
-#: app/controllers/tasks_controller.rb:21
+#: app/controllers/tasks_controller.rb:22
 msgid "Task created."
 msgstr "Целевая создан."
 
 #: app/models/task/states.rb:103
 msgid "Task finished"
-msgstr ""
+msgstr "Целевая готовой"
 
 #: app/controllers/assignments_controller.rb:6
 #: app/controllers/assignments_controller.rb:16
@@ -863,7 +696,7 @@ msgstr "Целевая отклонен"
 msgid "Task requested %{time} ago"
 msgstr "Целевая просил %{time} назад"
 
-#: app/controllers/tasks_controller.rb:52
+#: app/controllers/tasks_controller.rb:53
 msgid "Task updated"
 msgstr "Целевая Updated"
 
@@ -955,7 +788,7 @@ msgstr "Волонтер Просьба удовлетворена!"
 
 #: app/views/dashboards/_waiting_volunteers.html.haml:3
 msgid "Volunteers waiting for tasks"
-msgstr ""
+msgstr "Добровольцы ждет задач"
 
 #: app/views/dashboards/_waiting_volunteers.html.haml:8
 msgid "Waits for"
@@ -983,32 +816,27 @@ msgstr "Вы не можете удалить свою собственную у
 
 #: app/controllers/application_controller.rb:25
 msgid "You must be a volunteer to access this page"
-msgstr ""
+msgstr "Вы должны подать заявку на доступ к этой странице"
 
 #: app/controllers/application_controller.rb:16
 msgid "You must be an admin or editor to access this page"
-msgstr ""
-"Вы должны быть администратором или редактором для доступа к этой странице"
+msgstr "Вы должны быть администратором или редактором для доступа к этой странице"
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/controller.rb:49
 msgid "You must be an admin to access this page"
-msgstr ""
+msgstr "Вы должны быть администратором, чтобы получить доступ к этой странице"
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/controller.rb:31
 msgid "You must be logged in to access this page"
-msgstr ""
+msgstr "Вы должны войти в систему для доступа к этой странице"
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/controller.rb:40
 msgid "You must be logged out to access this page"
-msgstr ""
+msgstr "Вы должны быть зарегистрированы вне доступа к этой странице"
 
 #: app/controllers/users_controller.rb:17
-msgid ""
-"Your account has been created. Please check your e-mail for your account "
-"activation instructions!"
-msgstr ""
-"Ваша учетная запись была создана. Пожалуйста, проверьте ваш адрес "
-"электронной почты для вашего инструкций за активацию учетной записи!"
+msgid "Your account has been created. Please check your e-mail for your account activation instructions!"
+msgstr "Ваша учетная запись была создана. Пожалуйста, проверьте ваш адрес электронной почты для вашего инструкций за активацию учетной записи!"
 
 #: vendor/plugins/astrails-user-auth/app/controllers/user_session_controller.rb:11
 msgid "Your account has been disabled, please contact support."
@@ -1140,15 +968,15 @@ msgstr "%{title} Была удалена."
 
 #: app/models/comment.rb:10
 msgid "auditable|Comment"
-msgstr ""
+msgstr "Комментарий"
 
 #: app/models/document.rb:10
 msgid "auditable|Document"
-msgstr ""
+msgstr "Документ"
 
 #: app/models/task.rb:8
 msgid "auditable|Task"
-msgstr ""
+msgstr "Задача"
 
 #: locale/yml_import.rb:91
 msgid "authlogic.attributes.user_session.email"
@@ -1230,7 +1058,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/views/tasks/_abandon.html.haml:11 app/views/tasks/_finish.html.haml:7
-#: app/views/tasks/_new_chain_task.html.haml:5
+#: app/views/tasks/_new_chain_task.html.haml:10
 #: app/views/tasks/_reject.html.haml:11
 #: app/views/volunteer_requests/new.html.haml:9
 msgid "cancel"
@@ -1249,9 +1077,7 @@ msgid "change password"
 msgstr "Изменение пароля"
 
 #: app/models/notification.rb:7
-msgid ""
-"comment added notification subject|New comment (%{domain}): %"
-"{task_name_snippet}"
+msgid "comment added notification subject|New comment (%{domain}): %{task_name_snippet}"
 msgstr "Новый комментарий (%{domain}): %{task_name_snippet}"
 
 #: app/models/comment.rb:9
@@ -1392,7 +1218,7 @@ msgstr "Документ \"%{file_name}\""
 
 #: app/views/users/_public_profile.html.haml:6
 msgid "edit"
-msgstr ""
+msgstr "редактировать"
 
 #: app/views/users/_show.html.haml:6
 msgid "edit my profile"
@@ -1543,8 +1369,7 @@ msgid "register"
 msgstr "Регистрация"
 
 #: app/models/notification.rb:17
-msgid ""
-"state changed notification subject|%{state} (%{domain}): %{task_name_snippet}"
+msgid "state changed notification subject|%{state} (%{domain}): %{task_name_snippet}"
 msgstr "%{state} (%{domain}): %{task_name_snippet}"
 
 #: locale/yml_import.rb:5
@@ -1563,7 +1388,7 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Выбираем"
 
-#: app/models/task.rb:72
+#: app/models/task.rb:92
 msgid "task cannot be updated"
 msgstr "Задача не может быть обновлен"
 
@@ -1623,11 +1448,23 @@ msgstr "корректура"
 msgid "task kind|typing"
 msgstr "введя"
 
+#: app/helpers/tasks_helper.rb:143
+msgid "task length|Long"
+msgstr "Давно"
+
+#: app/helpers/tasks_helper.rb:143
+msgid "task length|Medium"
+msgstr "Среда"
+
+#: app/helpers/tasks_helper.rb:143
+msgid "task length|Short"
+msgstr "Краткий"
+
 #: app/views/tasks/_form.html.haml:1
 msgid "task section|General"
 msgstr "Общее"
 
-#: app/views/admin/tasks/_form.html.haml:4
+#: app/views/admin/tasks/_form.html.haml:10
 msgid "task section|Task Settings"
 msgstr "Целевая настройки"
 
