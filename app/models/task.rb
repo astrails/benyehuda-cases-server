@@ -55,11 +55,21 @@ class Task < ActiveRecord::Base
     indexes :difficulty, :sortable => true
     indexes :kind, :sortable => true
     indexes :state, :sortable => true
-    has :documents_counter
+    has :documents_count, :type => :integer
   end
   sphinx_scope(:by_updated_at){{:order => "updated_at DESC"}}
 
-  SEARCH_KEYS = ["state", "difficulty", "kind", "full_nikkud", "query"]
+  SEARCH_INCLUDES = {
+    :include => [:creator, :assignee, :editor]
+  }
+
+  TASK_LENGTH = {
+    "short" => 0..7,
+    "medium" => 8..24,
+  }
+  TASK_LENGTH.default = 25..100000000
+
+  SEARCH_KEYS = ["state", "difficulty", "kind", "full_nikkud", "query", "length"]
   def self.filter(opts)
     return self.all if (opts.keys & SEARCH_KEYS).blank?
 
@@ -68,10 +78,13 @@ class Task < ActiveRecord::Base
     search_opts[:conditions][:difficulty] = opts[:difficulty] unless opts[:difficulty].blank?
     search_opts[:conditions][:kind] = opts[:kind] unless opts[:kind].blank?
     search_opts[:with][:full_nikkud] = ("true" == opts[:full_nikkud]) unless opts[:full_nikkud].blank?
+    unless opts[:length].blank?
+      search_opts[:with][:documents_count] = TASK_LENGTH[opts[:length]]
+    end
     if opts[:query].blank?
-      self.find(:all, :conditions => search_opts[:conditions].merge(search_opts[:with]), :order => "updated_at DESC")
+      self.find(:all, SEARCH_INCLUDES.merge(:order => "updated_at DESC").merge(:conditions => search_opts[:conditions].merge(search_opts[:with])))
     else
-      self.search(opts[:query], search_opts).by_updated_at
+      self.search(opts[:query], search_opts.merge(SEARCH_INCLUDES)).by_updated_at
     end
   end
 

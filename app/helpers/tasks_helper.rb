@@ -139,6 +139,10 @@ module TasksHelper
     Task::DIFFICULTIES.map{|k| [textify_difficulty(k), k]}
   end
 
+  def task_length_for_select
+    [[s_("task length|Short"), "short"], [s_("task length|Medium"), "medium"], [s_("task length|Long"), "long"]]
+  end
+
   def commentable_event_form(event)
     return unless @task.send("can_be_#{event}ed?")
     haml_tag(:div, :id => "#{event}_task") do

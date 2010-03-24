@@ -9,6 +9,8 @@
   != select_tag :kind, options_for_select([""] + task_kinds_for_select, params_or_user_settings(:kind))
   != label_tag :difficulty, _("Difficulty")
   != select_tag :difficulty, options_for_select([""] + task_difficulties_for_select, params_or_user_settings(:difficulty))
+  != label_tag :length, _("Length")
+  != select_tag :length, options_for_select([""] + task_length_for_select, params_or_user_settings(:length))
   %br
   != label_tag :query, _("Query")
   != text_field_tag :query, params_or_user_settings(:query)
