@@ -1,6 +1,6 @@
 class Document < ActiveRecord::Base
   belongs_to :user
-  belongs_to :task , :touch => true
+  belongs_to :task , :touch => true, :counter_cache => true
 
   include ActsAsAuditable
   acts_as_auditable :file_file_name,
@@ -30,5 +30,6 @@ class Document < ActiveRecord::Base
   def mark_as_deleted!
     self.deleted_at = Time.now.utc
     save!
+    Task.decrement_counter(:documents_count, self.task_id)
   end
 end

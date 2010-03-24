@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100322112953) do
+ActiveRecord::Schema.define(:version => 20100324153923) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -121,13 +121,14 @@ ActiveRecord::Schema.define(:version => 20100322112953) do
     t.integer  "editor_id"
     t.integer  "assignee_id"
     t.string   "name"
-    t.string   "state",       :limit => 16
+    t.string   "state",           :limit => 16
     t.string   "kind"
-    t.string   "difficulty",  :limit => 16
-    t.boolean  "full_nikkud",               :default => false
+    t.string   "difficulty",      :limit => 16
+    t.boolean  "full_nikkud",                   :default => false
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "documents_count",               :default => 0
   end
 
   create_table "translation_keys", :force => true do |t|

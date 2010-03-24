@@ -6,5 +6,5 @@
   %td!= person_link(task.editor)
   %td!= person_link(task.assignee)
   %td= textify_state(task.state)
-  %td= task.documents.count
+  %td= task.documents_count
   %td!= render(:partial => "tasks/task_actions", :locals => {:task => task})

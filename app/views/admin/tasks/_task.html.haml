@@ -7,6 +7,6 @@
   %td!= link_to h(task.editor.name), user_path(task.editor) if task.editor
   %td!= link_to h(task.assignee.name), user_path(task.assignee) if task.assignee
   %td= textify_state(task.state)
-  %td= task.documents.count
+  %td= task.documents_count
   %td!= link_to _("Edit"), edit_admin_task_path(task)
   %td!= link_to _("Assignments"), edit_task_assignment_path(task)
