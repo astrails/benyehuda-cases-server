@@ -8,4 +8,11 @@ class SearchSetting < ActiveRecord::Base
       create(:search_key => key, :search_value => params[key]) unless params[key].blank?
     end
   end
+
+  def self.load
+    all.inject(HashWithIndifferentAccess.new) do |h, k|
+      h[k.search_key] = k.search_value
+      h
+    end
+  end
 end

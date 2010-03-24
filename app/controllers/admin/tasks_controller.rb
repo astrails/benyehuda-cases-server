@@ -18,6 +18,7 @@ class Admin::TasksController < InheritedResources::Base
   end
 
   def index
+    params.reverse_merge!(current_user.search_settings.load)
     index!
     current_user.search_settings.set_from_params!(params)
   end
