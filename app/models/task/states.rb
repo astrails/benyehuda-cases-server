@@ -211,6 +211,14 @@ module Task::States
     aasm_events_for_current_state.member?(:create_other_task)
   end
 
+  def admin_state
+    state
+  end
+
+  def admin_state=(value)
+    self.state = value
+  end
+
   EDITOR_EVENTS = [:reject, :complete, :create_other_task, :approve]
   ASSIGNEE_EVENTS = [:abandon, :finish, :help_required, :finish_partially]
 

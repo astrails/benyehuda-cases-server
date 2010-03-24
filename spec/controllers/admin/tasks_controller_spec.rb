@@ -62,9 +62,41 @@ describe Admin::TasksController do
 
     it "should update task" do
       put :update, :id => @task.id, :task => {:name => "new name"}
-      response.should redirect_to("/admin/tasks")
+      response.should redirect_to(task_path(@task))
       @task.reload.name.should == "new name"
     end
+
+    describe "changing states/assignees" do
+      it "should allow changing states" do
+        @task.state.should == "unassigned"
+        put :update, :id => @task.id, :task => {:admin_state => "partial"}
+        response.should redirect_to(task_path(@task))
+        @task.reload.should be_partial
+      end
+
+      it "should not allow changing states" do
+        @task = Factory.create(:unassigned_task)
+        put :update, :id => @task.id, :task => {:admin_state => "partial"}
+        response.should be_success
+        response.should render_template(:edit)
+        assigns[:task].errors.on(:assignee).should_not be_blank
+        assigns[:task].errors.on(:editor).should_not be_blank
+        @task.reload.should be_unassigned
+      end
+
+      it "should allow to change assignees" do
+        put :update, :id => @task.id, :task => {:assignee_id => 12}
+        response.should redirect_to(task_path(@task))
+        @task.reload.assignee_id.should == 12
+      end
+
+      it "should allow to change editors" do
+        put :update, :id => @task.id, :task => {:editor_id => 22}
+        response.should redirect_to(task_path(@task))
+        @task.reload.editor_id.should == 22
+      end
+    end
+
 
     it "should create a task" do
       post :create, :task => {:name => "oops"}

@@ -131,6 +131,10 @@ module TasksHelper
     Task::KINDS.map{|k| [textify_kind(k), k]}
   end
 
+  def task_states_for_select
+    Task.aasm_states.collect(&:name).collect(&:to_s).map{|s| [textify_state(s), s]}
+  end
+
   def task_difficulties_for_select
     Task::DIFFICULTIES.map{|k| [textify_difficulty(k), k]}
   end

@@ -17,6 +17,13 @@ class Admin::TasksController < InheritedResources::Base
     end
   end
 
+  def update
+    params[:task].trust(:admin_state, :editor_id, :assignee_id)
+    update! do |success, failure|
+      success.html {redirect_to task_path(resource)}
+    end
+  end
+
   def index
     params.reverse_merge!(current_user.search_settings.load)
     index!
