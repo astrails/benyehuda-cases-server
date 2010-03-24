@@ -55,6 +55,7 @@ class Task < ActiveRecord::Base
     indexes :difficulty, :sortable => true
     indexes :kind, :sortable => true
     indexes :state, :sortable => true
+    has :documents_counter
   end
   sphinx_scope(:by_updated_at){{:order => "updated_at DESC"}}
 
