@@ -9,7 +9,27 @@ class Task < ActiveRecord::Base
       :difficulty => proc {|v| Task.textify_difficulty(v) },
       :state => proc {|v| Task.textify_state(v) },
       :full_nikkud => proc {|v| v ? _("true") : _("false")},
-      :default_title => N_("auditable|Task")
+      :default_title => N_("auditable|Task"),
+      :attributes => proc { |a|
+        case a
+        when :name
+          _("Name")
+        when :state
+          _("State")
+        when :creator_id
+          _("Creater")
+        when :editor_id
+          _("Editor")
+        when :assignee_id
+          _("Assignee")
+        when :kind
+          _("Kind")
+        when :difficulty
+          _("Difficulty")
+        when :full_nikkud
+          _("Full Nikkud")
+        end
+      }
     }
 
   belongs_to :creator, :class_name => "User"
@@ -126,11 +146,11 @@ class Task < ActiveRecord::Base
 
   ######### i18 n
   def self.textify_kind(kind)
-    s_(KINDS[kind])
+    s_(KINDS[kind]) if KINDS[kind]
   end
 
   def self.textify_difficulty(dif)
-    s_(DIFFICULTIES[dif])
+    s_(DIFFICULTIES[dif]) if DIFFICULTIES[dif]
   end
 
   TASK_STATES = {
@@ -146,8 +166,7 @@ class Task < ActiveRecord::Base
   }
 
   def self.textify_state(state)
-    # TODO: gettext here
-    s_(TASK_STATES[state])
+    s_(TASK_STATES[state.to_s]) if TASK_STATES[state.to_s]
   end
   
 end

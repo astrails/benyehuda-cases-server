@@ -52,7 +52,7 @@ class Audit < ActiveRecord::Base
   def change_message(attribute_name, change)
     from, to = humanize_attr_change(attribute_name, change)
     return nil unless to
-    human_attr = attribute_name.to_s.humanize
+    human_attr = convert_attribute_name(attribute_name) || attribute_name.to_s.humanize
     if from.blank?
       s_("audit set|%{attr} set to %{to}") % {:attr => human_attr, :to => escape_blanks(to)}
     else
@@ -69,6 +69,13 @@ class Audit < ActiveRecord::Base
   end
   
 private
+  def convert_attribute_name(attr)
+    au_class = auditable ? auditable.class : auditable_type.constantize
+    
+    return nil unless au_class.audit_conversions.respond_to?(:[]) && au_class.audit_conversions[:attributes]
+    au_class.audit_conversions[:attributes].call(attr)
+  end
+
   def conversion(attr)
     auditable.class.audit_conversions[attr.to_sym] if auditable && auditable.class.audit_conversions.respond_to?(:[])
   end
