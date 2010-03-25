@@ -102,7 +102,17 @@ describe Admin::TasksController do
       post :create, :task => {:name => "oops"}
       response.should redirect_to("/tasks/#{Task.last.id}")
       Task.last.name.should == "oops"
+      Task.last.should be_unassigned
       Task.last.creator_id.should == @user.id
+    end
+
+    it "should create a task with assignee, editor and state" do
+      post :create, :task => {:name => "oopsoops", :assignee_id => 12, :editor_id => 125, :admin_state => "rejected"}
+      response.should redirect_to("/tasks/#{Task.last.id}")
+      Task.last.name.should == "oopsoops"
+      Task.last.should be_rejected
+      Task.last.assignee_id.should == 12
+      Task.last.editor_id.should == 125
     end
   end
 end

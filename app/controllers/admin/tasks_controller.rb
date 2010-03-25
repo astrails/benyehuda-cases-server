@@ -3,6 +3,7 @@ class Admin::TasksController < InheritedResources::Base
   actions :index, :new, :create, :edit, :update
 
   def create
+    params[:task].trust(:admin_state, :editor_id, :assignee_id)
     @task = current_user.created_tasks.create(params[:task])
     create! do |format|
       format.html do
