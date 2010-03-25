@@ -2,9 +2,9 @@
   %td= task.id
   %td= _("%{time} ago") % {:time => time_ago_in_words(task.updated_at)}
   %td!= link_to h(task.name), task_path(task)
-  %td= textify_kind(task.kind)
+  %td= Task.textify_kind(task.kind)
   %td!= person_link(task.editor)
   %td!= person_link(task.assignee)
-  %td= textify_state(task.state)
+  %td= Task.textify_state(task.state)
   %td= task.documents_count
   %td!= render(:partial => "tasks/task_actions", :locals => {:task => task})

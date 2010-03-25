@@ -26,14 +26,14 @@ class Audit < ActiveRecord::Base
 
   def title
     @title ||= if auditable
-      auditable.class.auditable_title.respond_to?(:call) ? s_(auditable.class.auditable_title.call(auditable)) : auditable.name
+      auditable.class.auditable_title.respond_to?(:call) ? auditable.class.auditable_title.call(auditable) : auditable.name
     else
       s_(auditable_type.constantize.send(:default_title))
     end
   end
 
   def via_source
-    (auditable && auditable.class.try(:audit_source)) ? s_(auditable.class.audit_source.call(auditable)) : nil
+    (auditable && auditable.class.try(:audit_source)) ? auditable.class.audit_source.call(auditable) : nil
   end
 
   def compose_messages
@@ -54,9 +54,9 @@ class Audit < ActiveRecord::Base
     return nil unless to
     human_attr = attribute_name.to_s.humanize
     if from.blank?
-      "#{human_attr} set to #{escape_blanks(to)}."
+      s_("audit set|%{attr} set to %{to}") % {:attr => human_attr, :to => escape_blanks(to)}
     else
-      "#{human_attr} changed from #{escape_blanks(from)} to #{escape_blanks(to)}."
+      s_("audit changed|%{attr} changed from %{from} to %{to}") % {:attr => human_attr, :to => escape_blanks(to), :from => escape_blanks(from)}
     end
   end
 

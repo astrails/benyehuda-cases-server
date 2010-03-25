@@ -1,10 +1,14 @@
 class Task < ActiveRecord::Base
   include ActsAsAuditable
-  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :kind, :difficulty,
+  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :kind, :difficulty, :full_nikkud,
     :conversions => {
       :creator_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :editor_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :assignee_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
+      :kind => proc {|v| Task.textify_kind(v) },
+      :difficulty => proc {|v| Task.textify_difficulty(v) },
+      :state => proc {|v| Task.textify_state(v) },
+      :full_nikkud => proc {|v| v ? _("true") : _("false")},
       :default_title => N_("auditable|Task")
     }
 
@@ -27,13 +31,22 @@ class Task < ActiveRecord::Base
   validates_presence_of :creator_id
   validates_presence_of :name
 
-  KINDS = %w(typing proofing other)
+  KINDS = {
+    "typing" => N_("task kind|typing"),
+    "proofing" => N_("task kind|proofing"),
+    "other" => N_("task kind|other")
+  }
   validates_presence_of :kind
-  validates_inclusion_of :kind, :in => KINDS, :message => "not included in the list"
+  validates_inclusion_of :kind, :in => KINDS.keys, :message => "not included in the list"
 
-  DIFFICULTIES = %w(easy normal hard)
+  DIFFICULTIES = {
+    "easy" => N_("task difficulty|easy"),
+    "normal" => N_("task difficulty|normal"),
+    "hard" => N_("task difficulty|hard")
+  }
+  
   validates_presence_of :difficulty
-  validates_inclusion_of :difficulty, :in => DIFFICULTIES, :message => "not included in the list"
+  validates_inclusion_of :difficulty, :in => DIFFICULTIES.keys, :message => "not included in the list"
 
   attr_accessible :name, :kind, :difficulty, :full_nikkud, :comments_attributes
 
@@ -110,4 +123,31 @@ class Task < ActiveRecord::Base
     doc.user_id = uploader.id
     doc
   end
+
+  ######### i18 n
+  def self.textify_kind(kind)
+    s_(KINDS[kind])
+  end
+
+  def self.textify_difficulty(dif)
+    s_(DIFFICULTIES[dif])
+  end
+
+  TASK_STATES = {
+    "unassigned" => N_("task state|Unassigned"),
+    "assigned" => N_("task state|Assigned/Work in Progress"),
+    "stuck" => N_("task state|Editors Help Required"),
+    "partial" => N_("task state|Partialy Ready"),
+    "waits_for_editor" => N_("task state|Waits for Editor's approvement"),
+    "rejected" => N_("task state|Rejected by Editor"), 
+    "approved" => N_("task state|Approved by Editor"),
+    "ready_to_publish" => N_("task state|Ready to Publish"),
+    "other_task_creat" => N_("task state|Another Task Created")
+  }
+
+  def self.textify_state(state)
+    # TODO: gettext here
+    s_(TASK_STATES[state])
+  end
+  
 end

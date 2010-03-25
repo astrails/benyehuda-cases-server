@@ -15,7 +15,7 @@ class Notification < ActionMailer::Base
 
   def task_state_changed(task, recipient_users)
     subject     s_("state changed notification subject|%{state} (%{domain}): %{task_name_snippet}") % {
-                  :state => textify_state(task.state), :task_name_snippet => task.name.utf_snippet(20),
+                  :state => Task.textify_state(task.state), :task_name_snippet => task.name.utf_snippet(20),
                   :domain => domain}
     from        from_address
     recipients  recipient_users.collect(&:email_recipient)

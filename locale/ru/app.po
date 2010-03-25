@@ -5,11 +5,28 @@
 #
 #, fuzzy
 msgid ""
-msgstr "Project-Id-Version: version 0.0.1\nPOT-Creation-Date: 2010-03-24 18:52+0200\nPO-Revision-Date: 2009-12-23 22:46+0200\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+msgstr ""
+"Project-Id-Version: version 0.0.1\n"
+"POT-Creation-Date: 2010-03-25 10:33+0200\n"
+"PO-Revision-Date: 2009-12-23 22:46+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:74
-msgid "        We're sorry, but we could not locate your account.\n        If you are having issues try copying and pasting the URL\n        from your email into your browser or restarting the\n        reset password process.\n"
-msgstr "Мы сожалеем, но мы не смогли найти Вашу учетную запись .\n Если у Вас возникли вопросы, попробуйте скопировать и вставить URL # # # # С Вашей электронной почты в вашем браузере или перезапуска # # # # процесс сброса пароля. # # # #"
+msgid ""
+"        We're sorry, but we could not locate your account.\n"
+"        If you are having issues try copying and pasting the URL\n"
+"        from your email into your browser or restarting the\n"
+"        reset password process.\n"
+msgstr ""
+"Мы сожалеем, но мы не смогли найти Вашу учетную запись .\n"
+" Если у Вас возникли вопросы, попробуйте скопировать и вставить URL # # # # "
+"С Вашей электронной почты в вашем браузере или перезапуска # # # # процесс "
+"сброса пароля. # # # #"
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/mailer.rb:22
 msgid "%{domain}: Account Activation Instructions"
@@ -336,36 +353,182 @@ msgid "Hello"
 msgstr "Привет"
 
 #: app/views/astrails/auth/mailer/activation_instructions.erb:1
-msgid "Hello %{user_name},\n\nTo activate your %{domain} account please click on the URL below.\n\n%{account_activation_url}\n\nIf the above URL does not work try copying and pasting it into your browser.\nIf you continue to have problems, please feel free to contact us.\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
-msgstr "Привет %{user_name},\n\n Чтобы активировать счет %{domain} нажмите на ссылку ниже .\n\n%{account_activation_url}### \n# Если вышеуказанный URL не работает, попробуйте скопировать и вставить в адресную строку браузера .\n Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n\n Это сообщение было сгенерирован автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
+msgid ""
+"Hello %{user_name},\n"
+"\n"
+"To activate your %{domain} account please click on the URL below.\n"
+"\n"
+"%{account_activation_url}\n"
+"\n"
+"If the above URL does not work try copying and pasting it into your "
+"browser.\n"
+"If you continue to have problems, please feel free to contact us.\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team\n"
+msgstr ""
+"Привет %{user_name},\n"
+"\n"
+" Чтобы активировать счет %{domain} нажмите на ссылку ниже .\n"
+"\n"
+"%{account_activation_url}### \n"
+"# Если вышеуказанный URL не работает, попробуйте скопировать и вставить в "
+"адресную строку браузера .\n"
+" Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n"
+"\n"
+" Это сообщение было сгенерирован автоматически. Пожалуйста, не ответить на "
+"него .\n"
+"\n"
+"%{domain} команды # # # #"
 
 #: app/views/notification/volnteer_welcome.text.plain.erb:1
-msgid "Hello %{user_name},\n\nWelcome to Ben Yehuda Project!\nInstructions: TODO\n\n\n%{domain} Team"
-msgstr "Привет %{user_name},\n\n Добро пожаловать на Бен-Иегуда Проект !\n Инструкция: TODO \n\n\n%{domain} команда"
+msgid ""
+"Hello %{user_name},\n"
+"\n"
+"Welcome to Ben Yehuda Project!\n"
+"Instructions: TODO\n"
+"\n"
+"\n"
+"%{domain} Team"
+msgstr ""
+"Привет %{user_name},\n"
+"\n"
+" Добро пожаловать на Бен-Иегуда Проект !\n"
+" Инструкция: TODO \n"
+"\n"
+"\n"
+"%{domain} команда"
 
 #: app/views/astrails/auth/mailer/password_reset_confirmation.erb:1
-msgid "Hello %{user_name},\n\nYou successfully changed your password.\n\nYou can login into your account at %{login_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
-msgstr "Привет %{user_name},\n\n Вы успешно изменили свой пароль .\n\n Вы можете Войти в учетную запись на %{login_url}\n### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
+msgid ""
+"Hello %{user_name},\n"
+"\n"
+"You successfully changed your password.\n"
+"\n"
+"You can login into your account at %{login_url}\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team\n"
+msgstr ""
+"Привет %{user_name},\n"
+"\n"
+" Вы успешно изменили свой пароль .\n"
+"\n"
+" Вы можете Войти в учетную запись на %{login_url}\n"
+"### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить "
+"на него .\n"
+"\n"
+"%{domain} команды # # # #"
 
 #: app/views/astrails/auth/mailer/activation_confirmation.erb:1
-msgid "Hello %{user_name},\n\nYour account has been activated.\n\nYou can login into your account at %{login_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
-msgstr "Привет %{user_name},\n\n Ваша учетная запись была активирована .\n\n Вы можете Войти в учетную запись на %{login_url}\n### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
+msgid ""
+"Hello %{user_name},\n"
+"\n"
+"Your account has been activated.\n"
+"\n"
+"You can login into your account at %{login_url}\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team\n"
+msgstr ""
+"Привет %{user_name},\n"
+"\n"
+" Ваша учетная запись была активирована .\n"
+"\n"
+" Вы можете Войти в учетную запись на %{login_url}\n"
+"### # Это письмо было сгенерировано автоматически. Пожалуйста, не ответить "
+"на него .\n"
+"\n"
+"%{domain} команды # # # #"
 
 #: app/views/astrails/auth/mailer/password_reset_instructions.erb:1
-msgid "Hello %{user_name},\nwe have received a request to reset your password. If you did not make this request, simply ignore this email.\nIf you did make this request just click the link below:\n\n%{edit_password_url}\n\nIf the above URL does not work try copying and pasting it into your browser.\nIf you continue to have problems, please feel free to contact us.\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team\n"
-msgstr "Привет %{user_name},\n Мы получили запрос на изменение пароля. Если вы не делали этот запрос, просто игнорируйте это сообщение .\n Если вы сделали эту просьбу просто нажмите на ссылку ниже :\n\n%{edit_password_url}\n### # Если выше URL не работает, попробуйте скопировать и вставить в адресную строку браузера .\n Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n\n Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команды # # # #"
+msgid ""
+"Hello %{user_name},\n"
+"we have received a request to reset your password. If you did not make this "
+"request, simply ignore this email.\n"
+"If you did make this request just click the link below:\n"
+"\n"
+"%{edit_password_url}\n"
+"\n"
+"If the above URL does not work try copying and pasting it into your "
+"browser.\n"
+"If you continue to have problems, please feel free to contact us.\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team\n"
+msgstr ""
+"Привет %{user_name},\n"
+" Мы получили запрос на изменение пароля. Если вы не делали этот запрос, "
+"просто игнорируйте это сообщение .\n"
+" Если вы сделали эту просьбу просто нажмите на ссылку ниже :\n"
+"\n"
+"%{edit_password_url}\n"
+"### # Если выше URL не работает, попробуйте скопировать и вставить в "
+"адресную строку браузера .\n"
+" Если по-прежнему есть проблемы, пожалуйста, обращайтесь к нам .\n"
+"\n"
+" Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на "
+"него .\n"
+"\n"
+"%{domain} команды # # # #"
 
 #: app/views/pages/home.html.haml:1
 msgid "Hello World"
 msgstr "Привет мир"
 
 #: app/views/notification/comment_added.text.plain.erb:1
-msgid "Hello,\n\nNew comment to the task '%{task_name}' added by %{user_name}:\n\n%{comment}\n\n%{task_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team"
-msgstr "Привет ,\n\n Новый комментарий к задаче&#39;%{task_name}&#39; добавил %{user_name}:\n\n%{comment}\n\n%{task_url}\n\n Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команда"
+msgid ""
+"Hello,\n"
+"\n"
+"New comment to the task '%{task_name}' added by %{user_name}:\n"
+"\n"
+"%{comment}\n"
+"\n"
+"%{task_url}\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team"
+msgstr ""
+"Привет ,\n"
+"\n"
+" Новый комментарий к задаче&#39;%{task_name}&#39; добавил %{user_name}:\n"
+"\n"
+"%{comment}\n"
+"\n"
+"%{task_url}\n"
+"\n"
+" Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на "
+"него .\n"
+"\n"
+"%{domain} команда"
 
 #: app/views/notification/task_state_changed.text.plan.erb:1
-msgid "Hello,\n\nThe task '%{task_name}' state is changed to %{new_state}.\n\n%{task_url}\n\nThis email was generated automatically. Please do not reply to it.\n\n%{domain} Team"
-msgstr "Привет ,\n\n задача&#39;%{task_name}&#39; государственной изменен на %{new_state}.\n\n%{task_url}\n\n Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на него .\n\n%{domain} команда"
+msgid ""
+"Hello,\n"
+"\n"
+"The task '%{task_name}' state is changed to %{new_state}.\n"
+"\n"
+"%{task_url}\n"
+"\n"
+"This email was generated automatically. Please do not reply to it.\n"
+"\n"
+"%{domain} Team"
+msgstr ""
+"Привет ,\n"
+"\n"
+" задача&#39;%{task_name}&#39; государственной изменен на %{new_state}.\n"
+"\n"
+"%{task_url}\n"
+"\n"
+" Это сообщение было сгенерировано автоматически. Пожалуйста, не ответить на "
+"него .\n"
+"\n"
+"%{domain} команда"
 
 #: app/views/audits/_index.html.haml:1
 msgid "History"
@@ -376,12 +539,20 @@ msgid "ID"
 msgstr ""
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:19
-msgid "Instructions to activate your account have been emailed to you. Please check your email."
-msgstr "Инструкция по активации вашей учетной записи были по электронной почте. Пожалуйста, проверьте электронную почту."
+msgid ""
+"Instructions to activate your account have been emailed to you. Please check "
+"your email."
+msgstr ""
+"Инструкция по активации вашей учетной записи были по электронной почте. "
+"Пожалуйста, проверьте электронную почту."
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:17
-msgid "Instructions to reset your password have been emailed to you. Please check your email."
-msgstr "Инструкция для сброса пароля был отправлен к вам. Пожалуйста, проверьте электронную почту."
+msgid ""
+"Instructions to reset your password have been emailed to you. Please check "
+"your email."
+msgstr ""
+"Инструкция для сброса пароля был отправлен к вам. Пожалуйста, проверьте "
+"электронную почту."
 
 #: app/views/users/_form.html.haml:5
 msgid "Is Admin"
@@ -490,7 +661,8 @@ msgstr "Единственным участником видите эту стр
 
 #: app/controllers/users_controller.rb:65
 msgid "Only registered activists allowed to access this page"
-msgstr "Только зарегистрированные активистов, которым разрешен доступ к этой странице"
+msgstr ""
+"Только зарегистрированные активистов, которым разрешен доступ к этой странице"
 
 #: app/controllers/documents_controller.rb:51
 #: app/controllers/users_controller.rb:76
@@ -660,8 +832,12 @@ msgid "State"
 msgstr "Государство"
 
 #: app/views/volunteer_requests/new.html.haml:7
-msgid "State your preferred material (author, genre, etc.), and make any other comment you wish to communicate to the editors"
-msgstr "Государство нужный материал (автор, жанр и т.д.), а также делать любые другие комментарии вы хотите общаться в редакцию"
+msgid ""
+"State your preferred material (author, genre, etc.), and make any other "
+"comment you wish to communicate to the editors"
+msgstr ""
+"Государство нужный материал (автор, жанр и т.д.), а также делать любые "
+"другие комментарии вы хотите общаться в редакцию"
 
 #: app/views/tasks/_finish.html.haml:4
 msgid "Task Finishing Comments"
@@ -820,7 +996,8 @@ msgstr "Вы должны подать заявку на доступ к это�
 
 #: app/controllers/application_controller.rb:16
 msgid "You must be an admin or editor to access this page"
-msgstr "Вы должны быть администратором или редактором для доступа к этой странице"
+msgstr ""
+"Вы должны быть администратором или редактором для доступа к этой странице"
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/controller.rb:49
 msgid "You must be an admin to access this page"
@@ -835,8 +1012,12 @@ msgid "You must be logged out to access this page"
 msgstr "Вы должны быть зарегистрированы вне доступа к этой странице"
 
 #: app/controllers/users_controller.rb:17
-msgid "Your account has been created. Please check your e-mail for your account activation instructions!"
-msgstr "Ваша учетная запись была создана. Пожалуйста, проверьте ваш адрес электронной почты для вашего инструкций за активацию учетной записи!"
+msgid ""
+"Your account has been created. Please check your e-mail for your account "
+"activation instructions!"
+msgstr ""
+"Ваша учетная запись была создана. Пожалуйста, проверьте ваш адрес "
+"электронной почты для вашего инструкций за активацию учетной записи!"
 
 #: vendor/plugins/astrails-user-auth/app/controllers/user_session_controller.rb:11
 msgid "Your account has been disabled, please contact support."
@@ -958,6 +1139,10 @@ msgstr "1 error prohibited this {{model}} from being saved"
 msgid "activerecord.errors.template.header.other"
 msgstr "{{count}} errors prohibited this {{model}} from being saved"
 
+#: app/models/audit.rb:59
+msgid "audit changed|%{attr} changed from %{from} to %{to}"
+msgstr "%{attr} изменен с %{from} на %{to}"
+
 #: app/models/audit.rb:19
 msgid "audit created|%{title} was created%{via_source}."
 msgstr "%{title} Была создана %{via_source}."
@@ -965,6 +1150,10 @@ msgstr "%{title} Была создана %{via_source}."
 #: app/models/audit.rb:21
 msgid "audit removed|%{title} was removed."
 msgstr "%{title} Была удалена."
+
+#: app/models/audit.rb:57
+msgid "audit set|%{attr} set to %{to}"
+msgstr "%{attr} установлен в %{to}"
 
 #: app/models/comment.rb:10
 msgid "auditable|Comment"
@@ -1077,7 +1266,9 @@ msgid "change password"
 msgstr "Изменение пароля"
 
 #: app/models/notification.rb:7
-msgid "comment added notification subject|New comment (%{domain}): %{task_name_snippet}"
+msgid ""
+"comment added notification subject|New comment (%{domain}): %"
+"{task_name_snippet}"
 msgstr "Новый комментарий (%{domain}): %{task_name_snippet}"
 
 #: app/models/comment.rb:9
@@ -1085,8 +1276,8 @@ msgid "comment audit| by %{user_name}"
 msgstr "По %{user_name}"
 
 #: app/models/comment.rb:8
-msgid "comment audit|Comment \"%{message}\""
-msgstr "Комментарии \"%{message}\""
+msgid "comment audit|Comment %{message}"
+msgstr "Комментарии %{message}"
 
 #: locale/yml_import.rb:9
 msgid "date.formats.default"
@@ -1213,8 +1404,8 @@ msgid "document audit| by %{user_name}"
 msgstr "По %{user_name}"
 
 #: app/models/document.rb:8
-msgid "document audit|Document \"%{file_name}\""
-msgstr "Документ \"%{file_name}\""
+msgid "document audit|Document %{file_name}"
+msgstr "Документ %{file_name}"
 
 #: app/views/users/_public_profile.html.haml:6
 msgid "edit"
@@ -1369,7 +1560,8 @@ msgid "register"
 msgstr "Регистрация"
 
 #: app/models/notification.rb:17
-msgid "state changed notification subject|%{state} (%{domain}): %{task_name_snippet}"
+msgid ""
+"state changed notification subject|%{state} (%{domain}): %{task_name_snippet}"
 msgstr "%{state} (%{domain}): %{task_name_snippet}"
 
 #: locale/yml_import.rb:5

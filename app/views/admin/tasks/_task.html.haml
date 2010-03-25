@@ -3,10 +3,10 @@
   %td!= link_to h(task.creator.name), user_path(task.creator)
   %td= task.updated_at.to_s(:db)
   %td!= link_to h(task.name), task_path(task)
-  %td= textify_kind(task.kind)
+  %td= Task.textify_kind(task.kind)
   %td!= link_to h(task.editor.name), user_path(task.editor) if task.editor
   %td!= link_to h(task.assignee.name), user_path(task.assignee) if task.assignee
-  %td= textify_state(task.state)
+  %td= Task.textify_state(task.state)
   %td= task.documents_count
   %td!= link_to _("Edit"), edit_admin_task_path(task)
   %td!= link_to _("Assignments"), edit_task_assignment_path(task)

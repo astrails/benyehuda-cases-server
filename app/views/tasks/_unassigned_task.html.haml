@@ -1,7 +1,7 @@
 %tr
   %td= unassigned_task.id
   %td= unassigned_task.name
-  %td= textify_kind(unassigned_task.kind)
-  %td= textify_state(unassigned_task.state)
+  %td= Task.textify_kind(unassigned_task.kind)
+  %td= Task.textify_state(unassigned_task.state)
   %td= unassigned_task.documents_count
   %td!= link_to _("Assign"), task_assignment_path(unassigned_task, :assignee_id => @assignee.id), :method => :post

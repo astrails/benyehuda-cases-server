@@ -1,28 +1,4 @@
 module TasksHelper
-  TASK_KINDS = {
-    "typing" => N_("task kind|typing"),
-    "proofing" => N_("task kind|proofing"),
-     "other" => N_("task kind|other")
-  }
-
-  TASK_DIFFICULTY = {
-    "easy" => N_("task difficulty|easy"),
-    "normal" => N_("task difficulty|normal"),
-    "hard" => N_("task difficulty|hard")
-  }
-
-  TASK_STATES = {
-    "unassigned" => N_("task state|Unassigned"),
-    "assigned" => N_("task state|Assigned/Work in Progress"),
-    "stuck" => N_("task state|Editors Help Required"),
-    "partial" => N_("task state|Partialy Ready"),
-    "waits_for_editor" => N_("task state|Waits for Editor's approvement"),
-    "rejected" => N_("task state|Rejected by Editor"), 
-    "approved" => N_("task state|Approved by Editor"),
-    "ready_to_publish" => N_("task state|Ready to Publish"),
-    "other_task_creat" => N_("task state|Another Task Created")
-  }
-
   TASK_EVENTS = {
     # editor
     "approve" => N_("task event|Approve"),
@@ -36,26 +12,13 @@ module TasksHelper
     "finish_partially" => N_("task event|Mark as Finished Partly")
   }
 
-  def textify_state(state)
-    # TODO: gettext here
-    s_(TASK_STATES[state])
-  end
-
   def textify_event(event)
     # TODO: gettext here
     s_(TASK_EVENTS[event])
   end
 
-  def textify_kind(kind)
-    s_(TASK_KINDS[kind])
-  end
-
   def textify_full_nikud(task)
     task.full_nikkud ? _("Full Nikkud") : ""
-  end
-
-  def textify_difficulty(dif)
-    s_(TASK_DIFFICULTY[dif])
   end
 
   def upload_javascripts
@@ -121,22 +84,16 @@ module TasksHelper
     "jQuery('#new_task_link, #new_task_container').toggle();"
   end
 
-  def task_states_for_select
-    Task.aasm_states.collect(&:name).map do |name|
-      [textify_state(name.to_s), name.to_s]
-    end
-  end
-
   def task_kinds_for_select
-    Task::KINDS.map{|k| [textify_kind(k), k]}
+    Task::KINDS.keys.map{|k| [Task.textify_kind(k), k]}
   end
 
   def task_states_for_select
-    Task.aasm_states.collect(&:name).collect(&:to_s).map{|s| [textify_state(s), s]}
+    Task.aasm_states.collect(&:name).collect(&:to_s).map{|s| [Task.textify_state(s), s]}
   end
 
   def task_difficulties_for_select
-    Task::DIFFICULTIES.map{|k| [textify_difficulty(k), k]}
+    Task::DIFFICULTIES.keys.map{|k| [Task.textify_difficulty(k), k]}
   end
 
   def task_length_for_select

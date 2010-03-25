@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-24 18:52+0200\n"
+"POT-Creation-Date: 2010-03-25 10:33+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1051,12 +1051,20 @@ msgstr "1 error prohibited this {{model}} from being saved"
 msgid "activerecord.errors.template.header.other"
 msgstr "{{count}} errors prohibited this {{model}} from being saved"
 
+#: app/models/audit.rb:59
+msgid "audit changed|%{attr} changed from %{from} to %{to}"
+msgstr ""
+
 #: app/models/audit.rb:19
 msgid "audit created|%{title} was created%{via_source}."
 msgstr ""
 
 #: app/models/audit.rb:21
 msgid "audit removed|%{title} was removed."
+msgstr ""
+
+#: app/models/audit.rb:57
+msgid "audit set|%{attr} set to %{to}"
 msgstr ""
 
 #: app/models/comment.rb:10
@@ -1180,7 +1188,7 @@ msgid "comment audit| by %{user_name}"
 msgstr ""
 
 #: app/models/comment.rb:8
-msgid "comment audit|Comment \"%{message}\""
+msgid "comment audit|Comment %{message}"
 msgstr ""
 
 #: locale/yml_import.rb:9
@@ -1308,7 +1316,7 @@ msgid "document audit| by %{user_name}"
 msgstr ""
 
 #: app/models/document.rb:8
-msgid "document audit|Document \"%{file_name}\""
+msgid "document audit|Document %{file_name}"
 msgstr ""
 
 #: app/views/users/_public_profile.html.haml:6

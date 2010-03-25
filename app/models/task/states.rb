@@ -231,5 +231,5 @@ module Task::States
     return true if editor?(user) && EDITOR_EVENTS.member?(event.to_sym)
 
     false
-  end
+  end  
 end
