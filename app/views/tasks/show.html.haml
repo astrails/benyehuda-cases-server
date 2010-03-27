@@ -13,7 +13,7 @@
 - @task.task_properties.visible_for(current_user).each do |p|
   %p
     %strong= "#{p.property.title}:"
-    = property_value(p)
+    != property_value(p)
   
 
 != render(:partial => "documents", :locals => {:documents => @task.documents})

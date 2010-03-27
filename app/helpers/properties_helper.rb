@@ -22,9 +22,13 @@ module PropertiesHelper
   end
 
   def property_value(p)
-    if "boolean" == p.property.property_type
-      return p.custom_value.to_s == "1" ? _("true") : _("false")
+    case p.property.property_type
+    when "boolean"
+      p.custom_value.to_s == "1" ? _("true") : _("false")
+    when "text"
+      auto_link h(p.custom_value)
+    else
+      h p.custom_value
     end
-    p.custom_value
   end
 end

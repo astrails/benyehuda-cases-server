@@ -24,18 +24,18 @@
 - @user.user_properties.visible_for(current_user).each do |p|
   %p
     %strong= "#{p.property.title}:"
-    = property_value(p)
+    != property_value(p)
 
 - when_user_volunteer do
   %h4= _("Volunteer Properties")
   - @user.volunteer_properties.visible_for(current_user).each do |p|
     %p
       %strong= "#{p.property.title}:"
-      = property_value(p)
+      != property_value(p)
 
 - when_user_editor do
   %h4= _("Editor Properties")
   - @user.editor_properties.visible_for(current_user).each do |p|
     %p
       %strong= "#{p.property.title}:"
-      = property_value(p)
+      != property_value(p)
