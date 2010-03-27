@@ -34,6 +34,7 @@
           != yield
         #sidebar.span-4.last
           %h4= _("Sidebar")
+          != yield :sidebar
       #footer.span-24.last
         %h4=_("Footer")
         - if current_user.try(:is_admin?)

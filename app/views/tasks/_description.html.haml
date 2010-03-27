@@ -24,17 +24,7 @@
         != link_to("(#{_("change assignments")})", edit_task_assignment_path(@task))
 
 - if @task.editor
-  %p
-    %strong= _("Editor:")
-    != link_to h(@task.editor.name), profiles_path(@task.editor)
-    != link_to_editors_email(@task)
-    != image_tag(avatar_for(@task.editor))
+  != render(:partial => "users/brief", :locals => {:brief_title => _("Editor:"), :user => @task.editor, :email_link => link_to_task_participant_email(@task, :editor, _("Send Email to Editor"))})
 
 - if @task.assignee
-  %p
-    %strong= _("Assignee:")
-    != link_to h(@task.assignee.name), profiles_path(@task.assignee)
-    - if @task.editor?(current_user)
-      != link_to_assignee_email(@task)
-    != image_tag(avatar_for(@task.assignee))
-
+  != render(:partial => "users/brief", :locals => {:brief_title => _("Assignee:"), :user => @task.assignee, :email_link => link_to_task_participant_email(@task, :editor, _("Send Email to Assignee"))})

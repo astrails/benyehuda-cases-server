@@ -68,16 +68,11 @@ module TasksHelper
     @task.abandoning_comment && !@task.abandoning_comment.errors.blank?
   end
 
-  def link_to_editors_email(task)
-    return if task.editor.blank? || task.editor.disabled?
+  def link_to_task_participant_email(task, role, text)
+    return if task.send(role).blank? || task.send(role).disabled?
+    return if :assignee == role && !task.editor?(current_user)
 
-    mail_to task.editor.email, _("Send Email to Editor"), :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
-  end
-
-  def link_to_assignee_email(task)
-    return if task.assignee.blank? || task.assignee.disabled?
-
-    mail_to task.assignee.email, _("Send Email to Assignee"), :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
+    mail_to task.editor.email, text, :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
   end
 
   def toggle_chained_js
