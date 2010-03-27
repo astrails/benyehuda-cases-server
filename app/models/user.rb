@@ -12,6 +12,26 @@ class User < ActiveRecord::Base
   attr_accessible :name, :password, :password_confirmation, :notify_on_comments, :notify_on_status
 
   has_gravatar
+  has_attached_file :avatar, :styles => { :thumb => "50x50>", :medium => "100x100>" },
+    :storage        => :s3,
+    :bucket         => GlobalPreference.get(:s3_bucket),
+    :path =>        "users/:id/avatars/:style/:filename",
+    :s3_credentials => {
+      :access_key_id     => GlobalPreference.get(:s3_key),
+      :secret_access_key => GlobalPreference.get(:s3_secret),
+    }
+  attr_accessible :avatar
+  def self.style_to_size(style)
+    case style
+    when :thumb
+      50
+    when :medium
+      100
+    else
+      50
+    end
+  end
+
 
   validates_presence_of :name
 

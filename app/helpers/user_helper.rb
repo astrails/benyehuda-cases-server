@@ -57,8 +57,8 @@ module UserHelper
     end.join(", ")
   end
 
-  def avatar_for(user, size = 50)
-    user.gravatar_url(:size => size)
+  def avatar_for(user, style = :thumb)
+    user.avatar? ? user.avatar.url(style) : user.gravatar_url(:size => User.style_to_size(style))
   end
 
 protected

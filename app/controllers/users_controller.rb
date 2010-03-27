@@ -23,6 +23,8 @@ class UsersController < InheritedResources::Base
 
   def update
     @user = User.find(params[:id])
+    return _remove_avatar if "true" == params[:remove_avatar]
+
     # manual update protected attributes
     if current_user.is_admin?
       @user.is_admin = params[:user].delete(:is_admin)
@@ -100,6 +102,14 @@ class UsersController < InheritedResources::Base
   def set_default_domain
     if GlobalPreference.get(:domain).blank?
       GlobalPreference.set!(:domain, request.host_with_port)
+    end
+  end
+
+  def _remove_avatar
+    @user.avatar = nil
+    @user.save
+    render(:update) do |page|
+      page.redirect_to user_path(@user)
     end
   end
 end

@@ -1,6 +1,6 @@
 - set_tab :profile, _("Edit Profile")
 
-- semantic_form_for(@user, :live_validations => true) do |f|
+- semantic_form_for(@user, :live_validations => true, :html => { :multipart => true }) do |f|
   = f.object.errors.on(:base)
   != render :partial => "form", :locals => { :f => f }
   %br
