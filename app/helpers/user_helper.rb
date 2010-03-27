@@ -57,6 +57,10 @@ module UserHelper
     end.join(", ")
   end
 
+  def avatar_for(user, size = 50)
+    user.gravatar_url(:size => size)
+  end
+
 protected
   def send_activation_link(user, text)
     link_to text, user_activation_instructions_path(user, :page => params[:page]), :method => :post, :confirm => (_("Send Activation Email to %{user}. Are you sure?") % {:user => "#{h(user.name)} <#{user.email}>"})

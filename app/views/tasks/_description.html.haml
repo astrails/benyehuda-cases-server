@@ -28,6 +28,7 @@
     %strong= _("Editor:")
     != link_to h(@task.editor.name), profiles_path(@task.editor)
     != link_to_editors_email(@task)
+    != image_tag(avatar_for(@task.editor))
 
 - if @task.assignee
   %p
@@ -35,4 +36,5 @@
     != link_to h(@task.assignee.name), profiles_path(@task.assignee)
     - if @task.editor?(current_user)
       != link_to_assignee_email(@task)
+    != image_tag(avatar_for(@task.assignee))
 

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   include Astrails::Auth::Model
   attr_accessible :name, :password, :password_confirmation, :notify_on_comments, :notify_on_status
 
+  has_gravatar
+
   validates_presence_of :name
 
   named_scope :volunteers, {:conditions => "is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}

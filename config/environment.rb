@@ -30,6 +30,7 @@ Rails::Initializer.run do |config|
   config.gem "fastercsv", :version => "1.5.0"
   config.gem 'hoptoad_notifier', :version => "2.1.3"
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.15'
+  config.gem 'gravtastic', :version => '2.2.0'
   # config.middleware.use Rack::NoIE
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
