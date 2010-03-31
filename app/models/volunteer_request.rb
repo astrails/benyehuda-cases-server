@@ -11,6 +11,10 @@ class VolunteerRequest < ActiveRecord::Base
   named_scope :by_request_time, :order => "volunteer_requests.created_at"
   named_scope :with_user, :include => :user
 
+  include CustomProperties
+  has_many_custom_properties :request # task_properties
+
+
   def approve!(approver_user)
     self.approver = approver_user
     self.approved_at = Time.now.utc

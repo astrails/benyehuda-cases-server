@@ -5,5 +5,8 @@
   - f.inputs do
     = f.object.errors.on(:base)
     != f.input :preferences, :as => :text, :label => _("Preferences"), :hint => _("State your preferred material (author, genre, etc.), and make any other comment you wish to communicate to the editors")
+  - f.inputs do
+    - custom_properties_fields(f, "request")    
+  - f.inputs do
     != f.submit _("Request")
     != link_to _("cancel"), properties_path

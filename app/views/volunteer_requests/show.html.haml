@@ -7,6 +7,12 @@
 %h4= _("Preferences")
 %p!= auto_link(h(@volunteer_request.preferences))
 
+%h4= _("Other")
+- @volunteer_request.request_properties.visible_for(current_user).each do |p|
+  %p
+    %strong= "#{p.property.title}:"
+    != property_value(p)
+
 %p
   != confirm_button(@volunteer_request)
   != link_to _("Back to Volunteer Requestes"), volunteer_requests_path

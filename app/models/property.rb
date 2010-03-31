@@ -1,6 +1,6 @@
 class Property < ActiveRecord::Base
 
-  PARENTS = %w(User Volunteer Editor Task)
+  PARENTS = %w(User Volunteer Editor Task Request)
   TYPES = %w(string text boolean)
 
   validates_presence_of :title
