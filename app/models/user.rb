@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
     :bucket         => GlobalPreference.get(:s3_bucket),
     :path =>        "users/:id/avatars/:style/:filename",
     :s3_credentials => {
-      :access_key_id     => GlobalPreference.get(:s3_key),
-      :secret_access_key => GlobalPreference.get(:s3_secret),
+      :access_key_id     => GlobalPreference.get(:s3_key) || "junk",
+      :secret_access_key => GlobalPreference.get(:s3_secret) || "junk",
     }
   attr_accessible :avatar
   def self.style_to_size(style)
