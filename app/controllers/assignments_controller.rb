@@ -9,6 +9,7 @@ class AssignmentsController < ApplicationController
 
   def edit
     @skip_assignment_links = true
+    @task.editor ||= current_user
   end
 
   def update
