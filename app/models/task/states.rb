@@ -58,7 +58,7 @@ module Task::States
 
       # assignee needs editor's help
       aasm_event :help_required do
-        transitions :from => [:assigned, :stuck, :partial, :rejected], :to => :stuck
+        transitions :from => [:assigned, :partial, :rejected], :to => :stuck
       end
 
       # assignee finished partially her work
