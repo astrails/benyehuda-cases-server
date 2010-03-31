@@ -1,4 +1,4 @@
-%tr{:class => cycle("odd", "even")}
+%tr{:class => cycle("odd", "even") + " " + user_css_class(user)}
   %td= user.id
   %td!= link_to(h(user.name), user_path(user))
   %td= user.email
@@ -12,6 +12,9 @@
   %td= user.current_login_at ? (_("%{time} ago") % {:time => time_ago_in_words(user.current_login_at)}) : s_("last login|never")
   %td.edit!= link_to _("Edit"), edit_user_path(user)
   - if user.activated_at
-    %td.delete!= link_to _("Disable"), user, :method => "delete", :confirm => _("Are you sure?")
+    - if user.disabled_at
+      %td.delete!= link_to _("Enable"), user_path(user, :enable => true), :method => "delete"
+    - else
+      %td.delete!= link_to _("Disable"), user, :method => "delete", :confirm => _("Are you sure?")
   - else    
     %td &nbsp;

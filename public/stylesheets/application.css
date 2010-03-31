@@ -37,3 +37,7 @@ div.abandoning_reason {
 div.finished_reason {
 	border:1px solid green;
 }
+
+.disabled-user td {
+	background:red;
+}

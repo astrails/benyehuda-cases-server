@@ -36,15 +36,21 @@ class UsersController < InheritedResources::Base
   end
 
   def destroy
-    @user = User.enabled.find(params[:id])
+    @user = User.find(params[:id])
     if @user.id == current_user.id
       flash[:error] = _("You cannot remove your own account")
       redirect_to users_path
       return
     end
-    @user.update_attribute(:disabled_at, Time.now.utc)
-    flash[:notice] = _("User disabled")
-    redirect_to users_path
+    if "true" == params[:enable]
+      @user.update_attribute(:disabled_at, nil)
+      flash[:notice] = _("User enabled")
+      redirect_to user_path(@user)
+    else
+      @user.update_attribute(:disabled_at, Time.now.utc)
+      flash[:notice] = _("User disabled")
+      redirect_to users_path
+    end
   end
 
   protected

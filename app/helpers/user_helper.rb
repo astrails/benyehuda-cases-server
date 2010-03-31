@@ -61,6 +61,14 @@ module UserHelper
     user.avatar? ? user.avatar.url(style) : user.gravatar_url(:size => User.style_to_size(style))
   end
 
+  def user_css_class(user)
+    if user.disabled_at
+      "disabled-user"
+    else
+      ""
+    end
+  end
+
 protected
   def send_activation_link(user, text)
     link_to text, user_activation_instructions_path(user, :page => params[:page]), :method => :post, :confirm => (_("Send Activation Email to %{user}. Are you sure?") % {:user => "#{h(user.name)} <#{user.email}>"})
