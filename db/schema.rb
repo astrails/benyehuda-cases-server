@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100327080325) do
+ActiveRecord::Schema.define(:version => 20100409144156) do
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -115,6 +115,16 @@ ActiveRecord::Schema.define(:version => 20100327080325) do
   end
 
   add_index "search_settings", ["user_id", "search_key"], :name => "index_search_settings_on_user_id_and_search_key"
+
+  create_table "site_notices", :force => true do |t|
+    t.datetime "start_displaying_at"
+    t.datetime "end_displaying_at"
+    t.string   "html",                :limit => 8192
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_notices", ["start_displaying_at", "end_displaying_at"], :name => "index_site_notices_on_start_displaying_at_and_end_displaying_at"
 
   create_table "tasks", :force => true do |t|
     t.integer  "creator_id"

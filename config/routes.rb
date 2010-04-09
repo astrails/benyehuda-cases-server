@@ -26,4 +26,5 @@ ActionController::Routing::Routes.draw do |map|
     tasks.resources :comments
   end
   map.resources :task_requests
+  map.resources :site_notices
 end
