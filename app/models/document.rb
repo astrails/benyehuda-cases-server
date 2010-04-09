@@ -13,7 +13,7 @@ class Document < ActiveRecord::Base
   has_attached_file :file,
     :storage        => :s3,
     :bucket         => GlobalPreference.get(:s3_bucket),
-    :path =>        "tasks/:task_id/documents/:id/:filename",
+    :path =>        "documents/:id/:filename",
     :default_url   => "",
     :s3_credentials => {
       :access_key_id     => GlobalPreference.get(:s3_key),
