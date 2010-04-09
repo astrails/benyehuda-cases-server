@@ -5,6 +5,6 @@ class ActivationInstructionsController < ApplicationController
     user = User.find(params[:user_id])
     user.deliver_activation_instructions!
     flash[:notice] = _("Activation instructions sent to #{user.email}.")
-    redirect_to users_path(:page => params[:page])
+    redirect_to users_path(:page => params[:page], :query => params[:query], :all => params[:all])
   end
 end
