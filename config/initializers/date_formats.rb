@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:isra_date] = "%d.%m.%Y"

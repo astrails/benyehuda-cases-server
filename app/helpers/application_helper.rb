@@ -23,6 +23,12 @@ module ApplicationHelper
     end
   end
 
+  def site_notices
+    SiteNotice.active.each do |sn|
+      haml_tag(:div, sn.html, :class => "site-notice")
+    end
+  end
+
   def boolean_property(value)
     value ? "true" : ""
   end

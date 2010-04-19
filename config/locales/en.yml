@@ -30,6 +30,11 @@ en:
     users:
         update:
           notice: "User updated"
+    site_notices:
+        update:
+          notice: "Site Notice updated"
+        create:
+          notice: "Site Notice created"
   authlogic:
     error_messages:
       login_blank: "can not be blank"

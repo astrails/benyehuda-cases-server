@@ -1,0 +1,5 @@
+= f.object.errors.on(:base)
+- f.inputs do
+  != f.input :start_displaying_at, :as => :date, :label => _("Show from")
+  != f.input :end_displaying_at, :as => :date, :label => _("Show until")
+  != f.input :html, :as => :text

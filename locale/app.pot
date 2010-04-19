@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-03-25 10:33+0200\n"
+"POT-Creation-Date: 2010-04-19 15:13+0300\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,6 +65,10 @@ msgstr ""
 msgid "Activation email sent"
 msgstr ""
 
+#: app/views/site_notices/index.html.haml:1
+msgid "Active Site Notices"
+msgstr ""
+
 #: app/views/comments/_index.html.haml:6
 msgid "Add Comment"
 msgstr ""
@@ -76,6 +80,10 @@ msgstr ""
 #: app/views/admin/tasks/_search.html.haml:18
 #: app/views/users/_search.html.haml:8
 msgid "All"
+msgstr ""
+
+#: app/views/site_notices/index.html.haml:1
+msgid "All Site Notices"
 msgstr ""
 
 #: app/views/admin/tasks/index.html.haml:1
@@ -94,9 +102,11 @@ msgstr ""
 #: app/views/comments/_comment.html.haml:6 app/views/comments/_new.html.haml:7
 #: app/views/documents/_document.html.haml:6
 #: app/views/properties/_property.html.haml:7
+#: app/views/site_notices/_site_notice.html.haml:6
 #: app/views/tasks/_assignee_simple_actions.html.haml:4
 #: app/views/tasks/_editor_simple_actions.html.haml:2
-#: app/views/users/_user.html.haml:15
+#: app/views/users/_public_profile.html.haml:9
+#: app/views/users/_user.html.haml:18
 msgid "Are you sure?"
 msgstr ""
 
@@ -117,13 +127,13 @@ msgstr ""
 msgid "Assign a task to %{user_name}"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:4
+#: app/models/task.rb:24 app/views/admin/tasks/_form.html.haml:4
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:34
+#: app/views/tasks/_description.html.haml:30
 msgid "Assignee:"
 msgstr ""
 
@@ -143,7 +153,11 @@ msgstr ""
 msgid "Attached documents"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:12
+#: app/views/users/_form.html.haml:4
+msgid "Avatar"
+msgstr ""
+
+#: app/views/volunteer_requests/show.html.haml:18
 msgid "Back to Volunteer Requestes"
 msgstr ""
 
@@ -159,7 +173,9 @@ msgstr ""
 #: app/views/admin/tasks/new.html.haml:10 app/views/comments/_new.html.haml:7
 #: app/views/dashboards/_waiting_volunteers.html.haml:17
 #: app/views/documents/new.html.haml:6 app/views/properties/edit.html.haml:8
-#: app/views/properties/new.html.haml:7 app/views/users/edit.html.haml:8
+#: app/views/properties/new.html.haml:7
+#: app/views/site_notices/edit.html.haml:6
+#: app/views/site_notices/new.html.haml:6 app/views/users/edit.html.haml:8
 msgid "Cancel"
 msgstr ""
 
@@ -199,7 +215,7 @@ msgstr ""
 msgid "Create new task based on this one"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:10
+#: app/models/task.rb:20 app/views/admin/tasks/index.html.haml:10
 msgid "Creater"
 msgstr ""
 
@@ -220,12 +236,12 @@ msgstr ""
 msgid "Did you forget to upload documents?"
 msgstr ""
 
-#: app/views/admin/tasks/_search.html.haml:10
+#: app/models/task.rb:28 app/views/admin/tasks/_search.html.haml:10
 #: app/views/tasks/_form.html.haml:4
 msgid "Difficulty"
 msgstr ""
 
-#: app/views/users/_user.html.haml:15
+#: app/views/users/_user.html.haml:18
 msgid "Disable"
 msgstr ""
 
@@ -246,18 +262,22 @@ msgstr ""
 msgid "Edit Project Property"
 msgstr ""
 
+#: app/views/site_notices/edit.html.haml:1
+msgid "Edit Site Notice"
+msgstr ""
+
 #: app/views/admin/tasks/edit.html.haml:1
 msgid "Edit Task"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:5
+#: app/models/task.rb:22 app/views/admin/tasks/_form.html.haml:5
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/_index.html.haml:9
 msgid "Editor"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:37
+#: app/views/users/_public_profile.html.haml:41
 msgid "Editor Properties"
 msgstr ""
 
@@ -270,7 +290,7 @@ msgstr ""
 msgid "Editor eyes only"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:28
+#: app/views/tasks/_description.html.haml:27
 msgid "Editor:"
 msgstr ""
 
@@ -280,9 +300,13 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: app/views/users/_form.html.haml:11
-#: app/views/users/_public_profile.html.haml:20
+#: app/views/users/_form.html.haml:12
+#: app/views/users/_public_profile.html.haml:24
 msgid "Email Notifications"
+msgstr ""
+
+#: app/views/users/_user.html.haml:16
+msgid "Enable"
 msgstr ""
 
 #: app/views/users/_search.html.haml:10
@@ -319,7 +343,7 @@ msgstr ""
 msgid "Flash Media Player"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:38
+#: app/views/layouts/application.html.haml:40
 msgid "Footer"
 msgstr ""
 
@@ -327,12 +351,13 @@ msgstr ""
 msgid "Forgot Password"
 msgstr ""
 
+#: app/views/site_notices/index.html.haml:10
 #: app/views/volunteer_requests/index.html.haml:5
 msgid "From"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:54 app/views/admin/tasks/_search.html.haml:6
-#: app/views/tasks/_form.html.haml:5
+#: app/helpers/tasks_helper.rb:21 app/models/task.rb:30
+#: app/views/admin/tasks/_search.html.haml:6 app/views/tasks/_form.html.haml:5
 msgid "Full Nikkud"
 msgstr ""
 
@@ -342,6 +367,10 @@ msgstr ""
 
 #: app/helpers/tabs_helper.rb:8
 msgid "Global Preferences"
+msgstr ""
+
+#: app/views/site_notices/index.html.haml:12
+msgid "HTML"
 msgstr ""
 
 #: app/views/layouts/application.html.haml:15
@@ -456,7 +485,7 @@ msgstr ""
 msgid "History"
 msgstr ""
 
-#: app/views/users/_index.html.haml:5
+#: app/views/site_notices/index.html.haml:9 app/views/users/_index.html.haml:5
 msgid "ID"
 msgstr ""
 
@@ -472,15 +501,15 @@ msgid ""
 "your email."
 msgstr ""
 
-#: app/views/users/_form.html.haml:5
+#: app/views/users/_form.html.haml:6
 msgid "Is Admin"
 msgstr ""
 
-#: app/views/users/_form.html.haml:6
+#: app/views/users/_form.html.haml:7
 msgid "Is Editor"
 msgstr ""
 
-#: app/views/users/_form.html.haml:7
+#: app/views/users/_form.html.haml:8
 msgid "Is Volunteer"
 msgstr ""
 
@@ -488,7 +517,7 @@ msgstr ""
 msgid "It looks like you don't have %{flash} installed or enabled."
 msgstr ""
 
-#: app/views/admin/tasks/_search.html.haml:8
+#: app/models/task.rb:26 app/views/admin/tasks/_search.html.haml:8
 #: app/views/admin/tasks/index.html.haml:13 app/views/tasks/_form.html.haml:3
 #: app/views/tasks/_index.html.haml:13
 #: app/views/tasks/_unassigned_index.html.haml:9
@@ -529,7 +558,7 @@ msgstr ""
 msgid "My Tasks"
 msgstr ""
 
-#: app/views/admin/tasks/index.html.haml:12
+#: app/models/task.rb:16 app/views/admin/tasks/index.html.haml:12
 #: app/views/dashboards/_waiting_volunteers.html.haml:6
 #: app/views/properties/index.html.haml:9 app/views/tasks/_form.html.haml:2
 #: app/views/tasks/_index.html.haml:12
@@ -545,6 +574,10 @@ msgstr ""
 
 #: app/views/properties/new.html.haml:1
 msgid "New Property"
+msgstr ""
+
+#: app/views/site_notices/new.html.haml:1
+msgid "New Site Notice"
 msgstr ""
 
 #: app/views/admin/tasks/new.html.haml:1 app/views/dashboards/show.html.haml:7
@@ -564,7 +597,7 @@ msgstr ""
 msgid "No user was found with that email address"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:17
+#: app/views/users/_public_profile.html.haml:21
 msgid "Not activated yet"
 msgstr ""
 
@@ -577,16 +610,17 @@ msgstr ""
 msgid "Only participant can see this page"
 msgstr ""
 
-#: app/controllers/users_controller.rb:65
+#: app/controllers/users_controller.rb:73
 msgid "Only registered activists allowed to access this page"
 msgstr ""
 
 #: app/controllers/documents_controller.rb:51
-#: app/controllers/users_controller.rb:76
+#: app/controllers/users_controller.rb:84
 msgid "Only the owner can see this page"
 msgstr ""
 
 #: app/views/dashboards/_editor_dashboard.html.haml:3
+#: app/views/volunteer_requests/show.html.haml:10
 msgid "Other"
 msgstr ""
 
@@ -628,7 +662,7 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#: app/helpers/tabs_helper.rb:10
+#: app/helpers/tabs_helper.rb:11
 msgid "Profile"
 msgstr ""
 
@@ -657,7 +691,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:13
+#: app/views/users/_public_profile.html.haml:17
 msgid "Registered since"
 msgstr ""
 
@@ -677,7 +711,7 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: app/views/volunteer_requests/new.html.haml:8
+#: app/views/volunteer_requests/new.html.haml:11
 msgid "Request"
 msgstr ""
 
@@ -693,17 +727,19 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:9
+#: app/views/users/_public_profile.html.haml:13
 msgid "Roles"
 msgstr ""
 
 #: app/views/admin/tasks/edit.html.haml:8
 #: app/views/admin/tasks/new.html.haml:8 app/views/properties/edit.html.haml:7
 #: app/views/properties/new.html.haml:6
+#: app/views/site_notices/edit.html.haml:5
+#: app/views/site_notices/new.html.haml:5
 msgid "Save"
 msgstr ""
 
-#: app/controllers/admin/tasks_controller.rb:9
+#: app/controllers/admin/tasks_controller.rb:10
 #: app/views/admin/tasks/new.html.haml:9
 msgid "Save and New"
 msgstr ""
@@ -712,15 +748,15 @@ msgstr ""
 msgid "Search/Filter"
 msgstr ""
 
-#: app/helpers/user_helper.rb:62
+#: app/helpers/user_helper.rb:74
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:117
+#: app/views/tasks/_description.html.haml:30
 msgid "Send Email to Assignee"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:111
+#: app/views/tasks/_description.html.haml:27
 msgid "Send Email to Editor"
 msgstr ""
 
@@ -728,7 +764,15 @@ msgstr ""
 msgid "Send Password Reset Instructions"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:36
+#: app/views/site_notices/_form.html.haml:3
+msgid "Show from"
+msgstr ""
+
+#: app/views/site_notices/_form.html.haml:4
+msgid "Show until"
+msgstr ""
+
+#: app/views/layouts/application.html.haml:37
 msgid "Sidebar"
 msgstr ""
 
@@ -736,11 +780,15 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
+#: app/helpers/tabs_helper.rb:9
+msgid "Site Notice"
+msgstr ""
+
 #: app/controllers/tasks_controller.rb:87
 msgid "Sorry, you're not allowed to perfrom this operation"
 msgstr ""
 
-#: app/views/admin/tasks/_form.html.haml:7
+#: app/models/task.rb:18 app/views/admin/tasks/_form.html.haml:7
 #: app/views/admin/tasks/_search.html.haml:4
 #: app/views/admin/tasks/index.html.haml:16
 #: app/views/tasks/_index.html.haml:16
@@ -775,7 +823,7 @@ msgid "Task finished"
 msgstr ""
 
 #: app/controllers/assignments_controller.rb:6
-#: app/controllers/assignments_controller.rb:16
+#: app/controllers/assignments_controller.rb:17
 msgid "Task has been reassigned"
 msgstr ""
 
@@ -809,7 +857,11 @@ msgstr[1] ""
 msgid "Title"
 msgstr ""
 
-#: app/helpers/tabs_helper.rb:9
+#: app/views/site_notices/index.html.haml:11
+msgid "To"
+msgstr ""
+
+#: app/helpers/tabs_helper.rb:10
 msgid "Translations"
 msgstr ""
 
@@ -837,7 +889,7 @@ msgstr ""
 msgid "Uploaded by %{user} %{time} ago"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:23
+#: app/views/users/_public_profile.html.haml:27
 msgid "User Properties"
 msgstr ""
 
@@ -845,8 +897,12 @@ msgstr ""
 msgid "User Settings"
 msgstr ""
 
-#: app/controllers/users_controller.rb:44
+#: app/controllers/users_controller.rb:51
 msgid "User disabled"
+msgstr ""
+
+#: app/controllers/users_controller.rb:47
+msgid "User enabled"
 msgstr ""
 
 #: app/helpers/tabs_helper.rb:6
@@ -857,7 +913,7 @@ msgstr ""
 msgid "Volunteer"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:30
+#: app/views/users/_public_profile.html.haml:34
 msgid "Volunteer Properties"
 msgstr ""
 
@@ -893,15 +949,15 @@ msgstr ""
 msgid "When"
 msgstr ""
 
-#: app/helpers/user_helper.rb:54 app/views/users/_form.html.haml:12
+#: app/helpers/user_helper.rb:54 app/views/users/_form.html.haml:13
 msgid "When a comment added to my task"
 msgstr ""
 
-#: app/helpers/user_helper.rb:55 app/views/users/_form.html.haml:13
+#: app/helpers/user_helper.rb:55 app/views/users/_form.html.haml:14
 msgid "When my task status changed"
 msgstr ""
 
-#: app/controllers/users_controller.rb:39
+#: app/controllers/users_controller.rb:41
 msgid "You cannot remove your own account"
 msgstr ""
 
@@ -1031,11 +1087,11 @@ msgstr ""
 msgid "activerecord.errors.messages.wrong_length"
 msgstr ""
 
-#: locale/yml_import.rb:98
+#: locale/yml_import.rb:99
 msgid "activerecord.errors.models.property.attributes.parent_type.inclusion"
 msgstr ""
 
-#: locale/yml_import.rb:94
+#: locale/yml_import.rb:95
 msgid "activerecord.errors.models.property.attributes.property_type.inclusion"
 msgstr ""
 
@@ -1075,7 +1131,7 @@ msgstr ""
 msgid "auditable|Document"
 msgstr ""
 
-#: app/models/task.rb:8
+#: app/models/task.rb:12
 msgid "auditable|Task"
 msgstr ""
 
@@ -1083,19 +1139,19 @@ msgstr ""
 msgid "authlogic.attributes.user_session.email"
 msgstr ""
 
-#: locale/yml_import.rb:102
+#: locale/yml_import.rb:103
 msgid "authlogic.attributes.user_session.login"
 msgstr ""
 
-#: locale/yml_import.rb:103
+#: locale/yml_import.rb:104
 msgid "authlogic.attributes.user_session.password"
 msgstr ""
 
-#: locale/yml_import.rb:105
+#: locale/yml_import.rb:107
 msgid "authlogic.attributes.user_session.remember_me"
 msgstr ""
 
-#: locale/yml_import.rb:104
+#: locale/yml_import.rb:106
 msgid "authlogic.error_messages.consecutive_failed_logins_limit_exceeded"
 msgstr ""
 
@@ -1111,15 +1167,15 @@ msgstr ""
 msgid "authlogic.error_messages.login_invalid"
 msgstr ""
 
-#: locale/yml_import.rb:96
+#: locale/yml_import.rb:97
 msgid "authlogic.error_messages.login_not_found"
 msgstr ""
 
-#: locale/yml_import.rb:101
+#: locale/yml_import.rb:102
 msgid "authlogic.error_messages.no_authentication_details"
 msgstr ""
 
-#: locale/yml_import.rb:99
+#: locale/yml_import.rb:100
 msgid "authlogic.error_messages.not_active"
 msgstr ""
 
@@ -1131,15 +1187,15 @@ msgstr ""
 msgid "authlogic.error_messages.not_confirmed"
 msgstr ""
 
-#: locale/yml_import.rb:92
+#: locale/yml_import.rb:93
 msgid "authlogic.error_messages.password_blank"
 msgstr ""
 
-#: locale/yml_import.rb:95
+#: locale/yml_import.rb:96
 msgid "authlogic.error_messages.password_invalid"
 msgstr ""
 
-#: locale/yml_import.rb:100
+#: locale/yml_import.rb:101
 msgid "authlogic.models.user_session"
 msgstr ""
 
@@ -1161,7 +1217,7 @@ msgstr[1] ""
 #: app/views/tasks/_abandon.html.haml:11 app/views/tasks/_finish.html.haml:7
 #: app/views/tasks/_new_chain_task.html.haml:10
 #: app/views/tasks/_reject.html.haml:11
-#: app/views/volunteer_requests/new.html.haml:9
+#: app/views/volunteer_requests/new.html.haml:12
 msgid "cancel"
 msgstr ""
 
@@ -1319,6 +1375,7 @@ msgstr ""
 msgid "document audit|Document %{file_name}"
 msgstr ""
 
+#: app/views/site_notices/_site_notice.html.haml:7
 #: app/views/users/_public_profile.html.haml:6
 msgid "edit"
 msgstr ""
@@ -1327,11 +1384,11 @@ msgstr ""
 msgid "edit my profile"
 msgstr ""
 
-#: app/helpers/properties_helper.rb:26
+#: app/helpers/properties_helper.rb:27 app/models/task.rb:11
 msgid "false"
 msgstr ""
 
-#: locale/yml_import.rb:89
+#: locale/yml_import.rb:88
 msgid "flash.admin.tasks.create.notice"
 msgstr ""
 
@@ -1351,15 +1408,23 @@ msgstr ""
 msgid "flash.properties.update.notice"
 msgstr ""
 
-#: locale/yml_import.rb:93
+#: locale/yml_import.rb:105
+msgid "flash.site_notices.create.notice"
+msgstr ""
+
+#: locale/yml_import.rb:92
+msgid "flash.site_notices.update.notice"
+msgstr ""
+
+#: locale/yml_import.rb:94
 msgid "flash.user_session.create.notice"
 msgstr ""
 
-#: locale/yml_import.rb:88
+#: locale/yml_import.rb:89
 msgid "flash.user_session.destroy.notice"
 msgstr ""
 
-#: locale/yml_import.rb:97
+#: locale/yml_import.rb:98
 msgid "flash.users.update.notice"
 msgstr ""
 
@@ -1471,6 +1536,26 @@ msgstr ""
 msgid "register"
 msgstr ""
 
+#: app/views/site_notices/_site_notice.html.haml:6
+msgid "remove"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:9
+msgid "remove avatar"
+msgstr ""
+
+#: app/views/site_notices/index.html.haml:4
+msgid "site notice|Active"
+msgstr ""
+
+#: app/views/site_notices/index.html.haml:5
+msgid "site notice|All"
+msgstr ""
+
+#: app/views/site_notices/index.html.haml:3
+msgid "site notice|New"
+msgstr ""
+
 #: app/models/notification.rb:17
 msgid ""
 "state changed notification subject|%{state} (%{domain}): %{task_name_snippet}"
@@ -1492,75 +1577,75 @@ msgstr ""
 msgid "support.select.prompt"
 msgstr ""
 
-#: app/models/task.rb:92
+#: app/models/task.rb:125
 msgid "task cannot be updated"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:9
+#: app/models/task.rb:63
 msgid "task difficulty|easy"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:11
+#: app/models/task.rb:65
 msgid "task difficulty|hard"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:10
+#: app/models/task.rb:64
 msgid "task difficulty|normal"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:34
+#: app/helpers/tasks_helper.rb:10
 msgid "task event|Abandon"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:28
+#: app/helpers/tasks_helper.rb:4
 msgid "task event|Approve"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:31
+#: app/helpers/tasks_helper.rb:7
 msgid "task event|Create Other Task"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:33
+#: app/helpers/tasks_helper.rb:9
 msgid "task event|Finish"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:30
+#: app/helpers/tasks_helper.rb:6
 msgid "task event|Mark as Completed"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:36
+#: app/helpers/tasks_helper.rb:12
 msgid "task event|Mark as Finished Partly"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:35
+#: app/helpers/tasks_helper.rb:11
 msgid "task event|Need Editor's Help"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:29
+#: app/helpers/tasks_helper.rb:5
 msgid "task event|Reject"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:5
+#: app/models/task.rb:57
 msgid "task kind|other"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:4
+#: app/models/task.rb:56
 msgid "task kind|proofing"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:3
+#: app/models/task.rb:55
 msgid "task kind|typing"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:143
+#: app/helpers/tasks_helper.rb:95
 msgid "task length|Long"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:143
+#: app/helpers/tasks_helper.rb:95
 msgid "task length|Medium"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:143
+#: app/helpers/tasks_helper.rb:95
 msgid "task length|Short"
 msgstr ""
 
@@ -1572,39 +1657,39 @@ msgstr ""
 msgid "task section|Task Settings"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:23
+#: app/models/task.rb:165
 msgid "task state|Another Task Created"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:21
+#: app/models/task.rb:163
 msgid "task state|Approved by Editor"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:16
+#: app/models/task.rb:158
 msgid "task state|Assigned/Work in Progress"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:17
+#: app/models/task.rb:159
 msgid "task state|Editors Help Required"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:18
+#: app/models/task.rb:160
 msgid "task state|Partialy Ready"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:22
+#: app/models/task.rb:164
 msgid "task state|Ready to Publish"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:20
+#: app/models/task.rb:162
 msgid "task state|Rejected by Editor"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:15
+#: app/models/task.rb:157
 msgid "task state|Unassigned"
 msgstr ""
 
-#: app/helpers/tasks_helper.rb:19
+#: app/models/task.rb:161
 msgid "task state|Waits for Editor's approvement"
 msgstr ""
 
@@ -1628,7 +1713,7 @@ msgstr ""
 msgid "time.pm"
 msgstr ""
 
-#: app/helpers/properties_helper.rb:26
+#: app/helpers/properties_helper.rb:27 app/models/task.rb:11
 #: app/views/properties/_property.html.haml:5
 msgid "true"
 msgstr ""

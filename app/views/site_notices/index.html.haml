@@ -1,0 +1,18 @@
+- set_tab :site_notices, (params[:all] ? _("All Site Notices") : _("Active Site Notices"))
+
+!= link_to s_("site notice|New"), new_site_notice_path
+!= link_to s_("site notice|Active"), site_notices_path
+!= link_to s_("site notice|All"), site_notices_path(:all => true)
+
+%table.list
+  %tr.title
+    %th= _("ID")
+    %th= _("From")
+    %th= _("To")
+    %th= _("HTML")
+    %th &nbsp;
+    %th &nbsp;
+  
+  != render(:partial => collection)
+
+!= will_paginate(collection)

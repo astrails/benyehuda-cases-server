@@ -28,6 +28,7 @@
                 != link_to locale, locale_url_for(locale)
       #tabs.span-24.last
         - render_tabs
+        - site_notices
       #content.span-24.last
         #main.span-19.colborder
           != render :partial => 'layouts/flashes'

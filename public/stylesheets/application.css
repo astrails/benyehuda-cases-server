@@ -41,3 +41,11 @@ div.finished_reason {
 .disabled-user td {
 	background:red;
 }
+
+.site-notice {
+	margin:2em 0;
+	padding:1em 5em;
+	border:1px solid #ddd;
+	background:#e5ecf9;
+	border-left:1em solid #ddd;
+}

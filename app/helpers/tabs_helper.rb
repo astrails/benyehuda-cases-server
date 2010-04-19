@@ -6,6 +6,7 @@ module TabsHelper
     {:name => :users, :title => N_("Users"), :path => "/users", :if => :is_admin?}, 
     {:name => :object_prefs, :title => N_("Object Properties"), :path => "/properties", :if => :is_admin?}, 
     {:name => :global_prefs, :title => N_("Global Preferences"), :path => "/global_preferences", :if => :is_admin?},
+    {:name => :site_notices, :title => N_("Site Notice"), :path => "/site_notices", :if => :is_admin?},
     {:name => :translations, :title => N_("Translations"), :path => "/translation_keys", :if => :is_admin?},
     {:name => :profile, :title => N_("Profile"), :path => "/profile"}
   ]

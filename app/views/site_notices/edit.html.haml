@@ -1,0 +1,6 @@
+- set_tab :site_notices, _("Edit Site Notice")
+
+- semantic_form_for :site_notice, @site_notice, :html => {:method => :put}, :url => site_notice_path(@site_notice) do |f|
+  != render :partial => "form", :locals => { :f => f }
+  != f.submit _("Save")
+  != link_to _("Cancel"), site_notices_path
