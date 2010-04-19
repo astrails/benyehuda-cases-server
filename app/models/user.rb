@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  has_many :assignment_histories, :dependent => :destroy
 
   validates_presence_of :name
 

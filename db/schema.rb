@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100409144156) do
+ActiveRecord::Schema.define(:version => 20100419123045) do
+
+  create_table "assignment_histories", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.string   "role",       :limit => 16
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignment_histories", ["user_id"], :name => "index_assignment_histories_on_user_id"
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"

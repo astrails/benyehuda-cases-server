@@ -1,13 +1,4 @@
-%h3
-  = @user.name
-  %small
-    = @user.email
-    - when_admin do
-      != link_to _("edit"), edit_user_path(@user)
-!= image_tag(avatar_for(@user, :medium))
-- if @user.avatar? && (current_user == @user || current_user.is_admin?)
-  != link_to_remote _("remove avatar"), :url => user_path(@user, :remove_avatar => true), :method => :put, :confirm => _("Are you sure?")
-
+!= render(:partial => "info")
 
 %p
   %strong= _("Roles")
@@ -43,3 +34,7 @@
     %p
       %strong= "#{p.property.title}:"
       != property_value(p)
+
+%h4= _("Assignments History")
+!= render(:partial => "assignment_histories/assignment_history", :collection => @user.assignment_histories.reverse_order.with_task.recent(5))
+!= link_to _("more &raquo;"), user_assignment_histories_path(@user)

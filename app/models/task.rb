@@ -39,7 +39,9 @@ class Task < ActiveRecord::Base
   belongs_to :parent, :class_name => "Task"
   has_many   :children, :class_name => "Task", :foreign_key => "parent_id"
 
-  has_many :task_audits, :class_name => "Audit"
+  has_many :task_audits, :class_name => "Audit", :dependent => :destroy
+
+  has_many :assignment_histories, :dependent => :destroy
 
   include CustomProperties
   has_many_custom_properties :task # task_properties
@@ -79,6 +81,15 @@ class Task < ActiveRecord::Base
   default_attribute :difficulty, "normal"
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
+
+  after_save :update_assignments_history
+  def update_assignments_history    
+    assignee.assignment_histories.create(:task_id => self.id, :role => "assignee") if assignee_id_changed? && !assignee.blank?
+    
+    editor.assignment_histories.create(:task_id => self.id, :role => "editor") if editor_id_changed? && !editor.blank?
+    
+    creator.assignment_histories.create(:task_id => self.id, :role => "creator") if creator_id_changed? && !creator.blank?
+  end
 
   define_index do
     indexes :name, :sortable => true

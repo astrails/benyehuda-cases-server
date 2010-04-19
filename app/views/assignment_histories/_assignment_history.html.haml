@@ -1,0 +1,3 @@
+%div[assignment_history]
+  = assignment_history.created_at.to_s(:isra_date)
+  != _("%{role} for %{task_link} (%{task_state})") % { :role => assignment_history.role_txt, :task_link => link_to(h(assignment_history.task.name), task_path(assignment_history.task)), :task_state => Task.textify_state(assignment_history.task.state)}
