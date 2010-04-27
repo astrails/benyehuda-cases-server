@@ -22,7 +22,8 @@ module Paperclip
       return nil if uploaded_file.nil?
 
       @queued_for_write[:original]   = uploaded_file.to_tempfile
-      instance_write(:file_name,       uploaded_file.original_filename.strip.he_transliterate.gsub(/[^A-Za-z\d\.\-_]+/, '_'))
+      instance_write(:file_name,       uploaded_file.original_filename.strip)
+      # instance_write(:file_name,       uploaded_file.original_filename.strip.gsub(/[^A-Za-z\d\.\-_]+/, '_'))
       instance_write(:content_type,    uploaded_file.content_type.to_s.strip)
       instance_write(:file_size,       uploaded_file.size.to_i)
       instance_write(:updated_at,      Time.now)
@@ -37,18 +38,5 @@ module Paperclip
       uploaded_file.close if close_uploaded_file
       validate
     end
-  end
-end
-
-class String
-  HE_TRANS = "קראטוןםפשדגכעיחלךףזסבהנמצתץ".split(//)
-  EN_TRANS = "QRAJWNMPSDGKEIXLKPZSBHNMZTZ".split(//)
-  def he_transliterate
-    debugger
-    res = self.clone
-    HE_TRANS.each_with_index do |l, i|
-      res.gsub!(l, EN_TRANS[i])
-    end
-    res
   end
 end
