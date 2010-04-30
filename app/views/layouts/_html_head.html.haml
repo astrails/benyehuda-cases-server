@@ -10,7 +10,7 @@
 /[if IE]
   != stylesheet_link_tag 'blueprint/ie',  :media => "screen, projection"
 
-!= stylesheet_link_tag 'formtastic', 'formtastic_changes', 'application', :media => 'all', :cache => "main"
+!= stylesheet_link_tag 'formtastic_changes', 'application', :media => 'all', :cache => "main"
 
 != render(:partial => "layouts/javascripts")
 != javascript_include_tag "jrails", "jquery.validate.min.js", "application", :cache => "main"

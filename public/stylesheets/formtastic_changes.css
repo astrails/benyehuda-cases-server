@@ -18,3 +18,5 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 	height:120px;
 	display:block;
 }
+
+form.formtastic ol, form.formtastic ul { list-style:none; }
