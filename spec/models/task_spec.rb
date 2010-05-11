@@ -138,6 +138,15 @@ describe Task do
       task.should be_unassigned
     end
 
+    it "should not allow reject with blank message" do
+      task = Factory.create(:waits_for_editor_approve_task)
+      task.event_with_comment("reject", :comment => {:message => ""})
+      task.save.should be_false
+      task.rejection_comment.should be_new_record
+      task.rejection_comment.errors.on(:message).should_not be_blank
+      task.reload.should_not be_rejected
+    end
+
     it "should reject" do
       task = Factory.create(:waits_for_editor_approve_task)
       task.event_with_comment("reject", :comment => {:message => "reason"})
@@ -158,6 +167,15 @@ describe Task do
       task.assignee_id.should be_nil
     end
 
+    it "should not allow reject with blank message" do
+      task = Factory.create(:assigned_task)
+      task.event_with_comment("abandon", :comment => {:message => ""})
+      task.save.should be_false
+      task.abandoning_comment.should be_new_record
+      task.abandoning_comment.errors.on(:message).should_not be_blank
+      task.reload.should_not be_unassigned
+    end
+
     describe "should finish" do
       before(:each) do
         @task = Factory.create(:assigned_task)
@@ -167,24 +185,35 @@ describe Task do
 
       after(:each) do
         @task.should be_waits_for_editor
-        @task.finished_comment.message.should == "reason"
-        @task.finished_comment.is_finished_reason.should be_true
-        @task.finished_comment.user_id.should == @a_id      
       end
 
-      it "just finish" do
-        @task.event_with_comment("finish", :comment => {:message => "reason"})
+      it "should finish without a message" do
+        @task.event_with_comment("finish", :comment => {:message => ""})
         @task.assignee.task_requested_at.should be_nil
+        @task.finished_comment.should be_nil
       end
 
-      it "just finish and pass zero as task new task request" do
-        @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => "0")
-        @task.assignee.task_requested_at.should be_nil
-      end
+      describe "with message" do        
+        after(:each) do
+          @task.finished_comment.message.should == "reason"
+          @task.finished_comment.is_finished_reason.should be_true
+          @task.finished_comment.user_id.should == @a_id      
+        end
 
-      it "finish and set task required" do
-        @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => "1")
-        @task.assignee.task_requested_at.should_not be_nil
+        it "just finish" do
+          @task.event_with_comment("finish", :comment => {:message => "reason"})
+          @task.assignee.task_requested_at.should be_nil
+        end
+
+        it "just finish and pass zero as task new task request" do
+          @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => "0")
+          @task.assignee.task_requested_at.should be_nil
+        end
+
+        it "finish and set task required" do
+          @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => "1")
+          @task.assignee.task_requested_at.should_not be_nil
+        end
       end
     end
 

@@ -19,7 +19,7 @@ module CommentWithReason
       @event_completed_messages[event.to_s]
     end
 
-    def has_reason_comment(event, reason, actor, flash)
+    def has_reason_comment(event, reason, actor, flash, options = {})
       comment_attribute = "#{reason}_comment"
       attr_accessor comment_attribute
       attr_accessible comment_attribute
@@ -29,13 +29,15 @@ module CommentWithReason
       @event_completed_messages[human_event_name] = flash
 
       define_method "#{event.to_sym.task_event_cleanup}_with_comment" do |message, opts|
-        comment = self.comments.build(:message => message)
-        comment.user_id = send("#{actor}_id")
-        comment.send("is_#{reason}_reason=", true)
-        self.send("#{comment_attribute}=", comment)
+        unless options[:allow_blank_messages] && message.blank?
+          comment = self.comments.build(:message => message)
+          comment.user_id = send("#{actor}_id")
+          comment.send("is_#{reason}_reason=", true)
+          self.send("#{comment_attribute}=", comment)
+        end
         yield(self, opts) if block_given?
         self.send(event)
-        comment.save
+        comment ? comment.save : true
       end
     end
   end

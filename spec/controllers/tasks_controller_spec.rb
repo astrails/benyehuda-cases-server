@@ -154,11 +154,11 @@ describe TasksController do
         response.body.should_not =~ /Did you forget to upload documents?/
       end
 
-      it "should render comment errors" do
+      it "should not render comment errors" do
         put :update, :id => @task.id, :event => "finish", :task => {:comment => {}}
         response.should be_success
-        response.should render_template("tasks/_finish.html.haml")
-        assigns[:task].finished_comment.errors.on(:message).should_not be_blank
+        response.should_not render_template("tasks/_finish.html.haml")
+        assigns[:task].finished_comment.should be_nil
       end
 
       it "should redirect with ajax" do
