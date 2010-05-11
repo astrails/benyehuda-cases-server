@@ -16,11 +16,15 @@
     != property_value(p)
   
 
-!= render(:partial => "documents", :locals => {:documents => @task.documents})
+.block
+  != render(:partial => "documents", :locals => {:documents => @task.documents})
 
-!= render(:partial => "new_document")
+  != render(:partial => "new_document")
 
-!= render(:partial => "comments/index", :locals => {:comments => @comments})
+.block
+  != render(:partial => "comments/index", :locals => {:comments => @comments})
+
 
 - when_editor_or_admin do
-  != render(:partial => "audits/index")
+  .block
+    != render(:partial => "audits/index")

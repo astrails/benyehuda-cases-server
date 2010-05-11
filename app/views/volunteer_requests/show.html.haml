@@ -1,18 +1,20 @@
 - set_tab :volunteer_requests, _("Volunteer Request from %{user_link}") % {:user_link => link_to(h(@volunteer_request.user.name), user_path(@volunteer_request.user))}
 
-%p
-  = _("Requested at:")
-  = @volunteer_request.created_at.to_s(:db)
-
-%h4= _("Preferences")
-%p!= auto_link(h(@volunteer_request.preferences))
-
-%h4= _("Other")
-- @volunteer_request.request_properties.visible_for(current_user).each do |p|
+.block
   %p
-    %strong= "#{p.property.title}:"
-    != property_value(p)
+    = _("Requested at:")
+    = @volunteer_request.created_at.to_s(:db)
 
-%p
+  %h4= _("Preferences")
+  %p!= auto_link(h(@volunteer_request.preferences))
+
+.block
+  %h4= _("Other")
+  - @volunteer_request.request_properties.visible_for(current_user).each do |p|
+    %p
+      %strong= "#{p.property.title}:"
+      != property_value(p)
+
+.block
   != confirm_button(@volunteer_request)
   != link_to _("Back to Volunteer Requestes"), volunteer_requests_path

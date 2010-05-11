@@ -1,12 +1,12 @@
 != javascript_include_tag "jquery.lookup_updater"
+.block
+  - form_tag users_path, :method => :get do
+    != text_field_tag "query", params[:query], :id => "users_query", :autocomplete => "off"
+    != hidden_field_tag "all", params[:all]
+    != submit_tag _("Find")
+    \|
+    != link_to _("All"), users_path(:all => true)
+    \|
+    != link_to _("Enabled"), users_path
 
-- form_tag users_path, :method => :get do
-  != text_field_tag "query", params[:query], :id => "users_query", :autocomplete => "off"
-  != hidden_field_tag "all", params[:all]
-  != submit_tag _("Find")
-  \|
-  != link_to _("All"), users_path(:all => true)
-  \|
-  != link_to _("Enabled"), users_path
-
-!= javascript_tag "jQuery(function(){jQuery('#users_query').lookup_updater({url: '/users?all=#{params[:all]}'}).lookup_updater('start');});"
+  != javascript_tag "jQuery(function(){jQuery('#users_query').lookup_updater({url: '/users?all=#{params[:all]}'}).lookup_updater('start');});"

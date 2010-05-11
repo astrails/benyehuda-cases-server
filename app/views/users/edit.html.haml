@@ -1,11 +1,13 @@
 - set_tab :profile, _("Edit Profile")
 
-- semantic_form_for(@user, :live_validations => true, :html => { :multipart => true }) do |f|
-  = f.object.errors.on(:base)
-  != render :partial => "form", :locals => { :f => f }
-  %br
-  != f.submit _("Update")
-  != link_to _("Cancel"), "/"
+.block
+  - semantic_form_for(@user, :live_validations => true, :html => { :multipart => true }) do |f|
+    = f.object.errors.on(:base)
+    != render :partial => "form", :locals => { :f => f }
+    %br
+    != f.submit _("Update")
+    != link_to _("Cancel"), "/"
 
 - when_current_user do
-  != link_to _("change password"), password_edit_path
+  .block
+    != link_to _("change password"), password_edit_path

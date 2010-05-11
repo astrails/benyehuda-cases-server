@@ -1,27 +1,30 @@
-%h3
-  = @task.name
-  %small
-    = [Task.textify_kind(@task.kind), Task.textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
-    - when_admin do
-      != link_to _("Edit"), edit_admin_task_path(@task)
+.block
+  %h3
+    = @task.name
+    %small
+      = [Task.textify_kind(@task.kind), Task.textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
+      - when_admin do
+        != link_to _("Edit"), edit_admin_task_path(@task)
 
 
 - when_editor_or_admin do
   - unless @task.children.blank?
-    %h4= _("Chained tasks")
-    - @task.children.each do |c|
-      != link_to(h(c.name), task_path(c))
-      %br
+    .block
+      %h4= _("Chained tasks")
+      - @task.children.each do |c|
+        != link_to(h(c.name), task_path(c))
   - if @task.parent
-    %h4= _("Parent task")
-    != link_to(h(@task.parent.name), task_path(@task.parent))
+    .block
+      %h4= _("Parent task")
+      != link_to(h(@task.parent.name), task_path(@task.parent))
 
-%h4
-  = Task.textify_state(@task.state)
-  - unless @skip_assignment_links
-    %small
-      - when_editor_or_admin do
-        != link_to("(#{_("change assignments")})", edit_task_assignment_path(@task))
+.block
+  %h4
+    = Task.textify_state(@task.state)
+    - unless @skip_assignment_links
+      %small
+        - when_editor_or_admin do
+          != link_to("(#{_("change assignments")})", edit_task_assignment_path(@task))
 
 - if @task.editor
   != render(:partial => "users/brief", :locals => {:brief_title => _("Editor:"), :user => @task.editor, :email_link => link_to_task_participant_email(@task, :editor, _("Send Email to Editor"))})

@@ -1,10 +1,11 @@
-- if task.assignee?(current_user)
-  != render(:partial => "tasks/assignee_simple_actions", :locals => {:task => task})
+.block
+  - if task.assignee?(current_user)
+    != render(:partial => "tasks/assignee_simple_actions", :locals => {:task => task})
 
-- if task.editor?(current_user)
-  != render(:partial => "tasks/editor_simple_actions", :locals => {:task => task})
+  - if task.editor?(current_user)
+    != render(:partial => "tasks/editor_simple_actions", :locals => {:task => task})
 
-  - if current_user.admin_or_editor?
-    != link_to _("Reassign"), edit_task_assignment_path(task)
+    - if current_user.admin_or_editor?
+      != link_to _("Reassign"), edit_task_assignment_path(task)
 
-  != link_to _("More Actions"), task_path(task)
+    != link_to _("More Actions"), task_path(task)

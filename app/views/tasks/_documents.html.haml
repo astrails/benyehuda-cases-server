@@ -1,4 +1,3 @@
-#documents
-  - unless documents.blank?
-    %h4= _("Attached documents")
-    != render(:partial => "documents/document", :collection => documents, :as => :document)
+- unless documents.blank?
+  %h4= _("Attached documents")
+  != render(:partial => "documents/document", :collection => documents, :as => :document)

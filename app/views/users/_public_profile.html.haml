@@ -1,40 +1,46 @@
-!= render(:partial => "info")
+.block
+  != render(:partial => "info")
 
-%p
-  %strong= _("Roles")
-  = user_roles(@user.public_roles)
-
-%p
-  %strong= _("Registered since")
-  - if @user.activated_at
-    = @user.activated_at.strftime("%Y-%m-%d")
-  - else
-    = _("Not activated yet")
-
-%p
-  %strong= _("Email Notifications")
-  = email_notifications(@user)
-
-%h4= _("User Properties")
-- @user.user_properties.visible_for(current_user).each do |p|
+.block
   %p
-    %strong= "#{p.property.title}:"
-    != property_value(p)
+    %strong= _("Roles")
+    = user_roles(@user.public_roles)
+.block
+  %p
+    %strong= _("Registered since")
+    - if @user.activated_at
+      = @user.activated_at.strftime("%Y-%m-%d")
+    - else
+      = _("Not activated yet")
+
+  %p
+    %strong= _("Email Notifications")
+    = email_notifications(@user)
+
+.block
+  %h4= _("User Properties")
+  - @user.user_properties.visible_for(current_user).each do |p|
+    %p
+      %strong= "#{p.property.title}:"
+      != property_value(p)
 
 - when_user_volunteer do
-  %h4= _("Volunteer Properties")
-  - @user.volunteer_properties.visible_for(current_user).each do |p|
-    %p
-      %strong= "#{p.property.title}:"
-      != property_value(p)
+  .block
+    %h4= _("Volunteer Properties")
+    - @user.volunteer_properties.visible_for(current_user).each do |p|
+      %p
+        %strong= "#{p.property.title}:"
+        != property_value(p)
 
 - when_user_editor do
-  %h4= _("Editor Properties")
-  - @user.editor_properties.visible_for(current_user).each do |p|
-    %p
-      %strong= "#{p.property.title}:"
-      != property_value(p)
+  .block
+    %h4= _("Editor Properties")
+    - @user.editor_properties.visible_for(current_user).each do |p|
+      %p
+        %strong= "#{p.property.title}:"
+        != property_value(p)
 
-%h4= _("Assignments History")
-!= render(:partial => "assignment_histories/assignment_history", :collection => @user.assignment_histories.reverse_order.with_task.recent(5))
-!= link_to _("more &raquo;"), user_assignment_histories_path(@user)
+.block
+  %h4= _("Assignments History")
+  != render(:partial => "assignment_histories/assignment_history", :collection => @user.assignment_histories.reverse_order.with_task.recent(5))
+  != link_to _("more &raquo;"), user_assignment_histories_path(@user)
