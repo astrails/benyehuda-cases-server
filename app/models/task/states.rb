@@ -101,13 +101,13 @@ module Task::States
       end
 
       has_reason_comment(:finish, :finished, :assignee, N_("Task finished")) do |task, request_new_task|
-        task.assignee.set_task_requested! if request_new_task
+        task.assignee.set_task_requested! if request_new_task.to_bool
       end
     end
   end
 
   def request_new_task
-    true # always ask for new task when this one is done
+    true # always ask for new task when this one is done - default value
   end
 
   def should_have_assigned_peers?

@@ -177,8 +177,13 @@ describe Task do
         @task.assignee.task_requested_at.should be_nil
       end
 
+      it "just finish and pass zero as task new task request" do
+        @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => "0")
+        @task.assignee.task_requested_at.should be_nil
+      end
+
       it "finish and set task required" do
-        @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => true)
+        @task.event_with_comment("finish", :comment => {:message => "reason"}, :request_new_task => "1")
         @task.assignee.task_requested_at.should_not be_nil
       end
     end
