@@ -21,11 +21,11 @@ describe PasswordsController do
     end
 
     it "should map { :controller => 'passwords', :action => 'edit', :id => '1' } to /passwords/1/edit" do
-      route_for(:controller => "passwords", :action => "edit", :id => "1").should == "/passwords/1/edit"
+      route_for(:controller => "passwords", :action => "edit", :id => "1").should == "/activate/1"
     end
 
     it "should map { :controller => 'passwords', :action => 'update', :id => '1' } to /passwords/1" do
-      route_for(:controller => "passwords", :action => "update", :id => "1").should == {:path => "/passwords/1", :method => :put}
+      route_for(:controller => "passwords", :action => "update").should == {:path => "/password", :method => :put}
     end
 
     it "should NOT map { :controller => 'passwords', :action => 'destroy', :id => '1' }" do

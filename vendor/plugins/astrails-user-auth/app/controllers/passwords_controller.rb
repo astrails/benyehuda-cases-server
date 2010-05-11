@@ -46,6 +46,7 @@ class PasswordsController < InheritedResources::Base
       end
 
       success.html {redirect_to profile_path}
+      failure.html {render :action => "edit"}
     end
 
   end

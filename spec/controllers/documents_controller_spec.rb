@@ -79,7 +79,7 @@ describe DocumentsController do
           @task.should_receive(:prepare_document).and_return(@doc)
           xhr :post, :create, :task_id => "1", :document => {}
           response.should be_success
-          response.should render_template("document")
+          response.should render_template("documents/_document.html.haml")
         end
       end
     end

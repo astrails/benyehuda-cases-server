@@ -35,7 +35,7 @@ describe TasksController do
       put :update, :id => @task.id, :event => "reject", :task => {:comment => {}}
       response.should be_success
       assigns[:task].rejection_comment.errors.on(:message).should_not be_blank
-      response.should render_template("tasks/reject")
+      response.should render_template("tasks/_reject.html.haml")
     end
 
     it "should redirect with ajax" do
@@ -73,7 +73,7 @@ describe TasksController do
         xhr :post, :create, :id => @task.id
         response.should be_success
         assigns[:chained_task].should be_new_record
-        response.should render_template("new_chain_task")
+        response.should render_template("tasks/_new_chain_task.html.haml")
       end
 
       it "should return errors when related message is invalid" do
@@ -81,7 +81,7 @@ describe TasksController do
         response.should be_success
         assigns[:chained_task].should be_new_record
         assigns[:chained_task].errors.on(:comments_message).should_not be_blank
-        response.should render_template("new_chain_task")
+        response.should render_template("tasks/_new_chain_task.html.haml")
       end
 
       it "should not return errors when related message is empty" do
@@ -89,7 +89,7 @@ describe TasksController do
         response.should be_success
         assigns[:chained_task].should be_new_record
         assigns[:chained_task].errors.on(:comments).should be_blank
-        response.should render_template("new_chain_task")
+        response.should render_template("tasks/_new_chain_task.html.haml")
       end
 
       it "should create chained task with comment" do
@@ -124,7 +124,7 @@ describe TasksController do
       it "should render comment errors" do
         put :update, :id => @task.id, :event => "abandon", :task => {:comment => {}}
         response.should be_success
-        response.should render_template("tasks/abandon")
+        response.should render_template("tasks/_abandon.html.haml")
         assigns[:task].abandoning_comment.errors.on(:message).should_not be_blank
       end
 
@@ -157,7 +157,7 @@ describe TasksController do
       it "should render comment errors" do
         put :update, :id => @task.id, :event => "finish", :task => {:comment => {}}
         response.should be_success
-        response.should render_template("tasks/finish")
+        response.should render_template("tasks/_finish.html.haml")
         assigns[:task].finished_comment.errors.on(:message).should_not be_blank
       end
 

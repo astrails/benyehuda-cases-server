@@ -68,7 +68,7 @@ describe CommentsController do
     it "should render back an error" do
       xhr :post, :create, :task_id => 1, :comment => {}
       response.should be_success
-      response.should render_template("new")
+      response.should render_template("comments/_new.html.haml")
     end
   end
 

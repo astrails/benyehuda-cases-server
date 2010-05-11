@@ -19,8 +19,8 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate', :source => 'http://gemcutter.org'
   config.gem 'formtastic', :source => 'http://gemcutter.org'
   config.gem 'haml', :version => '>= 2.0.9'
-  config.gem 'rspec-rails', :lib => false, :version => '1.2.6'
-  config.gem 'rspec', :lib => false, :version => '1.2.6'
+  config.gem 'rspec-rails', :lib => false, :version => '1.3.2'
+  config.gem 'rspec', :lib => false, :version => '1.3.0'
   config.gem 'mocha', :version => '0.9.8', :library => false
   config.gem 'fast_gettext', :version => '0.4.17'
   config.gem "gettext", :lib => false, :version => '2.1.0'
