@@ -7,6 +7,28 @@ require "vladify/thinking_sphinx"
 require "vladify/whenever"
 # require "vladify/workling"
 
-set :application, "benyehuda.org"
 set :repository, "git@alpha.astrails.com:benyehuda/cases_server"
-set :domain, "astrails@benyehuda.astrails.com"
+
+desc "production server"
+task :prod do
+  set :application, "tasks.benyehuda.org"
+  set :domain, "astrails@tasks.benyehuda.org"
+end
+
+desc "stage server"
+task :staging do
+  set :application, "staging.benyehuda.org"
+  set :domain, "astrails@tasks.benyehuda.org"
+end
+
+desc "beta server"
+task :beta do
+  set :application, "benyehuda.org"
+  set :domain, "astrails@benyehuda.astrails.com"
+end
+
+desc "ui server"
+task :ui do
+  set :application, "benyehuda-ui.astrails.com"
+  set :domain, "astrails@benyehuda.astrails.com"
+end
