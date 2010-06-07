@@ -15,9 +15,9 @@ Rails::Initializer.run do |config|
   config.gem 'ruby-debug', :library => false
   rpass = (GlobalPreference.get(:rack_bug_password) || 'by123') rescue 'by123'
   config.middleware.use 'Rack::Bug', :password => rpass
-  config.gem 'whenever', :lib => false, :source => 'http://gemcutter.org'
-  config.gem 'will_paginate', :source => 'http://gemcutter.org'
-  config.gem 'formtastic', :source => 'http://gemcutter.org'
+  config.gem 'whenever', :lib => false
+  config.gem 'will_paginate'
+  config.gem 'formtastic', :version => '0.9.2'
   config.gem 'haml', :version => '>= 2.0.9'
   config.gem 'rspec-rails', :lib => false, :version => '1.3.2'
   config.gem 'rspec', :lib => false, :version => '1.3.0'
