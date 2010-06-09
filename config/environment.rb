@@ -17,7 +17,7 @@ Rails::Initializer.run do |config|
   config.middleware.use 'Rack::Bug', :password => rpass
   config.gem 'whenever', :lib => false
   config.gem 'will_paginate'
-  config.gem 'formtastic', :version => '0.9.2'
+  config.gem 'formtastic', :version => '0.9.1'
   config.gem 'haml', :version => '>= 2.0.9'
   config.gem 'rspec-rails', :lib => false, :version => '1.3.2'
   config.gem 'rspec', :lib => false, :version => '1.3.0'
