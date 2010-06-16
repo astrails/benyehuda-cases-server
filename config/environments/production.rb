@@ -26,3 +26,8 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+if "benyehuda" == `hostname`.strip
+  PROXY_HOST = 'proxy1.haifa.ac.il'
+  PROXY_PORT = 8080
+end
