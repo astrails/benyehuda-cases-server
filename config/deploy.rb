@@ -21,14 +21,14 @@ task :staging do
   set :domain, "astrails@tasks.benyehuda.org"
 end
 
-desc "beta server"
-task :beta do
-  set :application, "benyehuda.org"
-  set :domain, "astrails@benyehuda.astrails.com"
-end
-
-desc "ui server"
-task :ui do
-  set :application, "benyehuda-ui.astrails.com"
-  set :domain, "astrails@benyehuda.astrails.com"
-end
+# desc "beta server"
+# task :beta do
+#   set :application, "benyehuda.org"
+#   set :domain, "astrails@benyehuda.astrails.com"
+# end
+# 
+# desc "ui server"
+# task :ui do
+#   set :application, "benyehuda-ui.astrails.com"
+#   set :domain, "astrails@benyehuda.astrails.com"
+# end
