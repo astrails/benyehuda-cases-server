@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-04-19 15:13+0300\n"
+"POT-Creation-Date: 2010-06-21 23:42+0300\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:74
+#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:75
 msgid ""
 "        We're sorry, but we could not locate your account.\n"
 "        If you are having issues try copying and pasting the URL\n"
@@ -34,6 +34,10 @@ msgstr ""
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/mailer.rb:14
 msgid "%{domain}: Password Reset Notification"
+msgstr ""
+
+#: app/views/assignment_histories/_assignment_history.html.haml:3
+msgid "%{role} for %{task_link} (%{task_state})"
 msgstr ""
 
 #: app/views/tasks/_task.html.haml:3 app/views/users/_user.html.haml:12
@@ -105,8 +109,7 @@ msgstr ""
 #: app/views/site_notices/_site_notice.html.haml:6
 #: app/views/tasks/_assignee_simple_actions.html.haml:4
 #: app/views/tasks/_editor_simple_actions.html.haml:2
-#: app/views/users/_public_profile.html.haml:9
-#: app/views/users/_user.html.haml:18
+#: app/views/users/_info.html.haml:10 app/views/users/_user.html.haml:18
 msgid "Are you sure?"
 msgstr ""
 
@@ -127,18 +130,27 @@ msgstr ""
 msgid "Assign a task to %{user_name}"
 msgstr ""
 
-#: app/models/task.rb:24 app/views/admin/tasks/_form.html.haml:4
+#: app/models/assignment_history.rb:14 app/models/task.rb:24
+#: app/views/admin/tasks/_form.html.haml:4
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:30
+#: app/views/tasks/_description.html.haml:33
 msgid "Assignee:"
+msgstr ""
+
+#: app/views/assignment_histories/index.html.haml:1
+msgid "Assignment History"
 msgstr ""
 
 #: app/views/admin/tasks/_task.html.haml:12
 msgid "Assignments"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:44
+msgid "Assignments History"
 msgstr ""
 
 #: app/views/documents/new.html.haml:1
@@ -157,7 +169,7 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:18
+#: app/views/volunteer_requests/show.html.haml:20
 msgid "Back to Volunteer Requestes"
 msgstr ""
 
@@ -165,7 +177,7 @@ msgstr ""
 msgid "Become Volunteer"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:11
+#: app/views/layouts/application.html.haml:12
 msgid "Ben Yehuda Project"
 msgstr ""
 
@@ -175,11 +187,11 @@ msgstr ""
 #: app/views/documents/new.html.haml:6 app/views/properties/edit.html.haml:8
 #: app/views/properties/new.html.haml:7
 #: app/views/site_notices/edit.html.haml:6
-#: app/views/site_notices/new.html.haml:6 app/views/users/edit.html.haml:8
+#: app/views/site_notices/new.html.haml:6 app/views/users/edit.html.haml:9
 msgid "Cancel"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:11
+#: app/views/tasks/_description.html.haml:13
 msgid "Chained tasks"
 msgstr ""
 
@@ -219,6 +231,10 @@ msgstr ""
 msgid "Creater"
 msgstr ""
 
+#: app/models/assignment_history.rb:15
+msgid "Creator"
+msgstr ""
+
 #: app/helpers/tabs_helper.rb:3
 msgid "Dashboard"
 msgstr ""
@@ -250,7 +266,7 @@ msgid "Document deleted"
 msgstr ""
 
 #: app/views/admin/tasks/_task.html.haml:11
-#: app/views/tasks/_description.html.haml:6 app/views/users/_user.html.haml:13
+#: app/views/tasks/_description.html.haml:7 app/views/users/_user.html.haml:13
 msgid "Edit"
 msgstr ""
 
@@ -270,14 +286,15 @@ msgstr ""
 msgid "Edit Task"
 msgstr ""
 
-#: app/models/task.rb:22 app/views/admin/tasks/_form.html.haml:5
+#: app/models/assignment_history.rb:16 app/models/task.rb:22
+#: app/views/admin/tasks/_form.html.haml:5
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/_index.html.haml:9
 msgid "Editor"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:41
+#: app/views/users/_public_profile.html.haml:37
 msgid "Editor Properties"
 msgstr ""
 
@@ -290,7 +307,7 @@ msgstr ""
 msgid "Editor eyes only"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:27
+#: app/views/tasks/_description.html.haml:30
 msgid "Editor:"
 msgstr ""
 
@@ -301,7 +318,7 @@ msgid "Email"
 msgstr ""
 
 #: app/views/users/_form.html.haml:12
-#: app/views/users/_public_profile.html.haml:24
+#: app/views/users/_public_profile.html.haml:17
 msgid "Email Notifications"
 msgstr ""
 
@@ -343,7 +360,7 @@ msgstr ""
 msgid "Flash Media Player"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:40
+#: app/views/layouts/application.html.haml:41
 msgid "Footer"
 msgstr ""
 
@@ -373,7 +390,7 @@ msgstr ""
 msgid "HTML"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:15
+#: app/views/layouts/application.html.haml:16
 msgid "Hello"
 msgstr ""
 
@@ -394,7 +411,7 @@ msgid ""
 "%{domain} Team\n"
 msgstr ""
 
-#: app/views/notification/volnteer_welcome.text.plain.erb:1
+#: app/views/notification/volnteer_welcome.erb:1
 msgid ""
 "Hello %{user_name},\n"
 "\n"
@@ -453,7 +470,7 @@ msgstr ""
 msgid "Hello World"
 msgstr ""
 
-#: app/views/notification/comment_added.text.plain.erb:1
+#: app/views/notification/comment_added.erb:1
 msgid ""
 "Hello,\n"
 "\n"
@@ -468,7 +485,7 @@ msgid ""
 "%{domain} Team"
 msgstr ""
 
-#: app/views/notification/task_state_changed.text.plan.erb:1
+#: app/views/notification/task_state_changed.erb:1
 msgid ""
 "Hello,\n"
 "\n"
@@ -546,7 +563,7 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: app/views/tasks/_task_actions.html.haml:10
+#: app/views/tasks/_task_actions.html.haml:11
 msgid "More Actions"
 msgstr ""
 
@@ -597,7 +614,7 @@ msgstr ""
 msgid "No user was found with that email address"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:21
+#: app/views/users/_public_profile.html.haml:14
 msgid "Not activated yet"
 msgstr ""
 
@@ -620,7 +637,7 @@ msgid "Only the owner can see this page"
 msgstr ""
 
 #: app/views/dashboards/_editor_dashboard.html.haml:3
-#: app/views/volunteer_requests/show.html.haml:10
+#: app/views/volunteer_requests/show.html.haml:12
 msgid "Other"
 msgstr ""
 
@@ -632,7 +649,7 @@ msgstr ""
 msgid "Parent Type"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:16
+#: app/views/tasks/_description.html.haml:18
 msgid "Parent task"
 msgstr ""
 
@@ -648,7 +665,7 @@ msgstr ""
 msgid "Password Reset"
 msgstr ""
 
-#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:68
+#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:69
 msgid "Please log out to activate new account"
 msgstr ""
 
@@ -658,7 +675,7 @@ msgstr ""
 
 #: app/views/volunteer_requests/index.html.haml:7
 #: app/views/volunteer_requests/new.html.haml:7
-#: app/views/volunteer_requests/show.html.haml:7
+#: app/views/volunteer_requests/show.html.haml:8
 msgid "Preferences"
 msgstr ""
 
@@ -683,7 +700,7 @@ msgstr ""
 msgid "Query"
 msgstr ""
 
-#: app/views/tasks/_task_actions.html.haml:8
+#: app/views/tasks/_task_actions.html.haml:9
 msgid "Reassign"
 msgstr ""
 
@@ -691,7 +708,7 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:17
+#: app/views/users/_public_profile.html.haml:10
 msgid "Registered since"
 msgstr ""
 
@@ -719,7 +736,7 @@ msgstr ""
 msgid "Request a Task"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:4
+#: app/views/volunteer_requests/show.html.haml:5
 msgid "Requested at:"
 msgstr ""
 
@@ -727,7 +744,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:13
+#: app/views/users/_public_profile.html.haml:6
 msgid "Roles"
 msgstr ""
 
@@ -752,11 +769,11 @@ msgstr ""
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:30
+#: app/views/tasks/_description.html.haml:33
 msgid "Send Email to Assignee"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:27
+#: app/views/tasks/_description.html.haml:30
 msgid "Send Email to Editor"
 msgstr ""
 
@@ -772,7 +789,7 @@ msgstr ""
 msgid "Show until"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:37
+#: app/views/layouts/application.html.haml:38
 msgid "Sidebar"
 msgstr ""
 
@@ -831,7 +848,7 @@ msgstr ""
 msgid "Task rejected"
 msgstr ""
 
-#: app/views/users/_task_request.html.haml:1
+#: app/views/users/_task_request.html.haml:2
 msgid "Task requested %{time} ago"
 msgstr ""
 
@@ -877,7 +894,7 @@ msgstr ""
 msgid "Unassigned tasks (%{count})"
 msgstr ""
 
-#: app/views/users/edit.html.haml:7
+#: app/views/users/edit.html.haml:8
 msgid "Update"
 msgstr ""
 
@@ -889,7 +906,7 @@ msgstr ""
 msgid "Uploaded by %{user} %{time} ago"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:27
+#: app/views/users/_public_profile.html.haml:21
 msgid "User Properties"
 msgstr ""
 
@@ -913,7 +930,7 @@ msgstr ""
 msgid "Volunteer"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:34
+#: app/views/users/_public_profile.html.haml:29
 msgid "Volunteer Properties"
 msgstr ""
 
@@ -1221,7 +1238,7 @@ msgstr[1] ""
 msgid "cancel"
 msgstr ""
 
-#: app/views/tasks/_description.html.haml:24
+#: app/views/tasks/_description.html.haml:27
 msgid "change assignments"
 msgstr ""
 
@@ -1229,7 +1246,7 @@ msgstr ""
 msgid "change my password"
 msgstr ""
 
-#: app/views/users/edit.html.haml:11
+#: app/views/users/edit.html.haml:13
 msgid "change password"
 msgstr ""
 
@@ -1376,7 +1393,7 @@ msgid "document audit|Document %{file_name}"
 msgstr ""
 
 #: app/views/site_notices/_site_notice.html.haml:7
-#: app/views/users/_public_profile.html.haml:6
+#: app/views/users/_info.html.haml:7
 msgid "edit"
 msgstr ""
 
@@ -1442,18 +1459,22 @@ msgstr ""
 msgid "last login|never"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:21
+#: app/views/layouts/application.html.haml:22
 #: app/views/passwords/new.html.haml:7 app/views/user_session/new.html.haml:9
 #: app/views/users/new.html.haml:8
 msgid "login"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:18
+#: app/views/layouts/application.html.haml:19
 msgid "logout"
 msgstr ""
 
 #: app/helpers/user_helper.rb:36
 msgid "me"
+msgstr ""
+
+#: app/views/users/_public_profile.html.haml:46
+msgid "more &raquo;"
 msgstr ""
 
 #: app/helpers/user_helper.rb:56
@@ -1532,7 +1553,7 @@ msgstr ""
 msgid "paginator - previous page|Next &raquo;"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:22
+#: app/views/layouts/application.html.haml:23
 msgid "register"
 msgstr ""
 
@@ -1540,7 +1561,7 @@ msgstr ""
 msgid "remove"
 msgstr ""
 
-#: app/views/users/_public_profile.html.haml:9
+#: app/views/users/_info.html.haml:10
 msgid "remove avatar"
 msgstr ""
 
@@ -1577,19 +1598,19 @@ msgstr ""
 msgid "support.select.prompt"
 msgstr ""
 
-#: app/models/task.rb:125
+#: app/models/task.rb:136
 msgid "task cannot be updated"
 msgstr ""
 
-#: app/models/task.rb:63
+#: app/models/task.rb:65
 msgid "task difficulty|easy"
 msgstr ""
 
-#: app/models/task.rb:65
+#: app/models/task.rb:67
 msgid "task difficulty|hard"
 msgstr ""
 
-#: app/models/task.rb:64
+#: app/models/task.rb:66
 msgid "task difficulty|normal"
 msgstr ""
 
@@ -1625,15 +1646,15 @@ msgstr ""
 msgid "task event|Reject"
 msgstr ""
 
-#: app/models/task.rb:57
+#: app/models/task.rb:59
 msgid "task kind|other"
 msgstr ""
 
-#: app/models/task.rb:56
+#: app/models/task.rb:58
 msgid "task kind|proofing"
 msgstr ""
 
-#: app/models/task.rb:55
+#: app/models/task.rb:57
 msgid "task kind|typing"
 msgstr ""
 
@@ -1657,39 +1678,39 @@ msgstr ""
 msgid "task section|Task Settings"
 msgstr ""
 
-#: app/models/task.rb:165
+#: app/models/task.rb:176
 msgid "task state|Another Task Created"
 msgstr ""
 
-#: app/models/task.rb:163
+#: app/models/task.rb:174
 msgid "task state|Approved by Editor"
 msgstr ""
 
-#: app/models/task.rb:158
+#: app/models/task.rb:169
 msgid "task state|Assigned/Work in Progress"
 msgstr ""
 
-#: app/models/task.rb:159
+#: app/models/task.rb:170
 msgid "task state|Editors Help Required"
 msgstr ""
 
-#: app/models/task.rb:160
+#: app/models/task.rb:171
 msgid "task state|Partialy Ready"
 msgstr ""
 
-#: app/models/task.rb:164
+#: app/models/task.rb:175
 msgid "task state|Ready to Publish"
 msgstr ""
 
-#: app/models/task.rb:162
+#: app/models/task.rb:173
 msgid "task state|Rejected by Editor"
 msgstr ""
 
-#: app/models/task.rb:157
+#: app/models/task.rb:168
 msgid "task state|Unassigned"
 msgstr ""
 
-#: app/models/task.rb:161
+#: app/models/task.rb:172
 msgid "task state|Waits for Editor's approvement"
 msgstr ""
 

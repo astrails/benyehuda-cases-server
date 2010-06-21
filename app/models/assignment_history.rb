@@ -12,7 +12,7 @@ class AssignmentHistory < ActiveRecord::Base
 
   ROLES = {
     "assignee" => N_("Assignee"),
-    "creator" => N_("Areator"),
+    "creator" => N_("Creator"),
     "editor" => N_("Editor")
   }
 

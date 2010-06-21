@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-04-19 15:13+0300\n"
+"POT-Creation-Date: 2010-06-21 23:42+0300\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:74
+#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:75
 msgid ""
 "        We're sorry, but we could not locate your account.\n"
 "        If you are having issues try copying and pasting the URL\n"
@@ -39,6 +39,10 @@ msgstr "%{domain}: Сброс пароля Инструкция"
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/mailer.rb:14
 msgid "%{domain}: Password Reset Notification"
 msgstr "%{domain}: Отправить Сброс пароля Инструкция"
+
+#: app/views/assignment_histories/_assignment_history.html.haml:3
+msgid "%{role} for %{task_link} (%{task_state})"
+msgstr ""
 
 #: app/views/tasks/_task.html.haml:3 app/views/users/_user.html.haml:12
 #: app/views/volunteer_requests/_volunteer_request.html.haml:3
@@ -109,8 +113,7 @@ msgstr "Кроме того, заявку на новую задачу"
 #: app/views/site_notices/_site_notice.html.haml:6
 #: app/views/tasks/_assignee_simple_actions.html.haml:4
 #: app/views/tasks/_editor_simple_actions.html.haml:2
-#: app/views/users/_public_profile.html.haml:9
-#: app/views/users/_user.html.haml:18
+#: app/views/users/_info.html.haml:10 app/views/users/_user.html.haml:18
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
@@ -131,18 +134,29 @@ msgstr "Назначение целевой ..."
 msgid "Assign a task to %{user_name}"
 msgstr "Назначение задачи %{user_name}"
 
-#: app/models/task.rb:24 app/views/admin/tasks/_form.html.haml:4
+#: app/models/assignment_history.rb:14 app/models/task.rb:24
+#: app/views/admin/tasks/_form.html.haml:4
 #: app/views/admin/tasks/index.html.haml:15
 #: app/views/assignments/edit.html.haml:5 app/views/tasks/_index.html.haml:15
 msgid "Assignee"
 msgstr "Ответственный"
 
-#: app/views/tasks/_description.html.haml:30
+#: app/views/tasks/_description.html.haml:33
 msgid "Assignee:"
 msgstr "Ответственный:"
 
+#: app/views/assignment_histories/index.html.haml:1
+#, fuzzy
+msgid "Assignment History"
+msgstr "Задания"
+
 #: app/views/admin/tasks/_task.html.haml:12
 msgid "Assignments"
+msgstr "Задания"
+
+#: app/views/users/_public_profile.html.haml:44
+#, fuzzy
+msgid "Assignments History"
 msgstr "Задания"
 
 #: app/views/documents/new.html.haml:1
@@ -161,7 +175,7 @@ msgstr "Прилагаемые документы"
 msgid "Avatar"
 msgstr ""
 
-#: app/views/volunteer_requests/show.html.haml:18
+#: app/views/volunteer_requests/show.html.haml:20
 msgid "Back to Volunteer Requestes"
 msgstr "Вернуться к волонтеров Requestes"
 
@@ -169,7 +183,7 @@ msgstr "Вернуться к волонтеров Requestes"
 msgid "Become Volunteer"
 msgstr "Стать добровольцем"
 
-#: app/views/layouts/application.html.haml:11
+#: app/views/layouts/application.html.haml:12
 msgid "Ben Yehuda Project"
 msgstr "Бен-Иегуда проекте"
 
@@ -179,11 +193,11 @@ msgstr "Бен-Иегуда проекте"
 #: app/views/documents/new.html.haml:6 app/views/properties/edit.html.haml:8
 #: app/views/properties/new.html.haml:7
 #: app/views/site_notices/edit.html.haml:6
-#: app/views/site_notices/new.html.haml:6 app/views/users/edit.html.haml:8
+#: app/views/site_notices/new.html.haml:6 app/views/users/edit.html.haml:9
 msgid "Cancel"
 msgstr "Отмена"
 
-#: app/views/tasks/_description.html.haml:11
+#: app/views/tasks/_description.html.haml:13
 msgid "Chained tasks"
 msgstr "Цепная задач"
 
@@ -223,6 +237,11 @@ msgstr "Создать новую задачу, основанную на это
 msgid "Creater"
 msgstr "Созидатель"
 
+#: app/models/assignment_history.rb:15
+#, fuzzy
+msgid "Creator"
+msgstr "Созидатель"
+
 #: app/helpers/tabs_helper.rb:3
 msgid "Dashboard"
 msgstr "Дашборд"
@@ -254,7 +273,7 @@ msgid "Document deleted"
 msgstr "Документ удален"
 
 #: app/views/admin/tasks/_task.html.haml:11
-#: app/views/tasks/_description.html.haml:6 app/views/users/_user.html.haml:13
+#: app/views/tasks/_description.html.haml:7 app/views/users/_user.html.haml:13
 msgid "Edit"
 msgstr "Изменить"
 
@@ -274,14 +293,15 @@ msgstr ""
 msgid "Edit Task"
 msgstr "Редактирование задачи"
 
-#: app/models/task.rb:22 app/views/admin/tasks/_form.html.haml:5
+#: app/models/assignment_history.rb:16 app/models/task.rb:22
+#: app/views/admin/tasks/_form.html.haml:5
 #: app/views/admin/tasks/index.html.haml:14
 #: app/views/assignments/edit.html.haml:6 app/views/tasks/_index.html.haml:14
 #: app/views/users/_index.html.haml:9
 msgid "Editor"
 msgstr "Редактор"
 
-#: app/views/users/_public_profile.html.haml:41
+#: app/views/users/_public_profile.html.haml:37
 msgid "Editor Properties"
 msgstr "Редактор свойств"
 
@@ -294,7 +314,7 @@ msgstr "Параметры редактора"
 msgid "Editor eyes only"
 msgstr "Только для редактора"
 
-#: app/views/tasks/_description.html.haml:27
+#: app/views/tasks/_description.html.haml:30
 msgid "Editor:"
 msgstr "Редактор:"
 
@@ -305,7 +325,7 @@ msgid "Email"
 msgstr "Электронная почта"
 
 #: app/views/users/_form.html.haml:12
-#: app/views/users/_public_profile.html.haml:24
+#: app/views/users/_public_profile.html.haml:17
 msgid "Email Notifications"
 msgstr "Уведомления по электронной почте"
 
@@ -348,7 +368,7 @@ msgstr "Отделка"
 msgid "Flash Media Player"
 msgstr "Флеш плэйер"
 
-#: app/views/layouts/application.html.haml:40
+#: app/views/layouts/application.html.haml:41
 msgid "Footer"
 msgstr "Ноги"
 
@@ -378,7 +398,7 @@ msgstr "Глобальные настройки"
 msgid "HTML"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:15
+#: app/views/layouts/application.html.haml:16
 msgid "Hello"
 msgstr "Привет"
 
@@ -412,7 +432,7 @@ msgstr ""
 "\n"
 "%{domain} команды # # # #"
 
-#: app/views/notification/volnteer_welcome.text.plain.erb:1
+#: app/views/notification/volnteer_welcome.erb:1
 msgid ""
 "Hello %{user_name},\n"
 "\n"
@@ -510,7 +530,7 @@ msgstr ""
 msgid "Hello World"
 msgstr "Привет мир"
 
-#: app/views/notification/comment_added.text.plain.erb:1
+#: app/views/notification/comment_added.erb:1
 msgid ""
 "Hello,\n"
 "\n"
@@ -537,7 +557,7 @@ msgstr ""
 "\n"
 "%{domain} команда"
 
-#: app/views/notification/task_state_changed.text.plan.erb:1
+#: app/views/notification/task_state_changed.erb:1
 msgid ""
 "Hello,\n"
 "\n"
@@ -629,7 +649,7 @@ msgstr "Войти"
 msgid "Message"
 msgstr "Сообщение"
 
-#: app/views/tasks/_task_actions.html.haml:10
+#: app/views/tasks/_task_actions.html.haml:11
 msgid "More Actions"
 msgstr "Дополнительные действия"
 
@@ -680,7 +700,7 @@ msgstr "Нет задачи найден"
 msgid "No user was found with that email address"
 msgstr "Не найден пользователь с таким электронным адресом"
 
-#: app/views/users/_public_profile.html.haml:21
+#: app/views/users/_public_profile.html.haml:14
 msgid "Not activated yet"
 msgstr "Не активирован"
 
@@ -704,7 +724,7 @@ msgid "Only the owner can see this page"
 msgstr "Только владелец может увидеть эту страницу"
 
 #: app/views/dashboards/_editor_dashboard.html.haml:3
-#: app/views/volunteer_requests/show.html.haml:10
+#: app/views/volunteer_requests/show.html.haml:12
 msgid "Other"
 msgstr "Другой"
 
@@ -716,7 +736,7 @@ msgstr "Родитель"
 msgid "Parent Type"
 msgstr "Родитель типа"
 
-#: app/views/tasks/_description.html.haml:16
+#: app/views/tasks/_description.html.haml:18
 msgid "Parent task"
 msgstr "Родитель задачи"
 
@@ -732,7 +752,7 @@ msgstr "Подтверждение пароля"
 msgid "Password Reset"
 msgstr "Сброс пароля"
 
-#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:68
+#: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:69
 msgid "Please log out to activate new account"
 msgstr "Пожалуйста, выйдите из активировать новую учетную запись"
 
@@ -742,7 +762,7 @@ msgstr "Пожалуйста, подождите ..."
 
 #: app/views/volunteer_requests/index.html.haml:7
 #: app/views/volunteer_requests/new.html.haml:7
-#: app/views/volunteer_requests/show.html.haml:7
+#: app/views/volunteer_requests/show.html.haml:8
 msgid "Preferences"
 msgstr "Глобальные настройки"
 
@@ -767,7 +787,7 @@ msgstr "Публикации"
 msgid "Query"
 msgstr "Запросов"
 
-#: app/views/tasks/_task_actions.html.haml:8
+#: app/views/tasks/_task_actions.html.haml:9
 msgid "Reassign"
 msgstr "Переназначение"
 
@@ -775,7 +795,7 @@ msgstr "Переназначение"
 msgid "Register"
 msgstr "Регистрация"
 
-#: app/views/users/_public_profile.html.haml:17
+#: app/views/users/_public_profile.html.haml:10
 msgid "Registered since"
 msgstr "Зарегистрировался"
 
@@ -803,7 +823,7 @@ msgstr "Запрос"
 msgid "Request a Task"
 msgstr "Запрос Целевой"
 
-#: app/views/volunteer_requests/show.html.haml:4
+#: app/views/volunteer_requests/show.html.haml:5
 msgid "Requested at:"
 msgstr "Запрашиваемые по адресу:"
 
@@ -811,7 +831,7 @@ msgstr "Запрашиваемые по адресу:"
 msgid "Reset"
 msgstr "Сброс"
 
-#: app/views/users/_public_profile.html.haml:13
+#: app/views/users/_public_profile.html.haml:6
 msgid "Roles"
 msgstr "Роли"
 
@@ -836,11 +856,11 @@ msgstr "Поиск / Фильтр"
 msgid "Send Activation Email to %{user}. Are you sure?"
 msgstr "Выслать письмо активации для %{user}. Вы уверены?"
 
-#: app/views/tasks/_description.html.haml:30
+#: app/views/tasks/_description.html.haml:33
 msgid "Send Email to Assignee"
 msgstr "Отправить Email к Правопреемник"
 
-#: app/views/tasks/_description.html.haml:27
+#: app/views/tasks/_description.html.haml:30
 msgid "Send Email to Editor"
 msgstr "Отправить письмо редактору"
 
@@ -856,7 +876,7 @@ msgstr ""
 msgid "Show until"
 msgstr ""
 
-#: app/views/layouts/application.html.haml:37
+#: app/views/layouts/application.html.haml:38
 msgid "Sidebar"
 msgstr "Боковая панель"
 
@@ -917,7 +937,7 @@ msgstr "Целевая был переведен"
 msgid "Task rejected"
 msgstr "Целевая отклонен"
 
-#: app/views/users/_task_request.html.haml:1
+#: app/views/users/_task_request.html.haml:2
 msgid "Task requested %{time} ago"
 msgstr "Целевая просил %{time} назад"
 
@@ -963,7 +983,7 @@ msgstr "Unassigned Задачи"
 msgid "Unassigned tasks (%{count})"
 msgstr "Unassigned (%{count}) задач"
 
-#: app/views/users/edit.html.haml:7
+#: app/views/users/edit.html.haml:8
 msgid "Update"
 msgstr "Обновление"
 
@@ -975,7 +995,7 @@ msgstr "Закачать"
 msgid "Uploaded by %{user} %{time} ago"
 msgstr "Загружено %{user} %{time} назад"
 
-#: app/views/users/_public_profile.html.haml:27
+#: app/views/users/_public_profile.html.haml:21
 msgid "User Properties"
 msgstr "Свойства пользователей"
 
@@ -1000,7 +1020,7 @@ msgstr "Пользователь"
 msgid "Volunteer"
 msgstr "Волонтер"
 
-#: app/views/users/_public_profile.html.haml:34
+#: app/views/users/_public_profile.html.haml:29
 msgid "Volunteer Properties"
 msgstr "Волонтер Свойства"
 
@@ -1311,7 +1331,7 @@ msgstr[1] ""
 msgid "cancel"
 msgstr "отменить"
 
-#: app/views/tasks/_description.html.haml:24
+#: app/views/tasks/_description.html.haml:27
 msgid "change assignments"
 msgstr "изменить назначения"
 
@@ -1319,7 +1339,7 @@ msgstr "изменить назначения"
 msgid "change my password"
 msgstr "изменить пароль"
 
-#: app/views/users/edit.html.haml:11
+#: app/views/users/edit.html.haml:13
 msgid "change password"
 msgstr "Изменение пароля"
 
@@ -1466,7 +1486,7 @@ msgid "document audit|Document %{file_name}"
 msgstr "Документ %{file_name}"
 
 #: app/views/site_notices/_site_notice.html.haml:7
-#: app/views/users/_public_profile.html.haml:6
+#: app/views/users/_info.html.haml:7
 msgid "edit"
 msgstr "редактировать"
 
@@ -1532,19 +1552,23 @@ msgstr "Бар"
 msgid "last login|never"
 msgstr "никогда"
 
-#: app/views/layouts/application.html.haml:21
+#: app/views/layouts/application.html.haml:22
 #: app/views/passwords/new.html.haml:7 app/views/user_session/new.html.haml:9
 #: app/views/users/new.html.haml:8
 msgid "login"
 msgstr "Войти"
 
-#: app/views/layouts/application.html.haml:18
+#: app/views/layouts/application.html.haml:19
 msgid "logout"
 msgstr "Выход"
 
 #: app/helpers/user_helper.rb:36
 msgid "me"
 msgstr "меня"
+
+#: app/views/users/_public_profile.html.haml:46
+msgid "more &raquo;"
+msgstr ""
 
 #: app/helpers/user_helper.rb:56
 msgid "notifications|None"
@@ -1622,7 +1646,7 @@ msgstr "Предыдущий"
 msgid "paginator - previous page|Next &raquo;"
 msgstr "Следующий"
 
-#: app/views/layouts/application.html.haml:22
+#: app/views/layouts/application.html.haml:23
 msgid "register"
 msgstr "Регистрация"
 
@@ -1631,7 +1655,7 @@ msgstr "Регистрация"
 msgid "remove"
 msgstr "Удалить"
 
-#: app/views/users/_public_profile.html.haml:9
+#: app/views/users/_info.html.haml:10
 msgid "remove avatar"
 msgstr ""
 
@@ -1668,19 +1692,19 @@ msgstr ", "
 msgid "support.select.prompt"
 msgstr "Выбираем"
 
-#: app/models/task.rb:125
+#: app/models/task.rb:136
 msgid "task cannot be updated"
 msgstr "Задача не может быть обновлен"
 
-#: app/models/task.rb:63
+#: app/models/task.rb:65
 msgid "task difficulty|easy"
 msgstr "просто"
 
-#: app/models/task.rb:65
+#: app/models/task.rb:67
 msgid "task difficulty|hard"
 msgstr "тяжелый"
 
-#: app/models/task.rb:64
+#: app/models/task.rb:66
 msgid "task difficulty|normal"
 msgstr "нормальный"
 
@@ -1716,15 +1740,15 @@ msgstr "Необходимость редактора Помощь"
 msgid "task event|Reject"
 msgstr "Отклонить"
 
-#: app/models/task.rb:57
+#: app/models/task.rb:59
 msgid "task kind|other"
 msgstr "другой"
 
-#: app/models/task.rb:56
+#: app/models/task.rb:58
 msgid "task kind|proofing"
 msgstr "корректура"
 
-#: app/models/task.rb:55
+#: app/models/task.rb:57
 msgid "task kind|typing"
 msgstr "введя"
 
@@ -1748,39 +1772,39 @@ msgstr "Общее"
 msgid "task section|Task Settings"
 msgstr "Целевая настройки"
 
-#: app/models/task.rb:165
+#: app/models/task.rb:176
 msgid "task state|Another Task Created"
 msgstr "Другая задача, созданная"
 
-#: app/models/task.rb:163
+#: app/models/task.rb:174
 msgid "task state|Approved by Editor"
 msgstr "Утверждено редактора"
 
-#: app/models/task.rb:158
+#: app/models/task.rb:169
 msgid "task state|Assigned/Work in Progress"
 msgstr "Присвоение / Работа продолжается"
 
-#: app/models/task.rb:159
+#: app/models/task.rb:170
 msgid "task state|Editors Help Required"
 msgstr "Помощь обязательные редакторы"
 
-#: app/models/task.rb:160
+#: app/models/task.rb:171
 msgid "task state|Partialy Ready"
 msgstr "Частично готовы"
 
-#: app/models/task.rb:164
+#: app/models/task.rb:175
 msgid "task state|Ready to Publish"
 msgstr "Готов к публикации"
 
-#: app/models/task.rb:162
+#: app/models/task.rb:173
 msgid "task state|Rejected by Editor"
 msgstr "Отклонен Редактор"
 
-#: app/models/task.rb:157
+#: app/models/task.rb:168
 msgid "task state|Unassigned"
 msgstr "Неназначен"
 
-#: app/models/task.rb:161
+#: app/models/task.rb:172
 msgid "task state|Waits for Editor's approvement"
 msgstr "Ждет редактора approvement"
 
