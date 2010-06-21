@@ -1,10 +1,13 @@
 class DocumentsController < InheritedResources::Base
   belongs_to :task
-  before_filter :require_task_participant, :only => [:new, :create]
+  before_filter :require_task_participant, :only => [:new, :create, :show]
   before_filter :require_owner, :only => :destroy
-  actions :new, :create, :destroy
+  actions :new, :create, :destroy, :show
+  layout nil
 
   # new - shouldn't be used
+
+  # show
 
   # create
   def create

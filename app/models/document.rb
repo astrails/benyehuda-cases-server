@@ -2,6 +2,8 @@ class Document < ActiveRecord::Base
   belongs_to :user
   belongs_to :task , :touch => true, :counter_cache => true
 
+  IMAGE_FILE_EXTS = ["jpg", "png", "tiff", "tif", "gif", "jpeg", "bmp"]
+
   include ActsAsAuditable
   acts_as_auditable :file_file_name,
     :name => :file_file_name,
@@ -32,5 +34,9 @@ class Document < ActiveRecord::Base
     self.deleted_at = Time.now.utc
     save!
     Task.decrement_counter(:documents_count, self.task_id)
+  end
+
+  def image?
+    IMAGE_FILE_EXTS.member?(File.extname(file_file_name)[1..-1].downcase)
   end
 end
