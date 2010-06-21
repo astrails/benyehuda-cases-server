@@ -30,4 +30,4 @@
   != render(:partial => "users/brief", :locals => {:brief_title => _("Editor:"), :user => @task.editor, :email_link => link_to_task_participant_email(@task, :editor, _("Send Email to Editor"))})
 
 - if @task.assignee
-  != render(:partial => "users/brief", :locals => {:brief_title => _("Assignee:"), :user => @task.assignee, :email_link => link_to_task_participant_email(@task, :editor, _("Send Email to Assignee"))})
+  != render(:partial => "users/brief", :locals => {:brief_title => _("Assignee:"), :user => @task.assignee, :email_link => link_to_task_participant_email(@task, :assignee, _("Send Email to Assignee"))})

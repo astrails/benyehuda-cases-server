@@ -72,7 +72,7 @@ module TasksHelper
     return if task.send(role).blank? || task.send(role).disabled?
     return if :assignee == role && !task.editor?(current_user)
 
-    mail_to task.editor.email, text, :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
+    mail_to task.send(role).email, text, :body => task_url(task), :subject => (_("Re: BenYehuda task: #%{task}") % { :task => task.id.to_s })
   end
 
   def toggle_chained_js
