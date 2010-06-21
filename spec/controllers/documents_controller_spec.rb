@@ -72,6 +72,7 @@ describe DocumentsController do
         it "should render new doc for #{u}" do
           @doc = Factory.build(:document)
           @doc.stub!(:save).and_return(true)
+          @doc.stub!(:image?).and_return(false)
           @doc.stub!(:new_record?).and_return(false)
           @doc.stub!(:to_param).and_return("123")
           @doc.stub!(:user).and_return(Factory.build(:user))
