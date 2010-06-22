@@ -54,6 +54,21 @@ describe UsersController do
     end
   end
 
+
+  describe "volunteer" do
+    integrate_views
+
+    before(:each) do
+      @user = Factory.create(:volunteer)
+      UserSession.create(@user)
+    end
+
+    it "should be able to see own profile" do
+      get :show, :id => @user.id, :public_profile => true
+      response.should be_success
+    end
+  end
+
   describe "editor" do
     integrate_views
 
