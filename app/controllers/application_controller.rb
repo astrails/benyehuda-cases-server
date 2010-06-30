@@ -6,6 +6,28 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging "password" unless Rails.env.development?
 
 protected
+  def default_locale
+    "he"
+  end
+
+  def detect_locale_from(source)
+    case source
+    when :params
+      params[:locale]
+    when :session
+      logger.debug "Session: #{session.inspect}"
+      session[:locale]
+    when :cookie
+      cookies[:locale]
+    when :domain
+      parse_host_and_port_for_locale[0]
+    when :header, :default
+      default_locale
+    else
+      raise "unknown source #{source}"
+    end
+  end
+
   def home_path; dashboard_path end
   helper_method :home_path
 

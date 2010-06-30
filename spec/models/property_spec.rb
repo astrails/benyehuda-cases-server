@@ -14,6 +14,7 @@ describe Property do
   describe "validations" do
     before :each do
       @property = Property.new
+      I18n.locale = :en
     end
 
     describe "uniquness" do
