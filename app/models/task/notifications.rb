@@ -33,13 +33,13 @@ module Task::Notifications
     return if recipients.blank?
 
     if "production" == Rails.env
-      send_later(:notify_state_changes, recipients)
+      send_later(:notify_state_changes, recipients, I18n.locale)
     else
-      notify_state_changes(recipients)
+      notify_state_changes(recipients, I18n.locale)
     end
   end
 
-  def notify_state_changes(recipients)
-    Notification.deliver_task_state_changed(self, recipients)
+  def notify_state_changes(recipients, use_locale)
+    I18n.with_locale(use_locale) { Notification.deliver_task_state_changed(self, recipients) }
   end
 end

@@ -29,13 +29,13 @@ class Comment < ActiveRecord::Base
     return if recipients.blank?
 
     if "production" == Rails.env
-      send_later(:notify_comment_created, recipients)
+      send_later(:notify_comment_created, recipients, I18n.locale)
     else
-      notify_comment_created(recipients)
+      notify_comment_created(recipients, I18n.locale)
     end
   end
 
-  def notify_comment_created(recipients)
-    Notification.deliver_comment_added(self, recipients)
+  def notify_comment_created(recipients, use_locale)
+    I18n.with_locale(use_locale) { Notification.deliver_comment_added(self, recipients) }
   end
 end
