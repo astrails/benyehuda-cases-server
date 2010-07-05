@@ -2,17 +2,17 @@
 
 - form_tag(url_for(params), :method => :get) do
   != label_tag :state, _("State")
-  != select_tag :state, options_for_select([""] + task_states_for_select, params_or_user_settings(:state))
+  != select_tag :state, options_for_select([""] + task_states_for_select, params[:state])
   != label_tag :full_nikkud, _("Full Nikkud")
-  != check_box_tag :full_nikkud, "true", "true" == params_or_user_settings(:full_nikkud)
+  != check_box_tag :full_nikkud, "true", "true" == params[:full_nikkud]
   != label_tag :kind, _("Kind")
-  != select_tag :kind, options_for_select([""] + task_kinds_for_select, params_or_user_settings(:kind))
+  != select_tag :kind, options_for_select([""] + task_kinds_for_select, params[:kind])
   != label_tag :difficulty, _("Difficulty")
-  != select_tag :difficulty, options_for_select([""] + task_difficulties_for_select, params_or_user_settings(:difficulty))
+  != select_tag :difficulty, options_for_select([""] + task_difficulties_for_select, params[:difficulty])
   != label_tag :length, _("Length")
-  != select_tag :length, options_for_select([""] + task_length_for_select, params_or_user_settings(:length))
+  != select_tag :length, options_for_select([""] + task_length_for_select, params[:length])
   %br
   != label_tag :query, _("Query")
-  != text_field_tag :query, params_or_user_settings(:query)
+  != text_field_tag :query, params[:query]
   != submit_tag _("Filter")
-  != link_to _("All"), admin_tasks_path
+  != link_to _("All"), admin_tasks_path(:all => true)

@@ -15,4 +15,8 @@ class SearchSetting < ActiveRecord::Base
       h
     end
   end
+
+  def self.clear!
+    delete_all
+  end
 end
