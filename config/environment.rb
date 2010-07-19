@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
   config.gem "aasm", :version => "2.1.3", :library => false
   config.gem 'mime-types', :lib => 'mime/types', :version => "1.16"
   config.gem "fastercsv", :version => "1.5.0"
-  config.gem 'hoptoad_notifier', :version => "2.1.3"
+  config.gem 'hoptoad_notifier', :version => "2.3.2"
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.15'
   config.gem 'gravtastic', :version => '2.2.0'
   # config.middleware.use Rack::NoIE
