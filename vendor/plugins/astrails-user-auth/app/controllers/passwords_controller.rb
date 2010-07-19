@@ -65,7 +65,7 @@ class PasswordsController < InheritedResources::Base
     resource
 
     if with_activation_check
-      if current_user && !@user.activated_at
+      if current_user && @user && !@user.activated_at
         flash[:error] = _("Please log out to activate new account")
         redirect_to profile_path
         return false
