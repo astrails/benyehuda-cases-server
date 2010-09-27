@@ -7,7 +7,9 @@ class UsersController < InheritedResources::Base
 
   respond_to :html, :js
 
-  # index
+  def index
+    default_index_with_search!
+  end
 
   def create
     user = build_resource

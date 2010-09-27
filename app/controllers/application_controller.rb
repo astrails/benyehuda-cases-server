@@ -6,6 +6,15 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging "password" unless Rails.env.development?
 
 protected
+  def default_index_with_search!
+    begin
+      index!
+    rescue Riddle::ConnectionError
+      flash[:error] = _("Search is not available at this moment, please try again later")
+      redirect_to "/"
+    end
+  end
+
   def default_locale
     "he"
   end

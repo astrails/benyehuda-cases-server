@@ -34,7 +34,7 @@ class Admin::TasksController < InheritedResources::Base
       params.merge!(current_user.search_settings.load)
     end
     current_user.search_settings.set_from_params!(params)
-    index!
+    default_index_with_search!
   end
 
 protected
