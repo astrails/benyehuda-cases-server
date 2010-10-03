@@ -13,12 +13,6 @@ class Admin::TasksController < InheritedResources::Base
   end
 
   def update
-    super do |format|
-      format.html {redirect_to admin_tasks_path}
-    end
-  end
-
-  def update
     params[:task].trust(:admin_state, :editor_id, :assignee_id)
     update! do |success, failure|
       success.html {redirect_to task_path(resource)}
