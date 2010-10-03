@@ -98,8 +98,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def allow_email_change?
-    activated_at.nil? || new_record?
+  def allow_email_change?(force = false)
+    force || activated_at.nil? || new_record?
   end
 
   def email_recipient
