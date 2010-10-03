@@ -24,7 +24,6 @@ protected
     when :params
       params[:locale]
     when :session
-      logger.debug "Session: #{session.inspect}"
       session[:locale]
     when :cookie
       cookies[:locale]
