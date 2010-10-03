@@ -1,10 +1,9 @@
-<%= _("Hello %{user_name},
+<%= _("Hello %{user_name}") % {:user_name => @user_name} %>
 
-Your account has been activated.
+<%= _("Your account has been activated.") %>
 
-You can login into your account at %{login_url}
+<%= _("You can login into your account at %{login_url}") % {:login_url => @login_url} %>
 
-This email was generated automatically. Please do not reply to it.
+<%= _("This email was generated automatically. Please do not reply to it.") %>
 
-%{domain} Team
-") % {:user_name => @user.name, :login_url => @login_url, :domain => @domain} %>
+<%= _("%{domain} Team") % {:domain => @domain} %>

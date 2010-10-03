@@ -1,13 +1,12 @@
-<%= _("Hello %{user_name},
+<%= _("Hello %{user_name}") % {:user_name => @user_name} %>
 
-To activate your %{domain} account please click on the URL below.
+<%= _("To activate your %{domain} account please click on the URL below.") % {:domain => @domain} %>
 
-%{account_activation_url}
+<%= @account_activation_url %>
 
-If the above URL does not work try copying and pasting it into your browser.
-If you continue to have problems, please feel free to contact us.
+<%= _("If the above URL does not work try copying and pasting it into your browser.") %>
+<%= _("If you continue to have problems, please feel free to contact us.") %>
 
-This email was generated automatically. Please do not reply to it.
+<%= _("This email was generated automatically. Please do not reply to it.") %>
 
-%{domain} Team
-") % {:user_name => @user.name, :account_activation_url => @account_activation_url, :domain => @domain} %>
+<%= _("%{domain} Team") % {:domain => @domain} %>

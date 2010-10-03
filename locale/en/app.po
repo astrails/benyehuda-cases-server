@@ -7,10 +7,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2010-06-21 23:42+0300\n"
+"POT-Creation-Date: 2010-10-03 13:30+0200\n"
 "PO-Revision-Date: 2009-12-23 22:46+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,6 +23,13 @@ msgid ""
 "        If you are having issues try copying and pasting the URL\n"
 "        from your email into your browser or restarting the\n"
 "        reset password process.\n"
+msgstr ""
+
+#: app/views/astrails/auth/mailer/activation_confirmation.erb:9
+#: app/views/astrails/auth/mailer/activation_instructions.erb:12
+#: app/views/astrails/auth/mailer/password_reset_confirmation.erb:9
+#: app/views/astrails/auth/mailer/password_reset_instructions.erb:13
+msgid "%{domain} Team"
 msgstr ""
 
 #: vendor/plugins/astrails-user-auth/lib/astrails/auth/mailer.rb:22
@@ -104,7 +112,7 @@ msgstr ""
 
 #: app/helpers/volunteer_requests_helper.rb:3
 #: app/views/comments/_comment.html.haml:6 app/views/comments/_new.html.haml:7
-#: app/views/documents/_document.html.haml:6
+#: app/views/documents/_document.html.haml:9
 #: app/views/properties/_property.html.haml:7
 #: app/views/site_notices/_site_notice.html.haml:6
 #: app/views/tasks/_assignee_simple_actions.html.haml:4
@@ -118,7 +126,7 @@ msgstr ""
 msgid "Assign"
 msgstr ""
 
-#: app/views/dashboards/_waiting_volunteers.html.haml:19
+#: app/views/dashboards/_waiting_volunteers.html.haml:20
 msgid "Assign a Task"
 msgstr ""
 
@@ -261,7 +269,7 @@ msgstr ""
 msgid "Disable"
 msgstr ""
 
-#: app/controllers/documents_controller.rb:33
+#: app/controllers/documents_controller.rb:36
 msgid "Document deleted"
 msgstr ""
 
@@ -394,21 +402,11 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
+#: app/views/astrails/auth/mailer/activation_confirmation.erb:1
 #: app/views/astrails/auth/mailer/activation_instructions.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"To activate your %{domain} account please click on the URL below.\n"
-"\n"
-"%{account_activation_url}\n"
-"\n"
-"If the above URL does not work try copying and pasting it into your "
-"browser.\n"
-"If you continue to have problems, please feel free to contact us.\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
+#: app/views/astrails/auth/mailer/password_reset_confirmation.erb:1
+#: app/views/astrails/auth/mailer/password_reset_instructions.erb:1
+msgid "Hello %{user_name}"
 msgstr ""
 
 #: app/views/notification/volnteer_welcome.erb:1
@@ -420,50 +418,6 @@ msgid ""
 "\n"
 "\n"
 "%{domain} Team"
-msgstr ""
-
-#: app/views/astrails/auth/mailer/password_reset_confirmation.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"You successfully changed your password.\n"
-"\n"
-"You can login into your account at %{login_url}\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
-msgstr ""
-
-#: app/views/astrails/auth/mailer/activation_confirmation.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"\n"
-"Your account has been activated.\n"
-"\n"
-"You can login into your account at %{login_url}\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
-msgstr ""
-
-#: app/views/astrails/auth/mailer/password_reset_instructions.erb:1
-msgid ""
-"Hello %{user_name},\n"
-"we have received a request to reset your password. If you did not make this "
-"request, simply ignore this email.\n"
-"If you did make this request just click the link below:\n"
-"\n"
-"%{edit_password_url}\n"
-"\n"
-"If the above URL does not work try copying and pasting it into your "
-"browser.\n"
-"If you continue to have problems, please feel free to contact us.\n"
-"\n"
-"This email was generated automatically. Please do not reply to it.\n"
-"\n"
-"%{domain} Team\n"
 msgstr ""
 
 #: app/views/pages/home.html.haml:1
@@ -504,6 +458,17 @@ msgstr ""
 
 #: app/views/site_notices/index.html.haml:9 app/views/users/_index.html.haml:5
 msgid "ID"
+msgstr ""
+
+#: app/views/astrails/auth/mailer/activation_instructions.erb:7
+#: app/views/astrails/auth/mailer/password_reset_instructions.erb:8
+msgid ""
+"If the above URL does not work try copying and pasting it into your browser."
+msgstr ""
+
+#: app/views/astrails/auth/mailer/activation_instructions.erb:8
+#: app/views/astrails/auth/mailer/password_reset_instructions.erb:9
+msgid "If you continue to have problems, please feel free to contact us."
 msgstr ""
 
 #: vendor/plugins/astrails-user-auth/app/controllers/passwords_controller.rb:19
@@ -622,17 +587,17 @@ msgstr ""
 msgid "Object Properties"
 msgstr ""
 
-#: app/controllers/application_controller.rb:39
+#: app/controllers/application_controller.rb:69
 #: app/controllers/tasks_controller.rb:64
 msgid "Only participant can see this page"
 msgstr ""
 
-#: app/controllers/users_controller.rb:73
+#: app/controllers/users_controller.rb:77
 msgid "Only registered activists allowed to access this page"
 msgstr ""
 
-#: app/controllers/documents_controller.rb:51
-#: app/controllers/users_controller.rb:84
+#: app/controllers/documents_controller.rb:54
+#: app/controllers/users_controller.rb:88
 msgid "Only the owner can see this page"
 msgstr ""
 
@@ -724,7 +689,7 @@ msgstr ""
 msgid "Remember me"
 msgstr ""
 
-#: app/views/documents/_document.html.haml:6
+#: app/views/documents/_document.html.haml:9
 msgid "Remove"
 msgstr ""
 
@@ -759,6 +724,10 @@ msgstr ""
 #: app/controllers/admin/tasks_controller.rb:10
 #: app/views/admin/tasks/new.html.haml:9
 msgid "Save and New"
+msgstr ""
+
+#: app/controllers/application_controller.rb:13
+msgid "Search is not available at this moment, please try again later"
 msgstr ""
 
 #: app/views/admin/tasks/_search.html.haml:1
@@ -870,12 +839,23 @@ msgid_plural "There are %d pending volunter requests"
 msgstr[0] ""
 msgstr[1] ""
 
+#: app/views/astrails/auth/mailer/activation_confirmation.erb:7
+#: app/views/astrails/auth/mailer/activation_instructions.erb:10
+#: app/views/astrails/auth/mailer/password_reset_confirmation.erb:7
+#: app/views/astrails/auth/mailer/password_reset_instructions.erb:11
+msgid "This email was generated automatically. Please do not reply to it."
+msgstr ""
+
 #: app/views/properties/_form.html.haml:3
 msgid "Title"
 msgstr ""
 
 #: app/views/site_notices/index.html.haml:11
 msgid "To"
+msgstr ""
+
+#: app/views/astrails/auth/mailer/activation_instructions.erb:3
+msgid "To activate your %{domain} account please click on the URL below."
 msgstr ""
 
 #: app/helpers/tabs_helper.rb:10
@@ -902,7 +882,7 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: app/views/documents/_document.html.haml:4
+#: app/views/documents/_document.html.haml:7
 msgid "Uploaded by %{user} %{time} ago"
 msgstr ""
 
@@ -914,11 +894,11 @@ msgstr ""
 msgid "User Settings"
 msgstr ""
 
-#: app/controllers/users_controller.rb:51
+#: app/controllers/users_controller.rb:53
 msgid "User disabled"
 msgstr ""
 
-#: app/controllers/users_controller.rb:47
+#: app/controllers/users_controller.rb:49
 msgid "User enabled"
 msgstr ""
 
@@ -974,15 +954,20 @@ msgstr ""
 msgid "When my task status changed"
 msgstr ""
 
-#: app/controllers/users_controller.rb:41
+#: app/views/astrails/auth/mailer/activation_confirmation.erb:5
+#: app/views/astrails/auth/mailer/password_reset_confirmation.erb:5
+msgid "You can login into your account at %{login_url}"
+msgstr ""
+
+#: app/controllers/users_controller.rb:43
 msgid "You cannot remove your own account"
 msgstr ""
 
-#: app/controllers/application_controller.rb:25
+#: app/controllers/application_controller.rb:55
 msgid "You must be a volunteer to access this page"
 msgstr ""
 
-#: app/controllers/application_controller.rb:16
+#: app/controllers/application_controller.rb:46
 msgid "You must be an admin or editor to access this page"
 msgstr ""
 
@@ -998,7 +983,15 @@ msgstr ""
 msgid "You must be logged out to access this page"
 msgstr ""
 
-#: app/controllers/users_controller.rb:17
+#: app/views/astrails/auth/mailer/password_reset_confirmation.erb:3
+msgid "You successfully changed your password."
+msgstr ""
+
+#: app/views/astrails/auth/mailer/activation_confirmation.erb:3
+msgid "Your account has been activated."
+msgstr ""
+
+#: app/controllers/users_controller.rb:19
 msgid ""
 "Your account has been created. Please check your e-mail for your account "
 "activation instructions!"
@@ -1144,7 +1137,7 @@ msgstr ""
 msgid "auditable|Comment"
 msgstr ""
 
-#: app/models/document.rb:10
+#: app/models/document.rb:12
 msgid "auditable|Document"
 msgstr ""
 
@@ -1252,8 +1245,8 @@ msgstr ""
 
 #: app/models/notification.rb:7
 msgid ""
-"comment added notification subject|New comment (%{domain}): %"
-"{task_name_snippet}"
+"comment added notification subject|New comment (%{domain}): "
+"%{task_name_snippet}"
 msgstr ""
 
 #: app/models/comment.rb:9
@@ -1384,11 +1377,11 @@ msgstr "Seconds"
 msgid "datetime.prompts.year"
 msgstr "Year"
 
-#: app/models/document.rb:9
+#: app/models/document.rb:11
 msgid "document audit| by %{user_name}"
 msgstr ""
 
-#: app/models/document.rb:8
+#: app/models/document.rb:10
 msgid "document audit|Document %{file_name}"
 msgstr ""
 
@@ -1545,11 +1538,11 @@ msgstr ""
 msgid "number.precision.format.delimiter"
 msgstr ""
 
-#: app/controllers/application_controller.rb:55
+#: app/controllers/application_controller.rb:85
 msgid "paginator - previous page|&laquo; Previous"
 msgstr ""
 
-#: app/controllers/application_controller.rb:56
+#: app/controllers/application_controller.rb:86
 msgid "paginator - previous page|Next &raquo;"
 msgstr ""
 
@@ -1753,4 +1746,11 @@ msgstr ""
 
 #: app/models/notification.rb:27
 msgid "volunteer welcome subject|Welcome to Ben Yehuda Project"
+msgstr ""
+
+#: app/views/astrails/auth/mailer/password_reset_instructions.erb:3
+msgid ""
+"we have received a request to reset your password. If you did not make this "
+"request, simply ignore this email.\n"
+"If you did make this request just click the link below:"
 msgstr ""
