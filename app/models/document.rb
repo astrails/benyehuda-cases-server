@@ -37,6 +37,6 @@ class Document < ActiveRecord::Base
   end
 
   def image?
-    IMAGE_FILE_EXTS.member?(File.extname(file_file_name)[1..-1].downcase)
+    !file_file_name.blank? && IMAGE_FILE_EXTS.member?(File.extname(file_file_name)[1..-1].downcase)
   end
 end
