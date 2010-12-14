@@ -24,7 +24,7 @@ protected
     when :params
       params[:locale]
     when :session
-      session[:locale]
+      session[:locale] rescue ""
     when :cookie
       cookies[:locale]
     when :domain
