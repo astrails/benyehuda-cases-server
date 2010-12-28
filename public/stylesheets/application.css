@@ -49,3 +49,12 @@ div.finished_reason {
 	background:#e5ecf9;
 	border-left:1em solid #ddd;
 }
+
+.block.prominent {
+  font-size:125%;
+  background:#E5ECF9;
+}
+
+.prominent a {
+  font-weight:bold;
+}

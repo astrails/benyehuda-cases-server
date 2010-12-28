@@ -4,11 +4,6 @@
 
 != render(:partial => "description")
 
-- if @task.editor?(current_user)
-  != render(:partial => "editor_events")
-
-- if @task.assignee?(current_user)
-  != render(:partial => "assignee_events")
   
 - @task.task_properties.visible_for(current_user).each do |p|
   %p
@@ -23,6 +18,16 @@
 
 .block
   != render(:partial => "comments/index", :locals => {:comments => @comments})
+
+- if @task.editor?(current_user)
+  .block.prominent
+    %h4= _("Editor Actions")
+    != render(:partial => "editor_events")
+
+- if @task.assignee?(current_user)
+  .block.prominent
+    %h4= _("Assignee Actions")
+    != render(:partial => "assignee_events")
 
 
 - when_editor_or_admin do
