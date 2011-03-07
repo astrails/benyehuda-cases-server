@@ -23,26 +23,8 @@ end
 
 
 Rails::Initializer.run do |config|
-  config.gem 'authlogic', :version => '2.1.1'
-  config.gem 'ruby-debug', :library => false
   rpass = (GlobalPreference.get(:rack_bug_password) || 'by123') rescue 'by123'
   config.middleware.use 'Rack::Bug', :password => rpass
-  config.gem 'whenever', :lib => false
-  config.gem 'will_paginate', :version => "2.3.15"
-  config.gem 'formtastic', :version => '0.9.1'
-  config.gem 'haml', :version => '>= 2.0.9'
-  config.gem 'rspec-rails', :lib => false, :version => '1.3.2'
-  config.gem 'rspec', :lib => false
-  config.gem 'mocha', :version => '0.9.8', :library => false
-  config.gem 'fast_gettext', :version => '0.4.17'
-  config.gem "gettext", :lib => false, :version => '2.1.0'
-  config.gem "grosser-pomo", :lib => false, :source=>"http://gems.github.com/", :version => '>=0.5.1'
-  config.gem "aasm", :version => "2.1.3", :library => false
-  config.gem 'mime-types', :lib => 'mime/types', :version => "1.16"
-  config.gem "fastercsv", :version => "1.5.0"
-  config.gem 'hoptoad_notifier', :version => "2.3.2"
-  config.gem 'thinking-sphinx', :lib => 'thinking_sphinx', :version => '1.3.15'
-  config.gem 'gravtastic', :version => '2.2.0'
   # config.middleware.use Rack::NoIE
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -79,4 +61,5 @@ Rails::Initializer.run do |config|
     config.load_paths << "#{RAILS_ROOT}/app/#{dir}" 
   end
 end
+
 

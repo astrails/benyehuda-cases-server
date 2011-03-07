@@ -6,6 +6,8 @@ require "vladify/thinking_sphinx"
 # require "vladify/ultrasphinx"
 require "vladify/whenever"
 # require "vladify/workling"
+require 'vladify/bundler'
+
 
 set :repository, "git@alpha.astrails.com:benyehuda/cases_server"
 
