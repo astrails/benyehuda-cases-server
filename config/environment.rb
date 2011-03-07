@@ -10,17 +10,29 @@ if "irb" == $0
   RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
 end
 
+if Gem::VERSION >= "1.3.6" 
+    module Rails
+        class GemDependency
+            def requirement
+                r = super
+                (r == Gem::Requirement.default) ? nil : r
+            end
+        end
+    end
+end
+
+
 Rails::Initializer.run do |config|
   config.gem 'authlogic', :version => '2.1.1'
   config.gem 'ruby-debug', :library => false
   rpass = (GlobalPreference.get(:rack_bug_password) || 'by123') rescue 'by123'
   config.middleware.use 'Rack::Bug', :password => rpass
   config.gem 'whenever', :lib => false
-  config.gem 'will_paginate'
+  config.gem 'will_paginate', :version => "2.3.15"
   config.gem 'formtastic', :version => '0.9.1'
   config.gem 'haml', :version => '>= 2.0.9'
   config.gem 'rspec-rails', :lib => false, :version => '1.3.2'
-  config.gem 'rspec', :lib => false, :version => '1.3.0'
+  config.gem 'rspec', :lib => false
   config.gem 'mocha', :version => '0.9.8', :library => false
   config.gem 'fast_gettext', :version => '0.4.17'
   config.gem "gettext", :lib => false, :version => '2.1.0'
