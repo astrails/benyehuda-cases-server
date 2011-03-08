@@ -6,7 +6,8 @@ gem "mysql", "2.8.1"
 gem 'authlogic', '2.1.1'
 gem 'ruby-debug'
 gem 'whenever'
-gem 'will_paginate',  "2.3.15"
+gem 'will_paginate',  "2.3.15", :require => 'will_paginate'
+gem "tzinfo", "0.3.24"
 gem 'formtastic',  '0.9.1'
 gem 'haml',  "3.0.25"
 gem "gettext", '2.1.0'
