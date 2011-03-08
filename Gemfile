@@ -30,6 +30,10 @@ gem "daemons", "1.1.0"
 # gem "nokogiri", "1.4.2"
 # gem "geokit"
 
+group :production do
+  gem "passenger", "2.2.11"
+end
+
 group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"
