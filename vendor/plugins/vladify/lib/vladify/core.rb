@@ -47,7 +47,6 @@ namespace :vlad do
 
     # link extra shared directories
     ln_shared.each do |d|
-      run "mkdir -p #{shared_path}/#{d}"
       run "ln -sfn #{shared_path}/#{d} #{latest_release}/#{d}"
     end
 

@@ -23,6 +23,7 @@ gem "aws-s3", '0.5.1', :require => "aws/s3"
 gem 'right_aws', '1.10.0'
 gem 'image_science', '1.2.1'
 gem "RubyInline"
+gem "daemons", "1.1.0"
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"

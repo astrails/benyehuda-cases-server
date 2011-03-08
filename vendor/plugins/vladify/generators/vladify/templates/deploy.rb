@@ -6,7 +6,6 @@
 # require "vladify/ultrasphinx"
 # require "vladify/whenever"
 # require "vladify/workling"
-# require 'vladify/bundler'
 
 set :application, "<%= name %>.com"
 set :repository, "git@astrails.com:<%= name %>"
