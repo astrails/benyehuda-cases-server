@@ -1,6 +1,6 @@
 source :gemcutter
-gem "rails", "2.3.4"
 gem "builder", "3.0.0"
+gem "rails", "2.3.4"
 gem "json", "1.5.1"
 gem "mysql", "2.8.1"
 gem 'authlogic', '2.1.1'
@@ -8,7 +8,7 @@ gem 'ruby-debug'
 gem 'whenever'
 gem 'will_paginate',  "2.3.15"
 gem 'formtastic',  '0.9.1'
-gem 'haml',  '>= 2.0.9'
+gem 'haml',  "3.0.25"
 gem "gettext", '2.1.0'
 #gem 'fast_gettext', '0.4.17', :git => "https://github.com/grosser/fast_gettext.git", :tag => "v0.4.17"
 gem 'fast_gettext', '0.4.17', :path => "./vendor/gems/fast_gettext-0.4.17"
