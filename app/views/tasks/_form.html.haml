@@ -1,5 +1,5 @@
 - f.inputs :name => s_("task section|General") do
   != f.input :name, :label => _("Description"), :required => true, :label => _("Name")
-  != f.input :kind, :as => :select, :collection => task_kinds_for_select, :required => true, :label => _("Kind")
+  != f.input :kind, :as => :select, :collection => task_kinds_for_select, :required => true, :label => _("Kind"), :selected => newkind
   != f.input :difficulty, :as => :select, :collection => task_difficulties_for_select, :required => true, :label => _("Difficulty")
   != f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")

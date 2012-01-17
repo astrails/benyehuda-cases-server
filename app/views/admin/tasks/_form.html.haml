@@ -1,4 +1,4 @@
-!= render(:partial => "tasks/form", :locals => {:f => f})
+!= render(:partial => "tasks/form", :locals => {:f => f, :newkind => 'typing'})
 
 - f.inputs do
   != f.input :assignee, :as => :select, :collection => User.all_volunteers.find(:all, :order => "users.name"), :label => _("Assignee")

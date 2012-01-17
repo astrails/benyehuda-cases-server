@@ -144,4 +144,9 @@ class User < ActiveRecord::Base
     self.task_requested_at = Time.now.utc
     save!
   end
+
+  def clear_task_requested!
+    self.task_requested_at = nil
+    save!
+  end
 end

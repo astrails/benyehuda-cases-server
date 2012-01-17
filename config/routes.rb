@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :activation_instructions
     user.resources :assignment_histories
   end
+  map.connect '/users/:id/cancel_task_request', :controller => 'users', :action => 'cancel_task_request'
   map.resource :profile, :controller => "users"
   map.profiles '/profiles/:id', :controller => "users", :action => "show", :public_profile => true
   map.root :controller => :welcome, :action => :index
