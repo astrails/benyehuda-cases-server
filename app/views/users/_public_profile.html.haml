@@ -26,6 +26,12 @@
 
 - when_user_volunteer do
   .block
+    %h4= _("Volunteer Description")
+    %p
+      != @user.volunteer_request.preferences
+
+- when_user_volunteer do
+  .block
     %h4= _("Volunteer Properties")
     - @user.volunteer_properties.visible_for(current_user).each do |p|
       %p

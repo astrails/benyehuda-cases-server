@@ -959,6 +959,10 @@ msgstr "Волонтер"
 msgid "Volunteer Properties"
 msgstr "Волонтер Свойства"
 
+#: app/views/users/_public_profile.html.haml:30
+msgid "Volunteer Description"
+msgstr "Волонтер Описание"
+
 #: app/views/volunteer_requests/show.html.haml:1
 msgid "Volunteer Request from %{user_link}"
 msgstr "Волонтер Просьба %{user_link}"
