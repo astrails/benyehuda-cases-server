@@ -1,4 +1,9 @@
 module DashboardsHelper
+  def waiting_for_task(volunteer)
+    return time_ago_in_words(volunteer.task_requested_at) if volunteer.task_requested_at.present?
+    return "N/A"
+  end
+
   def pending_volunteer_requests
     pending_count = VolunteerRequest.pending.count
     if pending_count > 0
