@@ -7,7 +7,6 @@
     != f.input :is_editor, :label => _("Is Editor")
     != f.input :is_volunteer, :label => _("Is Volunteer")
 
-
 - unless f.object.new_record?
   - f.inputs :name => _("Email Notifications") do
     != f.input :notify_on_comments, :label => _("When a comment added to my task"), :as => :boolean
