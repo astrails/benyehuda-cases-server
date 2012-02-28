@@ -44,7 +44,8 @@ class DocumentsController < InheritedResources::Base
     end
   end
 
-protected
+  protected
+
   def require_owner
     return false unless require_user
     return true if current_user.try(:is_admin?)

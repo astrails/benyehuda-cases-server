@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(:version => 20100419123045) do
 
   add_index "audits", ["task_id"], :name => "index_audits_on_task_id"
 
-  create_table "books", :force => true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.string   "translator"
-    t.string   "source_file_name"
-    t.binary   "xbook",            :limit => 16777215
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "task_id"
