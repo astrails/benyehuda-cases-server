@@ -28,7 +28,7 @@
   .block
     %h4= _("Volunteer Description")
     %p
-      != @user.volunteer_request.preferences
+      != @user.volunteer_request.try(:preferences)
 
 - when_user_volunteer do
   .block
