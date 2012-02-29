@@ -1,3 +1,4 @@
+source "http://gems.github.com"
 source :gemcutter
 gem "builder", "3.0.0"
 gem "rails", "2.3.4"
