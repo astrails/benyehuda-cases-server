@@ -11,7 +11,7 @@
       %tr{:class => cycle("odd", "even")}
         %td!= link_to(v.name, profiles_path(v))
         %td!= mail_to v.email
-        %td!= time_ago_in_words(v.task_requested_at)
+        %td!= waiting_for_task(v)
         %td!= link_to_assign_a_task(v)
   :javascript
     jQuery(function(){      
