@@ -14,7 +14,7 @@ describe AssignmentHistoriesController do
     integrate_views
 
     it "should render history" do
-      @assignemt_history = Factory.create(:assignment_history)
+      @assignemt_history = Factory.create(:assignment_history, :role => "editor")
       UserSession.create(@assignemt_history.user)
 
       get :index, :user_id => @assignemt_history.user_id
