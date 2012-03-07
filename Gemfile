@@ -42,9 +42,9 @@ group :development do
   gem 'rspec-rails', '1.3.2'
   gem 'rspec', '1.3.0'
   gem 'mocha','0.9.8'
-  gem "inaction_mailer"
+  #gem "inaction_mailer"
 
-  gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
+  #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
   gem "ruby-debug", :require => 'ruby-debug'
 end
@@ -54,7 +54,7 @@ group :test do
   gem 'rspec', '1.3.0'
   gem 'mocha','0.9.8'
   gem 'factory_girl'
-  gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
+  #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
   gem "ruby-debug", :require => 'ruby-debug'
   # bundler requires these gems while running tests

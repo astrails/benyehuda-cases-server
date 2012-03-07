@@ -45,7 +45,6 @@ GEM
     hoptoad_notifier (2.3.2)
       activesupport
     image_science (1.2.1)
-    inaction_mailer (0.6)
     json (1.5.1)
     linecache (0.43)
     locale (2.0.5)
@@ -116,7 +115,6 @@ DEPENDENCIES
   haml (= 3.0.25)
   hoptoad_notifier (= 2.3.2)
   image_science (= 1.2.1)
-  inaction_mailer
   json (= 1.5.1)
   mime-types (= 1.16)
   mocha (= 0.9.8)
