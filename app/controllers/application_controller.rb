@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  require 'aasm'
+  require 'gravtastic'
   include Astrails::Auth::Controller
 
   helper :all
