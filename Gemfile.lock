@@ -7,71 +7,81 @@ GEM
   remote: http://gems.github.com/
   remote: http://rubygems.org/
   specs:
-    RubyInline (3.9.0)
+    RubyInline (3.11.2)
       ZenTest (~> 4.3)
-    ZenTest (4.5.0)
-    aaronh-chronic (0.3.9)
-    aasm (2.1.3)
-    actionmailer (2.3.4)
-      actionpack (= 2.3.4)
-    actionpack (2.3.4)
-      activesupport (= 2.3.4)
-      rack (~> 1.0.0)
-    activerecord (2.3.4)
-      activesupport (= 2.3.4)
-    activeresource (2.3.4)
-      activesupport (= 2.3.4)
-    activesupport (2.3.4)
-    after_commit (1.0.8)
-      activerecord (< 3.0.0)
-    authlogic (2.1.1)
+    ZenTest (4.6.2)
+    aasm (3.0.3)
+      activerecord
+    actionmailer (2.3.14)
+      actionpack (= 2.3.14)
+    actionpack (2.3.14)
+      activesupport (= 2.3.14)
+      rack (~> 1.1.0)
+    activerecord (2.3.14)
+      activesupport (= 2.3.14)
+    activeresource (2.3.14)
+      activesupport (= 2.3.14)
+    activesupport (2.3.14)
+    after_commit (1.0.10)
+      activerecord (< 3.0.0, >= 1.15.6)
+    authlogic (2.1.6)
       activesupport
-    aws-s3 (0.5.1)
+    aws-s3 (0.6.2)
       builder
       mime-types
       xml-simple
     builder (3.0.0)
-    columnize (0.3.2)
-    daemons (1.1.0)
-    factory_girl (1.3.3)
-    fastercsv (1.5.0)
+    chronic (0.6.7)
+    columnize (0.3.6)
+    daemons (1.1.8)
+    factory_girl (2.6.3)
+      activesupport (>= 2.3.9)
+    fastercsv (1.5.4)
     fastthread (1.0.7)
-    formtastic (0.9.1)
-    gettext (2.1.0)
-      locale (>= 2.0.5)
+    formtastic (1.2.4)
+      actionpack (>= 2.3.7)
+      activesupport (>= 2.3.7)
+      i18n (~> 0.4)
+    gettext (2.2.0)
+      locale
     gravtastic (2.2.0)
     grosser-pomo (0.5.1)
-    haml (3.0.25)
-    hoptoad_notifier (2.3.2)
+    haml (3.1.4)
+    hoptoad_notifier (2.4.11)
       activesupport
+      builder
+    i18n (0.6.0)
     image_science (1.2.1)
-    json (1.5.1)
-    linecache (0.43)
+    json (1.6.5)
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
     locale (2.0.5)
-    mime-types (1.16)
-    mocha (0.9.8)
-      rake
+    metaclass (0.0.1)
+    mime-types (1.17.2)
+    mocha (0.10.5)
+      metaclass (~> 0.0.1)
     mysql (2.8.1)
-    open4 (1.0.1)
+    open4 (1.3.0)
     passenger (2.2.11)
       fastthread (>= 1.0.1)
       rack
       rake (>= 0.8.1)
     query_trace (0.1.1)
       activerecord
-    rack (1.0.1)
-    rails (2.3.4)
-      actionmailer (= 2.3.4)
-      actionpack (= 2.3.4)
-      activerecord (= 2.3.4)
-      activeresource (= 2.3.4)
-      activesupport (= 2.3.4)
+    rack (1.1.3)
+    rails (2.3.14)
+      actionmailer (= 2.3.14)
+      actionpack (= 2.3.14)
+      activerecord (= 2.3.14)
+      activeresource (= 2.3.14)
+      activesupport (= 2.3.14)
       rake (>= 0.8.3)
     rake (0.8.7)
-    riddle (1.2.2)
-    right_aws (1.10.0)
-      right_http_connection (>= 1.2.4)
-    right_http_connection (1.2.4)
+    rbx-require-relative (0.0.9)
+    riddle (1.5.1)
+    right_aws (3.0.3)
+      right_http_connection (>= 1.2.5)
+    right_http_connection (1.3.0)
     rspec (1.3.0)
     rspec-rails (1.3.2)
       rack (>= 1.0.0)
@@ -81,53 +91,54 @@ GEM
       ruby-debug-base (~> 0.10.4.0)
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
-    thinking-sphinx (1.3.15)
-      activerecord (>= 1.15.6)
-      after_commit (>= 1.0.5)
-      riddle (>= 1.0.9)
-    tzinfo (0.3.24)
+    thinking-sphinx (1.4.11)
+      activerecord (< 3.0.0, >= 1.15.6)
+      after_commit (>= 1.0.7)
+      riddle (>= 1.5.0)
+    tzinfo (0.3.32)
     vlad (1.4.0)
       open4
       rake (>= 0.8.1)
-    whenever (0.6.2)
-      aaronh-chronic (>= 0.3.9)
+    whenever (0.7.3)
       activesupport (>= 2.3.4)
+      chronic (~> 0.6.3)
     will_paginate (2.3.15)
-    xml-simple (1.0.14)
+    xml-simple (1.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   RubyInline
-  aasm (= 2.1.3)
-  authlogic (= 2.1.1)
-  aws-s3 (= 0.5.1)
-  builder (= 3.0.0)
-  daemons (= 1.1.0)
+  aasm
+  authlogic
+  aws-s3
+  builder
+  daemons
   factory_girl
-  fast_gettext (= 0.4.17)!
-  fastercsv (= 1.5.0)
-  formtastic (= 0.9.1)
-  gettext (= 2.1.0)
+  fast_gettext!
+  fastercsv
+  formtastic
+  gettext
   gravtastic (= 2.2.0)
   grosser-pomo (>= 0.5.1)
-  haml (= 3.0.25)
-  hoptoad_notifier (= 2.3.2)
-  image_science (= 1.2.1)
-  json (= 1.5.1)
-  mime-types (= 1.16)
-  mocha (= 0.9.8)
-  mysql (= 2.8.1)
+  haml
+  hoptoad_notifier
+  image_science
+  json
+  mime-types
+  mocha
+  mysql
   passenger (= 2.2.11)
   query_trace
-  rails (= 2.3.4)
-  right_aws (= 1.10.0)
+  rails (~> 2.3.4)
+  rake (= 0.8.7)
+  right_aws
   rspec (= 1.3.0)
   rspec-rails (= 1.3.2)
   ruby-debug
-  thinking-sphinx (= 1.3.15)
-  tzinfo (= 0.3.24)
+  thinking-sphinx
+  tzinfo
   vlad (= 1.4.0)
   whenever
   will_paginate (= 2.3.15)
