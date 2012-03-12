@@ -12,7 +12,7 @@ gem 'ruby-debug'
 gem 'whenever'
 gem 'will_paginate', "2.3.15",:require => 'will_paginate'
 gem "tzinfo"
-gem 'formtastic'
+gem 'formtastic', '~> 1.1.0'
 gem 'haml'
 gem "gettext"
 #gem 'fast_gettext', '0.4.17', :git => "https://github.com/grosser/fast_gettext.git", :tag => "v0.4.17"
