@@ -1,4 +1,3 @@
-(in /Volumes/Astrails/clients/cases_server)
 CasesServer::Application.routes.draw do
   match '/activate/:id' => 'passwords#edit', :as => :activate
   match '/password' => 'passwords#update', :as => :password_update, :via => :put
@@ -8,9 +7,7 @@ CasesServer::Application.routes.draw do
   resource :user_session
   match '/signup' => 'users#new', :as => :signup
   resources :users do
-  
-  
-      resources :activation_instructions
+    resources :activation_instructions
     resources :assignment_histories
   end
 
@@ -22,13 +19,11 @@ CasesServer::Application.routes.draw do
   resource :dashboard
   resources :volunteer_requests
   namespace :admin do
-      resources :tasks
+    resources :tasks
   end
 
   resources :tasks do
-  
-  
-      resources :documents
+    resources :documents
     resource :assignment
     resources :comments
   end
