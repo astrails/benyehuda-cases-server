@@ -1,5 +1,5 @@
-source "http://gems.github.com"
-source :gemcutter
+#source "http://gems.github.com"
+#source :gemcutter
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.4'
@@ -27,7 +27,7 @@ gem 'gravtastic', "2.2.0"
 gem "vlad", "1.4.0"
 gem "aws-s3", :require => "aws/s3"
 gem 'right_aws'
-gem 'image_science'
+gem 'image_science', :require => false
 gem "RubyInline"
 gem "daemons"
 
@@ -64,4 +64,3 @@ group :test do
   # gem "rspec"
   # gem "faker"
 end
-
