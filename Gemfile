@@ -30,6 +30,7 @@ gem 'right_aws'
 gem 'image_science', :require => false
 gem "RubyInline"
 gem "daemons"
+gem 'high_voltage'
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"

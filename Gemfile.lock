@@ -61,6 +61,7 @@ GEM
       locale
     gravtastic (2.2.0)
     haml (3.1.4)
+    high_voltage (1.1.1)
     hoptoad_notifier (2.4.11)
       activesupport
       builder
@@ -156,6 +157,7 @@ DEPENDENCIES
   gettext
   gravtastic (= 2.2.0)
   haml
+  high_voltage
   hoptoad_notifier
   image_science
   json
