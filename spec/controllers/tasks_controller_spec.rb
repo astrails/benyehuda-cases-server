@@ -80,7 +80,7 @@ describe TasksController do
         xhr :post, :create, :id => @task.id, :task => {:comments_attributes => [{:message => "1"}]}
         response.should be_success
         assigns[:chained_task].should be_new_record
-        assigns[:chained_task].errors.on(:comments_message).should_not be_blank
+        assigns[:chained_task].errors.on("comments.message").should_not be_blank
         response.should render_template("tasks/_new_chain_task.html.haml")
       end
 

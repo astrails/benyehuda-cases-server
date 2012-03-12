@@ -45,7 +45,6 @@ GEM
     gettext (2.2.0)
       locale
     gravtastic (2.2.0)
-    grosser-pomo (0.5.1)
     haml (3.1.4)
     hoptoad_notifier (2.4.11)
       activesupport
@@ -121,7 +120,6 @@ DEPENDENCIES
   formtastic
   gettext
   gravtastic (= 2.2.0)
-  grosser-pomo (>= 0.5.1)
   haml
   hoptoad_notifier
   image_science

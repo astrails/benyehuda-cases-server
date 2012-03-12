@@ -15,7 +15,7 @@ gem 'haml'
 gem "gettext"
 #gem 'fast_gettext', '0.4.17', :git => "https://github.com/grosser/fast_gettext.git", :tag => "v0.4.17"
 gem 'fast_gettext', :path => "./vendor/gems/fast_gettext-0.4.17"
-gem "grosser-pomo", '>=0.5.1'
+#gem "grosser-pomo", '>=0.5.1'
 gem "aasm"
 gem 'mime-types', :require => 'mime/types'
 gem "fastercsv"
