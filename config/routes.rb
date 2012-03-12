@@ -1,31 +1,38 @@
-ActionController::Routing::Routes.draw do |map|
-  map.activate '/activate/:id', :controller => 'passwords', :action => 'edit'
-  map.password_update '/password', :controller => 'passwords', :action => 'update', :conditions => { :method => :put }
-  map.password_edit '/password', :controller => 'passwords', :action => 'edit', :conditions => { :method => :get }
-  map.resources :passwords, :only => [:new, :create, :edit, :update]
-  map.login "/login", :controller => "user_session", :action => "new"
-  map.resource :user_session, :controller => "user_session"
-  map.signup "/signup", :controller => "users", :action => "new"
-  map.resources :users do |user|
-    user.resources :activation_instructions
-    user.resources :assignment_histories
+(in /Volumes/Astrails/clients/cases_server)
+CasesServer::Application.routes.draw do
+  match '/activate/:id' => 'passwords#edit', :as => :activate
+  match '/password' => 'passwords#update', :as => :password_update, :via => :put
+  match '/password' => 'passwords#edit', :as => :password_edit, :via => :get
+  resources :passwords, :only => [:new, :create, :edit, :update]
+  match '/login' => 'user_session#new', :as => :login
+  resource :user_session
+  match '/signup' => 'users#new', :as => :signup
+  resources :users do
+  
+  
+      resources :activation_instructions
+    resources :assignment_histories
   end
-  map.resource :profile, :controller => "users"
-  map.profiles '/profiles/:id', :controller => "users", :action => "show", :public_profile => true
-  map.root :controller => :welcome, :action => :index
 
-  map.resources :pages, :controller => 'pages', :only => [:show]
-  map.resources :properties
-  map.resource :dashboard
-  map.resources :volunteer_requests
-  map.namespace :admin do |admin|
-    admin.resources :tasks
+  resource :profile
+  match '/profiles/:id' => 'users#show', :as => :profiles, :public_profile => true
+  match '/' => 'welcome#index'
+  resources :pages, :only => [:show]
+  resources :properties
+  resource :dashboard
+  resources :volunteer_requests
+  namespace :admin do
+      resources :tasks
   end
-  map.resources :tasks do |tasks|
-    tasks.resources :documents
-    tasks.resource :assignment
-    tasks.resources :comments
+
+  resources :tasks do
+  
+  
+      resources :documents
+    resource :assignment
+    resources :comments
   end
-  map.resources :task_requests
-  map.resources :site_notices
+
+  resources :task_requests
+  resources :site_notices
 end

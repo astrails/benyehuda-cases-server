@@ -1,8 +1,10 @@
 source "http://gems.github.com"
 source :gemcutter
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.4'
 gem "rake", "0.8.7"
 gem "builder"
-gem "rails", "~> 2.3.4"
 gem "json"
 gem "mysql"
 gem 'authlogic'

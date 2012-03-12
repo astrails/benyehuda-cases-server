@@ -1,3 +1,4 @@
+.bundle
 config/*.sphinx.conf
 db/sphinx/*
 log/*.log
