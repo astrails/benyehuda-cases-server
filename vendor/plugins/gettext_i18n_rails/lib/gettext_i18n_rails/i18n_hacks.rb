@@ -1,19 +1,25 @@
-module I18n
-  module_function
-  # this is not chainable, since FastGettext may reject this locale!
-  def locale=(new_locale)
-    FastGettext.locale = new_locale
-  end
-  def locale
-    FastGettext.locale.to_sym
-  end
+I18n::Config # autoload
 
-  def with_locale(new_locale)
-    begin
-      old_locale, I18n.locale = I18n.locale, new_locale
-      yield
-    ensure
-      I18n.locale = old_locale
+module I18n
+  class Config
+    def locale
+      FastGettext.locale.to_sym
+    end
+
+     def locale=(new_locale)
+      FastGettext.locale=(new_locale)
     end
   end
+
+  # backport I18n.with_locale if it does not exist
+  # Executes block with given I18n.locale set.
+  def self.with_locale(tmp_locale = nil)
+    if tmp_locale
+      current_locale = self.locale
+      self.locale = tmp_locale
+    end
+    yield
+  ensure
+    self.locale = current_locale if tmp_locale
+  end unless defined? I18n.with_locale
 end

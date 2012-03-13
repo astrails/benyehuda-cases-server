@@ -2,11 +2,15 @@
 #
 #!/usr/bin/ruby
 # parser/ruby.rb - look for gettext msg strings in ruby files
-# Copyright (C) 2009 Reto Schüttel <reto (ät) schuettel (dot) ch>
-# You may redistribute it and/or modify it under the same license terms as Ruby.
 
 require 'rubygems'
 require 'ruby_parser'
+
+begin
+  require 'gettext/tools/rgettext'
+rescue LoadError #version prior to 2.0
+  require 'gettext/rgettext'
+end
 
 module RubyGettextExtractor
   extend self
@@ -44,7 +48,11 @@ module RubyGettextExtractor
     end
 
     def run(content)
-      self.parse(content)
+      # ruby parser has an ugly bug which causes that several \000's take
+      # ages to parse. This avoids this probelm by stripping them away (they probably wont appear in keys anyway)
+      # See bug report: http://rubyforge.org/tracker/index.php?func=detail&aid=26898&group_id=439&atid=1778
+      safe_content = content.gsub(/\\\d\d\d/, '')
+      self.parse(safe_content)
       return @results
     end
 
@@ -107,11 +115,11 @@ module RubyGettextExtractor
     end
 
     def new_call recv, meth, args = nil
-      # we dont care if the method is called on an object
+      # we dont care if the method is called on a a object
       if recv.nil?
-        if (meth == :_ || meth == :s_ || meth == :N_)
+        if (meth == :_ || meth == :p_ || meth == :N_ || meth == :pgettext || meth == :s_)
           key = extract_key(args, "\004")
-        elsif meth == :n_ || meth == :Nn_
+        elsif meth == :n_
           key = extract_key(args, "\000")
         else
           # skip

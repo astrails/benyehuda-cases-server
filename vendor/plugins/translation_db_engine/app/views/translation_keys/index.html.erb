@@ -1,56 +1,28 @@
-<%= link_to "New", new_translation_key_url %><br/>
+<% locales = TranslationKey.available_locales %>
+<%= link_to "New", new_translation_key_url %>
 
-Filter by locale:
-<% if by_locale %>
-  <%= link_to "all", translation_keys_path %>
-<% else %>
-  <b>all</b>
-<% end %>
-<% all_available_locales.each do |locale| %>
-  <% if by_locale == locale %>
-    <b><%= locale %></b>
-  <% else %>
-    <%= link_to locale, translation_keys_path(:by_locale => locale) %>
-  <% end %>
-<% end %>
-<br/>
-
-<% if by_locale %>
-  Filter:
-  <% if params[:untranslated] %>
-    <%= link_to "all", translation_keys_path(:by_locale => by_locale) %>
-    <b>untranslated</b>
-  <% else %>
-    <b>all</b>
-    <%= link_to "untranslated", translation_keys_path(:by_locale => by_locale, :untranslated => true) %>
-  <% end %>
-<% end %>
-
-<%= will_paginate(@translation_keys) %>
 <table>
   <thead>
     <tr>
-      <td>Key</td>
-      <td>Translations</td>
+      <th>Key</th>
+      <% locales.each do |locale| %>
+        <th><%= locale%></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% @translation_keys.each do |key| %>
       <tr class="<%= cycle "even","odd"%>">
         <td><%= key.key %></td>
+        <% locales.each do |locale| %>
+          <% translation = key.translations.detect{|t| t.locale == locale } %>
+          <td><%= translation.text if translation %></td>
+        <% end %>
         <td>
-          <% translations = key.translations.map{|t| [t.locale, t]} %>
-          <% locales_to_edit.each do |locale| %>
-            <%= locale %>:
-            <%= translations.assoc(locale)[1].text if translations.assoc(locale) %><br/>
-          <% end %>
-        <td>
-        <td>
-          <%= link_to '<b style="color:red">X</b>', key, :confirm=>"Delete key #{key.key} ?", :method=>:delete %>
-          <%= link_to "Edit", edit_translation_key_path(key, :by_locale => by_locale, :untranslated => untranslated) %>
+          <%= link_to content_tag(:b, 'X', :style => 'color:red'), key, :confirm=>"Delete key #{key.key} ?", :method=>:delete %>
+          <%= link_to "Edit", key %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate(@translation_keys) %>
