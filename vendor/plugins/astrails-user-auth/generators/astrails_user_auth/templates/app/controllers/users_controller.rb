@@ -43,6 +43,7 @@ class UsersController < InheritedResources::Base
   end
 
   def build_resource
+    raise "Trust is a method from trusted-params plugin which is being discontinued."
     params[:user].try(:trust, :email)
     super
   end
