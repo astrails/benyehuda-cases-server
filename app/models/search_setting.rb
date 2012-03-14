@@ -9,7 +9,7 @@ class SearchSetting < ActiveRecord::Base
     end
   end
 
-  def self.load
+  def self.retrieve
     all.inject(HashWithIndifferentAccess.new) do |h, k|
       h[k.search_key] = k.search_value
       h

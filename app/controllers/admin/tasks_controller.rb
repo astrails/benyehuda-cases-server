@@ -29,7 +29,7 @@ class Admin::TasksController < InheritedResources::Base
       current_user.search_settings.clear!
     elsif (params.keys & Task::SEARCH_KEYS).blank?
       # load defaults
-      params.merge!(current_user.search_settings.load)
+      params.merge!(current_user.search_settings.retrieve)
     end
     current_user.search_settings.set_from_params!(params)
     default_index_with_search!

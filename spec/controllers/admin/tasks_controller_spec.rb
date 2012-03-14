@@ -53,7 +53,7 @@ describe Admin::TasksController do
       response.should be_success
       response.should render_template("index")
     end
-    
+
     it "should render edit" do
       get :edit, :id => @task.id
       response.should be_success
@@ -96,7 +96,6 @@ describe Admin::TasksController do
         @task.reload.editor_id.should == 22
       end
     end
-
 
     it "should create a task" do
       post :create, :task => {:name => "oops"}
