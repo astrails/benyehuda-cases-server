@@ -13,6 +13,7 @@ class UsersController < InheritedResources::Base
 
   def create
     user = build_resource
+    user.email = params[:user][:email] || user.email
     user.is_admin = true if User.count.zero?
     if user.save_without_session_maintenance
       user.deliver_activation_instructions!
@@ -32,8 +33,8 @@ class UsersController < InheritedResources::Base
       @user.is_admin = params[:user].delete(:is_admin)
       @user.is_volunteer = params[:user].delete(:is_volunteer)
       @user.is_editor = params[:user].delete(:is_editor)
+      @user.email = params[:user][:email] || @user.email
     end
-    params[:user].trust(:email) if current_user.is_admin?
     update!
   end
 
@@ -100,11 +101,6 @@ class UsersController < InheritedResources::Base
 
   def resource
     @user ||= params[:id] ? User.find(params[:id]) : current_user
-  end
-
-  def build_resource
-    params[:user].try(:trust, :email)
-    super
   end
 
   # this will set global preference :domain to the current domain

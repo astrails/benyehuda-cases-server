@@ -28,10 +28,10 @@ module ScriptsLib
         next
       end
 
-      opts = {:name => user[:name], :email => _parse_email(user[:email])}
-      opts.trust(:name, :email)
       User.transaction do
-        new_user = User.new(opts)
+        new_user = User.new
+        new_user.name = user[:name]
+        new_user.email = _parse_email(user[:email])
         new_user.is_volunteer = true
         unless new_user.save
           puts "skipped user = #{_user_info(user)}: #{new_user.errors.full_messages.to_a.join(",")}"

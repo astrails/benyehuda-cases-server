@@ -3,8 +3,10 @@ class Admin::TasksController < InheritedResources::Base
   actions :index, :new, :create, :edit, :update
 
   def create
-    params[:task].trust(:admin_state, :editor_id, :assignee_id)
-    @task = current_user.created_tasks.create(params[:task])
+    @task = current_user.created_tasks.build(params[:task])
+    resource.admin_state = params[:task][:admin_state] || resource.admin_state
+    resource.editor_id = params[:task][:editor_id] || resource.editor_id
+    resource.assignee_id = params[:task][:assignee_id] || resource.assignee_id
     create! do |format|
       format.html do
         redirect_to (params[:commit] == _("Save and New")) ? new_admin_task_path : task_path(@task)
@@ -13,7 +15,9 @@ class Admin::TasksController < InheritedResources::Base
   end
 
   def update
-    params[:task].trust(:admin_state, :editor_id, :assignee_id)
+    resource.admin_state = params[:task][:admin_state] || resource.admin_state
+    resource.editor_id = params[:task][:editor_id] || resource.editor_id
+    resource.assignee_id = params[:task][:assignee_id] || resource.assignee_id
     update! do |success, failure|
       success.html {redirect_to task_path(resource)}
     end
