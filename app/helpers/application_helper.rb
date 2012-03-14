@@ -7,6 +7,10 @@ module ApplicationHelper
     "he" == current_locale
   end
 
+  def current_locale
+    'he'  # XXX
+  end
+
   def render_tabs
     return unless logged_in?
     haml_tag(:ul, :class => "tabs") do

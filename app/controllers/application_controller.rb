@@ -77,7 +77,9 @@ protected
   def setup_localization
     FastGettext.available_locales = AVAILABLE_LOCALES
     FastGettext.text_domain = 'app'
-    super(:domain => true, :canonic_redirect => true)
+    #set_gettext_locale
+    #set_session_domain true
+    #redirect_to_canonic_domain
   end
 
   alias :authenticate_translations_admin :require_admin

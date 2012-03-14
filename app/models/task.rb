@@ -179,5 +179,4 @@ class Task < ActiveRecord::Base
   def self.textify_state(state)
     s_(TASK_STATES[state.to_s]) if TASK_STATES[state.to_s]
   end
-  
 end

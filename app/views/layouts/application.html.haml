@@ -21,12 +21,6 @@
             - else
               != link_to _("login"), login_path
               != link_to _("register"), signup_path
-            %br
-            - FastGettext.available_locales.each do |locale|
-              - if current_locale == locale
-                = locale
-              - else
-                != link_to locale, locale_url_for(locale)
       #tabs.span-24.last
         - render_tabs
         - site_notices
