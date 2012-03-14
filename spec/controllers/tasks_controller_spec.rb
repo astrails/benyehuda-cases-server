@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe TasksController do
   setup :activate_authlogic
-  integrate_views
+  render_views
 
   describe "unassigned tasks" do
     it "should not allow access to volunteer" do

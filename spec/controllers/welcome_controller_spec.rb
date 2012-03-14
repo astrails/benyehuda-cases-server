@@ -2,8 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe WelcomeController do
   setup :activate_authlogic
-  integrate_views
-
+  render_views
 
   describe "not logged in user" do
     it "should render index" do

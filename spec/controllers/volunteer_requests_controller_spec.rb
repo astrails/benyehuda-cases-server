@@ -16,7 +16,7 @@ describe VolunteerRequestsController do
 
   describe "admin actions" do
 
-    integrate_views
+    render_views
 
     before(:each) do
       @volunteer_request = Factory.create(:volunteer_request)
@@ -93,7 +93,7 @@ describe VolunteerRequestsController do
 
     describe "user without volunteer request" do
 
-      integrate_views
+      render_views
 
       before(:each) do
         @user.should be_might_become_volunteer

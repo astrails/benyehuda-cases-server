@@ -11,7 +11,7 @@ describe AssignmentHistoriesController do
   end
 
   describe "user" do
-    integrate_views
+    render_views
 
     it "should render history" do
       @assignemt_history = Factory.create(:assignment_history, :role => "editor")

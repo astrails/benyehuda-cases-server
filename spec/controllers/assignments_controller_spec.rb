@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe AssignmentsController do
 
   setup :activate_authlogic
-  integrate_views
+  render_views
 
   describe "no one" do
     [:edit, :update].each do |a|

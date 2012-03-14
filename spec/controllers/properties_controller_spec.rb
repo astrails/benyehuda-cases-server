@@ -22,7 +22,7 @@ describe PropertiesController do
   end
 
   describe "admin" do
-    integrate_views
+    render_views
 
     before(:each) do
       @admin = Factory.create(:admin)

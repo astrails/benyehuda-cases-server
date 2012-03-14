@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe DocumentsController do
   setup :activate_authlogic
-  integrate_views
+  render_views
 
   before(:each) do
     @task = Factory.create(:task)

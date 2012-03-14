@@ -36,7 +36,7 @@ describe Admin::TasksController do
 
   describe "admin" do
 
-    integrate_views
+    render_views
 
     before(:each) do
       @user = Factory.create(:admin)

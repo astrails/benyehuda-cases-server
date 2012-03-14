@@ -56,7 +56,7 @@ describe UsersController do
 
 
   describe "volunteer" do
-    integrate_views
+    render_views
 
     before(:each) do
       @user = Factory.create(:volunteer)
@@ -70,7 +70,7 @@ describe UsersController do
   end
 
   describe "editor" do
-    integrate_views
+    render_views
 
     before(:each) do
       @user = Factory.create(:editor)
