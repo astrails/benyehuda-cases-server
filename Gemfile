@@ -44,8 +44,8 @@ end
 group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"
-  gem 'rspec-rails', "1.3.2"
-  gem 'rspec', "1.3.0"
+  gem 'rspec-rails'
+  gem 'rspec'
   gem 'mocha'
   #gem "inaction_mailer"
 
@@ -55,10 +55,10 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', "1.3.2"
-  gem 'rspec', "1.3.0"
+  gem 'rspec-rails'
+  gem 'rspec'
   gem 'mocha'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
   gem "ruby-debug", :require => 'ruby-debug'

@@ -8,6 +8,10 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module CasesServer
   class Application < Rails::Application
+    config.generators do |g|
+      g.test_framework :rspec, :fixture => true, :views => false, :fixture_replacement => :factory_girl, :view_specs => false
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

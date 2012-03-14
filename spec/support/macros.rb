@@ -1,4 +1,4 @@
-ActiveSupport::TestCase.class_eval do
+module ControllerMacros
 
   def object
     @object || Factory.build(@factory)
@@ -40,14 +40,14 @@ ActiveSupport::TestCase.class_eval do
     end
   end
 
-  def self.describe_action(action, &block)
+  def describe_action(action, &block)
     describe(action) do
       before(:each) {@action = action}
       instance_eval(&block)
     end
   end
 
-  def self.it_should_redirect_to(url = nil, &block)
+  def it_should_redirect_to(url = nil, &block)
     it "should redirect to #{url}" do
       eval_request
       if block
@@ -57,38 +57,31 @@ ActiveSupport::TestCase.class_eval do
     end
   end
 
-  def self.it_should_require_login
+  def it_should_require_login
     it_should_redirect_to "/login"
   end
 
-  def self.it_should_render_template(template)
+  def it_should_render_template(template)
     it "should render template #{template}" do
       eval_request
       should render_template(template)
     end
   end
 
-  def self.it_should_assign(var)
+  def it_should_assign(var)
     it "should assign #{var}" do
       eval_request
       assigns[var].should_not be_nil
     end
   end
 
-  def self.it_should_assign(var)
-    it "should assign #{var}" do
-      eval_request
-      assigns[var].should_not be_nil
-    end
-  end
-
-  def self.it_should_fail_to_find
+  def it_should_fail_to_find
     it "should throw ActiveRecord::RecordNotFound" do
       proc {eval_request}.should raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
-  def self.it_should_not_route(action)
+  def it_should_not_route(action)
     it "should not route #{action}" do
       proc {eval_request(action)}.should raise_error(ActionController::RoutingError)
     end
