@@ -5,9 +5,9 @@ class Audit < ActiveRecord::Base
   belongs_to :task
   belongs_to :user
   
-  attr_accessible :hidden, :changes, :note, :action, :task_id, :user_id
+  attr_accessible :hidden, :changed_attrs, :note, :action, :task_id, :user_id
   
-  serialize :changes
+  serialize :changed_attrs
   
   ACTIONS = { :add => 1, :remove => 2, :update => 3 }
   
@@ -38,7 +38,7 @@ class Audit < ActiveRecord::Base
 
   def compose_messages
     res = []
-    self[:changes].each do |attribute_name, change|
+    self[:changed_attrs].each do |attribute_name, change|
       res << change_message(attribute_name, change) unless EXCLUDE_ATTRS.member?(attribute_name)
     end
     res.compact

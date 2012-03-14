@@ -57,7 +57,7 @@ private
   def create_audit(action)
     audits.create(
       :action => Audit::ACTIONS[action],
-      :changes => changed_attrs, 
+      :changed_attrs => changed_attrs,
       :hidden => self.respond_to?(:hidden) ? !!self.hidden : false,
       :user_id => guess_user_id, 
       :task_id => guess_task_id

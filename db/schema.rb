@@ -1,15 +1,16 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100419123045) do
+ActiveRecord::Schema.define(:version => 20120314105612) do
 
   create_table "assignment_histories", :force => true do |t|
     t.integer  "user_id"
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20100419123045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "task_id"
-    t.text     "changes"
+    t.text     "changed_attrs"
     t.boolean  "hidden",         :default => false
   end
 
@@ -147,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20100419123045) do
     t.datetime "updated_at"
   end
 
-  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key"
+  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key", :length => {"key"=>"255"}
 
   create_table "translation_texts", :force => true do |t|
     t.text     "text"
