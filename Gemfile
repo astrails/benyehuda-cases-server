@@ -16,7 +16,8 @@ gem 'formtastic', '~> 1.1.0'
 gem 'haml'
 gem "gettext"
 #gem 'fast_gettext', '0.4.17', :git => "https://github.com/grosser/fast_gettext.git", :tag => "v0.4.17"
-gem 'fast_gettext', :path => "./vendor/gems/fast_gettext-0.4.17"
+gem 'fast_gettext' #, :require => false #, :path => "./vendor/gems/fast_gettext-0.4.17"
+#gem 'gettext_i18n_rails'
 #gem "grosser-pomo", '>=0.5.1'
 gem "aasm"
 gem 'mime-types', :require => 'mime/types'
