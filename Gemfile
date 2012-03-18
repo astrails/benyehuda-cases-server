@@ -66,4 +66,5 @@ group :test do
   # bundler requires these gems while running tests
   # gem "rspec"
   # gem "faker"
+  gem 'rspec2-rails-views-matchers'
 end
