@@ -3,15 +3,19 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe User do
   describe "named scopes" do
     {
-      :admins => {:conditions => {:is_admin => true}},
-      :all_editors => {:conditions => "(is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"},
-      :editors => {:conditions => "is_editor = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"},
-      :all_volunteers =>  {:conditions => "(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"},
-      :volunteers => {:conditions => "is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}
+      :admins => "`users`.`is_admin` = 1",
+      :all_editors => "(is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL",
+      :editors => "is_editor = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL",
+      :all_volunteers => "(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL",
+      :volunteers => "is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"
     }.each do |scope_name, expectation|
 
       it "should generate for #{scope_name}" do
-        User.send(scope_name).proxy_options.should == expectation
+        if scope_name == :admins
+          User.send(scope_name).to_sql.should match /#{expectation}/
+        else
+          User.send(scope_name).where_values[0].should == expectation
+        end
       end
 
       it "should respond to scope quering db" do
@@ -22,9 +26,12 @@ describe User do
   end
 
   describe "protection" do
+    user = Factory.build(:user, :email => "user1@example.com")
     [:is_admin, :is_volunteer, :is_editor].each do |role|
       it "should protect from assigning #{role}" do
-        proc{User.new({role => true})}.should raise_error(ActiveRecord::UnavailableAttributeAssignmentError)
+        user.update_attributes(role => true)
+        user.save!
+        user.send(role).should be_false
       end
     end
   end
