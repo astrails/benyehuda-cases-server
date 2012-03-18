@@ -35,4 +35,8 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.include(ControllerMacros, :type => :controller)
+
+  config.before(:each) do
+    load "#{Rails.root}/db/seeds.rb"
+  end
 end
