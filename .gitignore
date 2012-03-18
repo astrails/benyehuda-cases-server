@@ -1,5 +1,6 @@
 bin
 .bundle
+.rvmrc
 config/*.sphinx.conf
 db/sphinx/*
 log/*.log
