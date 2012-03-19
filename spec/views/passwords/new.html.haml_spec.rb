@@ -7,9 +7,9 @@ describe "/passwords/new.html.haml" do
   end
 
   it "should render new form" do
-    render "/passwords/new.html.haml"
+    render
 
-    response.should have_tag("form[action=?][method=post]", passwords_path) do
+    rendered.should have_tag('form', :with => {:action => passwords_path, :method => 'post'}) do
     end
   end
 end
