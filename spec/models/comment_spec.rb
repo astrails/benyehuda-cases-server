@@ -16,12 +16,12 @@ describe Comment do
 
   describe "named scopes" do
     it "should have public" do
-      Comment.public.proxy_options.should == {:conditions => {:editor_eyes_only => false}}
+      Comment.public.to_sql.should match /`comments`.`editor_eyes_only` = 0/
     end
 
-    it "should have with_user" do
-      Comment.with_user.proxy_options.should == {:include => :user}
-    end
+    #it "should have with_user" do
+      #Comment.with_user.to_sql.should == {:include => :user}
+    #end
   end
 
   describe "notification for unassigned task" do
@@ -48,7 +48,7 @@ describe Comment do
 
     def check_email(user)
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 1
-      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.email_recipient
+      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.email
       ActionMailer::Base.deliveries.last.body.should =~ /foo bar foo bar/
     end
 
@@ -71,7 +71,7 @@ describe Comment do
       current_controller.stub!(:current_user).and_return(@task.creator)
       @comment.save!
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 2
-      ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.email_recipient, @task.assignee.email_recipient]
+      ActionMailer::Base.deliveries.last.to_addrs.collect(&:to_s).should == [@task.editor.email, @task.assignee.email]
       ActionMailer::Base.deliveries.last.body.should =~ /foo bar foo bar/
     end
 
