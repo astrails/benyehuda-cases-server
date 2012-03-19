@@ -2,17 +2,17 @@
 #source :gemcutter
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
+gem 'rails', '3.0.11'
 gem "rake", "0.8.7"
 gem "builder"
 gem "json"
 gem "mysql"
-gem 'authlogic'
+gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 gem 'ruby-debug'
 gem 'whenever'
 gem 'will_paginate', "2.3.15",:require => 'will_paginate'
 gem "tzinfo"
-gem 'formtastic', '~> 1.1.0'
+gem 'formtastic'
 gem 'haml'
 gem "gettext"
 #gem 'fast_gettext', '0.4.17', :git => "https://github.com/grosser/fast_gettext.git", :tag => "v0.4.17"
