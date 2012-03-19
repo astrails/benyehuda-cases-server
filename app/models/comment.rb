@@ -16,8 +16,8 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :message, :editor_eyes_only
 
-  named_scope :public, :conditions => {:editor_eyes_only => false}
-  named_scope :with_user, :include => :user
+  scope :public, where(:editor_eyes_only => false)
+  scope :with_user, includes(:user)
 
   after_create :notify_by_email
 
