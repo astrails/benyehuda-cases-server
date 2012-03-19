@@ -84,9 +84,10 @@ describe UsersController do
       it "should render edit profile with custom properties" do
         get :edit, :id => @user.id
         response.should be_success
-        response.body.should =~ /user_editor_properties_#{@string_property.id}__custom_value/
-        response.body.should =~ /user_editor_properties_#{@bool_property.id}__custom_value/
-        response.body.should =~ /user_editor_properties_#{@text_property.id}__custom_value/
+        response.should render_template "layouts/_properties_form"
+        response.body.should match /user_editor_properties_#{@string_property.id}__custom_value_input/
+        response.body.should =~ /user_editor_properties_#{@bool_property.id}__custom_value_input/
+        response.body.should =~ /user_editor_properties_#{@text_property.id}__custom_value_input/
       end
 
       it "should update" do
