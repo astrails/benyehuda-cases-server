@@ -75,7 +75,7 @@ describe DocumentsController do
           @doc.stub!(:image?).and_return(false)
           @doc.stub!(:new_record?).and_return(false)
           @doc.stub!(:to_param).and_return("123")
-          @doc.stub!(:user).and_return(Factory.build(:user))
+          @doc.stub!(:user).and_return(Factory.create(:user))
           @doc.stub!(:file).and_return(mock("url", :url => "foobar"))
           @task.should_receive(:prepare_document).and_return(@doc)
           xhr :post, :create, :task_id => "1", :document => {}
