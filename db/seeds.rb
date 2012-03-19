@@ -6,6 +6,4 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-gb = GlobalPreference.find_by_name("domain")
-gb.value = "localhost:3000"
-gb.save!
+GlobalPreference.set!('domain', 'dev.tanin:3000')

@@ -36,7 +36,7 @@ RSpec.configure do |config|
 
   config.include(ControllerMacros, :type => :controller)
 
-  config.before(:each) do
+  config.before(:all) do
     load "#{Rails.root}/db/seeds.rb"
   end
 end
