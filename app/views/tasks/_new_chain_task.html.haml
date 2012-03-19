@@ -1,4 +1,4 @@
-- semantic_form_remote_for(@chained_task ||= @task.clone, :task, :live_validations => false, :url => tasks_path(:id => @task.id), :method => :post, :before => "jQuery('#create_chained').attr('disabled', true).val('#{_("Please wait...")}')") do |f|
+- semantic_form_for(@chained_task ||= @task.clone, :task, :live_validations => false, :url => tasks_path(:id => @task.id), :remote => true, :method => :post, :before => "jQuery('#create_chained').attr('disabled', true).val('#{_("Please wait...")}')") do |f|
   != f.object.errors.on(:base)
   != render(:partial => "tasks/form", :locals => {:f => f})
   - f.inputs do
