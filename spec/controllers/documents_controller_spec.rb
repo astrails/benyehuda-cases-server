@@ -66,7 +66,7 @@ describe DocumentsController do
           @doc.stub!(:new_record?).and_return(true)
           @task.should_receive(:prepare_document).and_return(@doc)
           xhr :post, :create, :task_id => "1", :document => {}
-          response.status.should == "422 Unprocessable Entity"
+          response.status.should == 422
         end
 
         it "should render new doc for #{u}" do
@@ -80,7 +80,7 @@ describe DocumentsController do
           @task.should_receive(:prepare_document).and_return(@doc)
           xhr :post, :create, :task_id => "1", :document => {}
           response.should be_success
-          response.should render_template("documents/_document.html.haml")
+          response.should render_template("documents/_document")
         end
       end
     end
