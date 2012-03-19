@@ -33,7 +33,7 @@ describe VolunteerRequestsController do
     end
 
     it "should render show" do
-      VolunteerRequest.should_receive(:find).with(@volunteer_request.id.to_s).and_return(@volunteer_request)
+      VolunteerRequest.should_receive(:find).with(@volunteer_request.id).and_return(@volunteer_request)
       get :show, :id => @volunteer_request.id
       response.should be_success
       response.should render_template(:show)
