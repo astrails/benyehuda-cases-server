@@ -5,13 +5,13 @@ CasesServer::Application.routes.draw do
   resources :passwords, :only => [:new, :create, :edit, :update]
   match '/login' => 'user_session#new', :as => :login
   resource :user_session, :controller => "user_session"
-  match '/signup' => 'users#new', :as => :signup
+  match '/signup' => 'users#new', :as => :signup, :controller => "users"
   resources :users do
     resources :activation_instructions
     resources :assignment_histories
   end
 
-  resource :profile
+  resource :profile, :controller => "users"
   match '/profiles/:id' => 'users#show', :as => :profiles, :public_profile => true
   match '/' => 'welcome#index'
   resources :pages, :only => [:show]
