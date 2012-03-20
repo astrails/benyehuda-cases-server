@@ -71,7 +71,7 @@ module UserHelper
 
 protected
   def send_activation_link(user, text)
-    button_to text, user_activation_instructions_path(
+    link_to text, user_activation_instructions_path(
       user,
       :page => params[:page],
       :query => params[:query],
