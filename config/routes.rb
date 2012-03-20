@@ -4,7 +4,7 @@ CasesServer::Application.routes.draw do
   match '/password' => 'passwords#edit', :as => :password_edit, :via => :get
   resources :passwords, :only => [:new, :create, :edit, :update]
   match '/login' => 'user_session#new', :as => :login
-  resource :user_session
+  resource :user_session, :controller => "user_session"
   match '/signup' => 'users#new', :as => :signup
   resources :users do
     resources :activation_instructions
