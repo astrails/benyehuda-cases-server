@@ -34,6 +34,8 @@ gem "daemons"
 gem 'high_voltage'
 gem 'inherited_resources'
 
+gem 'jquery-rails', '>= 1.0.12'
+
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"
 # gem "geokit"
