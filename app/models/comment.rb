@@ -9,10 +9,10 @@ class Comment < ActiveRecord::Base
     :audit_source => proc {|c| s_("comment audit| by %{user_name}") % {:user_name => c.user.try(:name)}},
     :default_title => N_("auditable|Comment")
 
-  validates_length_of :message, :in => 2..4096, :allow_nil => false, :allow_blank => false
+  validates :message, :length => {:in => 2..4096}, :allow_nil => false, :allow_blank => false
   # was: validates_presence_of :task, but - http://agaskar.com/post/396150446/has-many-through-accepts-nested-attributes-for-and
   # indeed hard to google for
-  validates_presence_of :user_id
+  validates :user_id, :presence => true
 
   attr_accessible :message, :editor_eyes_only
 

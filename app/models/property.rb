@@ -20,7 +20,7 @@ class Property < ActiveRecord::Base
 
   private
 
-  def available_for_conditions(user)
+  def self.available_for_conditions(user)
     conditions = "properties.parent_type  = ?"
     conditions << " AND properties.is_public = 1" unless user.admin_or_editor?
   end

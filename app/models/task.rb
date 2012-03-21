@@ -50,25 +50,22 @@ class Task < ActiveRecord::Base
   include Task::States
   include Task::Notifications
 
-  validates_presence_of :creator_id
-  validates_presence_of :name
 
   KINDS = {
     "typing" => N_("task kind|typing"),
     "proofing" => N_("task kind|proofing"),
     "other" => N_("task kind|other")
   }
-  validates_presence_of :kind
-  validates_inclusion_of :kind, :in => KINDS.keys, :message => "not included in the list"
+  validates :kind, :inclusion => {:in => KINDS.keys, :message => "not included in the list"}
 
   DIFFICULTIES = {
     "easy" => N_("task difficulty|easy"),
     "normal" => N_("task difficulty|normal"),
     "hard" => N_("task difficulty|hard")
   }
-  
-  validates_presence_of :difficulty
-  validates_inclusion_of :difficulty, :in => DIFFICULTIES.keys, :message => "not included in the list"
+  validates :difficulty, :inclusion => {:in => DIFFICULTIES.keys, :message => "not included in the list"}
+  validates :creator_id, :name, :kind, :difficulty, :presence => true
+  validate :parent_task_updated
 
   attr_accessible :name, :kind, :difficulty, :full_nikkud, :comments_attributes
 
@@ -132,7 +129,7 @@ class Task < ActiveRecord::Base
     end
   end
 
-  def validate
+  def parent_task_updated
     errors.add(:base, _("task cannot be updated")) if @parent_task_cannot_be_updated
   end
 
