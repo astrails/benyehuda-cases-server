@@ -33,7 +33,7 @@ describe Property do
       [:title, :parent_type, :property_type].each do |p|
         it "should validate presence of #{p}" do
           @property.should_not be_valid
-          @property.errors.on(p).should_not be_blank
+          @property.errors[p].should_not be_blank
         end        
       end
     end
@@ -43,7 +43,7 @@ describe Property do
         it "should not allow wrong inclusions" do
           @property.send("#{p}=", "junk")
           @property.should_not be_valid
-          @property.errors.on(p).should =~ /unknown/
+          @property.errors[p].first.should =~ /unknown/
         end
       end
     end
