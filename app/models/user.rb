@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
 
   def check_volunter_approved
     if is_volunteer_changed? && is_volunteer?
-      Notification.deliver_volnteer_welcome(self)
+      Notification.volnteer_welcome(self).deliver
     end
   end
 
