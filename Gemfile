@@ -10,7 +10,7 @@ gem "mysql"
 gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 gem 'ruby-debug'
 gem 'whenever'
-gem 'will_paginate', "2.3.15",:require => 'will_paginate'
+gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
 gem 'formtastic'
 gem 'haml'
