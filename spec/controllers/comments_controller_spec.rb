@@ -47,7 +47,7 @@ describe CommentsController do
         comment.stub!(:destroy).and_return(true)
         xhr :delete, :destroy, :id => 123, :task_id => 123
         response.should be_success
-        response.should render_template("destroy.rjs")
+        response.should render_template("comments/destroy")
       end
     end
   end
@@ -68,7 +68,7 @@ describe CommentsController do
     it "should render back an error" do
       xhr :post, :create, :task_id => 1, :comment => {}
       response.should be_success
-      response.should render_template("comments/_new.html.haml")
+      response.should render_template("comments/_new")
     end
   end
 

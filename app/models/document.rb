@@ -26,9 +26,9 @@ class Document < ActiveRecord::Base
   validates_attachment_presence :file
   validates_attachment_size :file, :less_than => 10.megabytes
 
-  validates_presence_of :user_id, :task_id
+  validates :user_id, :task_id, :presence => true
 
-  named_scope :uploaded_by, lambda {|user| {:conditions => ["documents.user_id = ?", user.id]}}
+  scope :uploaded_by, lambda {|user| where("documents.user_id = ?", user.id)}
 
   def mark_as_deleted!
     self.deleted_at = Time.now.utc

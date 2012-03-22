@@ -36,23 +36,23 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
-  named_scope :volunteers, {:conditions => "is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}
-  named_scope :all_volunteers, {:conditions => "(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"}
+  scope :volunteers, where("is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL")
+  scope :all_volunteers, where("(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL")
 
-  named_scope :editors, {:conditions => "is_editor = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL"}
-  named_scope :all_editors, {:conditions => "(is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL"}
+  scope :editors, where("is_editor = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL")
+  scope :all_editors, where("(is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL")
 
-  named_scope :admins, {:conditions => {:is_admin => true}}
+  scope :admins, where(:is_admin => true)
 
-  named_scope :enabled, {:conditions => "users.disabled_at IS NULL"}
-  named_scope :active, {:conditions => "users.activated_at IS NOT NULL"}
-  named_scope :not_activated, {:conditions => "users.activated_at is NULL"}
-  named_scope :active_first, :order => "users.current_login_at DESC"
-  named_scope :by_id, :order => "users.id"
-  named_scope :by_last_login, :order => "users.current_login_at DESC"
+  scope :enabled, where("users.disabled_at IS NULL")
+  scope :active, where("users.activated_at IS NOT NULL")
+  scope :not_activated, where("users.activated_at is NULL")
+  scope :active_first, order("users.current_login_at DESC")
+  scope :by_id, order("users.id")
+  scope :by_last_login, order("users.current_login_at DESC")
 
   #named_scope :waiting_for_tasks, {:conditions => "users.task_requested_at IS NOT NULL", :order => "users.task_requested_at DESC"}
-  named_scope :waiting_for_tasks, {:order => "users.task_requested_at DESC"}
+  scope :waiting_for_tasks, order("users.task_requested_at DESC")
 
   has_one :volunteer_request
   has_many :confirmed_volunteer_requests, :class_name => "VolunteerRequest", :foreign_key => :approver_id
@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
 
   def check_volunter_approved
     if is_volunteer_changed? && is_volunteer?
-      Notification.deliver_volnteer_welcome(self)
+      Notification.volnteer_welcome(self).deliver
     end
   end
 

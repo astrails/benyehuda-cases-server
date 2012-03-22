@@ -1,3 +1,3 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :global_preferences
+Rails.application.routes.draw do
+  resources :global_preferences
 end

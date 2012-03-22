@@ -5,9 +5,17 @@ describe UsersController do
   before(:each) {@param = @factory = :user}
 
   describe "(guest)" do
-    [:index, :show, :update, :destroy].each do |action|
-      describe_action(action) do
-        it_should_redirect_to "/login"
+    {:index => :get, :show => :get, :update => :put, :destroy => :delete}.each do |action, method|
+      describe action do
+        it "should redirect to login on #{action}" do
+          if action == :index
+            send(method, action)
+          else
+            send(method, action, :id => 1)
+          end
+
+          response.should redirect_to "/login"
+        end
       end
     end
 
@@ -84,9 +92,10 @@ describe UsersController do
       it "should render edit profile with custom properties" do
         get :edit, :id => @user.id
         response.should be_success
-        response.body.should =~ /user_editor_properties_#{@string_property.id}__custom_value/
-        response.body.should =~ /user_editor_properties_#{@bool_property.id}__custom_value/
-        response.body.should =~ /user_editor_properties_#{@text_property.id}__custom_value/
+        response.should render_template "layouts/_properties_form"
+        response.body.should match /user_editor_properties_#{@string_property.id}__custom_value_input/
+        response.body.should match /user_editor_properties_#{@bool_property.id}__custom_value_input/
+        response.body.should match /user_editor_properties_#{@text_property.id}__custom_value_input/
       end
 
       it "should update" do
@@ -114,18 +123,18 @@ describe UsersController do
         get :edit, :id => @user.id
         response.should be_success
 
-        response.should have_tag("input[type=text][name=?][value=?]", "user[editor_properties[#{@string_property.id}]][custom_value]", "string")
-        response.should have_tag("input[type=checkbox][name=?][checked=checked]", "user[editor_properties[#{@bool_property.id}]][custom_value]")
-        response.should have_tag("textarea[name=?]", "user[editor_properties[#{@text_property.id}]][custom_value]", /text/)
+        response.body.should have_tag('input', :with => {:type => "text", :name => "user[editor_properties[#{@string_property.id}]][custom_value]", :value => "string"})
+        response.body.should have_tag('input', :with => {:type => "checkbox", :name => "user[editor_properties[#{@bool_property.id}]][custom_value]", :checked => "checked"})
+        response.body.should have_tag('textarea', :with => {:name => "user[editor_properties[#{@text_property.id}]][custom_value]"})
       end
 
       it "should render empty properties" do
         get :edit, :id => @user.id
         response.should be_success
 
-        response.should have_tag("input[type=text][name=?]", "user[editor_properties[#{@string_property.id}]][custom_value]")
-        response.should have_tag("input[type=checkbox][name=?]", "user[editor_properties[#{@bool_property.id}]][custom_value]", "")
-        response.should have_tag("textarea[name=?]", "user[editor_properties[#{@text_property.id}]][custom_value]", "")
+        response.body.should have_tag("input", :with => {:type => "text", :name => "user[editor_properties[#{@string_property.id}]][custom_value]"})
+        response.body.should have_tag("input", :with => {:type => "checkbox", :name => "user[editor_properties[#{@bool_property.id}]][custom_value]"})
+        response.body.should have_tag("textarea", :with => {:name => "user[editor_properties[#{@text_property.id}]][custom_value]"})
       end
     end
   end

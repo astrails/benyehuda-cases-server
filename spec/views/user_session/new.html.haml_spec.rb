@@ -10,7 +10,7 @@ describe "/user_session/new.html.haml" do
   it "should render new form" do
     render
 
-    response.should have_tag("form[action=?][method=post]", user_session_path) do
+    rendered.should have_tag('form', :with => {:action => user_session_path, :method => 'post'}) do
     end
   end
 end

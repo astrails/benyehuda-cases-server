@@ -37,25 +37,25 @@ describe VolunteerRequest do
 
     it "user_id" do
       @volunteer_request.should_not be_valid
-      @volunteer_request.errors.on(:user_id).should_not be_blank
+      @volunteer_request.errors[:user_id].should_not be_blank
     end
 
     describe "preferences" do
       it "should be short" do
         @volunteer_request.preferences = "foo"
         @volunteer_request.should_not be_valid
-        @volunteer_request.errors.on(:preferences).should =~ /short/
+        @volunteer_request.errors[:preferences].first.should =~ /short/
       end
 
       it "should be short when blank" do
         @volunteer_request.should_not be_valid
-        @volunteer_request.errors.on(:preferences).should =~ /short/
+        @volunteer_request.errors[:preferences].first.should =~ /short/
       end
 
       it "should be long" do
         @volunteer_request.preferences = "f" * 4097
         @volunteer_request.should_not be_valid
-        @volunteer_request.errors.on(:preferences).should =~ /long/
+        @volunteer_request.errors[:preferences].first.should =~ /long/
       end
     end
   end

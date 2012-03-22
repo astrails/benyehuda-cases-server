@@ -33,7 +33,7 @@ describe VolunteerRequestsController do
     end
 
     it "should render show" do
-      VolunteerRequest.should_receive(:find).with(@volunteer_request.id.to_s).and_return(@volunteer_request)
+      VolunteerRequest.should_receive(:find).with(@volunteer_request.id).and_return(@volunteer_request)
       get :show, :id => @volunteer_request.id
       response.should be_success
       response.should render_template(:show)
@@ -41,10 +41,12 @@ describe VolunteerRequestsController do
 
     it "should approve" do
       @volunteer_request.approved_at.should be_blank
-      Notification.should_receive(:deliver_volnteer_welcome)
+      ActionMailer::Base.deliveries = []
+      ActionMailer::Base.deliveries.count.should == 0
       put :update, :id => @volunteer_request.id
       response.should redirect_to(volunteer_requests_path)
       @volunteer_request.reload.approved_at.should_not be_blank
+      ActionMailer::Base.deliveries.count.should == 1
     end
 
     it "should not reapprove" do

@@ -1,18 +1,16 @@
-!= stylesheet_link_tag 'blueprint/screen',  :media => "screen, projection"
+= stylesheet_link_tag 'blueprint/screen',  :media => "screen, projection"
+
 - if hebrew_layout?
-  != stylesheet_link_tag 'blueprint/plugins/rtl/screen',  :media => "screen, projection"
+  = stylesheet_link_tag 'blueprint/plugins/rtl/screen',  :media => "screen, projection"
 
-!= stylesheet_link_tag 'blueprint/print',  :media => "print"
-!= stylesheet_link_tag 'blueprint/plugins/tabs/screen',  :media => "screen, projection"
-
-!= stylesheet_link_tag 'redmond/jquery-ui-1.7.2.custom.css',  :media => "screen, projection"
+= stylesheet_link_tag 'blueprint/print',  :media => "print"
+= stylesheet_link_tag 'blueprint/plugins/tabs/screen',  :media => "screen, projection"
+= stylesheet_link_tag 'redmond/jquery-ui-1.7.2.custom.css',  :media => "screen, projection"
 
 /[if IE]
   != stylesheet_link_tag 'blueprint/ie',  :media => "screen, projection"
 
-!= stylesheet_link_tag 'formtastic_changes', 'application', :media => 'all', :cache => "main"
-
-!= render(:partial => "layouts/javascripts")
-!= javascript_include_tag "jrails", "jquery.validate.min.js", "application", :cache => "main"
-
-!= stylesheet_link_tag "blocks", :media => :all
+= stylesheet_link_tag 'formtastic_changes', 'application', :media => 'all', :cache => "main"
+= javascript_include_tag "jquery", "jquery_ujs", "application", "jquery.validate.min.js", :cache => "main"
+= stylesheet_link_tag "blocks", :media => :all
+= csrf_meta_tag

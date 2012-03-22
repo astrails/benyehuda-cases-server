@@ -43,4 +43,23 @@ describe AssignmentHistory do
       assignment_histories[2].role.should == "creator"
     end
   end
+
+  describe :scopes do
+    describe :recent do
+      it "should limit result by given number" do
+        Factory.create(:assignment_history, :role => "creator")
+        AssignmentHistory.all.count.should == 4
+        AssignmentHistory.recent(2).reload.size.should == 2
+      end
+    end
+
+    describe :reverse_order do
+      it "should order result in reverse" do
+        Factory.create(:assignment_history, :role => "creator")
+        arr = AssignmentHistory.all
+        reverse_arr = AssignmentHistory.reverse_order
+        arr.first.id.should == reverse_arr.last.id
+      end
+    end
+  end
 end

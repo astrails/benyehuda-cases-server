@@ -7,19 +7,23 @@ describe "/users/show.html.haml" do
     describe "for #{u}" do
       before(:each) do
         @user = assigns[:user] = Factory.create(u)
-        @controller.stub!(:current_user).and_return(@user)
+        view.stub!(:current_user).and_return(@user)
+        view.stub!(:when_admin).and_return(false)
+        view.stub!(:when_current_user).and_return(true)
       end
 
-      it "should render public profile" do
-        @controller.stub!(:public_profile?).and_return(true)
-        @controller.view_context.stub!(:public_profile?).and_return(true)
-        render "/users/show"
-      end
+      describe "users/show" do
+        it "should render public profile" do
+          view.stub!(:public_profile?).and_return(true)
+          view.view_context.stub!(:public_profile?).and_return(true)
+          render :template => "/users/show"
+        end
 
-      it "should render not public profile" do
-        @controller.stub!(:public_profile?).and_return(false)
-        @controller.view_context.stub!(:public_profile?).and_return(false)
-        render "/users/show"
+        it "should render not public profile" do
+          view.stub!(:public_profile?).and_return(false)
+          view.view_context.stub!(:public_profile?).and_return(false)
+          render :template => "/users/show"
+        end
       end
     end
   end

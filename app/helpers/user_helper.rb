@@ -71,6 +71,11 @@ module UserHelper
 
 protected
   def send_activation_link(user, text)
-    link_to text, user_activation_instructions_path(user, :page => params[:page], :query => params[:query], :all => params[:all]), :method => :post, :confirm => (_("Send Activation Email to %{user}. Are you sure?") % {:user => "#{h(user.name)} <#{user.email}>"})
+    link_to text, user_activation_instructions_path(
+      user,
+      :page => params[:page],
+      :query => params[:query],
+      :all => params[:all]
+    ), :method => :post, :confirm => (_("Send Activation Email to %{user}. Are you sure?") % {:user => "#{h(user.name)} <#{user.email}>"})
   end
 end

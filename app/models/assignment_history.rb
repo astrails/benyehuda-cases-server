@@ -2,13 +2,13 @@ class AssignmentHistory < ActiveRecord::Base
   belongs_to :user
   belongs_to :task
 
-  validates_presence_of :user_id, :task_id, :role
+  validates :user_id, :task_id, :role, :presence => true
 
-  attr_accessible :all
+  attr_accessible :user_id, :task_id, :role
 
-  named_scope :recent, lambda { |limit| {:limit => limit} }
-  named_scope :with_task, {:include => :task}
-  named_scope :reverse_order, {:order => "id DESC"}
+  scope :recent, lambda { |l| limit(l) }
+  scope :with_task, includes(:task)
+  scope :reverse_order, order("id DESC")
 
   ROLES = {
     "assignee" => N_("Assignee"),

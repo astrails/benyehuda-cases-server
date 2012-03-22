@@ -28,7 +28,7 @@ describe PropertiesController do
       @admin = Factory.create(:admin)
       UserSession.create(@admin)
       @property = Factory.create(:property)
-      Property.stub(:find).with(@property.id.to_s).and_return(@property)
+      Property.stub!(:find).with(@property.id).and_return(@property)
       Property.stub!(:paginate).and_return[@property, @property]
     end
 
