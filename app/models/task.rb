@@ -1,11 +1,11 @@
 class Task < ActiveRecord::Base
   include ActsAsAuditable
-  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :kind, :difficulty, :full_nikkud,
+  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :task_kind_id, :difficulty, :full_nikkud,
     :conversions => {
       :creator_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :editor_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :assignee_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
-      :kind => proc {|v| Task.textify_kind(v) },
+      :task_kind_id => proc {|v| v ? Task.textify_kind(TaskKind.find_by_id(v).try(:name)) : "" },
       :difficulty => proc {|v| Task.textify_difficulty(v) },
       :state => proc {|v| Task.textify_state(v) },
       :full_nikkud => proc {|v| v ? _("true") : _("false")},
@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
           _("Editor")
         when :assignee_id
           _("Assignee")
-        when :kind
+        when :task_kind_id
           _("Kind")
         when :difficulty
           _("Difficulty")
@@ -50,13 +50,7 @@ class Task < ActiveRecord::Base
   include Task::States
   include Task::Notifications
 
-
-  KINDS = {
-    "typing" => N_("task kind|typing"),
-    "proofing" => N_("task kind|proofing"),
-    "other" => N_("task kind|other")
-  }
-  validates :kind, :inclusion => {:in => KINDS.keys, :message => "not included in the list"}
+  belongs_to :kind, :class_name => "TaskKind", :foreign_key => "task_kind_id"
 
   DIFFICULTIES = {
     "easy" => N_("task difficulty|easy"),
@@ -64,17 +58,17 @@ class Task < ActiveRecord::Base
     "hard" => N_("task difficulty|hard")
   }
   validates :difficulty, :inclusion => {:in => DIFFICULTIES.keys, :message => "not included in the list"}
-  validates :creator_id, :name, :kind, :difficulty, :presence => true
+  validates :creator_id, :name, :task_kind_id, :difficulty, :presence => true
   validate :parent_task_updated
 
-  attr_accessible :name, :kind, :difficulty, :full_nikkud, :comments_attributes
+  attr_accessible :name, :task_kind_id, :difficulty, :full_nikkud, :comments_attributes
 
   has_many :comments, :order => "comments.task_id, comments.created_at"
   accepts_nested_attributes_for :comments, :allow_destroy => false, :reject_if => proc {|c| c["message"].blank?}
   # validates_associated :comments, :on => :create
 
   include DefaultAttributes
-  default_attribute :kind, "typing"
+  #default_attribute :kind, "typing"
   default_attribute :difficulty, "normal"
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
@@ -94,7 +88,7 @@ class Task < ActiveRecord::Base
     has :updated_at
     has :full_nikkud, :type => :boolean
     indexes :difficulty, :sortable => true
-    indexes :kind, :sortable => true
+    #indexes :kind, :sortable => true XXX fix it
     indexes :state, :sortable => true
     has :documents_count, :type => :integer
   end
@@ -153,8 +147,9 @@ class Task < ActiveRecord::Base
   end
 
   ######### i18 n
-  def self.textify_kind(kind)
-    s_(KINDS[kind]) if KINDS[kind]
+  def self.textify_kind(v)
+    #TODO: v is the name,  remove this method
+    v
   end
 
   def self.textify_difficulty(dif)

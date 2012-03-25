@@ -80,7 +80,7 @@ module TasksHelper
   end
 
   def task_kinds_for_select
-    Task::KINDS.keys.map{|k| [Task.textify_kind(k), k]}
+    TaskKind.all.map{|k| [Task.textify_kind(k.name), k.id]}
   end
 
   def task_states_for_select

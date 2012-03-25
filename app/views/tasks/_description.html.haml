@@ -2,7 +2,7 @@
   %h3
     = @task.name
     %small
-      = [Task.textify_kind(@task.kind), Task.textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
+      = [Task.textify_kind(@task.kind.name), Task.textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
       - when_admin do
         != link_to _("Edit"), edit_admin_task_path(@task)
 

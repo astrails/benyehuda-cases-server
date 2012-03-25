@@ -2,7 +2,7 @@
   %td= task.id
   %td= _("%{time} ago") % {:time => time_ago_in_words(task.updated_at)}
   %td!= link_to h(task.name), task_path(task)
-  %td= Task.textify_kind(task.kind)
+  %td= Task.textify_kind(task.kind.name)
   %td!= person_link(task.editor)
   %td!= person_link(task.assignee)
   %td= Task.textify_state(task.state)
