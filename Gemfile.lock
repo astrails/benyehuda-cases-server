@@ -65,6 +65,8 @@ GEM
       actionpack (~> 3.0)
     gettext (2.2.0)
       locale
+    gettext_i18n_rails (0.4.5)
+      fast_gettext
     gravtastic (2.2.0)
     haml (3.1.4)
     has_scope (0.5.1)
@@ -186,6 +188,7 @@ DEPENDENCIES
   fastercsv
   formtastic
   gettext
+  gettext_i18n_rails
   gravtastic (= 2.2.0)
   haml
   high_voltage
