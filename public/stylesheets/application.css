@@ -35,19 +35,19 @@ div.abandoning_reason {
 }
 
 div.finished_reason {
-	border:1px solid green;
+  border:1px solid green;
 }
 
 .disabled-user td {
-	background:red;
+  background:red;
 }
 
 .site-notice {
-	margin:2em 0;
-	padding:1em 5em;
-	border:1px solid #ddd;
-	background:#e5ecf9;
-	border-left:1em solid #ddd;
+  margin:2em 0;
+  padding:1em 5em;
+  border:1px solid #ddd;
+  background:#e5ecf9;
+  border-left:1em solid #ddd;
 }
 
 .block.prominent {
@@ -57,4 +57,21 @@ div.finished_reason {
 
 .prominent a {
   font-weight:bold;
+}
+
+#simplemodal-container .simplemodal-container {
+  border:1px solid #ddd;
+  background:#e5ecf9;
+}
+
+#simplemodal-container a.modalCloseImg {
+  background:url(/images/x.png) no-repeat; /* adjust url as required */
+  width:25px;
+  height:29px;
+  display:inline;
+  z-index:3200;
+  position:absolute;
+  top:-15px;
+  right:-18px;
+  cursor:pointer;
 }

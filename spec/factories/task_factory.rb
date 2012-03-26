@@ -3,7 +3,7 @@ Factory.define :task do |t|
   t.association :creator, :factory => :admin
   t.association :assignee, :factory => :volunteer
   t.association :editor, :factory => :editor
-  t.kind "typing"
+  t.association :kind, :factory => :task_kind
   t.difficulty "normal"
   t.parent_id nil
 end

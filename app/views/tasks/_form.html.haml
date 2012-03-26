@@ -1,5 +1,31 @@
 - f.inputs :name => s_("task section|General") do
-  != f.input :name, :label => _("Description"), :required => true, :label => _("Name")
-  != f.input :kind, :as => :select, :collection => task_kinds_for_select, :required => true, :label => _("Kind")
-  != f.input :difficulty, :as => :select, :collection => task_difficulties_for_select, :required => true, :label => _("Difficulty")
-  != f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")
+  = f.input :name, :label => _("Description"), :required => true, :label => _("Name")
+  = f.input :kind, :as => :select, :collection => task_kinds_for_select, :required => true, :label => _("Kind")
+  - if current_user.is_admin?
+    = link_to "Manage Kinds", "#", :id => "manage_kinds"
+  = f.input :difficulty, :as => :select, :collection => task_difficulties_for_select, :required => true, :label => _("Difficulty")
+  = f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")
+
+:javascript
+  $(function(){
+    $("#manage_kinds").click(function(){
+      $.modal(
+        '#{escape_javascript(render(:template => "admin/task_kinds/index"))}',
+        {
+          close: true,
+          opacity: 80,
+          overlayCss: {backgroundColor:"#ccc"},
+          containerCss:{
+            //backgroundColor:"#fff",
+            borderColor:"#fff",
+            //height:300,
+            padding:10,
+            width:300
+          },
+          overlayClose:true
+        }
+      );
+      return false;
+    });
+  });
+

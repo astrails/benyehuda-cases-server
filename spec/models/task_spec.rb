@@ -16,14 +16,14 @@ describe Task do
     end
   end
 
-  [:kind, :difficulty].each do |a|
+  [:difficulty].each do |a|
     it "should have default values for #{a}" do
       Task.new.send(a).should_not be_blank
     end
   end
 
   it "should create new task with valid attributes" do
-    @task = @user.created_tasks.create!(:name => "some name", :kind => "typing", :difficulty => "normal", :full_nikkud => true)
+    @task = @user.created_tasks.create!(:name => "some name", :task_kind_id => Factory.create(:task_kind, :name => "typing").id, :difficulty => "normal", :full_nikkud => true)
     @task.should be_unassigned
   end
 
@@ -107,7 +107,7 @@ describe Task do
 
   describe "extra events" do
     it "should assign editor and assignee" do
-      task = @user.created_tasks.create!(:name => "some name", :kind => "typing", :difficulty => "normal", :full_nikkud => true)
+      task = @user.created_tasks.create!(:name => "some name", :task_kind_id => Factory.create(:task_kind, :name => "typing").id, :difficulty => "normal", :full_nikkud => true)
       editor = Factory.create(:editor)
       volunteer = Factory.create(:volunteer)
       task.assign!(editor, volunteer)
@@ -117,7 +117,7 @@ describe Task do
     end
 
     it "should validate assignees" do
-      task = @user.created_tasks.create!(:name => "some name", :kind => "typing", :difficulty => "normal", :full_nikkud => true)
+      task = @user.created_tasks.create!(:name => "some name", :task_kind_id => Factory.create(:task_kind, :name => "typing").id, :difficulty => "normal", :full_nikkud => true)
       task.assignee.should be_nil
       task.editor.should be_nil
 
@@ -220,7 +220,7 @@ describe Task do
 
     it "should build_chained_task" do
       task = Factory.create(:approved_task)
-      chained_task = task.build_chained_task({:name => "foo bar"}, task.editor)
+      chained_task = task.build_chained_task({:name => "foo bar", :task_kind_id => Factory.create(:task_kind).id}, task.editor)
       chained_task.parent_id.should == task.id
       chained_task.name.should == "foo bar"
       chained_task.should_receive(:clone_parent_documents).and_return(true)

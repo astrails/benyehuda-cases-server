@@ -1,0 +1,2 @@
+module Admin::TaskKindsHelper
+end

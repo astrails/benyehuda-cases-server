@@ -68,6 +68,7 @@ class Task < ActiveRecord::Base
   # validates_associated :comments, :on => :create
 
   include DefaultAttributes
+  #XXX
   #default_attribute :kind, "typing"
   default_attribute :difficulty, "normal"
 
