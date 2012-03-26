@@ -14,11 +14,9 @@ gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
 gem 'formtastic'
 gem 'haml'
-gem "gettext"
-#gem 'fast_gettext', '0.4.17', :git => "https://github.com/grosser/fast_gettext.git", :tag => "v0.4.17"
-gem 'fast_gettext' #, :require => false #, :path => "./vendor/gems/fast_gettext-0.4.17"
 gem 'gettext_i18n_rails'
-#gem "grosser-pomo", '>=0.5.1'
+gem 'gettext', '>=1.9.3', :require => false
+gem 'ruby_parser', :require => false
 gem "aasm"
 gem 'mime-types', :require => 'mime/types'
 gem "fastercsv"
@@ -61,7 +59,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'mocha'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', "1.7.0"
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
   gem "ruby-debug", :require => 'ruby-debug'
