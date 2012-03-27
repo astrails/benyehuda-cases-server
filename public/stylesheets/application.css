@@ -1,37 +1,37 @@
 #header, #content, #footer {
-	border:1px solid #eee;
+  border:1px solid #eee;
 }
 
 #tabs {
-	padding-top:1em;
+  padding-top:1em;
 }
 
 #tabs ul.tabs {
-	height:auto;
+  height:auto;
 }
 
 table.list {
-	width:100%;
+  width:100%;
 }
 
 table.list tr.title {
-	background:#eee;
+  background:#eee;
 }
 
 table.list td,  table.list th{
-	border:1px solid #ddd;
+  border:1px solid #ddd;
 }
 
 div.editor_eyes_only {
-	background:#eee;
+  background:#eee;
 }
 
 div.rejection_reason {
-	border:1px solid red;
+  border:1px solid red;
 }
 
 div.abandoning_reason {
-	border:1px solid blue;
+  border:1px solid blue;
 }
 
 div.finished_reason {
