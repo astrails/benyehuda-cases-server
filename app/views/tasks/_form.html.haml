@@ -7,17 +7,17 @@
   = f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")
 
 :javascript
+  var index_html = '#{escape_javascript(render(:template => "admin/task_kinds/index"))}';
   $(function(){
     $("#manage_kinds").click(function(){
       $.modal(
-        '#{escape_javascript(render(:template => "admin/task_kinds/index"))}',
+        index_html,
         {
           close: true,
           opacity: 80,
           overlayCss: {backgroundColor:"black"},
           containerCss:{
             borderColor:"#fff",
-            //height:300,
             padding:10,
             width:300
           },

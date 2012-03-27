@@ -1,9 +1,10 @@
 - if resource.errors.empty?
-  $("#popup-content").html("#{escape_javascript(render :partial => "admin/task_kinds/task_kinds")}");
+  index_html = "#{escape_javascript(render :template => "admin/task_kinds/index")}";
+  $("#popup-content").replaceWith("#{escape_javascript(render :partial => "admin/task_kinds/task_kinds")}");
   $("#new_kind_msg").html("New kind was created successfully!");
   $("#new_kind_msg").show();
   $("#task_task_kind_id").append($("<option></option>").attr("value", #{@task_kind.id}).text("#{@task_kind.name}"));
 - else
-  $("#popup-content").html("#{escape_javascript(render :partial => "admin/task_kinds/new")}");
+  $("#link_to_new_kind").replaceWith("#{escape_javascript(render :partial => "admin/task_kinds/new")}");
   $("#new_kind_msg").html("#{resource.errors.full_messages.to_a.join(',')}");
   $("#new_kind_msg").show();
