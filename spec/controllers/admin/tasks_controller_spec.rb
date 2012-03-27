@@ -98,7 +98,7 @@ describe Admin::TasksController do
     end
 
     it "should create a task" do
-      post :create, :task => {:name => "oops"}
+      post :create, :task => {:name => "oops", :task_kind_id => Factory.create(:task_kind, :name => "typing").id}
       response.should redirect_to("/tasks/#{Task.last.id}")
       Task.last.name.should == "oops"
       Task.last.should be_unassigned
@@ -106,7 +106,7 @@ describe Admin::TasksController do
     end
 
     it "should create a task with assignee, editor and state" do
-      post :create, :task => {:name => "oopsoops", :assignee_id => 12, :editor_id => 125, :admin_state => "rejected"}
+      post :create, :task => {:name => "oopsoops", :assignee_id => 12, :editor_id => 125, :admin_state => "rejected", :task_kind_id => Factory.create(:task_kind, :name => "typing").id}
       response.should redirect_to("/tasks/#{Task.last.id}")
       Task.last.name.should == "oopsoops"
       Task.last.should be_rejected

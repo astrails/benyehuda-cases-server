@@ -7,8 +7,8 @@ class Admin::TasksController < InheritedResources::Base
     resource.admin_state = params[:task][:admin_state] || resource.admin_state
     resource.editor_id = params[:task][:editor_id] || resource.editor_id
     resource.assignee_id = params[:task][:assignee_id] || resource.assignee_id
-    create! do |format|
-      format.html do
+    create! do |success, failure|
+      success.html do
         redirect_to (params[:commit] == _("Save and New")) ? new_admin_task_path : task_path(@task)
       end
     end
