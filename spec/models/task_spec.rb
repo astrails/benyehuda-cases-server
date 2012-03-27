@@ -14,6 +14,10 @@ describe Task do
     it "should validate name" do
       @task.errors.on(:name).should_not be_blank
     end
+
+    it "should validate kind" do
+      @task.errors.on(:task_kind_id).should_not be_blank
+    end
   end
 
   [:difficulty].each do |a|
