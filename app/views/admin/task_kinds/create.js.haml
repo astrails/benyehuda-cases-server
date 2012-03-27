@@ -1,9 +1,9 @@
 - if resource.errors.empty?
-  $("#new_kind_msg").html("New kind was created successfully!")
+  $("#popup-content").html("#{escape_javascript(render :partial => "admin/task_kinds/task_kinds")}");
+  $("#new_kind_msg").html("New kind was created successfully!");
   $("#new_kind_msg").show();
-  $("#new_kind").html("#{link_to "New kind", new_admin_task_kind_path, :remote => true}");
 - else
-  $("#new_kind_msg").html(resource.errors.full_messages)
+  $("#popup-content").html("#{escape_javascript(render :partial => "admin/task_kinds/new")}");
+  $("#new_kind_msg").html("#{resource.errors.full_messages.to_a.join(',')}");
   $("#new_kind_msg").show();
-  $("#new_kind").html("#{escape_javascript(render :partial => "admin/task_kinds/new")}")
 

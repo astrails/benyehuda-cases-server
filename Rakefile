@@ -3,6 +3,8 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
+
+#FIXME
 require File.expand_path('../spec/spec_helper', __FILE__) if Rails.env == "development"
 
 CasesServer::Application.load_tasks
