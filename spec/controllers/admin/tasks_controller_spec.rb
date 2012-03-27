@@ -106,7 +106,13 @@ describe Admin::TasksController do
     end
 
     it "should create a task with assignee, editor and state" do
-      post :create, :task => {:name => "oopsoops", :assignee_id => 12, :editor_id => 125, :admin_state => "rejected", :task_kind_id => Factory.create(:task_kind, :name => "typing").id}
+      post :create, :task => {
+        :name => "oopsoops",
+        :assignee_id => 12,
+        :editor_id => 125,
+        :admin_state => "rejected",
+        :task_kind_id => Factory.create(:task_kind, :name => "typing").id
+      }
       response.should redirect_to("/tasks/#{Task.last.id}")
       Task.last.name.should == "oopsoops"
       Task.last.should be_rejected
