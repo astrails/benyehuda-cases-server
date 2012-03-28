@@ -2,7 +2,7 @@
   = f.input :name, :label => _("Description"), :required => true, :label => _("Name")
   = f.input :kind, :as => :select, :collection => task_kinds_for_select, :required => true, :label => _("Kind")
   - if current_user.is_admin?
-    = link_to "Manage Kinds", "#", :id => "manage_kinds"
+    = link_to _("Manage Kinds"), "#", :id => "manage_kinds"
   = f.input :difficulty, :as => :select, :collection => task_difficulties_for_select, :required => true, :label => _("Difficulty")
   = f.input :full_nikkud, :as => :boolean, :label => _("Full Nikkud")
 

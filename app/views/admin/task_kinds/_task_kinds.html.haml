@@ -1,0 +1,12 @@
+#popup-content
+  %p
+    = _("Manage Kinds")
+  #new_kind_msg
+  %ul
+  - TaskKind.all.each do |k|
+    %li{:id => "task_kind_#{k.id}"}
+      = link_to _("Delete"), admin_task_kind_path(k), :remote => true, :method => :delete
+      = k.name
+  %br
+  #link_to_new_kind
+    = link_to _("New"), new_admin_task_kind_path, :remote => true, :method => :get
