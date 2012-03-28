@@ -3,12 +3,12 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.11'
-gem "rake", "0.8.7"
+gem "rake" #, "0.8.7"
 gem "builder"
 gem "json"
 gem "mysql"
 gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
-gem 'ruby-debug'
+gem 'ruby-debug19'
 gem 'whenever'
 gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
@@ -34,6 +34,8 @@ gem 'inherited_resources'
 
 gem 'jquery-rails', '>= 1.0.12'
 
+gem 'test-unit', '1.2.3'
+
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"
 # gem "geokit"
@@ -52,7 +54,7 @@ group :development do
 
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  gem "ruby-debug", :require => 'ruby-debug'
+  gem "ruby-debug19", :require => 'ruby-debug'
 end
 
 group :test do
@@ -62,7 +64,7 @@ group :test do
   gem 'factory_girl_rails', "1.7.0"
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  gem "ruby-debug", :require => 'ruby-debug'
+  gem "ruby-debug19", :require => 'ruby-debug'
   # bundler requires these gems while running tests
   # gem "rspec"
   # gem "faker"

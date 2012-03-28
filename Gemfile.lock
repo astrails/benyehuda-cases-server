@@ -41,6 +41,7 @@ GEM
       activemodel (= 3.0.11)
       activesupport (= 3.0.11)
     activesupport (3.0.11)
+    archive-tar-minitar (0.5.2)
     arel (2.0.10)
     aws-s3 (0.6.2)
       builder
@@ -71,6 +72,8 @@ GEM
     haml (3.1.4)
     has_scope (0.5.1)
     high_voltage (1.1.1)
+    hoe (3.0.1)
+      rake (~> 0.8)
     hoptoad_notifier (2.4.11)
       activesupport
       builder
@@ -83,9 +86,9 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
-    json (1.6.5)
-    linecache (0.46)
-      rbx-require-relative (> 0.0.4)
+    json (1.6.6)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
     locale (2.0.5)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -125,8 +128,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.4)
-    rake (0.8.7)
-    rbx-require-relative (0.0.9)
+    rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
     responders (0.6.5)
@@ -150,14 +152,21 @@ GEM
     rspec2-rails-views-matchers (0.2.2)
       nokogiri (>= 1.4.4)
       rspec (>= 2.0.0)
-    ruby-debug (0.10.4)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.4.0)
-    ruby-debug-base (0.10.4)
-      linecache (>= 0.3)
-    ruby_parser (2.0.4)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
+    ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
-    sexp_processor (3.0.4)
+    sexp_processor (3.1.0)
+    test-unit (1.2.3)
+      hoe (>= 1.5.1)
     thinking-sphinx (2.0.11)
       activerecord (>= 3.0.3)
       builder (>= 2.1.2)
@@ -205,13 +214,14 @@ DEPENDENCIES
   passenger (= 2.2.11)
   query_trace
   rails (= 3.0.11)
-  rake (= 0.8.7)
+  rake
   right_aws
   rspec
   rspec-rails
   rspec2-rails-views-matchers
-  ruby-debug
+  ruby-debug19
   ruby_parser
+  test-unit (= 1.2.3)
   thinking-sphinx
   tzinfo
   vlad (= 1.4.0)
