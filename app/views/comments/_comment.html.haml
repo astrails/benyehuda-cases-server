@@ -3,5 +3,5 @@
   %p
     != auto_link(h(comment.message))
     - when_admin do
-      != link_to_remote _("Delete"), :url => task_comment_path(comment.task_id, comment), :method => :delete, :confirm => _("Are you sure?"), :before => "jQuery('##{dom_id(comment)}').hide('fast')"
+      = link_to _("Delete"), :url => task_comment_path(comment.task_id, comment), :method => :delete, :confirm => _("Are you sure?"), :before => "jQuery('##{dom_id(comment)}').hide('fast')", :remote => true
   

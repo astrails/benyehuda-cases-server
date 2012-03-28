@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Audit < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
@@ -54,9 +55,9 @@ class Audit < ActiveRecord::Base
     return nil unless to
     human_attr = convert_attribute_name(attribute_name) || attribute_name.to_s.humanize
     if from.blank?
-      s_("audit set|%{attr} set to %{to}") % {:attr => human_attr, :to => escape_blanks(to)}
+      s_("audit set|%{attr} set to %{to}").force_encoding("UTF-8") % {:attr => human_attr.force_encoding("UTF-8"), :to => escape_blanks(to).force_encoding("UTF-8")}
     else
-      s_("audit changed|%{attr} changed from %{from} to %{to}") % {:attr => human_attr, :to => escape_blanks(to), :from => escape_blanks(from)}
+      s_("audit changed|%{attr} changed from %{from} to %{to}").force_encoding("UTF-8") % {:attr => human_attr.force_encoding("UTF-8"), :to => escape_blanks(to).force_encoding("UTF-8"), :from => escape_blanks(from).force_encoding("UTF-8")}
     end
   end
 
