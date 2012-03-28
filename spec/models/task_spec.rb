@@ -34,7 +34,7 @@ describe Task do
   describe "notifications" do
     def check_email(user, state, name)
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 1
-      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.email
+      ActionMailer::Base.deliveries.last.to_addrs[0].should == user.email
       ActionMailer::Base.deliveries.last.body.should =~ /#{state}/
       ActionMailer::Base.deliveries.last.body.should =~ /#{name}/
     end

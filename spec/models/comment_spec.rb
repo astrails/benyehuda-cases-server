@@ -48,7 +48,7 @@ describe Comment do
 
     def check_email(user)
       ActionMailer::Base.deliveries.last.to_addrs.size.should == 1
-      ActionMailer::Base.deliveries.last.to_addrs.to_s.should == user.email
+      ActionMailer::Base.deliveries.last.to_addrs[0].should == user.email
       ActionMailer::Base.deliveries.last.body.should =~ /foo bar foo bar/
     end
 

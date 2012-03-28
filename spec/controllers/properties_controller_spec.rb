@@ -29,7 +29,7 @@ describe PropertiesController do
       UserSession.create(@admin)
       @property = Factory.create(:property)
       Property.stub!(:find).with(@property.id).and_return(@property)
-      Property.stub!(:paginate).and_return[@property, @property]
+      Property.stub!(:paginate).and_return([@property, @property])
     end
 
     describe_action(:new) { it_should_render_template :new }
