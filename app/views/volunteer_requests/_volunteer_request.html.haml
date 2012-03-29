@@ -1,5 +1,5 @@
 %tr{:class => cycle("odd", "even")}
-  %td!= link_to(h(volunteer_request.user.name), user_path(volunteer_request.user))
+  %td= link_to(h(volunteer_request.user.name), user_path(volunteer_request.user))
   %td= _("%{time} ago") % {:time => time_ago_in_words(volunteer_request.created_at)}
-  %td!= link_to h(volunteer_request.preferences.utf_snippet(70)), volunteer_request_path(volunteer_request)
-  %td!= confirm_button(volunteer_request)
+  %td= link_to h(volunteer_request.preferences.utf_snippet(70)), volunteer_request_path(volunteer_request)
+  %td= confirm_button(volunteer_request)
