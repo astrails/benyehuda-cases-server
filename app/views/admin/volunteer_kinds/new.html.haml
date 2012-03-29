@@ -1,0 +1,10 @@
+- @page_title = _("New Volunteer Kind")
+- render_page_title
+
+- semantic_form_for(@volunteer_kind, :url => admin_volunteer_kinds_path(@volunteer_kind), :live_validations => true) do |f|
+  - f.inputs do
+    = f.object.errors.on(:base)
+    = f.input :name
+  - f.inputs do
+    = f.submit _("Save")
+    = link_to _("cancel"), dashboard_path

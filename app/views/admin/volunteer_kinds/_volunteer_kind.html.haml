@@ -1,0 +1,4 @@
+%tr{:class => cycle("odd", "even")}
+  %td= volunteer_kind.name
+  %td= volunteer_kind.volunteers.count
+  %td= link_to _("Delete"), admin_volunteer_kind_path(volunteer_kind), :method => :delete

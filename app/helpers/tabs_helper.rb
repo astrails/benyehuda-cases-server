@@ -2,6 +2,7 @@ module TabsHelper
   TABS = [
     {:name => :dashboard, :title => N_("Dashboard"), :path => "/dashboard"},
     {:name => :volunteer_requests, :title => N_("Volunteer Requests"), :path => "/volunteer_requests", :if => :admin_or_editor?},
+    {:name => :volunteer_kinds, :title => N_("Volunteer Kinds"), :path => "/admin/volunteer_kinds", :if => :is_admin?},
     {:name => :tasks_admin, :title => N_("Tasks Admin"), :path => "/admin/tasks", :if => :is_admin?}, 
     {:name => :users, :title => N_("Users"), :path => "/users", :if => :is_admin?}, 
     {:name => :object_prefs, :title => N_("Object Properties"), :path => "/properties", :if => :is_admin?}, 

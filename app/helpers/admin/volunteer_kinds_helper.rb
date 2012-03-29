@@ -1,0 +1,2 @@
+module Admin::VolunteerKindsHelper
+end
