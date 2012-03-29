@@ -17,6 +17,7 @@
     %th= _("Files")
     %th &nbsp;
     %th &nbsp;
+    %th &nbsp;
   - unless @tasks.blank?
     != render(:partial => @tasks)
 != will_paginate(@tasks)

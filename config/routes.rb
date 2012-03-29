@@ -19,7 +19,7 @@ CasesServer::Application.routes.draw do
   resource :dashboard
   resources :volunteer_requests
   namespace :admin do
-    resources :tasks
+    resources :tasks, :only => [:index, :new, :create, :edit, :update, :destroy]
     resources :task_kinds, :only => [:create, :new, :index, :destroy]
   end
 

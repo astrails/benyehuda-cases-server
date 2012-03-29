@@ -1,6 +1,7 @@
 class Admin::TasksController < InheritedResources::Base
   before_filter :require_admin
-  actions :index, :new, :create, :edit, :update
+  actions :index, :new, :create, :edit, :update, :destroy
+  respond_to :js
 
   def create
     @task = current_user.created_tasks.build(params[:task])

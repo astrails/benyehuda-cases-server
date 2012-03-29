@@ -11,7 +11,7 @@ describe Admin::TasksController do
         UserSession.create(@user)
       end
 
-      [:edit, :update, :new, :update, :create].each do |a|
+      [:edit, :update, :new, :update, :create, :destroy].each do |a|
         describe_action(a) do
           before(:each) do
             @params = {:id => 1}
@@ -23,7 +23,7 @@ describe Admin::TasksController do
   end
 
   describe "guest" do
-    [:edit, :update, :new, :update, :create].each do |a|
+    [:edit, :update, :new, :update, :create, :destroy].each do |a|
       describe_action(a) do
         before(:each) do
           @params = {:id => 1}
@@ -118,6 +118,13 @@ describe Admin::TasksController do
       Task.last.should be_rejected
       Task.last.assignee_id.should == 12
       Task.last.editor_id.should == 125
+    end
+
+    it "should delete a task" do
+      req = lambda{
+        xhr :delete, :destroy, :id => @task.id
+        response.should render_template :destroy
+      }.should change(Task, :count).by(-1)
     end
   end
 end
