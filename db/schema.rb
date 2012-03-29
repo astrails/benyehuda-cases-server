@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322152613) do
+ActiveRecord::Schema.define(:version => 20120329113649) do
 
   create_table "assignment_histories", :force => true do |t|
     t.integer  "user_id"
@@ -202,6 +202,12 @@ ActiveRecord::Schema.define(:version => 20120322152613) do
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
   add_index "users", ["single_access_token"], :name => "index_users_on_single_access_token"
+
+  create_table "volunteer_kinds", :force => true do |t|
+    t.string   "name",       :limit => 64
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "volunteer_requests", :force => true do |t|
     t.integer  "user_id"
