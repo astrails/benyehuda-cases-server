@@ -1,5 +1,5 @@
 class VolunteerKind < ActiveRecord::Base
-  has_many :volunteers, :class_name => "User", :dependent => :destroy
+  has_many :volunteers, :class_name => "User", :dependent => :destroy, :conditions => { :is_volunteer => true }
   validates :name, :presence => true, :uniqueness => true
   before_destroy :volunteer_existance, :on => :destroy
 

@@ -69,6 +69,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :search_settings
+  belongs_to :kind, :class_name => "VolunteerKind", :foreign_key => "volunteer_kind_id"
 
   after_update :check_volunter_approved
 
