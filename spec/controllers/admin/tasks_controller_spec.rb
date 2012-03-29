@@ -120,11 +120,13 @@ describe Admin::TasksController do
       Task.last.editor_id.should == 125
     end
 
-    it "should delete a task" do
-      req = lambda{
-        xhr :delete, :destroy, :id => @task.id
-        response.should render_template :destroy
-      }.should change(Task, :count).by(-1)
+    describe :destroy do
+      it "should delete a task" do
+        lambda{
+          xhr :delete, :destroy, :id => @task.id
+          response.should render_template :destroy
+        }.should change(Task, :count).by(-1)
+      end
     end
   end
 end
