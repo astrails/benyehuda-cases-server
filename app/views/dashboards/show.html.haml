@@ -11,7 +11,7 @@
 - when_volunteer do
   #task_request
     - if current_user.task_requested_at.nil?
-      != link_to_remote _("Request a Task"), :url => task_requests_path, :method => :post
+      != link_to _("Request a Task"), task_requests_path, :method => :post, :remote => true
     - else
       != render(:partial => "users/task_request")
 
