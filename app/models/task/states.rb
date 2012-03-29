@@ -33,8 +33,8 @@ module Task::States
       # editor confirms that a child task created (proofing or other task)
       aasm_state          :other_task_creat
 
-      validates_presence_of :state
-      validates_presence_of :assignee, :editor, :if => :should_have_assigned_peers?, :on => :update
+      validates :state, :presence => true
+      validates :assignee, :editor, :presence => true, :if => :should_have_assigned_peers?, :on => :update
 
       # assign a task to new assignee
       aasm_event :_assign do

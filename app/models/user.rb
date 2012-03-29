@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   has_many :assignment_histories, :dependent => :destroy
 
-  validates_presence_of :name
+  validates :name, :presence => true
 
   scope :volunteers, where("is_volunteer = 1 AND activated_at IS NOT NULL AND disabled_at IS NULL")
   scope :all_volunteers, where("(users.is_volunteer = 1 OR is_editor = 1 OR is_admin = 1) AND activated_at IS NOT NULL AND disabled_at IS NULL")
