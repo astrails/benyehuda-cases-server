@@ -14,7 +14,7 @@
         %td!= waiting_for_task(v)
         %td!= link_to_assign_a_task(v)
   :javascript
-    jQuery(function(){      
+    jQuery(function(){
       jQuery('#assign_now').dialog({draggable:false, modal: true, resizable:false, autoOpen: false, width: 800,buttons: {"#{_("Cancel")}": function() { $(this).dialog("close"); } } });
     });
   #assign_now{:title => _("Assign a Task")}
