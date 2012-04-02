@@ -1,7 +1,7 @@
 class CreateTaskKinds < ActiveRecord::Migration
   def self.up
     remove_column :tasks, :kind
-    add_column :tasks, :task_kind_id, :integer #FIXME: null => false
+    add_column :tasks, :task_kind_id, :integer
 
     create_table :task_kinds do |t|
       t.string :name

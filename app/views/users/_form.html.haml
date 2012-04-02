@@ -6,7 +6,7 @@
     = f.input :is_admin, :label => _("Is Admin")
     = f.input :is_editor, :label => _("Is Editor")
     = f.input :is_volunteer, :label => _("Is Volunteer")
-
+    = f.input :kind, :as => :select, :collection => VolunteerKind.all, :include_blank => false, :label => _("Volunteer Kind")
 
 - unless f.object.new_record?
   - f.inputs :name => _("Email Notifications") do
@@ -19,3 +19,23 @@
     = render(:partial => "users/volunteer_form", :locals => {:f => f})
   - when_user_editor do
     = render(:partial => "users/editor_form", :locals => {:f => f})
+
+:javascript
+  $(function(){
+    if($("#user_is_volunteer").is(':checked')){
+      $("#user_volunteer_kind_id").removeAttr("disabled");
+      $("#user_kind_input").toggle(true);
+    } else {
+      $("#user_volunteer_kind_id").attr("disabled", "disabled");
+      $("#user_kind_input").toggle(false);
+    }
+
+    $("#user_is_volunteer").click(function(){
+      if(this.checked){
+        $("#user_volunteer_kind_id").removeAttr("disabled");
+      } else {
+        $("#user_volunteer_kind_id").attr("disabled", "disabled");
+      }
+      $("#user_kind_input").toggle(this.checked);
+    });
+  });

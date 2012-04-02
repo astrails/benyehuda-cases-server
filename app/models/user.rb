@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
   # validates :volunteer_kind_id, :presence => true, :if => :validate_kind?, :on => :update
 
   after_update :check_volunter_approved
+  before_update :handle_volunteer_kind
 
   define_index do
     indexes :name, :sortable => true
@@ -148,5 +149,11 @@ class User < ActiveRecord::Base
   def set_task_requested!
     self.task_requested_at = Time.now.utc
     save!
+  end
+
+  def handle_volunteer_kind
+    if is_volunteer_changed? && !is_volunteer?
+      self.volunteer_kind_id = nil
+    end
   end
 end
