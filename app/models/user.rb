@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     c.perishable_token_valid_for = 2.weeks
   end
   include Astrails::Auth::Model
-  attr_accessible :name, :password, :password_confirmation, :notify_on_comments, :notify_on_status
+  attr_accessible :name, :password, :password_confirmation, :notify_on_comments, :notify_on_status, :volunteer_kind_id
 
   has_gravatar
   has_attached_file :avatar, :styles => { :thumb => "50x50>", :medium => "100x100>" },
@@ -69,7 +69,10 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :search_settings
-  belongs_to :kind, :class_name => "VolunteerKind", :foreign_key => "volunteer_kind_id"
+  belongs_to :kind, :class_name => "VolunteerKind", :foreign_key => :volunteer_kind_id
+
+  #FIXME add validation
+  # validates :volunteer_kind_id, :presence => true, :if => :validate_kind?, :on => :update
 
   after_update :check_volunter_approved
 

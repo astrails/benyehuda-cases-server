@@ -9,7 +9,7 @@ class TaskKind < ActiveRecord::Base
 
   def validate_task_existance
     if tasks.size > 0
-      errors.add(:base, "There are existing tasks that uses #{name} kind. Please remove them first in order to delete this kind.")
+      errors.add(:base, _("There are existing tasks that uses #{name} kind. Please remove them first in order to delete this kind."))
       return false
     end
   end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Admin::VolunteerKindsController do
+  setup :activate_authlogic
+
   describe "guest" do
     [:new, :create, :index, :destroy].each do |a|
       describe_action(a) do
@@ -13,6 +15,8 @@ describe Admin::VolunteerKindsController do
   end
 
   describe :admin do
+    render_views
+
     before(:each) do
       @user = Factory.create(:admin)
       UserSession.create(@user)
@@ -29,7 +33,7 @@ describe Admin::VolunteerKindsController do
       it "should create volunteer_kind" do
         lambda{
           post :create, :volunteer_kind => {:name => "bar"}
-          response.should redirect_to :index
+          response.should redirect_to admin_volunteer_kinds_path
         }.should change(VolunteerKind, :count).by(1)
       end
     end
@@ -49,7 +53,7 @@ describe Admin::VolunteerKindsController do
       it "should destroy task kind" do
         lambda{
           delete :destroy, :id => @volunteer_kind.id
-          response.should redirect_to :index
+          response.should redirect_to admin_volunteer_kinds_path
         }.should change(VolunteerKind, :count).by(-1)
       end
     end

@@ -20,6 +20,10 @@ describe VolunteerRequestsController do
 
     before(:each) do
       @volunteer_request = Factory.create(:volunteer_request)
+      @volunteer_kind_1 = Factory.create(:volunteer_kind)
+      @volunteer_kind_2 = Factory.create(:volunteer_kind)
+      @volunteer_request.user.volunteer_kind_id = @volunteer_kind_1.id
+
       @confirmed_volunteer_request = Factory.create(:confirmed_volunteer_request)
       @user = Factory.create(:admin)
       UserSession.create(@user)
@@ -43,10 +47,21 @@ describe VolunteerRequestsController do
       @volunteer_request.approved_at.should be_blank
       ActionMailer::Base.deliveries = []
       ActionMailer::Base.deliveries.count.should == 0
-      put :update, :id => @volunteer_request.id
+      put :update, :id => @volunteer_request.id, :volunteer_request => {
+        :user_attributes => {:volunteer_kind_id => @volunteer_kind_2.id}
+      }
       response.should redirect_to(volunteer_requests_path)
       @volunteer_request.reload.approved_at.should_not be_blank
       ActionMailer::Base.deliveries.count.should == 1
+    end
+
+    it "should update volunteer_kind_id if changed by admin" do
+      put :update, :id => @volunteer_request.id, :volunteer_request => {
+        :user_attributes => {:volunteer_kind_id => @volunteer_kind_2.id}
+      }
+
+      response.should redirect_to(volunteer_requests_path)
+      @volunteer_request.user.reload.volunteer_kind_id.should == @volunteer_kind_2.id
     end
 
     it "should not reapprove" do
@@ -70,7 +85,6 @@ describe VolunteerRequestsController do
         end
       end
     end
-
 
     describe "user with volunteer request" do
 
@@ -106,6 +120,11 @@ describe VolunteerRequestsController do
         post :create, :volunteer_request => {:preferences => "some long text"}
         response.should redirect_to("/dashboard")
         @user.reload.volunteer_request.should_not be_blank
+      end
+
+      it "should set volunteer_kind_id for user" do
+        post :create, :volunteer_request => {:preferences => "some long text", :user_attributes => {:volunteer_kind_id =>  2, :id => @user.id}}
+        @user.reload.volunteer_kind_id.should_not be_blank
       end
 
       it "should render errors" do
