@@ -57,4 +57,14 @@ describe User do
       ActionMailer::Base.deliveries.last.subject.should == "Welcome to Ben Yehuda Project"
     end
   end
+
+  describe :handle_volunteer_kind do
+    it "should remove volunteer kind if user has ceased his voluntarism :)" do
+      user = Factory.create(:volunteer, :volunteer_kind_id => Factory.create(:volunteer_kind).id)
+      user.volunteer_kind_id.should_not be_nil
+      user.is_volunteer = false
+      user.save!
+      user.reload.volunteer_kind_id.should be_nil
+    end
+  end
 end
