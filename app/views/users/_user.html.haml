@@ -2,9 +2,11 @@
   %td= user.id
   %td!= link_to(h(user.name), user_path(user))
   %td= user.email
-  %td= boolean_property(user.is_volunteer)
-  %td= boolean_property(user.is_editor)
-  %td= boolean_property(user.is_admin)
+  %td
+    != boolean_property(user.is_volunteer)
+    = user.kind.name unless user.kind.nil?
+  %td!= boolean_property(user.is_editor)
+  %td!= boolean_property(user.is_admin)
 
   %td!= activation_email_links(user)
 

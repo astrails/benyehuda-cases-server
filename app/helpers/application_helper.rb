@@ -34,6 +34,6 @@ module ApplicationHelper
   end
 
   def boolean_property(value)
-    value ? "true" : ""
+    value ? "&#8730;" : ""
   end
 end
