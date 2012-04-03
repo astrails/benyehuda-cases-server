@@ -4,12 +4,10 @@
 
 != render(:partial => "description")
 
-  
 - @task.task_properties.visible_for(current_user).each do |p|
   %p
     %strong= "#{p.property.title}:"
     != property_value(p)
-  
 
 .block
   != render(:partial => "documents", :locals => {:documents => @task.documents})

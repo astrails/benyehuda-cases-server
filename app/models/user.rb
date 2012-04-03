@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   has_many :search_settings
   belongs_to :kind, :class_name => "VolunteerKind", :foreign_key => :volunteer_kind_id
 
-  #FIXME add validation
+  #FIXME add validation and validate_kind?
   # validates :volunteer_kind_id, :presence => true, :if => :validate_kind?, :on => :update
 
   after_update :check_volunter_approved
