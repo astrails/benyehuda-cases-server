@@ -2,10 +2,9 @@
   %h3
     = @task.name
     %small
-      = [Task.textify_kind(@task.kind.name), Task.textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
+      = [Task.textify_kind(@task.kind.try(:name)), Task.textify_difficulty(@task.difficulty), textify_full_nikud(@task)].compact_blanks.join("/")
       - when_admin do
         != link_to _("Edit"), edit_admin_task_path(@task)
-
 
 - when_editor_or_admin do
   - unless @task.children.blank?
@@ -19,7 +18,9 @@
       != link_to(h(@task.parent.name), task_path(@task.parent))
 
 .block
-  %h4
+  %h3
+    = _("Status")
+  %h5
     = Task.textify_state(@task.state)
     - unless @skip_assignment_links
       %small
