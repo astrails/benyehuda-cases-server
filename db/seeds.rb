@@ -8,6 +8,7 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 GlobalPreference.set!('domain', 'dev.tanin:3000')
+GlobalPreference.set!('disable_volunteer_notifications', "false")
 
 VolunteerKind.create(
   [
