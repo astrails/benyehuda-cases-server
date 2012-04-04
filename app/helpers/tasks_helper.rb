@@ -51,8 +51,9 @@ module TasksHelper
         'onComplete': function(e, queueID, fileObj, response) {
           eval(response);
         },
-        'onError': function() {
+        'onError': function(event, ID, fileObj, errorObj) {
           alert('#{_('Opps, something went wrong. Please try again later.')}');
+          alert(errorObj.type + ' Error: ' + errorObj.info);
           window.location.href = window.location.href;
         }
       });
