@@ -21,6 +21,8 @@ class Comment < ActiveRecord::Base
 
   after_create :notify_by_email
 
+  protected
+
   def notify_by_email
     recipients = task.task_changes_recipients(true).select {|r| r.wants_to_be_notified_of?(:comments)}
     if editor_eyes_only?
