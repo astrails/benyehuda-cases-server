@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def current_locale
-    'he'  # XXX
+    'he' # XXX
   end
 
   def render_tabs
@@ -23,7 +23,7 @@ module ApplicationHelper
         haml_tag :li do
           haml_concat link_to(s_(tab[:title]), tab[:path], opts)
         end
-      end    
+      end
     end
   end
 

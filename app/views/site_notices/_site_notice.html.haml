@@ -3,5 +3,5 @@
   %td!= site_notice.start_displaying_at && site_notice.start_displaying_at.to_s(:isra_date) || "&nbsp;"
   %td!= site_notice.end_displaying_at && site_notice.end_displaying_at.to_s(:isra_date) || "&nbsp;"
   %td!= site_notice.html
-  %td!= link_to_remote _("remove"), :url => site_notice_path(site_notice), :method => :delete, :confirm => _("Are you sure?"), :before => "jQuery('##{dom_id(site_notice)}').remove()"
+  %td!= link_to _("remove"), :url => site_notice_path(site_notice), :method => :delete, :confirm => _("Are you sure?"), :before => "jQuery('##{dom_id(site_notice)}').remove()", :remote => true
   %td!= link_to _("edit"), edit_site_notice_path(site_notice)

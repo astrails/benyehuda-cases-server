@@ -7,4 +7,4 @@
         != link_to _("edit"), edit_user_path(@user)
   != image_tag(avatar_for(@user, :medium))
   - if @user.avatar? && (current_user == @user || current_user.is_admin?)
-    != link_to_remote _("remove avatar"), :url => user_path(@user, :remove_avatar => true), :method => :put, :confirm => _("Are you sure?")
+    != link_to _("remove avatar"), :url => user_path(@user, :remove_avatar => true), :method => :put, :confirm => _("Are you sure?"), :remote => true
