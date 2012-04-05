@@ -12,6 +12,10 @@ module TasksHelper
     "finish_partially" => N_("task event|Mark as Finished Partly")
   }
 
+  def order_direction(param)
+    param == "ASC" ? "DESC" : "ASC"
+  end
+
   def textify_event(event)
     # TODO: gettext here
     s_(TASK_EVENTS[event])
@@ -81,7 +85,7 @@ module TasksHelper
   end
 
   def task_kinds_for_select
-    TaskKind.all.map{|k| [Task.textify_kind(k.name), Task.textify_kind(k.name)]}
+    TaskKind.all.map{|k| [Task.textify_kind(k.name), k.id]}
   end
 
   def task_states_for_select

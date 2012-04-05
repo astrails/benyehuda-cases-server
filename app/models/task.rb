@@ -74,6 +74,8 @@ class Task < ActiveRecord::Base
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
 
+  scope :order_by, proc {|included_assoc, property, dir| includes(included_assoc).order("#{property} #{dir}")}
+
   after_save :update_assignments_history
   def update_assignments_history    
     assignee.assignment_histories.create(:task_id => self.id, :role => "assignee") if assignee_id_changed? && !assignee.blank?

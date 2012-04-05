@@ -1,6 +1,7 @@
 class Admin::TasksController < InheritedResources::Base
   before_filter :require_admin
   actions :index, :new, :create, :edit, :update, :destroy
+  has_scope :order_by, :only => :index, :using => [:includes, :property, :dir]
   respond_to :js
 
   def create
@@ -36,9 +37,10 @@ class Admin::TasksController < InheritedResources::Base
     default_index_with_search!
   end
 
-protected
+  protected
+
   def collection
-    @tasks ||= Task.filter(params).paginate(:page => params[:page], :per_page => params[:per_page])
+    @tasks ||= apply_scopes(Task).filter(params).paginate(:page => params[:page], :per_page => params[:per_page])
   end
 
   def interpolation_options
