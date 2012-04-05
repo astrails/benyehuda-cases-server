@@ -35,6 +35,8 @@ gem 'inherited_resources'
 gem 'jquery-rails', '>= 1.0.12'
 
 gem 'test-unit', '1.2.3'
+gem 'rmagick'
+gem 'mini_magick'
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"

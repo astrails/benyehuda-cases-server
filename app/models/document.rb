@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'mini_magick'
+
 class Document < ActiveRecord::Base
   belongs_to :user
   belongs_to :task , :touch => true, :counter_cache => true
@@ -38,5 +41,10 @@ class Document < ActiveRecord::Base
 
   def image?
     !file_file_name.blank? && IMAGE_FILE_EXTS.member?((File.extname(file_file_name)[1..-1] || "").downcase)
+  end
+
+  def self.convert_pdf_to_img(pdf_path, out_file_name)
+    pdf = Magick::ImageList.new(pdf_path)
+    pdf.write(out_file_name) # if pdf has several pages it will output the same amount of images
   end
 end
