@@ -206,6 +206,7 @@ DEPENDENCIES
   gettext_i18n_rails
   gravtastic (= 2.2.0)
   haml
+  has_scope
   high_voltage
   hoptoad_notifier
   image_science

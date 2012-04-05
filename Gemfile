@@ -31,6 +31,7 @@ gem "RubyInline"
 gem "daemons"
 gem 'high_voltage'
 gem 'inherited_resources'
+gem 'has_scope'
 
 gem 'jquery-rails', '>= 1.0.12'
 
