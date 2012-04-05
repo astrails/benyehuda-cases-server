@@ -15,7 +15,7 @@
     - else
       != render(:partial => "users/task_request")
 
-!= render(:partial => "tasks/index", :locals => {:tasks => current_user.assigned_tasks.visible_in_my_tasks, :title => _("My Tasks")})
+!= render(:partial => "tasks/index", :locals => {:tasks => collection, :title => _("My Tasks")})
 
 - when_editor do
   != render(:partial => "editor_dashboard")

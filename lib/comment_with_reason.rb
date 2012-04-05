@@ -4,7 +4,7 @@ module CommentWithReason
   end
 
   def event_with_comment(event, task)
-    send("#{event}_with_comment", task[:comment][:message], task[:request_new_task])
+    send("#{event}_with_comment", task[:comment].try(:[], :message), task[:request_new_task])
   end
 
   def commentable_event?(event)

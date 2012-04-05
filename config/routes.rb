@@ -16,7 +16,7 @@ CasesServer::Application.routes.draw do
   match '/' => 'welcome#index'
   resources :pages, :only => [:show]
   resources :properties
-  resource :dashboard
+  match '/dashboard' => 'dashboards#index', :via => :get, :as => :dashboard
   resources :volunteer_requests
   namespace :admin do
     resources :tasks, :only => [:index, :new, :create, :edit, :update, :destroy]

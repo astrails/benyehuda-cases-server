@@ -8,13 +8,13 @@
   %table.list
     %tr
       %th &nbsp;
-      %th= _("Last Updated")
-      %th= _("Name")
-      %th= _("Kind")
-      %th= _("Editor")
-      %th= _("Assignee")
-      %th= _("State")
-      %th= _("Files")
+      %th= link_to _("Last Updated"), dashboard_path(:order_by => {:property => "updated_at", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Name"), dashboard_path(:order_by => {:property => "name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Kind"), dashboard_path(:order_by => {:includes => "kind", :property => "task_kinds.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Editor"), dashboard_path(:order_by => {:includes => "editor", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Assignee"), dashboard_path(:order_by => {:includes => "assignee", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("State"), dashboard_path(:order_by => {:property => "state", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Files"), dashboard_path(:order_by => {:property => "documents_count", :dir => order_direction(params[:order_by].try(:[], :dir))})
       %th &nbsp;
 
     != render(:partial => tasks)
