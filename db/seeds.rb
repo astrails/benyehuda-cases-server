@@ -10,6 +10,7 @@
 GlobalPreference.set!('domain', 'dev.tanin:3000')
 GlobalPreference.set!('disable_volunteer_notifications', "false")
 
+VolunteerKind.delete_all
 VolunteerKind.create(
   [
     {:name => "סריקה"},
@@ -18,18 +19,17 @@ VolunteerKind.create(
   ]
 )
 
-TASK_STATES = {
-  "unassigned" => N_("task state|Unassigned"),
-  "assigned" => N_("task state|Assigned/Work in Progress"),
-  "stuck" => N_("task state|Editors Help Required"),
-  "partial" => N_("task state|Partialy Ready"),
-  "waits_for_editor" => N_("task state|Waits for Editor's approvement"),
-  "rejected" => N_("task state|Rejected by Editor"),
-  "approved" => N_("task state|Approved by Editor"),
-  "ready_to_publish" => N_("task state|Ready to Publish"),
-  "other_task_creat" => N_("task state|Another Task Created")
-}
-
-TASK_STATES.each do |k, v|
-  TaskState.create(:name => k, :value => v)
-end
+TaskState.delete_all
+TaskState.create(
+  [
+    {:name => "unassigned", :value => N_("task state|Unassigned")},
+    {:name => "assigned", :value => N_("task state|Assigned/Work in Progress")},
+    {:name => "stuck", :value => N_("task state|Editors Help Required")},
+    {:name => "partial", :value => N_("task state|Partialy Ready")},
+    {:name => "waits_for_editor", :value => N_("task state|Waits for Editor's approvement")},
+    {:name => "rejected", :value => N_("task state|Rejected by Editor")},
+    {:name => "approved", :value => N_("task state|Approved by Editor")},
+    {:name => "ready_to_publish", :value => N_("task state|Ready to Publish")},
+    {:name => "other_task_creat", :value => N_("task state|Another Task Created")}
+  ]
+)
