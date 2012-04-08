@@ -1,0 +1,7 @@
+- if resource.errors.empty?
+  $("#new_kind_msg").html("Kind was deleted successfully!");
+  $("#volunteer_kind_#{params[:id]}").remove();
+  index_html = "#{escape_javascript(render :template => "admin/volunteer_kinds/index")}";
+- else
+  $("#new_kind_msg").html("#{resource.errors.full_messages.to_a.join(',')}");
+  $("#new_kind_msg").show();

@@ -1,4 +1,5 @@
 - if resource.errors.empty?
+  index_html = "#{escape_javascript(render :template => "admin/volunteer_kinds/index")}";
   $("#popup-content").replaceWith("#{escape_javascript(render :template => "admin/volunteer_kinds/index")}");
   $("#new_kind_msg").html("#{_("New kind was created successfully")}");
   $("#new_kind_msg").show();
