@@ -1,6 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-FactoryGirl.define do
-  factory :task_state do
-  end
+Factory.define :task_state do |s|
+  s.name "some name"
+  s.value "some value"
 end
