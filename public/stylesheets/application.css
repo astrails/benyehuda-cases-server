@@ -8,6 +8,8 @@
 
 #tabs ul.tabs {
   height:auto;
+  direction:rtl;
+  margin-left: 213px;
 }
 
 table.list {
