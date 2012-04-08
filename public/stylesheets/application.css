@@ -59,9 +59,14 @@ div.finished_reason {
   font-weight:bold;
 }
 
+.simplemodal-data{
+  direction:rtl;
+}
+
 #simplemodal-container .simplemodal-container {
   border:2px solid gray;
   background:#e5ecf9;
+  padding-right:15px;
   padding-left:15px;
   padding-top:5px;
 }

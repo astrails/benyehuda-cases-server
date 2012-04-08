@@ -1,6 +1,32 @@
 - set_tab :users, (params[:all] == "true" ? _("All Users") : _("Enabled Users"))
 
+%p
+  - if current_user.is_admin?
+    = link_to _("Manage Volunteer Kinds"), "#", :id => "manage_volunteer_kinds"
+
 != render(:partial => "search")
 
 #users
   != render(:partial => "index")
+
+:javascript
+  var index_html = '#{escape_javascript(render(:template => "admin/volunteer_kinds/index"))}';
+  $(function(){
+    $("#manage_volunteer_kinds").click(function(){
+      $.modal(
+        index_html,
+        {
+          close: true,
+          opacity: 80,
+          overlayCss: {backgroundColor:"black"},
+          containerCss:{
+            borderColor:"#fff",
+            padding:10,
+            width:350
+          },
+          overlayClose:true
+        }
+      );
+      return false;
+    });
+  });

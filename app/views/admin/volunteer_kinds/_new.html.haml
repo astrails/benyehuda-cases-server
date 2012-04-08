@@ -1,0 +1,3 @@
+- semantic_form_for(@volunteer_kind, :url => admin_volunteer_kinds_path(@volunteer_kind), :live_validations => true, :remote => true) do |f|
+  = f.input :name
+  = f.submit _("Save")

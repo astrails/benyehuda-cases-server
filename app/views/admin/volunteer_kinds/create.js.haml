@@ -1,0 +1,8 @@
+- if resource.errors.empty?
+  $("#popup-content").replaceWith("#{escape_javascript(render :template => "admin/volunteer_kinds/index")}");
+  $("#new_kind_msg").html("#{_("New kind was created successfully")}");
+  $("#new_kind_msg").show();
+- else
+  $("#link_to_new_kind").replaceWith("#{escape_javascript(render :partial => "admin/task_kinds/new")}");
+  $("#new_kind_msg").html("#{resource.errors.full_messages.to_a.join(',')}");
+  $("#new_kind_msg").show();
