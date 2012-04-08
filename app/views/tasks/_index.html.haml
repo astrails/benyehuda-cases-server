@@ -13,7 +13,7 @@
       %th= link_to _("Kind"), dashboard_path(:order_by => {:includes => "kind", :property => "task_kinds.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
       %th= link_to _("Editor"), dashboard_path(:order_by => {:includes => "editor", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
       %th= link_to _("Assignee"), dashboard_path(:order_by => {:includes => "assignee", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
-      %th= link_to _("State"), dashboard_path(:order_by => {:property => "state", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("State"), dashboard_path(:order_by_state => {:dir => order_direction(params[:order_by_state].try(:[], :dir))})
       %th= link_to _("Files"), dashboard_path(:order_by => {:property => "documents_count", :dir => order_direction(params[:order_by].try(:[], :dir))})
       %th &nbsp;
 

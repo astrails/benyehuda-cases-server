@@ -2,6 +2,7 @@ class Admin::TasksController < InheritedResources::Base
   before_filter :require_admin
   actions :index, :new, :create, :edit, :update, :destroy
   has_scope :order_by, :only => :index, :using => [:includes, :property, :dir]
+  has_scope :order_by_state, :only => :index, :using => [:dir]
   respond_to :js
 
   def create

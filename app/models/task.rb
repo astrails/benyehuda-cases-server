@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
       :assignee_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :task_kind_id => proc {|v| v ? Task.textify_kind(TaskKind.find_by_id(v).try(:name)) : "" },
       :difficulty => proc {|v| Task.textify_difficulty(v) },
-      :state => proc {|v| Task.textify_state(v) },
+      :task_state_id => proc {|v| v ? Task.textify_state(TaskState.find_by_id(v).try(:name)) : "" },
       :full_nikkud => proc {|v| v ? _("true") : _("false")},
       :default_title => N_("auditable|Task"),
       :attributes => proc { |a|
@@ -63,6 +63,7 @@ class Task < ActiveRecord::Base
 
   attr_accessible :name, :task_kind_id, :difficulty, :full_nikkud, :comments_attributes
 
+  #belongs_to :state, :class_name => "TaskState", :foreign_key => :
   has_many :comments, :order => "comments.task_id, comments.created_at"
   accepts_nested_attributes_for :comments, :allow_destroy => false, :reject_if => proc {|c| c["message"].blank?}
   # validates_associated :comments, :on => :create
@@ -74,14 +75,22 @@ class Task < ActiveRecord::Base
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
 
-  scope :order_by, proc {|included_assoc, property, dir| includes(included_assoc).order("#{property} #{dir}")}
+  scope :order_by_state, proc { |dir|
+    joins("left join task_states on tasks.state = task_states.name")
+    .joins("left join translation_keys on translation_keys.key = task_states.value")
+    .joins("left join translation_texts on translation_keys.id = translation_texts.translation_key_id")
+    .where("translation_texts.locale = '#{FastGettext.locale}'")
+    .order("translation_texts.text #{dir}")
+  }
+
+  scope :order_by, proc { |included_assoc, property, dir| includes(included_assoc).order("#{property} #{dir}") }
 
   after_save :update_assignments_history
   def update_assignments_history    
     assignee.assignment_histories.create(:task_id => self.id, :role => "assignee") if assignee_id_changed? && !assignee.blank?
-    
+
     editor.assignment_histories.create(:task_id => self.id, :role => "editor") if editor_id_changed? && !editor.blank?
-    
+
     creator.assignment_histories.create(:task_id => self.id, :role => "creator") if creator_id_changed? && !creator.blank?
   end
 
@@ -164,19 +173,7 @@ class Task < ActiveRecord::Base
     s_(DIFFICULTIES[dif]) if DIFFICULTIES[dif]
   end
 
-  TASK_STATES = {
-    "unassigned" => N_("task state|Unassigned"),
-    "assigned" => N_("task state|Assigned/Work in Progress"),
-    "stuck" => N_("task state|Editors Help Required"),
-    "partial" => N_("task state|Partialy Ready"),
-    "waits_for_editor" => N_("task state|Waits for Editor's approvement"),
-    "rejected" => N_("task state|Rejected by Editor"), 
-    "approved" => N_("task state|Approved by Editor"),
-    "ready_to_publish" => N_("task state|Ready to Publish"),
-    "other_task_creat" => N_("task state|Another Task Created")
-  }
-
   def self.textify_state(state)
-    s_(TASK_STATES[state.to_s]) if TASK_STATES[state.to_s]
+    s_(TaskState.find_by_name(state.to_s).try(:value))
   end
 end
