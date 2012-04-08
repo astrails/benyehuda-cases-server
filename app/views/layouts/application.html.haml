@@ -25,11 +25,8 @@
         - render_tabs
         - site_notices
       #content.span-24.last
-        #main.span-19.colborder
+        #main
           != render :partial => 'layouts/flashes'
           != yield
-        #sidebar.span-4.last
-          %h4= _("Sidebar")
-          != yield :sidebar
       #footer.span-24.last
         %h4=_("Footer")
