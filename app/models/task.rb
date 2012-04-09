@@ -76,11 +76,7 @@ class Task < ActiveRecord::Base
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
 
   scope :order_by_state, proc { |dir|
-    joins("left join task_states on tasks.state = task_states.name")
-    .joins("left join translation_keys on translation_keys.key = task_states.value")
-    .joins("left join translation_texts on translation_keys.id = translation_texts.translation_key_id")
-    .where("translation_texts.locale = '#{FastGettext.locale}'")
-    .order("translation_texts.text #{dir}")
+    joins("left join task_states on tasks.state = task_states.name").joins("left join translation_keys on translation_keys.key = task_states.value").joins("left join translation_texts on translation_keys.id = translation_texts.translation_key_id").where("translation_texts.locale = '#{FastGettext.locale}'").order("translation_texts.text #{dir}")
   }
 
   scope :order_by, proc { |included_assoc, property, dir| includes(included_assoc).order("#{property} #{dir}") }
