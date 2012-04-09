@@ -6,7 +6,8 @@ gem 'rails', '3.0.11'
 gem "rake", "0.8.7"
 gem "builder"
 gem "json"
-gem "mysql2", '0.2.7'
+#gem "mysql2", '0.2.7'
+gem "mysql"
 gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 #gem 'ruby-debug19'
 gem 'ruby-debug'
