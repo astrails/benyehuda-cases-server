@@ -3,12 +3,13 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.11'
-gem "rake" #, "0.8.7"
+gem "rake", "0.8.7"
 gem "builder"
 gem "json"
 gem "mysql2", '0.2.7'
 gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
-gem 'ruby-debug19'
+#gem 'ruby-debug19'
+gem 'ruby-debug'
 gem 'whenever'
 gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
@@ -32,6 +33,8 @@ gem "daemons"
 gem 'high_voltage'
 gem 'inherited_resources'
 gem 'has_scope'
+gem 'ZenTest', '4.0.0'
+gem 'linecache', '~> 0.46'
 
 gem 'jquery-rails', '>= 1.0.12'
 
@@ -57,17 +60,20 @@ group :development do
 
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  gem "ruby-debug19", :require => 'ruby-debug'
+  #gem "ruby-debug19", :require => 'ruby-debug'
+  gem "ruby-debug", :require => 'ruby-debug'
 end
 
 group :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'mocha'
-  gem 'factory_girl_rails', "1.7.0"
+  gem 'factory_girl'
+  #gem 'factory_girl_rails' #, "1.7.0"
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  gem "ruby-debug19", :require => 'ruby-debug'
+  #gem "ruby-debug19", :require => 'ruby-debug'
+  gem "ruby-debug", :require => 'ruby-debug'
   # bundler requires these gems while running tests
   # gem "rspec"
   # gem "faker"
