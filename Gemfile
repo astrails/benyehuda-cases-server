@@ -35,6 +35,7 @@ gem 'inherited_resources'
 gem 'has_scope'
 gem 'ZenTest', '4.0.0'
 gem 'linecache', '~> 0.46'
+gem 'hoe', '2.8.0'
 
 gem 'jquery-rails', '>= 1.0.12'
 
@@ -47,7 +48,7 @@ gem 'mini_magick'
 # gem "geokit"
 
 group :production do
-  gem "passenger", "2.2.11"
+  gem "passenger", '2.2.11'
 end
 
 group :development do
@@ -68,7 +69,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'mocha'
-  gem 'factory_girl'
+  gem 'factory_girl', '2.3.2'
   #gem 'factory_girl_rails' #, "1.7.0"
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
