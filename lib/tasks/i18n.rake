@@ -8,6 +8,6 @@ namespace :gettext do
   task :find => :load_array_find_index
 
   desc "sync .po files to db"
-  task :sync => :sync_po_to_db
+  #task :sync => :sync_po_to_db
 end
 
