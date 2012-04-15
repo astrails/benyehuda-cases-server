@@ -65,7 +65,6 @@ GEM
     gettext_i18n_rails (0.4.5)
       fast_gettext
     gravtastic (2.2.0)
-    grosser-pomo (0.5.1)
     haml (3.1.4)
     has_scope (0.5.1)
     high_voltage (1.1.1)
@@ -201,7 +200,6 @@ DEPENDENCIES
   gettext (>= 1.9.3)
   gettext_i18n_rails
   gravtastic (= 2.2.0)
-  grosser-pomo (>= 0.5.1)
   haml
   has_scope
   high_voltage

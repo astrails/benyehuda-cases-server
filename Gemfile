@@ -38,7 +38,7 @@ gem 'ZenTest', '4.0.0'
 gem 'linecache', '~> 0.46'
 gem 'hoe', '2.8.0'
 #gem 'grosser-pomo', :source => "http://gems.github.com/", :version => '>=0.5.1'
-gem 'grosser-pomo', '>=0.5.1', :require => false
+#gem 'grosser-pomo', '>=0.5.1', :require => false
 
 gem 'jquery-rails', '>= 1.0.12'
 
