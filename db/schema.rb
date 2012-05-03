@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -162,7 +161,7 @@ ActiveRecord::Schema.define(:version => 20120408110025) do
     t.datetime "updated_at"
   end
 
-  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key", :length => {"key"=>255}
+  add_index "translation_keys", ["key"], :name => "index_translation_keys_on_key", :length => {"key"=>"255"}
 
   create_table "translation_texts", :force => true do |t|
     t.text     "text"
