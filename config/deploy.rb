@@ -1,6 +1,6 @@
 require "vladify/delayed_job"
 # require "vladify/delayed_job_monit"
-require "vladify/fast_gettext"
+# require "vladify/fast_gettext"  # RFCT there's no pomo sync atm
 # require "vladify/gettext"
 require "vladify/thinking_sphinx"
 # require "vladify/ultrasphinx"
