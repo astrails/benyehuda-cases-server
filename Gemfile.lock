@@ -55,6 +55,9 @@ GEM
       abstract (>= 1.0.0)
     factory_girl (2.3.2)
       activesupport
+    factory_girl_rails (1.4.0)
+      factory_girl (~> 2.3.0)
+      railties (>= 3.0.0)
     fast_gettext (0.6.4)
     fastercsv (1.5.4)
     fastthread (1.0.7)
@@ -194,7 +197,7 @@ DEPENDENCIES
   aws-s3
   builder
   daemons
-  factory_girl (= 2.3.2)
+  factory_girl_rails
   fastercsv
   formtastic
   gettext (>= 1.9.3)
@@ -209,7 +212,6 @@ DEPENDENCIES
   inherited_resources
   jquery-rails (>= 1.0.12)
   json
-  linecache (~> 0.46)
   mime-types
   mini_magick
   mocha

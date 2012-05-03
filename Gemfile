@@ -9,8 +9,7 @@ gem "json"
 #gem "mysql2", '0.2.7'
 gem "mysql"
 gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
-#gem 'ruby-debug19'
-gem 'ruby-debug'
+gem "ruby-debug#{RUBY_VERSION =~ /1.9/ ? '19' : ''}", :require => 'ruby-debug'
 gem 'whenever'
 gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
@@ -25,7 +24,7 @@ gem "fastercsv"
 gem 'hoptoad_notifier'
 gem 'thinking-sphinx', :require => 'thinking_sphinx'
 gem 'gravtastic', "2.2.0"
-gem "vlad", "1.4.0"
+gem 'vlad', '1.4.0', :require => false
 gem "aws-s3", :require => "aws/s3"
 gem 'right_aws'
 gem 'image_science', :require => false
@@ -35,10 +34,8 @@ gem 'high_voltage'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'ZenTest', '4.0.0'
-gem 'linecache', '~> 0.46'
 gem 'hoe', '2.8.0'
 #gem 'grosser-pomo', :source => "http://gems.github.com/", :version => '>=0.5.1'
-#gem 'grosser-pomo', '>=0.5.1', :require => false
 
 gem 'jquery-rails', '>= 1.0.12'
 
@@ -64,20 +61,15 @@ group :development do
 
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  #gem "ruby-debug19", :require => 'ruby-debug'
-  gem "ruby-debug", :require => 'ruby-debug'
 end
 
 group :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'mocha'
-  gem 'factory_girl', '2.3.2'
-  #gem 'factory_girl_rails' #, "1.7.0"
+  gem 'factory_girl_rails'
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  #gem "ruby-debug19", :require => 'ruby-debug'
-  gem "ruby-debug", :require => 'ruby-debug'
   # bundler requires these gems while running tests
   # gem "rspec"
   # gem "faker"
