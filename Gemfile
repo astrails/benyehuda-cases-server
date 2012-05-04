@@ -14,6 +14,7 @@ gem 'whenever'
 gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
 gem 'formtastic'
+gem 'sass'
 gem 'haml'
 gem 'gettext_i18n_rails'
 gem 'gettext', '>=1.9.3', :require => false
