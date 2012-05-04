@@ -1,4 +1,3 @@
-# encoding: utf-8
 class TasksController < InheritedResources::Base
   before_filter :require_task_participant_or_editor, :only => [:show, :update, :edit]
   before_filter :require_editor_or_admin, :only => [:index, :create]
