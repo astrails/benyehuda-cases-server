@@ -72,14 +72,6 @@ protected
     return false
   end
 
-  before_filter :setup_localization
-  def setup_localization
-    FastGettext.available_locales = AVAILABLE_LOCALES
-    FastGettext.text_domain = 'app'
-    #FastGettext.locale = 'he'
-    set_gettext_locale
-  end
-
   alias :authenticate_translations_admin :require_admin
 
   before_filter :setup_will_paginate
