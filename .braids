@@ -76,13 +76,6 @@ vendor/plugins/let_my_controller_go:
   squashed: true
   type: git
   url: git://github.com/astrails/let_my_controller_go.git
-vendor/plugins/live-validations: 
-  branch: master
-  remote: braid/vendor/plugins/live-validations
-  revision: e6904d149977c991898d416cfd7b5c29f4ada0ba
-  squashed: true
-  type: git
-  url: git://github.com/augustl/live-validations.git
 vendor/plugins/log_buddy: 
   branch: master
   remote: braid/vendor/plugins/log-buddy
