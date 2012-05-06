@@ -17,7 +17,6 @@ gem 'formtastic'
 gem 'sass'
 gem 'haml'
 gem 'fast_gettext', :git => 'git://github.com/astrails/fast_gettext.git'
-gem 'gettext', '>=1.9.3', :require => false
 gem 'ruby_parser', :require => false
 gem "aasm"
 gem 'mime-types', :require => 'mime/types'

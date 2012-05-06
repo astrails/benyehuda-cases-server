@@ -7,4 +7,5 @@ end
 
 #requires fast_gettext to be present.
 #We give rails a chance to install it using rake gems:install, by loading it later.
-config.after_initialize { require 'gettext_i18n_rails' }
+# TODO config.after_initialize { require 'gettext_i18n_rails' }
+require 'gettext_i18n_rails'
