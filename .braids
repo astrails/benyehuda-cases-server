@@ -13,13 +13,6 @@ vendor/plugins/delayed_job:
   squashed: true
   type: git
   url: git://github.com/collectiveidea/delayed_job.git
-vendor/plugins/gettext_i18n_rails: 
-  branch: master
-  remote: braid/vendor/plugins/gettext-i18n-rails
-  revision: 60b7e5ff39f7db66e4b087e5db6e2f92a9546596
-  squashed: true
-  type: git
-  url: git://github.com/astrails/gettext_i18n_rails.git
 vendor/plugins/global_preferences: 
   branch: master
   remote: braid/vendor/plugins/global-preferences
