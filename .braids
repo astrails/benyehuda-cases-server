@@ -118,13 +118,6 @@ vendor/plugins/translation_db_engine:
   squashed: true
   type: git
   url: git://github.com/astrails/translation_db_engine.git
-vendor/plugins/trusted-params: 
-  branch: master
-  remote: braid/vendor/plugins/trusted-params
-  revision: da34c4aa2188226eaddc2e3c9cb4bea585d0568e
-  squashed: true
-  type: git
-  url: git://github.com/ryanb/trusted-params.git
 vendor/plugins/vladify: 
   branch: master
   remote: braid/vendor/plugins/vladify
