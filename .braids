@@ -1,11 +1,4 @@
 --- 
-vendor/gems/fast_gettext-0.4.17: 
-  branch: master
-  remote: braid/vendor/gems/fast-gettext
-  revision: 8d2a1b3ec57378c15e4a98fda43b5a552094170c
-  squashed: true
-  type: git
-  url: git://github.com/astrails/fast_gettext.git
 vendor/plugins/astrails-user-auth: 
   branch: master
   remote: braid/vendor/plugins/astrails-user-auth
