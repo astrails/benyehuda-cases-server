@@ -104,13 +104,6 @@ vendor/plugins/rack-bug:
   squashed: true
   type: git
   url: git://github.com/brynary/rack-bug.git
-vendor/plugins/restart_controller: 
-  branch: master
-  remote: braid/vendor/plugins/restart-controller
-  revision: 43e48faf45246e38292c95e7245a975bdef3f6b8
-  squashed: true
-  type: git
-  url: git://github.com/astrails/restart_controller.git
 vendor/plugins/translation_db_engine: 
   branch: master
   remote: braid/vendor/plugins/translation-db-engine
