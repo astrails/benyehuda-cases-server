@@ -16,7 +16,7 @@ gem "tzinfo"
 gem 'formtastic'
 gem 'sass'
 gem 'haml'
-gem 'gettext_i18n_rails'
+gem 'fast_gettext', :git => 'git://github.com/astrails/fast_gettext.git'
 gem 'gettext', '>=1.9.3', :require => false
 gem 'ruby_parser', :require => false
 gem "aasm"
