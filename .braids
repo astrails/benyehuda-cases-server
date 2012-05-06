@@ -34,13 +34,6 @@ vendor/plugins/global_preferences:
   squashed: true
   type: git
   url: git://github.com/astrails/global_preferences
-vendor/plugins/high_voltage: 
-  branch: master
-  remote: braid/vendor/plugins/high-voltage
-  revision: 13bb9c75611938f3f1a6636ddcd1e270ee8fc1fd
-  squashed: true
-  type: git
-  url: git://github.com/thoughtbot/high_voltage.git
 vendor/plugins/jrails: 
   branch: master
   remote: braid/vendor/plugins/jrails
