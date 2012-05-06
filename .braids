@@ -41,13 +41,6 @@ vendor/plugins/high_voltage:
   squashed: true
   type: git
   url: git://github.com/thoughtbot/high_voltage.git
-vendor/plugins/inherited_resources: 
-  branch: master
-  remote: braid/vendor/plugins/inherited-resources
-  revision: 6284ba802d935de936542edafcd960951d5fb604
-  squashed: true
-  type: git
-  url: git://github.com/josevalim/inherited_resources.git
 vendor/plugins/inherited_resources_pagination: 
   branch: master
   remote: braid/vendor/plugins/inherited-resources-pagination
