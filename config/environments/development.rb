@@ -24,3 +24,4 @@ CasesServer::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 end
 
+Debugger.start_remote nil, 6334
