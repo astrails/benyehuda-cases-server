@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/astrails/fast_gettext.git
-  revision: 8d2a1b3ec57378c15e4a98fda43b5a552094170c
-  specs:
-    fast_gettext (0.4.17)
-
-GIT
   remote: git://github.com/binarylogic/authlogic.git
   revision: 309187b2659436c27a93045fd62fd70e8b5eeb78
   specs:
@@ -64,6 +58,7 @@ GEM
     factory_girl_rails (1.4.0)
       factory_girl (~> 2.3.0)
       railties (>= 3.0.0)
+    fast_gettext (0.6.4)
     fastercsv (1.5.4)
     fastthread (1.0.7)
     formtastic (2.1.1)
@@ -196,7 +191,7 @@ DEPENDENCIES
   builder
   daemons
   factory_girl_rails
-  fast_gettext!
+  fast_gettext
   fastercsv
   formtastic
   gravtastic (= 2.2.0)
