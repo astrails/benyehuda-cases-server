@@ -1,5 +1,5 @@
 #source "http://gems.github.com"
-#source :gemcutter
+source :gemcutter
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.11'
@@ -42,6 +42,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'test-unit', '1.2.3'
 gem 'rmagick'
 gem 'mini_magick'
+gem 'astrails-safe'
 
 # bundler requires these gems in all environments
 # gem "nokogiri", "1.4.2"
