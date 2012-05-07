@@ -14,7 +14,7 @@ safe do
   end
  
   mysqldump do
-    options "-ceKq --single-transaction --create-options"
+    options "-ceKq --single-transaction --create-options -uastrails -pDM8VEgG4GMIQaN"
     user "astrails"
     password "DM8VEgG4GMIQaN"
     socket "/var/run/mysqld/mysqld.sock"
