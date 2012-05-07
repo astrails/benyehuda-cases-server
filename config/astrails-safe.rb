@@ -30,7 +30,7 @@ safe do
   tar do
     options "-h"
     archive "stage-benyehuda-org" do
-      files "var/www/staging.benyehuda.org"
+      files "/var/www/staging.benyehuda.org"
       exclude ["/var/www/staging.benyehuda.org/current/log", "/var/www/staging.benyehuda.org/current/tmp"]
     end
   end
