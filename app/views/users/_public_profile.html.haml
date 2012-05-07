@@ -49,4 +49,4 @@
 .block
   %h4= _("Assignments History")
   != render(:partial => "assignment_histories/assignment_history", :collection => @user.assignment_histories.reverse_order.with_task.recent(5))
-  != link_to _("more &raquo;"), user_assignment_histories_path(@user)
+  != link_to _("more &raquo;").html_safe, user_assignment_histories_path(@user)
