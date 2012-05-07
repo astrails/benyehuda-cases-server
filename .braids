@@ -62,13 +62,6 @@ vendor/plugins/paperclip:
   squashed: true
   type: git
   url: git://github.com/thoughtbot/paperclip.git
-vendor/plugins/rack-bug: 
-  branch: master
-  remote: braid/vendor/plugins/rack-bug
-  revision: 3a0933f50d5fc8f65bf9594f8ca526702d309d37
-  squashed: true
-  type: git
-  url: git://github.com/brynary/rack-bug.git
 vendor/plugins/translation_db_engine: 
   branch: master
   remote: braid/vendor/plugins/translation-db-engine
