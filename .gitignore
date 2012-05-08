@@ -20,3 +20,4 @@ public/attachments
 attic/
 tmp/restart.txt
 tags
+.powenv
