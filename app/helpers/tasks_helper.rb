@@ -26,12 +26,16 @@ module TasksHelper
   end
 
   def upload_javascripts
+    session_key = Rails.application.config.session_options[:key]
     javascript_tag <<-EOJS
-    jQuery(document).ready(function() {
+    $(function() {
       if (!swfobject.hasFlashPlayerVersion("9.0.24")) {
         jQuery("#no_flash_player, #upload_documents").toggle();
         return;
       }
+      var script_data = {format: 'js'};
+      script_data[$('meta[name=csrf-param]').attr('content')] = encodeURI($('meta[name=csrf-token]').attr('content'));
+      script_data['#{session_key}'] = '#{cookies[session_key]}';
       jQuery("#upload_documents").uploadify({
         'method'    : 'POST',
         'cancelImg' : '/images/cancel.png',
@@ -47,11 +51,7 @@ module TasksHelper
         'queueID'   : 'fileQueue',
         'wmode'     : 'transparent',
         'sizeLimit' : 9*1024*1024,
-        'scriptData': {
-          '_benyehuda_session': encodeURIComponent('#{u cookies['_benyehuda_session']}'),
-          'authenticity_token': encodeURIComponent('#{u form_authenticity_token}'),
-          'format': 'js'
-          },
+        'scriptData': script_data,
         'onComplete': function(e, queueID, fileObj, response) {
           eval(response);
         },
