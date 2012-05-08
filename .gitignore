@@ -3,8 +3,7 @@ bin
 .rvmrc
 config/*.sphinx.conf
 db/sphinx/*
-log/*.log
-log/*.pid
+log
 db/*.db
 db/*.sqlite3
 tmp/**/*
@@ -18,6 +17,7 @@ public/javascripts/*_[0-9]*.js
 public/stylesheets/*_[0-9]*.css
 public/attachments
 attic/
-tmp/restart.txt
+tmp
+var
 tags
 .powenv
