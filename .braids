@@ -55,13 +55,6 @@ vendor/plugins/log_buddy:
   squashed: true
   type: git
   url: git://github.com/relevance/log_buddy.git
-vendor/plugins/paperclip: 
-  branch: master
-  remote: braid/vendor/plugins/paperclip
-  revision: c64223c60dd7b0c4c4bc218de906061a6563a5a8
-  squashed: true
-  type: git
-  url: git://github.com/thoughtbot/paperclip.git
 vendor/plugins/translation_db_engine: 
   branch: master
   remote: braid/vendor/plugins/translation-db-engine
