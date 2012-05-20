@@ -29,7 +29,7 @@ module ApplicationHelper
 
   def site_notices
     SiteNotice.active.each do |sn|
-      haml_tag(:div, sn.html, :class => "site-notice")
+      haml_tag(:div, sn.html.html_safe, :class => "site-notice")
     end
   end
 
