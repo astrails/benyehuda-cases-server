@@ -1,7 +1,7 @@
 <% new = @translation_key.new_record? %>
 <h1><%= @translation_key.key || "New translation" %></h1>
 <% form_for @translation_key do |f|%>
-  <%= f.error_messages %>
+  <%= @translation_key.errors.full_messages.map{|m| '<div class="error">' + _(m) + '</div>' }.join %>
   <p>
     <%= f.label :key %>
     <%= f.text_area :key, :size=>'80x4' %>
