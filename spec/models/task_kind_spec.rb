@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TaskKind do
   let(:task_kind){Factory.create(:task_kind)}
-  let(:task){Factory.create(:task, :task_kind_id => task_kind)}
+  let(:task){Factory.create(:task, :kind => task_kind)}
 
   it "should create TaskKind" do
     task_kind

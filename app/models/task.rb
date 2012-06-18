@@ -1,11 +1,11 @@
 class Task < ActiveRecord::Base
   include ActsAsAuditable
-  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :task_kind_id, :difficulty, :full_nikkud,
+  acts_as_auditable :name, :state, :creator_id, :editor_id, :assignee_id, :kind_id, :difficulty, :full_nikkud,
     :conversions => {
       :creator_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :editor_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
       :assignee_id => proc { |v| v ? (User.find_by_id(v).try(:name)) : "" },
-      :task_kind_id => proc {|v| v ? Task.textify_kind(TaskKind.find_by_id(v).try(:name)) : "" },
+      :kind_id => proc {|v| v ? TaskKind.find_by_id(v).try(:name) : "" },
       :difficulty => proc {|v| Task.textify_difficulty(v) },
       :task_state_id => proc {|v| v ? Task.textify_state(TaskState.find_by_id(v).try(:name)) : "" },
       :full_nikkud => proc {|v| v ? _("true") : _("false")},
@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
           _("Editor")
         when :assignee_id
           _("Assignee")
-        when :task_kind_id
+        when :kind_id
           _("Kind")
         when :difficulty
           _("Difficulty")
@@ -50,7 +50,7 @@ class Task < ActiveRecord::Base
   include Task::States
   include Task::Notifications
 
-  belongs_to :kind, :class_name => "TaskKind", :foreign_key => "task_kind_id"
+  belongs_to :kind, :class_name => 'TaskKind'
 
   DIFFICULTIES = {
     "easy" => N_("task difficulty|easy"),
@@ -58,10 +58,10 @@ class Task < ActiveRecord::Base
     "hard" => N_("task difficulty|hard")
   }
   validates :difficulty, :inclusion => {:in => DIFFICULTIES.keys, :message => "not included in the list"}
-  validates :creator_id, :name, :task_kind_id, :difficulty, :presence => true
+  validates :creator_id, :name, :kind_id, :difficulty, :presence => true
   validate :parent_task_updated
 
-  attr_accessible :name, :task_kind_id, :difficulty, :full_nikkud, :comments_attributes
+  attr_accessible :name, :kind_id, :difficulty, :full_nikkud, :comments_attributes
 
   #belongs_to :state, :class_name => "TaskState", :foreign_key => :
   has_many :comments, :order => "comments.task_id, comments.created_at"
@@ -69,8 +69,7 @@ class Task < ActiveRecord::Base
   # validates_associated :comments, :on => :create
 
   include DefaultAttributes
-  #XXX
-  #default_attribute :kind, "typing"
+  default_attribute :kind_id, TaskKind.find_by_name("typing").try(:id)
   default_attribute :difficulty, "normal"
 
   has_many :documents, :dependent => :destroy, :conditions => "documents.deleted_at IS NULL"
@@ -157,12 +156,6 @@ class Task < ActiveRecord::Base
     doc = self.documents.build(opts)
     doc.user_id = uploader.id
     doc
-  end
-
-  ######### i18 n
-  def self.textify_kind(v)
-    #TODO: v is the name,  remove this method
-    v
   end
 
   def self.textify_difficulty(dif)

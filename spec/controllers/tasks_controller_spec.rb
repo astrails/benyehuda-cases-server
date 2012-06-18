@@ -93,7 +93,7 @@ describe TasksController do
       end
 
       it "should create chained task with comment" do
-        xhr :post, :create, :id => @task.id, :task => {:name => "lalala", :task_kind_id => Factory.create(:task_kind).id, :comments_attributes => [{:message => "chained foobar"}]}
+        xhr :post, :create, :id => @task.id, :task => {:name => "lalala", :kind_id => Factory.create(:task_kind).id, :comments_attributes => [{:message => "chained foobar"}]}
         assigns[:chained_task].should_not be_new_record
         assigns[:chained_task].comments.count.should == 1
         assigns[:chained_task].comments.first.should_not be_new_record
@@ -104,7 +104,7 @@ describe TasksController do
       end
 
       it "should create chained without a comment" do
-        xhr :post, :create, :id => @task.id, :task => {:name => "foobar", :task_kind_id => Factory.create(:task_kind).id}
+        xhr :post, :create, :id => @task.id, :task => {:name => "foobar", :kind_id => Factory.create(:task_kind).id}
         assigns[:chained_task].should_not be_new_record
         assigns[:chained_task].comments.count.should == 0
         assigns[:chained_task].name.should == "foobar"

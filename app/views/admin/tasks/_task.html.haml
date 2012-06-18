@@ -3,7 +3,7 @@
   %td!= link_to h(task.creator.name), user_path(task.creator)
   %td= task.updated_at.to_s(:db)
   %td!= link_to h(task.name), task_path(task)
-  %td= Task.textify_kind(task.kind.try(:name))
+  %td= task.kind.try(:name)
   %td!= link_to h(task.editor.name), user_path(task.editor) if task.editor
   %td!= link_to h(task.assignee.name), user_path(task.assignee) if task.assignee
   %td= Task.textify_state(task.state)
