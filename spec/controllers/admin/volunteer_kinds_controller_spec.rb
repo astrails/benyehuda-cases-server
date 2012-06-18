@@ -24,7 +24,7 @@ describe Admin::VolunteerKindsController do
 
     describe :new do
       it "should render new" do
-        get :new
+        xhr :get, :new
         response.should render_template :new
       end
     end
