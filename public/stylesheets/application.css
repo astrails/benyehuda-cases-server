@@ -103,3 +103,6 @@ div.finished_reason {
   );
 }
 */
+
+table { table-layout: fixed }
+td { overflow: hidden }
