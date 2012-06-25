@@ -22,4 +22,11 @@ CasesServer::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+
+  if ENV['RUBY_DEBUG_PORT']
+    Debugger.start_remote nil, ENV['RUBY_DEBUG_PORT'].to_i
+  else  # optional
+    Debugger.start_remote
+  end
 end
