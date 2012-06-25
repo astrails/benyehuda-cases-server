@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'ruby-debug', :library => false
   rpass = (GlobalPreference.get(:rack_bug_password) || 'by123') rescue 'by123'
   config.middleware.use 'Rack::Bug', :password => rpass
+  config.gem "riddle", :require => "riddle", :version => "1.2.2"
   config.gem 'whenever', :lib => false
   config.gem 'will_paginate', :version => "2.3.15"
   config.gem 'formtastic', :version => '0.9.1'
