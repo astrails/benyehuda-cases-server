@@ -32,6 +32,7 @@ gem 'hoe', '2.8.0'
 
 gem 'aws-s3', :require => "aws/s3"
 gem 'paperclip', '~>2.4.5'  # XXX until we're in the 1.9 land
+#gem 'paperclip', :git => "git://github.com/jeanmartin/paperclip.git", :branch => "master"
 
 gem 'jquery-rails', '>= 1.0.12'
 
