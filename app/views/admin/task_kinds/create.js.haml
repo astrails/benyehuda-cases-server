@@ -3,7 +3,7 @@
   $("#popup-content").replaceWith("#{escape_javascript(render :partial => "admin/task_kinds/task_kinds")}");
   $("#new_kind_msg").html("#{_("New kind was created successfully")}");
   $("#new_kind_msg").show();
-  $("#task_kind_id").append($("<option></option>").attr("value", #{@task_kind.id}).text("#{@task_kind.name}");
+  $("#task_kind_id").append( $("<option></option>").attr("value", #{@task_kind.id}).text("#{@task_kind.name}") );
 - else
   $("#link_to_new_kind").replaceWith("#{escape_javascript(render :partial => "admin/task_kinds/new")}");
   $("#new_kind_msg").html("#{resource.errors.full_messages.to_a.join(',')}");
