@@ -13,15 +13,14 @@ class Property < ActiveRecord::Base
   scope :by_parent_type_and_title, order("properties.parent_type, properties.title")
 
   PARENTS.each do |parent|
-    scope "available_for_#{parent.downcase}".to_sym, lambda {|user| where(available_for_conditions(user), parent) }
+    named_scope "available_for_#{parent.downcase}".to_sym, lambda {|user|
+      conditions = ["properties.parent_type  = ?", parent]
+
+      conditions.first << " AND properties.is_public = 1" unless user.admin_or_editor?
+
+      {:conditions => conditions}
+    }
   end
 
   has_many :custom_properties
-
-  private
-
-  def self.available_for_conditions(user)
-    conditions = "properties.parent_type  = ?"
-    conditions << " AND properties.is_public = 1" unless user.admin_or_editor?
-  end
 end
