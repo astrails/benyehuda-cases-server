@@ -36,22 +36,17 @@ module TasksHelper
       var script_data = {format: 'js'};
       script_data[$('meta[name=csrf-param]').attr('content')] = encodeURI($('meta[name=csrf-token]').attr('content'));
       script_data['#{session_key}'] = '#{cookies[session_key]}';
-      jQuery("#upload_documents").uploadify({
+      $("#upload_documents").uploadify({
         'method'    : 'POST',
-        'cancelImg' : '/images/cancel.png',
-        'uploader'  : '/uploadify.swf',
-        'fileDataName'  : 'document[file]',
-        'script'    : '#{task_documents_path(@task)}',
+        'uploader'    : '#{task_documents_path(@task)}',
+        'formData': script_data,
+        'fileObjName'  : 'document[file]',
         'auto'      : true,
         'multi'     : true,
-        'fileDesc'  : '#{_('Choose files to attach to the project:')}',
-        'hideButton': false,
-        'scriptAccess': 'always',
-        'folder': '/stub',
+        'fileTypeDesc'  : '#{_('Choose files to attach to the project:')}',
         'queueID'   : 'fileQueue',
-        'wmode'     : 'transparent',
-        'sizeLimit' : 9*1024*1024,
-        'scriptData': script_data,
+        'fileSizeLimit' : 9*1024*1024,
+        'swf'  : '/uploadify.swf',
         'onComplete': function(e, queueID, fileObj, response) {
           eval(response);
         },
@@ -61,6 +56,7 @@ module TasksHelper
           window.location.href = window.location.href;
         }
       });
+      $("#upload_documents > object").css({top: 0, right: 0});  // FFF uploadify
     });
     EOJS
   end
