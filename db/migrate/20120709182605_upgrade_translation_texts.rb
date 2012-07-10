@@ -7,7 +7,7 @@ class UpgradeTranslationTexts < ActiveRecord::Migration
   end
 
   def self.down
-    say "I said SORRY it's one-way only!!!"
+    say "I said SORRY it was one-way only!!!"
     raise
   end
 end
