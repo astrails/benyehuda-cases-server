@@ -1,7 +1,7 @@
 class TranslationsFormatRevert < ActiveRecord::Migration
   def self.enkode(s)
     j = s.split(FastGettext::TranslationRepository::Db.seperator)
-    raise if j.length == 0
+    j = '' if j.length == 0
     j = j[0] if j.length == 1
     j.to_json
   end
