@@ -12,9 +12,9 @@ class RemoteLinkRenderer < WillPaginate::LinkRenderer
     classnames = Array[*span_class]
 
     if page and page != current_page
-      @template.link_to(text, :url => url_for(page), :method => :get, :html => {:rel => rel_value(page), :class => classnames[1]}, :remote => true)
+      @template.link_to text.html_safe, url_for(page), :rel => rel_value(page), :class => classnames.join(' '), 'data-remote' => true
     else
-      @template.content_tag :span, text, :class => classnames.join(' ')
-    end    
+      @template.content_tag :span, text.html_safe, :class => classnames.join(' ')
+    end
   end
 end
