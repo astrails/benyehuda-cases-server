@@ -1,4 +1,4 @@
-- set_tab :volunteer_requests, _("Volunteer Request from %{user_link}") % {:user_link => link_to(h(@volunteer_request.user.name), user_path(@volunteer_request.user)).html_safe}
+- set_tab :volunteer_requests, _("Volunteer Request from %{user_link}") % {:user_link => link_to(h(@volunteer_request.user.name), user_path(@volunteer_request.user))}
 
 .block
   %p
