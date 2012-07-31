@@ -4,21 +4,23 @@
 
 != link_to _("New"), new_admin_task_path
 
-%table.list
-  %tr
-    %th &nbsp;
-    %th= link_to _("Creater"), admin_tasks_path(:order_by => {:includes => "creator", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th= link_to _("Last Updated"), admin_tasks_path(:order_by => {:property => "updated_at", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th= link_to _("Name"), admin_tasks_path(:order_by => {:property => "name", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th= link_to _("Kind"), admin_tasks_path(:order_by => {:includes => "kind", :property => "task_kinds.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th= link_to _("Editor"), admin_tasks_path(:order_by => {:includes => "editor", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th= link_to _("Assignee"), admin_tasks_path(:order_by => {:includes => "assignee", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th= link_to _("State"), admin_tasks_path(:order_by_state => {:dir => order_direction(params[:order_by_state].try(:[], :dir))})
-    %th= link_to _("Files"), admin_tasks_path(:order_by => {:property => "documents_count", :dir => order_direction(params[:order_by].try(:[], :dir))})
-    %th &nbsp;
-    %th &nbsp;
-    %th &nbsp;
-  - unless @tasks.blank?
-    != render(:partial => @tasks)
-
-!= will_paginate(@tasks)
+- unless @tasks.blank?
+  %table.list
+    %tr
+      %th &nbsp;
+      %th= link_to _("Creater"), admin_tasks_path(:order_by => {:includes => "creator", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Last Updated"), admin_tasks_path(:order_by => {:property => "updated_at", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Name"), admin_tasks_path(:order_by => {:property => "name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Kind"), admin_tasks_path(:order_by => {:includes => "kind", :property => "task_kinds.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Editor"), admin_tasks_path(:order_by => {:includes => "editor", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("Assignee"), admin_tasks_path(:order_by => {:includes => "assignee", :property => "users.name", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th= link_to _("State"), admin_tasks_path(:order_by_state => {:dir => order_direction(params[:order_by_state].try(:[], :dir))})
+      %th= link_to _("Files"), admin_tasks_path(:order_by => {:property => "documents_count", :dir => order_direction(params[:order_by].try(:[], :dir))})
+      %th &nbsp;
+      %th &nbsp;
+      %th &nbsp;
+      != render(:partial => @tasks)
+  != will_paginate(@tasks)
+- else
+  %p{:style => 'text-align: center'}
+    %big= _("No tasks found corresponding to your request")
