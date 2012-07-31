@@ -41,7 +41,7 @@ class Admin::TasksController < InheritedResources::Base
   protected
 
   def collection
-    @tasks ||= apply_scopes(Task).filter(params).paginate(:page => params[:page], :per_page => params[:per_page])
+    @tasks ||= apply_scopes(Task).filter(params)
   end
 
   def interpolation_options

@@ -99,7 +99,6 @@ class Task < ActiveRecord::Base
     indexes :state, :sortable => true
     has :documents_count, :type => :integer
   end
-  sphinx_scope(:by_updated_at){{:order => "updated_at DESC"}}
 
   SEARCH_INCLUDES = {
     :include => [:creator, :assignee, :editor, :kind]
@@ -131,7 +130,7 @@ class Task < ActiveRecord::Base
     if opts[:query].blank?
       self.find(:all, SEARCH_INCLUDES.merge(:order => "tasks.updated_at DESC").merge(:conditions => search_opts[:conditions].merge(search_opts[:with]))).paginate(:page => opts[:page], :per_page => opts[:per_page])
     else
-      self.search(opts[:query], search_opts.merge(SEARCH_INCLUDES)).by_updated_at.paginate(:page => opts[:page], :per_page => opts[:per_page])
+      self.search opts[:query], search_opts.merge(SEARCH_INCLUDES).merge(:order_by => :updated_at, :sort_mode => :desc, :page => opts[:page], :per_page => opts[:per_page])
     end
   end
 
