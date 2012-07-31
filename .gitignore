@@ -20,4 +20,5 @@ attic/
 tmp
 var
 tags
+.powrc
 .powenv
