@@ -129,9 +129,9 @@ class Task < ActiveRecord::Base
     end
 
     if opts[:query].blank?
-      self.find(:all, SEARCH_INCLUDES.merge(:order => "tasks.updated_at DESC").merge(:conditions => search_opts[:conditions].merge(search_opts[:with])))
+      self.find(:all, SEARCH_INCLUDES.merge(:order => "tasks.updated_at DESC").merge(:conditions => search_opts[:conditions].merge(search_opts[:with]))).paginate(:page => opts[:page], :per_page => opts[:per_page])
     else
-      self.search(opts[:query], search_opts.merge(SEARCH_INCLUDES)).by_updated_at
+      self.search(opts[:query], search_opts.merge(SEARCH_INCLUDES)).by_updated_at.paginate(:page => opts[:page], :per_page => opts[:per_page])
     end
   end
 
