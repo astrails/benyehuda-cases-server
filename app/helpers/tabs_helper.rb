@@ -32,6 +32,6 @@ module TabsHelper
   end
 
   def render_page_title
-    haml_tag(:h3, @page_title)
+    haml_tag(:h3, @page_title.html_safe)
   end
 end
