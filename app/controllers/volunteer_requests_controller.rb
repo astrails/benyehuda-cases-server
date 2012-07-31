@@ -22,7 +22,7 @@ class VolunteerRequestsController < InheritedResources::Base
   def update
     @volunteer_requests = VolunteerRequest.pending.find(params[:id])
     @volunteer_requests.approve!(current_user)
-    @volunteer_requests.user.update_attribute(:volunteer_kind_id, params[:volunteer_request][:user_attributes][:volunteer_kind_id])
+    # XXX temporarily @volunteer_requests.user.update_attribute(:volunteer_kind_id, params[:volunteer_request][:user_attributes][:volunteer_kind_id])
     flash[:notice] = _("Volunteer request approved!")
     redirect_to volunteer_requests_path
   end
