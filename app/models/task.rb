@@ -115,7 +115,7 @@ class Task < ActiveRecord::Base
 
   SEARCH_KEYS = ["state", "difficulty", "kind", "full_nikkud", "query", "length"]
   def self.filter(opts)
-    return self.all if (opts.keys & SEARCH_KEYS).blank?
+    return self.all.paginate(:page => opts[:page], :per_page => opts[:per_page]) if (opts.keys & SEARCH_KEYS).blank?
 
     search_opts = {:conditions => {}, :with => {}}
     search_opts[:conditions][:state] = opts[:state] unless opts[:state].blank?
