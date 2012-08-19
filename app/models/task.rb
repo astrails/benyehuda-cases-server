@@ -112,7 +112,7 @@ class Task < ActiveRecord::Base
 
   SEARCH_KEYS = ["state", "difficulty", "kind", "full_nikkud", "query", "length"]
   def self.filter(opts)
-    return self.all if (opts.keys & SEARCH_KEYS).blank?
+    return self.all.paginate(:page => opts[:page], :per_page => opts[:per_page]) if (opts.keys & SEARCH_KEYS).blank?
 
     search_opts = {:conditions => {}, :with => {}}
     search_opts[:conditions][:state] = opts[:state] unless opts[:state].blank?
@@ -130,7 +130,7 @@ class Task < ActiveRecord::Base
     if opts[:query].blank?
       self.find(:all, SEARCH_INCLUDES.merge(:order => "tasks.updated_at DESC").merge(:conditions => search_opts[:conditions].merge(search_opts[:with]))).paginate(:page => opts[:page], :per_page => opts[:per_page])
     else
-      self.search opts[:query], search_opts.merge(SEARCH_INCLUDES).merge(:order_by => :updated_at, :sort_mode => :desc, :page => opts[:page], :per_page => opts[:per_page])
+      self.search opts[:query], search_opts.merge(SEARCH_INCLUDES).merge(:order => :updated_at, :sort_mode => :desc, :page => opts[:page], :per_page => opts[:per_page])
     end
   end
 
