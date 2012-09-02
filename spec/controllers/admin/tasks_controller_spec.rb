@@ -47,7 +47,6 @@ describe Admin::TasksController do
     describe_action(:new) { it_should_render_template :new }
 
     it "should render index" do
-      Task.stub!(:filter).and_return([@task, @task])
       controller.current_user.search_settings.should_receive(:set_from_params!)
       get :index
       response.should be_success
