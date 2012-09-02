@@ -51,8 +51,7 @@ class User < ActiveRecord::Base
   scope :by_id, order("users.id")
   scope :by_last_login, order("users.current_login_at DESC")
 
-  #named_scope :waiting_for_tasks, {:conditions => "users.task_requested_at IS NOT NULL", :order => "users.task_requested_at DESC"}
-  scope :waiting_for_tasks, order("users.task_requested_at DESC")
+  scope :waiting_for_tasks, {:conditions => "users.task_requested_at IS NOT NULL", :order => "users.task_requested_at DESC"}
 
   has_one :volunteer_request
   has_many :confirmed_volunteer_requests, :class_name => "VolunteerRequest", :foreign_key => :approver_id

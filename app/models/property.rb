@@ -13,7 +13,7 @@ class Property < ActiveRecord::Base
   scope :by_parent_type_and_title, order("properties.parent_type, properties.title")
 
   PARENTS.each do |parent|
-    named_scope "available_for_#{parent.downcase}".to_sym, lambda {|user|
+    scope "available_for_#{parent.downcase}".to_sym, lambda {|user|
       conditions = ["properties.parent_type  = ?", parent]
 
       conditions.first << " AND properties.is_public = 1" unless user.admin_or_editor?
