@@ -41,6 +41,7 @@ describe Admin::TasksController do
     before(:each) do
       @user = Factory.create(:admin)
       @task = Factory.create(:task)
+      @task_kind = Factory.create(:task_kind)
       UserSession.create(@user)
     end
 
@@ -63,6 +64,9 @@ describe Admin::TasksController do
       put :update, :id => @task.id, :task => {:name => "new name"}
       response.should redirect_to(task_path(@task))
       @task.reload.name.should == "new name"
+      put :update, :id => @task.id, :task => {:kind_id => @task_kind.id}
+      response.should redirect_to(task_path(@task))
+      @task.reload.kind.id.should == @task_kind.id
     end
 
     describe "changing states/assignees" do
