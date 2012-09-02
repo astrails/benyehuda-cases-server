@@ -6,7 +6,7 @@
     = f.input :is_admin, :label => _("Is Admin")
     = f.input :is_editor, :label => _("Is Editor")
     = f.input :is_volunteer, :label => _("Is Volunteer")
-    = f.input :kind, :as => :select, :collection => VolunteerKind.all, :include_blank => false, :label => _("Volunteer Kind")
+    -# XXX temporarily = f.input :kind, :as => :select, :collection => VolunteerKind.all, :include_blank => false, :label => _("Volunteer Kind")
 
 - unless f.object.new_record?
   - f.inputs :name => _("Email Notifications") do

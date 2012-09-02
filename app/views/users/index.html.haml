@@ -1,6 +1,6 @@
 - set_tab :users, (params[:all] == "true" ? _("All Users") : _("Enabled Users"))
 
-%p
+-# XXX temporarily %p
   - if current_user.is_admin?
     = link_to _("Manage Volunteer Kinds"), "#", :id => "manage_volunteer_kinds"
 
