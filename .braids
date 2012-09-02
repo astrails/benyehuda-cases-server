@@ -55,6 +55,13 @@ vendor/plugins/log_buddy:
   squashed: true
   type: git
   url: git://github.com/relevance/log_buddy.git
+vendor/plugins/restart_controller: 
+  branch: master
+  remote: master/braid/vendor/plugins/restart-controller
+  revision: 43e48faf45246e38292c95e7245a975bdef3f6b8
+  squashed: true
+  type: git
+  url: git://github.com/astrails/restart_controller.git
 vendor/plugins/translation_db_engine: 
   branch: master
   remote: braid/vendor/plugins/translation-db-engine
