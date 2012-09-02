@@ -6,7 +6,7 @@
   = label_tag :full_nikkud, _("Full Nikkud")
   = check_box_tag :full_nikkud, "true", "true" == params[:full_nikkud]
   = label_tag :kind, _("Kind")
-  = select_tag :kind, options_for_select([""] + task_kinds_for_select, params[:kind])
+  = select_tag :kind, options_for_select([""] + task_kinds_for_select(:name), params[:kind])
   = label_tag :difficulty, _("Difficulty")
   = select_tag :difficulty, options_for_select([""] + task_difficulties_for_select, params[:difficulty])
   = label_tag :length, _("Length")

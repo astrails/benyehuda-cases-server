@@ -80,8 +80,8 @@ module TasksHelper
     "jQuery('#new_task_link, #new_task_container').toggle();"
   end
 
-  def task_kinds_for_select
-    TaskKind.all.map{|k| [k.name, k.name]}
+  def task_kinds_for_select(val_attr = :id)
+    TaskKind.all.map{|k| [k.name, k.send(val_attr)]}
   end
 
   def task_states_for_select
