@@ -57,7 +57,6 @@ group :development do
   gem 'mocha'
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
-  gem 'braid'
 end
 
 group :test do
