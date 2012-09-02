@@ -30,3 +30,5 @@
           != yield
       #footer.span-24.last
         %h4=_("Footer")
+        - if current_user.try(:is_admin?)
+          != link_to "restart", restart_path, :method => :post, :confirm => "Really RESTART the server??!"
