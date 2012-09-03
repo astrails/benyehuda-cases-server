@@ -162,6 +162,6 @@ class Task < ActiveRecord::Base
   end
 
   def self.textify_state(state)
-    s_(TaskState.find_by_name(state.to_s).try(:value) || state)
+    s_(TaskState.find_by_name(state.to_s).value)
   end
 end
