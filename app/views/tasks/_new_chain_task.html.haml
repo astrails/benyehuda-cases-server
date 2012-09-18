@@ -2,7 +2,7 @@
   != f.object.errors.on(:base)
   != render(:partial => "tasks/form", :locals => {:f => f})
   - f.inputs do
-    - f.semantic_fields_for :comments, @comment ||= @chained_task.comments.build do |comment|
+    != f.fields_for :comments, @comment ||= @chained_task.comments.build do |comment|
       != comment.input :message, :as => :text, :input_html => {:class => "comment_message #{!@comment.errors.blank? && 'active activated'}"}, :label => _("Message")
       - when_editor_or_admin do
         != comment.input :editor_eyes_only, :label => _("Editor eyes only")

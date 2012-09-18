@@ -5,7 +5,7 @@
 #reject_container.block{:style => has_rejection_errors? ? "" : "display:none"}
   - semantic_form_for(@task, :live_validations => false, :url => task_path(@task, :event => "reject"), :remote => true) do |f|
     - f.inputs do
-      - f.fields_for :comment, @task.rejection_comment  do |comment_fields|
+      != f.fields_for :comment, @task.rejection_comment  do |comment_fields|
         != comment_fields.input :message, :as => :text, :input_html => {:id => "reject_comment_message", :class => "comment_message #{has_rejection_errors? && 'active activated'}"}, :label => _("Rejection Reason")
     != f.submit _("Reject")
     != link_to_function _("cancel"), toggle_js

@@ -4,6 +4,6 @@
   %td= link_to h(volunteer_request.preferences.utf_snippet(70)), volunteer_request_path(volunteer_request)
   %td
     = semantic_form_for volunteer_request, volunteer_request_path(volunteer_request), :method => :put do |f|
-      = f.semantic_fields_for(:user, volunteer_request.user) do |uf|
+      = f.fields_for(:user, volunteer_request.user) do |uf|
         -# XXX temporarily = uf.input :kind, :as => :select, :collection => VolunteerKind.all, :include_blank => false, :label => _("Volunteer Kind")
         = f.submit _("Confirm"), :confirm => _('Are you sure?')
