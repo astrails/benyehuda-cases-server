@@ -1,5 +1,5 @@
 class TranslationKeysController < ApplicationController
-  before_filter :authenticate
+  before_filter :require_admin  # SEE BELOW?! :authenticate
   before_filter :find_translation_key, :only=>%w[show edit update destroy]
 
   #use host layout/helpers
