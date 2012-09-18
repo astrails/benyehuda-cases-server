@@ -47,12 +47,12 @@ module TasksHelper
         'queueID'   : 'fileQueue',
         'fileSizeLimit' : 9*1024*1024,
         'swf'  : '/uploadify.swf',
-        'onUploadSuccess': function(e, queueID, fileObj, response) {
-          eval(response);
+        'onUploadSuccess': function(file, data, response) {
+          eval(data);
         },
-        'onUploadError': function(event, ID, fileObj, errorObj) {
+        'onUploadError': function(file, errorCode, errorMsg, errorString) {
           alert('#{_('Opps, something went wrong. Please try again later.')}');
-          alert(errorObj.type + ' Error: ' + errorObj.info);
+          alert(errorObj.type + ' Error: ' + errorString);
           window.location.href = window.location.href;
         }
       });
