@@ -13,7 +13,7 @@ gem "tzinfo"
 gem 'formtastic'
 gem 'sass'
 gem 'haml'
-gem 'fast_gettext'
+gem 'fast_gettext', :git => 'git://github.com/costa/fast_gettext.git'
 gem 'ruby_parser', :require => false
 gem "aasm"
 gem 'mime-types', :require => 'mime/types'
