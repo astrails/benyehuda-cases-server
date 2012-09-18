@@ -4,7 +4,7 @@ module Task::Notifications
 
   def self.included(base)
     base.class_eval do
-      after_save  :notify_state_changes_prepare
+      after_save  :delayed_notify_state_changes
     end
   end
 
@@ -26,20 +26,20 @@ module Task::Notifications
     (state_changed_for.compact.uniq - state_changed_by)
   end
 
-  def notify_state_changes_prepare
+  def delayed_notify_state_changes
+    if "production" == Rails.env
+      send_later :notify_state_changes
+    else
+      notify_state_changes
+    end
+  end
+
+  def notify_state_changes
     return if SKIP_STATES.member?(state.to_sym)
 
     recipients = (task_changes_recipients || []).select {|r| r.wants_to_be_notified_of?(:state)}
     return if recipients.blank?
 
-    if "production" == Rails.env
-      send_later(:notify_state_changes, recipients, I18n.locale)
-    else
-      notify_state_changes(recipients, I18n.locale)
-    end
-  end
-
-  def notify_state_changes(recipients, use_locale)
-    I18n.with_locale(use_locale) { Notification.deliver_task_state_changed(self, recipients) }
+    I18n.with_locale(I18n.locale) { Notification.deliver_task_state_changed(self, recipients) }
   end
 end

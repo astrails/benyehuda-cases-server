@@ -19,25 +19,25 @@ class Comment < ActiveRecord::Base
   scope :public, where(:editor_eyes_only => false)
   scope :with_user, includes(:user)
 
-  after_create :notify_by_email
+  after_create :delayed_notify_comment_created
 
   protected
 
-  def notify_by_email
+  def delayed_notify_comment_created
+    if "production" == Rails.env
+      send_later :notify_comment_created
+    else
+      notify_comment_created
+    end
+  end
+
+  def notify_comment_created
     recipients = task.task_changes_recipients(true).select {|r| r.wants_to_be_notified_of?(:comments)}
     if editor_eyes_only?
       recipients = (recipients || []).select {|r| r.admin_or_editor?}
     end
     return if recipients.blank?
 
-    if "production" == Rails.env
-      send_later(:notify_comment_created, recipients, I18n.locale)
-    else
-      notify_comment_created(recipients, I18n.locale)
-    end
-  end
-
-  def notify_comment_created(recipients, use_locale)
-    I18n.with_locale(use_locale) { Notification.deliver_comment_added(self, recipients) }
+    I18n.with_locale(I18n.locale) { Notification.deliver_comment_added(self, recipients) }
   end
 end
