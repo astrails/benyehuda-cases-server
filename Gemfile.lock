@@ -6,12 +6,6 @@ GIT
       activerecord (>= 3.0.7)
       activerecord (>= 3.0.7)
 
-GIT
-  remote: git://github.com/costa/fast_gettext.git
-  revision: e0c1d1b1e400f7dbc62f264e47594f3e630e6fc4
-  specs:
-    fast_gettext (0.6.9)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -71,6 +65,7 @@ GEM
     factory_girl_rails (1.4.0)
       factory_girl (~> 2.3.0)
       railties (>= 3.0.0)
+    fast_gettext (0.6.10)
     fastercsv (1.5.4)
     fastthread (1.0.7)
     formtastic (2.1.1)
@@ -209,7 +204,7 @@ DEPENDENCIES
   builder
   daemons
   factory_girl_rails
-  fast_gettext!
+  fast_gettext
   fastercsv
   formtastic
   gravtastic (= 2.2.0)
