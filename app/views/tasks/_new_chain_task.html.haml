@@ -1,4 +1,4 @@
-- semantic_form_for(@chained_task ||= @task.clone, :task, :live_validations => false, :url => tasks_path(:id => @task.id), :remote => true, :method => :post, :before => "jQuery('#create_chained').attr('disabled', true).val('#{_("Please wait...")}')") do |f|
+- semantic_form_for(@chained_task ||= @task.clone, :task, :live_validations => false, :url => tasks_path(:id => @task.id), :remote => true, :method => :post) do |f|
   != f.object.errors.on(:base)
   != render(:partial => "tasks/form", :locals => {:f => f})
   - f.inputs do
@@ -6,5 +6,5 @@
       != comment.input :message, :as => :text, :input_html => {:class => "comment_message #{!@comment.errors.blank? && 'active activated'}"}, :label => _("Message")
       - when_editor_or_admin do
         != comment.input :editor_eyes_only, :label => _("Editor eyes only")
-  != f.submit _("Create"), :id => "create_chained"
+  != f.submit _("Create"), :id => "create_chained", :disable_with => _("Please wait...")
   != link_to_function _("cancel"), toggle_chained_js
