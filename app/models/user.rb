@@ -73,8 +73,8 @@ class User < ActiveRecord::Base
   #FIXME add validation and validate_kind?
   # validates :volunteer_kind_id, :presence => true, :if => :validate_kind?, :on => :update
 
-  after_update :check_volunter_approved
-  before_update :handle_volunteer_kind
+  before_update :handle_volunteer_kind, :request_task_on_volunteering
+  after_update :welcome_on_volunteering
 
   define_index do
     indexes :name, :sortable => true
@@ -140,21 +140,22 @@ class User < ActiveRecord::Base
     try(:is_admin?) || try(:is_editor?)
   end
 
-  def check_volunter_approved
-    if is_volunteer_changed? && is_volunteer?
-      set_task_requested!
-      Notification.volnteer_welcome(self).deliver
-    end
+  def set_task_requested
+    self.task_requested_at = Time.now.utc
+    self
   end
 
-  def set_task_requested!
-    self.task_requested_at = Time.now.utc
-    save!
+  protected
+
+  def request_task_on_volunteering
+    set_task_requested if is_volunteer_changed? && is_volunteer?
+  end
+
+  def welcome_on_volunteering
+    Notification.volnteer_welcome(self).deliver if is_volunteer_changed? && is_volunteer?
   end
 
   def handle_volunteer_kind
-    if is_volunteer_changed? && !is_volunteer?
-      self.volunteer_kind_id = nil
-    end
+    self.volunteer_kind_id = nil if is_volunteer_changed? && !is_volunteer?
   end
 end

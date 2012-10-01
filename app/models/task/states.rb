@@ -105,7 +105,7 @@ module Task::States
       end
 
       has_reason_comment(:finish, :finished, :assignee, N_("Task finished"), :allow_blank_messages => true) do |task, request_new_task|
-        task.assignee.set_task_requested! if request_new_task.to_bool
+        task.assignee.set_task_requested.save! if request_new_task.to_bool
       end
     end
   end
