@@ -15,7 +15,7 @@ module PropertiesHelper
     std_opts[:input_html] = if "boolean" == property.property_type
       {:checked => !(value.blank? || value.to_i.zero?)}
     else
-      {:value => value}
+      {:value => value, :class => 'span-13'}
     end
 
     std_opts

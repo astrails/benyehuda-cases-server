@@ -1,5 +1,5 @@
 - f.inputs :name => s_("task section|General") do
-  = f.input :name, :label => _("Description"), :required => true, :label => _("Name")
+  = f.input :name, :required => true, :label => _("Name"), :input_html => {:class => 'span-13'}
   = f.input :kind, :as => :select, :collection => task_kinds_for_select, :required => true, :label => _("Kind")
   - if current_user.is_admin?
     = link_to _("Manage Kinds"), "#", :id => "manage_kinds"
