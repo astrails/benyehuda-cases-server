@@ -35,22 +35,23 @@ module TasksHelper
       }
       var script_data = {format: 'js'};
       script_data[$('meta[name=csrf-param]').attr('content')] = encodeURI($('meta[name=csrf-token]').attr('content'));
-      script_data['#{session_key}'] = '#{cookies[session_key]}';
+      script_data[#{session_key.to_json}] = #{cookies[session_key].to_json};
       $("#upload_documents").uploadify({
-        'method'    : 'POST',
-        'uploader'    : '#{task_documents_path(@task)}',
-        'formData': script_data,
-        'fileObjName'  : 'document[file]',
-        'auto'      : true,
-        'multi'     : true,
-        'fileTypeDesc'  : #{_('Choose files to attach to the project:').to_json},
-        'queueID'   : 'fileQueue',
-        'fileSizeLimit' : 9*1024*1024,
-        'swf'  : '/uploadify.swf',
+        'method'         : 'POST',
+        'uploader'       : #{task_documents_path(@task).to_json},
+        'formData'       : script_data,
+        'fileObjName'    : 'document[file]',
+        'auto'           : true,
+        'multi'          : true,
+        'fileTypeDesc'   : #{_('Choose files to attach to the project:').to_json},
+        'queueID'        : 'fileQueue',
+        'fileSizeLimit'  : 9*1024*1024,
+        'successTimeout' : 21600,
+        'swf'            : '/uploadify.swf',
         'onUploadSuccess': function(file, data, response) {
           eval(data);
         },
-        'onUploadError': function(file, errorCode, errorMsg, errorString) {
+        'onUploadError'  : function(file, errorCode, errorMsg, errorString) {
           alert(#{_('Opps, something went wrong. Please try again later.').to_json});
           alert(errorObj.type + ' Error: ' + errorString);
           window.location.href = window.location.href;
