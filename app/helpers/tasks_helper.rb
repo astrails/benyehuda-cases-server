@@ -43,7 +43,7 @@ module TasksHelper
         'fileObjName'  : 'document[file]',
         'auto'      : true,
         'multi'     : true,
-        'fileTypeDesc'  : '#{_('Choose files to attach to the project:')}',
+        'fileTypeDesc'  : #{_('Choose files to attach to the project:').to_json},
         'queueID'   : 'fileQueue',
         'fileSizeLimit' : 9*1024*1024,
         'swf'  : '/uploadify.swf',
@@ -51,7 +51,7 @@ module TasksHelper
           eval(data);
         },
         'onUploadError': function(file, errorCode, errorMsg, errorString) {
-          alert('#{_('Opps, something went wrong. Please try again later.')}');
+          alert(#{_('Opps, something went wrong. Please try again later.').to_json});
           alert(errorObj.type + ' Error: ' + errorString);
           window.location.href = window.location.href;
         }
