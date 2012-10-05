@@ -18,7 +18,7 @@ gem 'ruby_parser', :require => false
 gem "aasm"
 gem 'mime-types', :require => 'mime/types'
 gem "fastercsv"
-# TODO: replace with airbrake, see also config/initializers/hoptoad.rb and lib/tasks/hoptoad_notifier_tasks.rake: gem 'hoptoad_notifier'
+gem 'airbrake'
 gem 'thinking-sphinx', :require => 'thinking_sphinx'
 gem 'gravtastic', "2.2.0"
 gem 'vlad', '1.4.0', :require => false
