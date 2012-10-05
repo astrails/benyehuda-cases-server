@@ -52,8 +52,9 @@ module TasksHelper
           eval(data);
         },
         'onUploadError'  : function(file, errorCode, errorMsg, errorString) {
+          if (errorString == 'Cancelled') return;
           alert(#{_('Opps, something went wrong. Please try again later.').to_json});
-          alert(errorObj.type + ' Error: ' + errorString);
+          alert(errorString+' Error ('+errorCode+'): '+errorMsg);
           window.location.href = window.location.href;
         }
       });
