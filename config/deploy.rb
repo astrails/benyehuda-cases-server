@@ -9,7 +9,7 @@ require "vladify/whenever"
 require 'vladify/bundler'
 
 
-set :repository, "git@alpha.astrails.com:benyehuda/cases_server"
+set :repository, `git remote show origin | grep 'Fetch URL'`.strip.match(/Fetch URL: (.*)$/)[1]
 
 desc "production server"
 task :prod do
