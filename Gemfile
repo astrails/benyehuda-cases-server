@@ -6,7 +6,7 @@ gem 'rake', '0.8.7'
 gem "builder"
 gem "json"
 gem "mysql"
-gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
+gem 'authlogic'
 gem 'whenever'
 gem 'will_paginate', "2.3.15", :require => 'will_paginate'
 gem "tzinfo"
