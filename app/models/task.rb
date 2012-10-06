@@ -117,10 +117,7 @@ class Task < ActiveRecord::Base
     search_opts = {:conditions => {}, :with => {}}
     search_opts[:conditions][:state] = opts[:state] unless opts[:state].blank?
     search_opts[:conditions][:difficulty] = opts[:difficulty] unless opts[:difficulty].blank?
-    if opts[:query].blank?
-      search_opts[:conditions][:task_kinds] = {}
-      search_opts[:conditions][:task_kinds][:name] = opts[:kind] unless opts[:kind].blank?
-    end
+    search_opts[:conditions][:kind] = opts[:kind] unless opts[:kind].blank?
 
     search_opts[:with][:full_nikkud] = ("true" == opts[:full_nikkud]) unless opts[:full_nikkud].blank?
     unless opts[:length].blank?
