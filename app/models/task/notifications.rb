@@ -8,12 +8,13 @@ module Task::Notifications
     end
   end
 
-  def task_changes_recipients(force = false)
+  def task_changes_recipients(comment = nil)
     state_changed_by = []
     state_changed_for = []
 
-    if state_changed? || force
+    if state_changed? || comment
       state_changed_for = [editor, assignee]
+      state_changed_by << comment.user if comment.try(:user)
       state_changed_by << current_controller.current_user if current_controller && current_controller.current_user
     elsif editor_id_changed? || assignee_id_changed?
       state_changed_for << editor if editor_id_changed?
