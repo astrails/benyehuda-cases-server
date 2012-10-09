@@ -117,16 +117,14 @@ class Task < ActiveRecord::Base
     search_opts = {:conditions => {}, :with => {}}
     search_opts[:conditions][:state] = opts[:state] unless opts[:state].blank?
     search_opts[:conditions][:difficulty] = opts[:difficulty] unless opts[:difficulty].blank?
-    search_opts[:conditions][:kind] = opts[:kind] unless opts[:kind].blank?
-
     search_opts[:with][:full_nikkud] = ("true" == opts[:full_nikkud]) unless opts[:full_nikkud].blank?
-    unless opts[:length].blank?
-      search_opts[:with][:documents_count] = TASK_LENGTH[opts[:length]]
-    end
+    search_opts[:with][:documents_count] = TASK_LENGTH[opts[:length]] unless opts[:length].blank?
 
     if opts[:query].blank?
+      search_opts[:conditions][:task_kinds] = {:name => opts[:kind]} unless opts[:kind].blank?
       self.find(:all, SEARCH_INCLUDES.merge(:order => "tasks.updated_at DESC").merge(:conditions => search_opts[:conditions].merge(search_opts[:with]))).paginate(:page => opts[:page], :per_page => opts[:per_page])
     else
+      search_opts[:conditions][:kind] = opts[:kind] unless opts[:kind].blank?
       self.search opts[:query], search_opts.merge(SEARCH_INCLUDES).merge(:order => :updated_at, :sort_mode => :desc, :page => opts[:page], :per_page => opts[:per_page])
     end
   end
