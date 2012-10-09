@@ -14,6 +14,7 @@ CasesServer::Application.routes.draw do
   resource :profile, :controller => "users"
   match '/profiles/:id' => 'users#show', :as => :profiles, :public_profile => true
   match '/' => 'welcome#index'
+  match '/byebye' => 'welcome#byebye'
   resources :pages, :only => [:show]
   resources :properties
   match '/dashboard' => 'dashboards#index', :via => :get, :as => :dashboard
