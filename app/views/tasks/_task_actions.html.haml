@@ -7,5 +7,5 @@
 
     - if current_user.admin_or_editor?
       = link_to _("Reassign"), edit_task_assignment_path(task)
-      = link_to _("Delete"), admin_task_path(task), :remote => true, :method => :delete, :confirm => _("Are you sure?")
+    = link_to _("Delete"), admin_task_path(task), :remote => true, :method => :delete, :confirm => _("Are you sure?")
     = link_to _("More Actions"), task_path(task)
