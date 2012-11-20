@@ -9,7 +9,7 @@ require "vladify/whenever"
 require 'vladify/bundler'
 
 
-set :repository, "https://github.com/astrails/benyehuda-cases-server.git"
+set :repository, "https://github.com/abartov/benyehuda-cases-server.git"
 
 desc "production server"
 task :prod do
