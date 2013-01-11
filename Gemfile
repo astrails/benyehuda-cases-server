@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.11'
+gem 'rails', '3.0.19'
 gem 'rake', '0.8.7'
 
 gem "builder"
@@ -63,7 +63,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'mocha'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '1.4.0'
   #gem 'inaction_mailer', :require => 'inaction_mailer/force_load'
   gem 'query_trace', :require => 'query_trace'
   gem 'rspec2-rails-views-matchers'
