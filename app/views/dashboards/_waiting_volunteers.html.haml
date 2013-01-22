@@ -14,7 +14,7 @@
         %td!= mail_to v.email
         %td!= waiting_for_task(v)
         %td!= link_to_assign_a_task(v)
-        %td!= link_to "cancel request", {:controller => "users", :id => v.id, :action => "cancel_task_request" }
+        %td!= link_to _("cancel_request"), {:controller => "users", :id => v.id, :action => "cancel_task_request" }
   :javascript
     jQuery(function(){
       jQuery('#assign_now').dialog({draggable:false, modal: true, resizable:false, autoOpen: false, width: 800,buttons: {"#{_("Cancel")}": function() { $(this).dialog("close"); } } });
