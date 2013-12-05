@@ -145,6 +145,11 @@ class User < ActiveRecord::Base
     self
   end
 
+  def clear_task_requested!
+    self.task_requested_at = nil
+    save!
+  end
+
   protected
 
   def request_task_on_volunteering

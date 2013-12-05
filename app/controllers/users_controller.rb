@@ -55,6 +55,15 @@ class UsersController < InheritedResources::Base
       redirect_to users_path
     end
   end
+  def cancel_task_request
+    @user = User.find(params[:id])
+    if current_user.is_admin? or current_user == @user
+      @user.clear_task_requested!
+      flash[:notice] = _("Cancelled additional task request for user #{@user.name}")
+      redirect_to '/'
+    end
+  end
+
 
   protected
 

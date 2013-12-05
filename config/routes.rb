@@ -10,6 +10,7 @@ CasesServer::Application.routes.draw do
     resources :activation_instructions
     resources :assignment_histories
   end
+  get '/users/:id/cancel_task_request', :controller => 'users', :action => 'cancel_task_request'
 
   resource :profile, :controller => "users"
   match '/profiles/:id' => 'users#show', :as => :profiles, :public_profile => true
